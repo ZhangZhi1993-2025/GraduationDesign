@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-import java.util.function.Consumer;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,9 +22,10 @@ import org.jsoup.select.Elements;
 
 public class ExtractServiceImpl implements ExtractService {
 
-    protected volatile Map<String, Extractable> template = new HashMap<>();
+    protected Map<String, Extractable> template = new HashMap<>();
 
-    public void serializeTemplate(String path) {
+    @Override
+    public void serialize(String path) {
         try {
             ObjectOutputStream e = new ObjectOutputStream(new FileOutputStream(path));
             Throwable var3 = null;
@@ -56,13 +56,15 @@ public class ExtractServiceImpl implements ExtractService {
 
     }
 
-    public void unSerializeTemplate(String path) {
+    @Override
+    @SuppressWarnings("unchecked")
+    public void unSerialize(String path) {
         try {
             ObjectInputStream e = new ObjectInputStream(new FileInputStream(path));
             Throwable var3 = null;
 
             try {
-                this.template = (HashMap) e.readObject();
+                this.template = (HashMap<String, Extractable>) e.readObject();
             } catch (Throwable var14) {
                 var3 = var14;
                 throw var14;
@@ -168,6 +170,7 @@ public class ExtractServiceImpl implements ExtractService {
         }
     }
 
+    @Override
     public void generateRule(String html, Extractable e) {
         StringBuilder sb = new StringBuilder();
         Document root = Jsoup.parse(html);
@@ -184,6 +187,8 @@ public class ExtractServiceImpl implements ExtractService {
         String result1 = sb.deleteCharAt(sb.length() - 1).deleteCharAt(sb.length() - 1).toString();
         this.template.put(result1, e.getInstance());
     }
+
+    /* 以下为抽取部分 ****************************************/
 
     public boolean haveSimilarClassAttr(String str1, String str2) {
         if ((double) Math.abs(str1.length() - str2.length()) / (double) str1.length() > 0.15D) {
@@ -223,7 +228,7 @@ public class ExtractServiceImpl implements ExtractService {
             Elements children = element.children();
             if (!(children.get(number)).tagName().equals(tag) ||
                     !clazz.equals("null") &&
-                    !this.haveSimilarClassAttr(clazz, (children.get(number)).className())) {
+                            !this.haveSimilarClassAttr(clazz, (children.get(number)).className())) {
                 return null;
             }
 
@@ -257,6 +262,7 @@ public class ExtractServiceImpl implements ExtractService {
         return element != null ? element.ownText() : null;
     }
 
+    @Override
     public Extractable extractResult(String html) {
         Element root = Jsoup.parse(html).select("html").first();
         String rule = this.findRulePattern(root);
