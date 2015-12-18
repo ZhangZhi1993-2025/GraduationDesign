@@ -2,6 +2,10 @@ package cn.edu.njnu.tidypage;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.*;
+import java.util.prefs.NodeChangeEvent;
 
 /**
  * Created by zhangzhi on 15-12-17.
@@ -9,55 +13,69 @@ import org.jsoup.nodes.Element;
  */
 public class TidyPage {
 
+    // html流对应的DOM树
+    private Element root;
+
     /**
-     * 将页面中<script></script>,<style></style>,<link />等无用标签滤去
+     * 得到html流构建DOM树
+     *
+     * @param html 输入的html流
      */
-    protected String dropUnnecessaryTags(String html) {
-        int begin = 0;
-        int end;
-        StringBuilder sb = new StringBuilder(html);
-        int i = 0;
-        try {
-            for (i = 0; i < sb.length() - 1; i++) {
-                if (sb.charAt(i) == '/' && sb.charAt(i + 1) == '*')
-                    begin = i;
-                if (sb.charAt(i) == '*' && sb.charAt(i + 1) == '/') {
-                    end = i + 1;
-                    sb.delete(begin, end + 1);
-                }
-                if (sb.charAt(i) == '/')
-                    if (sb.charAt(i + 1) == '/')
-                        if (i != 0)
-                            if (sb.charAt(i - 1) != ':') {
-                                begin = i;
-                                while (i < sb.length() && sb.charAt(i) != '\n')
-                                    i++;
-                                end = i;
-                                sb.delete(begin, end + 1);
-                            }
-            }
-        } catch (Exception e) {
-            int l = sb.length();
-            int ii = i;
-            System.out.print(l + ii);
-        }
-        html = sb.toString();
-        return html.replaceAll("<!DOCTYPE html>", "")
-                .replaceAll("<style[^<]*</style>", "")
-                .replaceAll("<script[^<]*</script>", "")
-                .replaceAll("<link[^<]*>", "")
-                .replaceAll("<img[^<]*>", "")
-                .replaceAll("<input[^<]*>", "")
-                .replaceAll("<!--[^<]*-->", "");
+    public TidyPage(String html) {
+        html = html.replaceAll("<!--[^<]*-->", "");
+        root = Jsoup.parse(html).select("html").first();
     }
 
     /**
-     * 将只有一个子标签的元素简化为它唯一的那个子标签
-     *
-     * @param element 待处理的DOM树
+     * 将页面中无信息标签滤去
      */
-    protected void dropSingleWrapTags(Element element) {
-
+    protected void dropUnnecessaryTags() {
+        Set<String> set = new HashSet<>();
+        set.add("script");
+        set.add("style");
+        set.add("link");
+        set.add("img");
+        set.add("button");
+        //set.add("ul");
+        set.add("header");
+        set.add("footer");
+        Stack<Element> stk = new Stack<>();
+        stk.push(root);
+        Element node;
+        outer:
+        while (!stk.isEmpty()) {
+            node = stk.peek();
+            stk.pop();
+            if (set.contains(node.tagName()) || node.attr("style").equals("display:none")) {
+                node.remove();
+                continue;
+            }
+            if (node.children().size() == 0) {
+                if (node.text().replaceAll("[\f\n\r\t]*", "").equals(""))
+                    node.remove();
+                continue;
+            }
+            while (node.children().size() == 1) {
+                Element parent = node.parent();
+                Element child = node.child(0);
+                Elements children = parent.children();
+                int index = -1;
+                for (Element e : children) {
+                    index++;
+                    if (e == node) {
+                        List<Element> item = new ArrayList<>();
+                        item.add(child);
+                        parent.insertChildren(index, item);
+                        node.remove();
+                        break;
+                    }
+                }
+                stk.push(child);
+                continue outer;
+            }
+            Elements children = node.children();
+            children.forEach(stk::push);
+        }
     }
 
     /**
@@ -65,18 +83,17 @@ public class TidyPage {
      *
      * @return 清洗过后的DOM树
      */
-    public Element tidyPageDom(String html) {
-        html = dropUnnecessaryTags(html);
-        Element root = Jsoup.parse(html);
-        dropSingleWrapTags(root);
+    public Element tidyPage() {
+        dropUnnecessaryTags();
         return root;
     }
 
     /**
      * 清洗页面并返回html页面流
      */
-    //public String tidyPageStr(String html) {
-        //return dropUnnecessaryTags(html);
-    //}
+    public String tidyPageStr() {
+        dropUnnecessaryTags();
+        return root.toString();
+    }
 
 }
