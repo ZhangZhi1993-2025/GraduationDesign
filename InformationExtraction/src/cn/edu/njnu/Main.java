@@ -9,29 +9,24 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            File file = new File("/home/zhangzhi/Documents/samples");
+            File file = new File("/home/zhangzhi/Documents/graduation_design/samples");
             File[] list = file.listFiles();
-            File[] sub;
             if (list != null) {
-                for (File fi : list) {
-                    sub = fi.listFiles();
-                    if (sub != null) {
-                        for (File f : sub) {
-                            String html = getHtml(f);
-                            TidyPage tp = new TidyPage(html);
-                            html = tp.tidyPageStr();
-                            setHtml(f, html);
-                        }
-                    }
+                for (File f : list) {
+                    String html = getHtml(f);
+                    TidyPage tp = new TidyPage(html);
+                    html = tp.tidyPageStr();
+                    setHtml(f, html);
                 }
             }
+        }
 
-            //String html = getHtml(file);
-            //TidyPage tp = new TidyPage(html);
-            //Element root = tp.tidyPage();
-            //html = tp.tidyPageStr();
-            //setHtml(file, html);
-        } catch (Exception e) {
+        //String html = getHtml(file);
+        //TidyPage tp = new TidyPage(html);
+        //html = tp.tidyPageStr();
+        //setHtml(file, html);
+
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
