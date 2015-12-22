@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Created by zhangzhi on 15-12-17.
- * 清洗页面工具类
+ * 页面压缩规范化工具类
  */
 public class TidyPage {
 
@@ -24,7 +24,9 @@ public class TidyPage {
      */
     public TidyPage(String html) {
         html = html.replaceAll("<!--[^<]*-->", "");
+        html = html.replaceAll("&ensp;", "");
         html = html.replaceAll("&nbsp;", "");
+        html = html.replaceAll("&emsp;", "");
         root = Jsoup.parse(html).select("html").first();
     }
 
@@ -63,7 +65,7 @@ public class TidyPage {
      * @param classString 待审查的class属性
      * @return 某节点的class属性是否含有该被过滤的关键词
      */
-    protected boolean judgeIfHasClass(Set<String> set, String classString) {
+    protected boolean judgeClass(Set<String> set, String classString) {
         String[] list = classString.split(" ");
         for (String item : list) {
             if (set.contains(item))
@@ -73,7 +75,49 @@ public class TidyPage {
     }
 
     /**
-     * 将页面中无信息标签滤去
+     * 判断该标签是否可能不包含有价值信息(包含登录,注册,分享,首页,返回,评论等字眼且总字数不超过5)
+     *
+     * @param text 待判断的标签内容
+     * @return 是否可能不包含有价值信息
+     */
+    protected boolean couldBeIrrelevantTag(String text) {
+        if (text.contains("ICP备") || text.contains("©"))
+            return true;
+
+        //总字数超过5则判断该标签含有有价值信息的概率较高，返回false
+        if (text.length() > 5)
+            return false;
+
+        //否则作关键词匹配
+        Set<String> set = new HashSet<>();
+        set.add("登录");
+        set.add("登陆");
+        set.add("注册");
+        set.add("忘记密码");
+        set.add("重置");
+        set.add("验证码");
+        set.add("首页");
+        set.add("返回");
+        set.add("分享");
+        set.add("评论");
+        set.add("微信");
+        set.add("微博");
+        set.add("人人网");
+        set.add("朋友网");
+        set.add("QQ");
+        set.add("打印");
+        set.add("导航");
+        set.add("助手");
+
+        for (String pattern : set) {
+            if (text.contains(pattern))
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * 将页面中无信息标签滤去(非递归后序遍历)
      */
     protected void dropUnnecessaryTags() {
         Set<String> set = new HashSet<>();
@@ -81,7 +125,10 @@ public class TidyPage {
         set.add("style");
         set.add("link");
         set.add("img");
+        set.add("form");
         set.add("button");
+        set.add("input");
+        set.add("select");
         set.add("ul");
         set.add("footer");
 
@@ -105,12 +152,14 @@ public class TidyPage {
             } else {
                 stk.pop();
                 if (set.contains(isnode.node.tagName()) ||
-                        judgeIfHasClass(set, isnode.node.className()) ||
+                        judgeClass(set, isnode.node.className()) ||
                         set.contains(isnode.node.id()) ||
-                        isnode.node.attr("style").equals("display:none")) {
+                        isnode.node.attr("style").equals("display:none") ||
+                        couldBeIrrelevantTag(isnode.node.text().trim())) {
                     isnode.node.remove();
                     continue;
                 }
+                isnode.node.removeAttr("class");
                 if (isnode.node.children().size() == 0) {
                     if (isnode.node.text().trim().equals(""))
                         isnode.node.remove();
