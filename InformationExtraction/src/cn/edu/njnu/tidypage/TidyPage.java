@@ -36,14 +36,10 @@ public class TidyPage {
      */
     private class InnerStruct {
 
-        /**
-         * DOM树的节点
-         */
+        //DOM树的节点
         public Element node;
 
-        /**
-         * 第一次入栈时 hasvisited 为 false,第二次访问时修改为 true,第三次访问时弹出堆栈
-         */
+        //第一次入栈时 hasvisited 为 false,第二次访问时修改为 true,第三次访问时弹出堆栈
         public boolean hasVisited;
 
         /**
@@ -108,6 +104,8 @@ public class TidyPage {
         set.add("打印");
         set.add("导航");
         set.add("助手");
+        set.add("收起");
+
 
         for (String pattern : set) {
             if (text.contains(pattern))
@@ -160,6 +158,7 @@ public class TidyPage {
                     continue;
                 }
                 isnode.node.removeAttr("class");
+                isnode.node.removeAttr("style");
                 if (isnode.node.children().size() == 0) {
                     if (isnode.node.text().trim().equals(""))
                         isnode.node.remove();

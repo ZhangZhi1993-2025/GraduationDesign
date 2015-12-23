@@ -1,5 +1,6 @@
 package cn.edu.njnu.infoextract;
 
+import cn.edu.njnu.Main;
 import cn.edu.njnu.domain.Extractable;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -35,6 +36,15 @@ public abstract class InfoExtract {
     protected String theme;
 
     private class InnerMap {
+
+        //标签名
+        private String tag;
+
+        //所属类型
+        private String category;
+
+        //标签对应的内容
+        private String content;
 
     }
 
@@ -128,18 +138,16 @@ public abstract class InfoExtract {
                 "[-|\\/|月|\\.]\\d{1,2}([日|号])?(\\s)*(\\d{1,2}([点|时])" +
                 "?((:)?\\d{1,2}(分)?((:)?\\d{1,2}(秒)?)?)?)?(\\s)*(PM|AM)?).*");
         Matcher matcher = p.matcher(item);
-        if (matcher.matches())
+        if (matcher.find())
             return true;
         p = Pattern.compile("\\d{1,4}[-|\\/|年|\\.]\\d{1,2}[-|\\/|月|\\.]\\d{1,2}([日|号]).*");
         matcher = p.matcher(item);
-        if (matcher.matches())
+        if (matcher.find())
             return true;
         p = Pattern.compile("(\\d{1,2}([点|时])?((:)?\\d{1,2}(分)?((:)?\\d{1,2}" +
                 "(秒)?)?)?)?(\\s)*(PM|AM)?");
         matcher = p.matcher(item);
-        if (matcher.matches())
-            return true;
-        return false;
+        return matcher.find();
     }
 
     /**
@@ -169,27 +177,33 @@ public abstract class InfoExtract {
     }
 
     /**
-     * 从语料库返回的json字符串中提取可能的地址
+     * 从语料库返回的json字符串中提取可能的地址或地名
      *
-     * @param json 包含可能地址的json字符串
-     * @return 抽取的可能的地址的字符串
+     * @param json 包含可能地址或地名的json字符串
+     * @param type 地址或地名,地址为true,地名为false
+     * @return 抽取的可能的地址或地名的字符串
      */
-    protected String[] getPosiblePlaces(String json) {
+    protected String[] getJsonInfo(String json, boolean type) {
         JSONObject jsonObj = JSONObject.fromObject(json);
         JSONArray array = jsonObj.getJSONArray("results");
-        String[] places = new String[array.length()];
+        String[] list = new String[array.length()];
         for (int i = 0; i < array.length(); i++) {
             JSONObject item = array.getJSONObject(i);
-            places[i] = item.getString("name");
+            if (type)
+                list[i] = item.getString("address");
+            else
+                list[i] = item.getString("name");
         }
-        return places;
+        return list;
     }
+
+    //protected boolean
 
     /**
      * 判断一个字段项是否是地点
      *
      * @param item 待判断的字段
-     * @param city 查找的城市
+     * @param city 查找的城市(必须给出此字段,否则该方法达不到预期效果)
      * @return 是否是一个地点
      */
     protected boolean canBePlace(String item, String city) throws IOException {
@@ -198,8 +212,10 @@ public abstract class InfoExtract {
                 "q=" + item + "&region=" + city + "&output=json&ak=" + appkey;
         String response = getResponseFromRequest(request);
         String[] places;
+        String[] addresses;
         if (response != null) {
-            places = getPosiblePlaces(response);
+            addresses = getJsonInfo(response, true);
+            places = getJsonInfo(response, false);
             for (String place : places) {
                 if (item.equals(place))
                     return true;
@@ -211,9 +227,8 @@ public abstract class InfoExtract {
     /**
      * 从dataList中提取出结构化信息
      *
-     * @return 所抽取的结构化信息
      * @throws IOException
      */
-    public abstract Extractable extractInformation(File file) throws IOException;
+    public abstract void extractInformation(File file) throws IOException;
 
 }

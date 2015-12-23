@@ -5,12 +5,16 @@ import cn.edu.njnu.tidypage.TidyPage;
 import org.jsoup.nodes.Element;
 
 import java.io.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            File file = new File("/home/zhangzhi/Documents/graduation_design/samples2");
+            ExecutorService service = Executors.newCachedThreadPool();
+
+            /*File file = new File("/home/zhangzhi/Documents/graduation_design/samples2");
             File[] list = file.listFiles();
             if (list != null) {
                 for (File f : list) {
@@ -31,7 +35,7 @@ public class Main {
             //ie.extractInformation(file);
 
             //html = tp.tidyPageStr();
-            //setHtml(file, html);
+            //setHtml(file, html);*/
 
         } catch (Exception e) {
             e.printStackTrace();
