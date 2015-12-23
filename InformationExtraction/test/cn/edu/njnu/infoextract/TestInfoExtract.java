@@ -23,19 +23,13 @@ public class TestInfoExtract {
     private InfoExtract ie = new ExtractNews();
 
     @BeforeClass
-    public static void initialize() throws IOException {
-        //File file = new File("/home/zhangzhi/Documents/graduation_design/samples2");
-        //String html = getHtml(file);
-        //TidyPage tp = new TidyPage(html);
-
-        //Element root = tp.tidyPage();
-        //ie.extractInformation(file);
+    public static void initialize() {
     }
 
     @Test
     public void testcanBeTime() {
         //System.out.print(ie.canBeTime("199"));
         //Assert.assertEquals(ie.canBeTime("199"), true);
-        Assert.assertEquals(ie.canBeTime("centos1099cddc90zxc"), false);
+        Assert.assertEquals(false, ie.canBeTime("centoscddczxc"));
     }
 }

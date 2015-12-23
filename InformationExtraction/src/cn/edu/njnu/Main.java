@@ -14,28 +14,6 @@ public class Main {
         try {
             ExecutorService service = Executors.newCachedThreadPool();
 
-            /*File file = new File("/home/zhangzhi/Documents/graduation_design/samples2");
-            File[] list = file.listFiles();
-            if (list != null) {
-                for (File f : list) {
-                    String html = getHtml(f);
-                    TidyPage tp = new TidyPage(html);
-                    html = tp.tidyPageStr();
-                    setHtml(f, html);
-                    //InfoExtract ie = new InfoExtract(tp.tidyPage());
-                    //ie.extractInformation(f);
-                }
-            }
-
-            //String html = getHtml(file);
-            //TidyPage tp = new TidyPage(html);
-
-            //Element root = tp.tidyPage();
-            //InfoExtract ie = new InfoExtract(root);
-            //ie.extractInformation(file);
-
-            //html = tp.tidyPageStr();
-            //setHtml(file, html);*/
 
         } catch (Exception e) {
             e.printStackTrace();
