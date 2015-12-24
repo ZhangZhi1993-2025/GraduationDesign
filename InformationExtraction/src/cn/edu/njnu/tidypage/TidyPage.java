@@ -27,6 +27,8 @@ public class TidyPage {
         html = html.replaceAll("&ensp;", "");
         html = html.replaceAll("&nbsp;", "");
         html = html.replaceAll("&emsp;", "");
+        html = html.replaceAll("<form[^<]*>", "");
+        html = html.replaceAll("</form>", "");
         root = Jsoup.parse(html).select("html").first();
     }
 
@@ -105,6 +107,11 @@ public class TidyPage {
         set.add("导航");
         set.add("助手");
         set.add("收起");
+        set.add("上一页");
+        set.add("下一页");
+        set.add("尾页");
+        set.add("联系我们");
+        set.add("关于我们");
 
 
         for (String pattern : set) {
@@ -123,7 +130,6 @@ public class TidyPage {
         set.add("style");
         set.add("link");
         set.add("img");
-        set.add("form");
         set.add("button");
         set.add("input");
         set.add("select");

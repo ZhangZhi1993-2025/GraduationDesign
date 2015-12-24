@@ -27,9 +27,15 @@ public class TestInfoExtract {
     }
 
     @Test
-    public void testcanBeTime() {
+    public void testCanBeTime() {
         //System.out.print(ie.canBeTime("199"));
         //Assert.assertEquals(ie.canBeTime("199"), true);
         Assert.assertEquals(false, ie.canBeTime("centoscddczxc"));
     }
+
+    @Test
+    public void testCanBePlace() throws IOException {
+        Assert.assertEquals(true, ie.canBePlace("北京创客空间", "北京"));
+    }
+
 }

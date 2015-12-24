@@ -1,7 +1,5 @@
 package cn.edu.njnu.infoextract;
 
-import cn.edu.njnu.Main;
-import cn.edu.njnu.domain.Extractable;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
@@ -12,7 +10,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -197,7 +194,35 @@ public abstract class InfoExtract {
         return list;
     }
 
-    //protected boolean
+    /**
+     * 判断待查询的字符串是否与语料库返回的结果相一致
+     *
+     * @param item   待查询的字符串
+     * @param result 语料库返回的结果
+     * @return 是否可能是地址
+     */
+    protected boolean isSimilar(String item, String result) {
+        int[][] dp = new int[item.length()][result.length()];
+        dp[0][0] = item.charAt(0) == result.charAt(0) ? 1 : 0;
+        int i;
+        for (i = 1; i < item.length(); ++i) {
+            dp[i][0] = Math.max(dp[i - 1][0], item.charAt(i) == result.charAt(0) ? 1 : 0);
+        }
+
+        for (i = 1; i < result.length(); ++i) {
+            dp[0][i] = Math.max(dp[0][i - 1], item.charAt(0) == result.charAt(i) ? 1 : 0);
+        }
+
+        for (i = 1; i < item.length(); ++i) {
+            for (int j = 1; j < result.length(); ++j) {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                if (item.charAt(i) == result.charAt(j)) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - 1] + 1);
+                }
+            }
+        }
+        return dp[item.length() - 1][result.length() - 1] > 4;
+    }
 
     /**
      * 判断一个字段项是否是地点
@@ -216,8 +241,10 @@ public abstract class InfoExtract {
         if (response != null) {
             addresses = getJsonInfo(response, true);
             places = getJsonInfo(response, false);
-            for (String place : places) {
-                if (item.equals(place))
+            for (int i = 0; i < places.length; i++) {
+                if (isSimilar(item, places[i]))
+                    return true;
+                if (isSimilar(item, addresses[i]))
                     return true;
             }
         }
@@ -226,9 +253,7 @@ public abstract class InfoExtract {
 
     /**
      * 从dataList中提取出结构化信息
-     *
-     * @throws IOException
      */
-    public abstract void extractInformation(File file) throws IOException;
+    public abstract void extractInformation();
 
 }

@@ -9,13 +9,14 @@ import static cn.edu.njnu.Main.getHtml;
 import static cn.edu.njnu.Main.setHtml;
 
 /**
- * Created by zhangzhi on 15-12-23.
+ * Created by zhangzhi on 15-12-21.
  * 页面压缩清洗工具类的测试类
  */
 public class TestTidyPage {
 
     @Test
-    public void testTidyPage() throws IOException {
+    public void testDropUnnecessaryTags() throws IOException {
+        File file = new File("/home/zhangzhi/Documents/graduation_design/test");
         /*File[] list = file.listFiles();
         if (list != null) {
             for (File f : list) {
@@ -27,7 +28,7 @@ public class TestTidyPage {
                 //ie.extractInformation(f);
             }
         }*/
-        File file = new File("/home/zhangzhi/Documents/graduation_design/test");
+
         String html = getHtml(file);
         TidyPage tp = new TidyPage(html);
         html = tp.tidyPageStr();
