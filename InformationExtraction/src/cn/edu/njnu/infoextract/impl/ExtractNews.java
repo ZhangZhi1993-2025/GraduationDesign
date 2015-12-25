@@ -1,6 +1,7 @@
 package cn.edu.njnu.infoextract.impl;
 
 import cn.edu.njnu.infoextract.InfoExtract;
+import cn.edu.njnu.tidypage.TidyPage;
 import org.jsoup.nodes.Element;
 
 /**
@@ -9,17 +10,25 @@ import org.jsoup.nodes.Element;
  */
 public class ExtractNews extends InfoExtract {
 
-    public ExtractNews(Element root) {
-        this.root = root;
+    public ExtractNews(String html) {
+        this.html = html;
+        TidyPage tp = new TidyPage(html, (root) -> {
+            //TODO:write your code here if you want to search for the target <div></div>
+            return null;
+        });
+        this.root = tp.tidyPage();
     }
 
-    public ExtractNews() {
+    @Override
+    public void parseHtmlDOM() {
+        super.parseHtmlDOM();
+        //TODO:write your code here(of course you can delete this override method too)
     }
 
     @Override
     public void extractInformation() {
-        parseHtmlDOM();
-        //String info = theme + '\n' + dataList.toString();
+        this.parseHtmlDOM();
+        //TODO:write your code here
     }
 
 }

@@ -18,18 +18,41 @@ public class TidyPage {
     private Element root;
 
     /**
-     * 得到页面流构建DOM树
+     * 基于页面流作去除空格以及蛋疼的<form></form>标签
      *
      * @param html 输入的页面流
+     * @return 处理过的页面流
      */
-    public TidyPage(String html) {
+    protected String trimBasedOnString(String html) {
         html = html.replaceAll("<!--[^<]*-->", "");
         html = html.replaceAll("&ensp;", "");
         html = html.replaceAll("&nbsp;", "");
         html = html.replaceAll("&emsp;", "");
         html = html.replaceAll("<form[^<]*>", "");
         html = html.replaceAll("</form>", "");
+        return html;
+    }
+
+    /**
+     * 得到页面流构建DOM树,调用该方法表示模块不需要搜索目标div
+     *
+     * @param html 输入的页面流
+     */
+    public TidyPage(String html) {
+        html = trimBasedOnString(html);
         root = Jsoup.parse(html).select("html").first();
+    }
+
+    /**
+     * 得到页面流构建DOM树,调用该方法表示模块需要搜索目标div(如何使用请看ExtractNews示例)
+     *
+     * @param html 输入的页面流
+     * @param pre  模块定制的预处理方法(搜索最大div)
+     */
+    public TidyPage(String html, PreProcess pre) {
+        html = trimBasedOnString(html);
+        root = Jsoup.parse(html).select("html").first();
+        root = pre.preProcess(root);
     }
 
 

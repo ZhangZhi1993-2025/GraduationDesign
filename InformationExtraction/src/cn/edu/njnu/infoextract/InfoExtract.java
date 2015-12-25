@@ -23,7 +23,12 @@ import java.util.regex.Pattern;
 public abstract class InfoExtract {
 
     /**
-     * DOM树根
+     * 页面流
+     */
+    protected String html;
+
+    /**
+     * 所处理的DOM根节点
      */
     protected Element root;
 
@@ -32,37 +37,37 @@ public abstract class InfoExtract {
      */
     protected String theme;
 
-    private class InnerMap {
+    /**
+     * 规范化数据结构
+     */
+    protected class InnerMap {
 
         //标签名
-        private String tag;
+        public String tag;
 
-        //所属类型
-        private String category;
+        //所在子树的高度
+        public int height;
 
         //标签对应的内容
-        private String content;
+        public String content;
+
+        //构造器(不包含category)
+        public InnerMap(String tag, String content) {
+            this.tag = tag;
+            this.content = content;
+        }
 
     }
 
     /**
      * <K,V>: K:标签名;     V:标签里的内容
      */
-    protected List<Map<String, String>> dataList = new ArrayList<>();
+    protected List<List<InnerMap>> dataList = new ArrayList<>();
 
     /**
      * default constructor
      */
     public InfoExtract() {
-    }
-
-    /**
-     * 构造器
-     *
-     * @param root DOM树根
-     */
-    public InfoExtract(Element root) {
-        this.root = root;
     }
 
     /**
@@ -86,7 +91,7 @@ public abstract class InfoExtract {
                 Elements siblings = head.siblingElements();
                 for (Element e : siblings)
                     map.put(e.tagName() + index++, e.text());
-                dataList.add(map);
+                //dataList.add(map);
             }
         }
         //如果没有<h*></h*>标签,则根据<p>标签来定位信息
@@ -101,7 +106,7 @@ public abstract class InfoExtract {
                         e.attr("class", "hasvisited");
                         map.put(e.tagName() + index++, e.text());
                     }
-                    dataList.add(map);
+                    //dataList.add(map);
                 }
             }
         }
@@ -118,7 +123,7 @@ public abstract class InfoExtract {
                         e.attr("class", "hasvisited");
                         map.put(e.tagName() + index++, e.text());
                     }
-                    dataList.add(map);
+                    //dataList.add(map);
                 }
             }
         }
