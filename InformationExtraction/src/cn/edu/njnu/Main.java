@@ -4,16 +4,19 @@ import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.ExtractNews;
 
 import java.io.*;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
+            BlockingQueue<String> queue = new LinkedBlockingQueue<>();
             ExecutorService service = Executors.newCachedThreadPool();
             service.submit(() -> {
-                String html = getHtml(new File("/home/data"));
+                String html = getHtml(new File("/home/data/news"));
                 InfoExtract ie = new ExtractNews(html);
                 ie.extractInformation();
             });

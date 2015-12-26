@@ -16,7 +16,7 @@ public class TestTidyPage {
 
     @Test
     public void testDropUnnecessaryTags() throws IOException {
-        File file = new File("/home/zhangzhi/Documents/graduation_design/test");
+        File file = new File("C:\\Users\\Zhi\\Desktop\\graduation_design\\test.htm");
         /*File[] list = file.listFiles();
         if (list != null) {
             for (File f : list) {
@@ -26,7 +26,7 @@ public class TestTidyPage {
                 setHtml(f, html);
                 //InfoExtract ie = new InfoExtract(tp.tidyPage());
                 //ie.extractInformation(f);
-            }
+            }w
         }*/
 
         String html = getHtml(file);

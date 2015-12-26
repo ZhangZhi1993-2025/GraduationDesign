@@ -22,7 +22,7 @@ public class ExtractNews extends InfoExtract {
     @Override
     public void parseHtmlDOM() {
         super.parseHtmlDOM();
-        //TODO:write your code here(of course you can delete this override method too)
+        //TODO:write your code here(of course you can delete this override method either)
     }
 
     @Override

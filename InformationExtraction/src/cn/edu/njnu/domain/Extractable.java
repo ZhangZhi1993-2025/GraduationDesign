@@ -1,12 +1,17 @@
 package cn.edu.njnu.domain;
 
-import java.util.List;
+import java.util.HashMap;
 
-public interface Extractable {
+public abstract class Extractable {
 
-    List<String> targetSamples();
+    /**
+     * 存放抽取的数据
+     */
+    HashMap<String, String> data = new HashMap<>();
 
-    void generateObject(List<String> var1);
+    /**
+     * 持久化数据的方法
+     */
+    public abstract void persistData();
 
-    Extractable getInstance();
 }

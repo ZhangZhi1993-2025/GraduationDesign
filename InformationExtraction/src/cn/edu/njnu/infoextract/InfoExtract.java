@@ -38,22 +38,23 @@ public abstract class InfoExtract {
     protected String theme;
 
     /**
-     * 规范化数据结构
+     * 规范化数据结构,一个三元组,描述了一个子树的结构(包括其父节点的hashcode)
      */
-    protected class InnerMap {
+    protected class InnerTuple {
 
         //标签名
         public String tag;
 
-        //所在子树的高度
-        public int height;
+        //父亲结点的hashcode
+        public int parent;
 
         //标签对应的内容
         public String content;
 
-        //构造器(不包含category)
-        public InnerMap(String tag, String content) {
+        //构造器
+        public InnerTuple(String tag, int parent, String content) {
             this.tag = tag;
+            this.parent = parent;
             this.content = content;
         }
 
@@ -62,12 +63,27 @@ public abstract class InfoExtract {
     /**
      * <K,V>: K:标签名;     V:标签里的内容
      */
-    protected List<List<InnerMap>> dataList = new ArrayList<>();
+    protected List<HashSet<InnerTuple>> dataList = new ArrayList<>();
 
     /**
      * default constructor
      */
     public InfoExtract() {
+    }
+
+    /**
+     * 将子树的结构信息与内容打包至HashSet<InnerTuple>中
+     *
+     * @param set  盛放数据的容器
+     * @param node 待拓展的结点
+     */
+    protected void packDataToTuple(HashSet<InnerTuple> set, Element node) {
+        if (!node.children().isEmpty()) {
+            for (Element child : node.children()) {
+                set.add(new InnerTuple(child.tagName(), node.hashCode(), child.ownText()));
+                packDataToTuple(set, child);
+            }
+        }
     }
 
     /**
@@ -77,53 +93,40 @@ public abstract class InfoExtract {
         Element title = root.select("title").first();
         if (title != null)
             theme = title.ownText();
+
         //优先根据<h*></h*>大标题来定位信息
         for (int i = 1; i < 7; i++) {
-            Element head = root.select("h" + i).first();
-            if (head != null) {
-                int index = 0;
-                HashMap<String, String> map = new HashMap<>();
-                //map.put(head.tagName())
-                if (!head.children().isEmpty()) {
-                    for (Element e : head.children())
-                        map.put(e.tagName() + index++, e.text());
+            for (Element head : root.select("h" + i)) {
+                if (head != null) {
+                    HashSet<InnerTuple> set = new HashSet<>();
+                    for (Element sibling : head.parent().children()) {
+                        set.add(new InnerTuple
+                                (head.tagName(), head.parent().hashCode(), head.ownText()));
+                        packDataToTuple(set, sibling);
+                    }
+                    dataList.add(set);
                 }
-                Elements siblings = head.siblingElements();
-                for (Element e : siblings)
-                    map.put(e.tagName() + index++, e.text());
-                //dataList.add(map);
             }
         }
+
         //如果没有<h*></h*>标签,则根据<p>标签来定位信息
         if (dataList.isEmpty()) {
             for (Element p : root.select("p")) {
                 if (!p.className().equals("hasvisited")) {
-                    int index = 0;
-                    HashMap<String, String> map = new HashMap<>();
-                    p.attr("class", "hasvisited");
-                    Elements siblings = p.siblingElements();
-                    for (Element e : siblings) {
-                        e.attr("class", "hasvisited");
-                        map.put(e.tagName() + index++, e.text());
-                    }
-                    //dataList.add(map);
+                    HashSet<InnerTuple> set = new HashSet<>();
+
+                    dataList.add(set);
                 }
             }
         }
+
         //如果没有<p>标签，则根据<div>标签来定位
         if (dataList.isEmpty()) {
             for (Element div : root.select("div")) {
                 if (div.children().isEmpty() && !div.ownText().equals("")
                         && !div.className().equals("hasvisited")) {
-                    int index = 0;
-                    HashMap<String, String> map = new HashMap<>();
-                    div.attr("class", "hasvisited");
-                    Elements siblings = div.siblingElements();
-                    for (Element e : siblings) {
-                        e.attr("class", "hasvisited");
-                        map.put(e.tagName() + index++, e.text());
-                    }
-                    //dataList.add(map);
+                    HashSet<InnerTuple> set = new HashSet<>();
+                    dataList.add(set);
                 }
             }
         }
@@ -159,23 +162,27 @@ public abstract class InfoExtract {
      * @return 返回response字符串
      */
     protected String getResponseFromRequest(String request) throws IOException {
-        //使用apache的开源网络工具箱请求语料库数据
         HttpGet get = new HttpGet(request);
-        HttpClient http = new DefaultHttpClient();
-        HttpResponse response = http.execute(get);
-        if (response.getStatusLine().getStatusCode() == 200) {
-            HttpEntity entity = response.getEntity();
-            InputStream in = entity.getContent();
-            byte[] buffer = new byte[4096];
-            int hasread;
-            String data;
-            if ((hasread = in.read(buffer)) > 0) {
-                data = new String(buffer, 0, hasread);
-                return data;
-            } else
-                return null;
+        try {
+            //使用apache的开源网络工具箱请求语料库数据
+            HttpClient http = new DefaultHttpClient();
+            HttpResponse response = http.execute(get);
+            if (response.getStatusLine().getStatusCode() == 200) {
+                HttpEntity entity = response.getEntity();
+                InputStream in = entity.getContent();
+                byte[] buffer = new byte[4096];
+                int hasread;
+                String data;
+                if ((hasread = in.read(buffer)) > 0) {
+                    data = new String(buffer, 0, hasread);
+                    return data;
+                } else
+                    return null;
+            }
+            return null;
+        } finally {
+            get.releaseConnection();
         }
-        return null;
     }
 
     /**
