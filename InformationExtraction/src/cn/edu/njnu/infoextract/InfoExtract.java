@@ -97,7 +97,8 @@ public abstract class InfoExtract {
         //优先根据<h*></h*>大标题来定位信息
         for (int i = 1; i < 7; i++) {
             for (Element head : root.select("h" + i)) {
-                if (head != null) {
+                if (!dataList.get(dataList.size() - 1).contains(new InnerTuple
+                        (head.tagName(), head.parent().hashCode(), head.ownText()))) {
                     HashSet<InnerTuple> set = new HashSet<>();
                     for (Element sibling : head.parent().children()) {
                         set.add(new InnerTuple
@@ -110,26 +111,42 @@ public abstract class InfoExtract {
         }
 
         //如果没有<h*></h*>标签,则根据<p>标签来定位信息
-        if (dataList.isEmpty()) {
+        if (dataList.isEmpty() && !root.select("p").isEmpty()) {
             for (Element p : root.select("p")) {
-                if (!p.className().equals("hasvisited")) {
+                if (!dataList.get(dataList.size() - 1).contains(new InnerTuple
+                        (p.tagName(), p.parent().hashCode(), p.ownText()))) {
                     HashSet<InnerTuple> set = new HashSet<>();
-
+                    for (Element sibling : p.parent().children()) {
+                        set.add(new InnerTuple
+                                (p.tagName(), p.parent().hashCode(), p.ownText()));
+                        packDataToTuple(set, sibling);
+                    }
                     dataList.add(set);
                 }
             }
         }
 
         //如果没有<p>标签，则根据<div>标签来定位
-        if (dataList.isEmpty()) {
+        if (dataList.isEmpty() && !root.select("div").isEmpty()) {
             for (Element div : root.select("div")) {
-                if (div.children().isEmpty() && !div.ownText().equals("")
-                        && !div.className().equals("hasvisited")) {
+                if (!dataList.get(dataList.size() - 1).contains(new InnerTuple
+                        (div.tagName(), div.parent().hashCode(), div.ownText()))) {
                     HashSet<InnerTuple> set = new HashSet<>();
+                    for (Element sibling : div.parent().children()) {
+                        set.add(new InnerTuple
+                                (div.tagName(), div.parent().hashCode(), div.ownText()));
+                        packDataToTuple(set, sibling);
+                    }
                     dataList.add(set);
                 }
             }
         }
+
+        for (HashSet<InnerTuple> set : dataList)
+            for (InnerTuple tuple : set) {
+                if (tuple.content.equals(""))
+                    set.remove(tuple);
+            }
     }
 
     /**
