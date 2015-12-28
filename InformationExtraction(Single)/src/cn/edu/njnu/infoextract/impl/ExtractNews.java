@@ -1,12 +1,7 @@
 package cn.edu.njnu.infoextract.impl;
 
 import cn.edu.njnu.domain.Extractable;
-import cn.edu.njnu.domain.Pair;
 import cn.edu.njnu.infoextract.InfoExtract;
-import cn.edu.njnu.tidypage.TidyPage;
-import org.jsoup.nodes.Element;
-
-import java.util.ArrayList;
 
 /**
  * Created by zhangzhi on 15-12-21.
@@ -14,13 +9,7 @@ import java.util.ArrayList;
  */
 public class ExtractNews extends InfoExtract {
 
-    public ExtractNews(String html) {
-        this.html = html;
-        TidyPage tp = new TidyPage(html, (root) -> {
-            //TODO:write your code here if you want to search for the target <div></div>
-            return null;
-        });
-        this.root = tp.tidyPage();
+    public ExtractNews() {
     }
 
     @Override
@@ -30,8 +19,11 @@ public class ExtractNews extends InfoExtract {
     }
 
     @Override
-    public Extractable extractInformation() {
-        this.parseHtmlDOM();
+    public Extractable extractInformation(String html) {
+        this.getDOM(html, root -> {
+            //TODO:write your code here if you want to search for the target <div></div>
+            return null;
+        });
         //TODO:write your code here
         return null;
     }

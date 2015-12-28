@@ -1,4 +1,4 @@
-package cn.edu.njnu;
+package cn.edu.njnu.tools;
 
 /**
  * Created by zhangzhi on 15-12-27.

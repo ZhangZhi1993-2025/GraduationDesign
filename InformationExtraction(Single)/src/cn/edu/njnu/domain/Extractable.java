@@ -1,6 +1,7 @@
 package cn.edu.njnu.domain;
 
-import cn.edu.njnu.Category;
+import cn.edu.njnu.tools.Category;
+import cn.edu.njnu.tools.Pair;
 
 import java.util.ArrayList;
 
@@ -10,8 +11,10 @@ import java.util.ArrayList;
  */
 public class Extractable {
 
+    //该数据所属类别
     public Category category;
 
-    public ArrayList<Pair> data;
+    //所抽取的数据的集合
+    public ArrayList<Pair<String, String>> data;
 
 }

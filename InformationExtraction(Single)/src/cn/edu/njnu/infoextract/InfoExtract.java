@@ -1,7 +1,8 @@
 package cn.edu.njnu.infoextract;
 
 import cn.edu.njnu.domain.Extractable;
-import cn.edu.njnu.domain.Pair;
+import cn.edu.njnu.tidypage.PreProcess;
+import cn.edu.njnu.tidypage.TidyPage;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
@@ -10,7 +11,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,11 +23,6 @@ import java.util.regex.Pattern;
  * 信息抽取抽象类
  */
 public abstract class InfoExtract {
-
-    /**
-     * 页面流
-     */
-    protected String html;
 
     /**
      * 所处理的DOM根节点
@@ -71,6 +66,27 @@ public abstract class InfoExtract {
      * default constructor
      */
     public InfoExtract() {
+    }
+
+    /**
+     * 由html页面获取DOM树并赋值给this.root(带有寻找目标div标签的预处理逻辑)
+     *
+     * @param html 页面流
+     * @param pre  寻找目标div标签的预处理逻辑
+     */
+    public void getDOM(String html, PreProcess pre) {
+        TidyPage tp = new TidyPage(html, pre);
+        this.root = tp.tidyPage();
+    }
+
+    /**
+     * 由html页面获取DOM树并赋值给this.root
+     *
+     * @param html 页面流
+     */
+    public void getDOM(String html) {
+        TidyPage tp = new TidyPage(html);
+        this.root = tp.tidyPage();
     }
 
     /**
@@ -289,6 +305,6 @@ public abstract class InfoExtract {
     /**
      * 从dataList中提取出结构化信息
      */
-    public abstract Extractable extractInformation();
+    public abstract Extractable extractInformation(String html);
 
 }

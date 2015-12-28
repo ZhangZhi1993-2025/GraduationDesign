@@ -3,6 +3,7 @@ package cn.edu.njnu;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.ExtractNews;
+import cn.edu.njnu.tools.ParameterGetter;
 
 import java.io.*;
 import java.util.concurrent.*;
@@ -15,12 +16,9 @@ public class Main {
 
             ExecutorService service = Executors.newFixedThreadPool(helper.getPoolsize());
 
-            for (File file : helper) {
-                File[] list = file.listFiles();
-                if (list != null) {
-
-                }
-            }
+            //for (File file : helper) {
+            //service.submit();
+            //}
             service.submit(() -> {
                 String html = getHtml(new File("/home/data/news"));
                 InfoExtract ie = new ExtractNews(html);
@@ -30,12 +28,14 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     /**
      * 方案A：适合于非分布式环境
      */
     public void planA() {
+
         //新闻类
         File news = new File("/home/data/news");
         //孵化器类
