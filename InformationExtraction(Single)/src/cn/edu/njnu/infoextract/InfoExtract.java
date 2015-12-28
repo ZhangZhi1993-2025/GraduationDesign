@@ -74,7 +74,7 @@ public abstract class InfoExtract {
      * @param html 页面流
      * @param pre  寻找目标div标签的预处理逻辑
      */
-    public void getDOM(String html, PreProcess pre) {
+    protected void getDOM(String html, PreProcess pre) {
         TidyPage tp = new TidyPage(html, pre);
         this.root = tp.tidyPage();
     }
@@ -84,7 +84,7 @@ public abstract class InfoExtract {
      *
      * @param html 页面流
      */
-    public void getDOM(String html) {
+    protected void getDOM(String html) {
         TidyPage tp = new TidyPage(html);
         this.root = tp.tidyPage();
     }

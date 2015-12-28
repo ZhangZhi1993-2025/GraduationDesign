@@ -1,7 +1,6 @@
 package cn.edu.njnu.tools;
 
 import cn.edu.njnu.Main;
-import cn.edu.njnu.infoextract.InfoExtract;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -13,13 +12,13 @@ import java.util.List;
 
 /**
  * Created by Zhi on 12/27/2015.
- * ÓÃÓÚ·â×°congfig.xmlÅäÖÃÎÄ¼şÖĞµÄ²ÎÊı²¢Ìá¹©·ÃÎÊµÄ½Ó¿Ú
+ * ç”¨äºå°è£…congfig.xmlé…ç½®æ–‡ä»¶ä¸­çš„å‚æ•°å¹¶æä¾›è®¿é—®çš„æ¥å£
  */
-public class ParameterGetter implements Iterable<Pair<File, InfoExtract>> {
+public class ParameterGetter implements Iterable<Pair<File, String>> {
 
     private int poolsize;
 
-    private List<Pair<File, InfoExtract>> list = new ArrayList<>();
+    private List<Pair<File, String>> list = new ArrayList<>();
 
     public ParameterGetter() {
         try {
@@ -31,38 +30,31 @@ public class ParameterGetter implements Iterable<Pair<File, InfoExtract>> {
             this.poolsize = Integer.valueOf(pool.getText());
             Element files = root.element("files");
             List<Element> nodes = files.elements();
-            nodes.forEach((node) -> {
-                try {
-                    list.add(new Pair<>(new File(node.attribute("path").getText()),
-                            (InfoExtract) Class.forName(node.getText()).newInstance()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-
+            nodes.forEach(node -> list.add(new Pair<>(
+                    new File(node.attribute("path").getText()), node.getText())));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * »ñµÃÏß³Ì³ØµÄÏß³ÌÊıÉèÖÃ
+     * è·å¾—çº¿ç¨‹æ± çš„çº¿ç¨‹æ•°è®¾ç½®
      *
-     * @return Ïß³ÌÅäÖÃÊıÁ¿
+     * @return çº¿ç¨‹é…ç½®æ•°é‡
      */
     public int getPoolsize() {
         return poolsize;
     }
 
     @Override
-    public Iterator<Pair<File, InfoExtract>> iterator() {
+    public Iterator<Pair<File, String>> iterator() {
         return new InnerIterator();
     }
 
     /**
-     * µü´úÆ÷µÄÄÚ²¿ÀàÊµÏÖ
+     * è¿­ä»£å™¨çš„å†…éƒ¨ç±»å®ç°
      */
-    private class InnerIterator implements Iterator<Pair<File, InfoExtract>> {
+    private class InnerIterator implements Iterator<Pair<File, String>> {
 
         private int cursor = 0;
 
@@ -72,7 +64,7 @@ public class ParameterGetter implements Iterable<Pair<File, InfoExtract>> {
         }
 
         @Override
-        public Pair<File, InfoExtract> next() {
+        public Pair<File, String> next() {
             if (hasNext())
                 return ParameterGetter.this.list.get(cursor++);
             return null;

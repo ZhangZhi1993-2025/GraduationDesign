@@ -2,20 +2,20 @@ package cn.edu.njnu.tools;
 
 /**
  * Created by zhangzhi on 15-12-27.
- * 抽取类型的枚举类
+ * 鎶藉彇绫诲瀷鐨勬灇涓剧被
  */
 public enum Category {
 
-    //新闻类
+    //鏂伴椈绫�
     NEWS,
 
-    //孵化器类
+    //瀛靛寲鍣ㄧ被
     INCUBATORS,
 
-    //项目类
+    //椤圭洰绫�
     PROJECTS,
 
-    //活动类
+    //娲诲姩绫�
     ACTIVITIES;
 
 }

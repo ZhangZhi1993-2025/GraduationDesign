@@ -1,20 +1,21 @@
 package cn.edu.njnu.domain;
 
-import cn.edu.njnu.tools.Category;
 import cn.edu.njnu.tools.Pair;
 
 import java.util.ArrayList;
 
 /**
  * Created by Zhi on 12/27/2015.
- * ³éÈ¡µÄÊı¾İµ¥Ôª
+ * æŠ½å–çš„æ•°æ®å•å…ƒçš„æŠ½è±¡ç±»
  */
-public class Extractable {
+public abstract class Extractable {
 
-    //¸ÃÊı¾İËùÊôÀà±ğ
-    public Category category;
-
-    //Ëù³éÈ¡µÄÊı¾İµÄ¼¯ºÏ
+    //æ‰€æŠ½å–çš„æ•°æ®çš„é›†åˆ
     public ArrayList<Pair<String, String>> data;
+
+    /**
+     * ç”¨äºæŒä¹…åŒ–æŠ½å–çš„æ•°æ®
+     */
+    public abstract void persistData();
 
 }

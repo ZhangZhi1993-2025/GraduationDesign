@@ -2,14 +2,14 @@ package cn.edu.njnu.tools;
 
 /**
  * Created by Zhi on 12/27/2015.
- * ³éÈ¡µÄÒ»¸ö¼üÖµ¶Ôµ¥ÔªÊı¾İ
+ * æŠ½å–çš„ä¸€ä¸ªé”®å€¼å¯¹å•å…ƒæ•°æ®
  */
 public class Pair<K, V> {
 
-    //µ¥ÔªÊı¾İµÄ¼ü
+    //å•å…ƒæ•°æ®çš„é”®
     public K key;
 
-    //µ¥ÔªÊı¾İµÄÖµ
+    //å•å…ƒæ•°æ®çš„å€¼
     public V value;
 
     public Pair(K key, V value) {
