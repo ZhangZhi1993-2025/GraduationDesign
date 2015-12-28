@@ -11,16 +11,16 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            new Main().planA();
-            //new Main().planB();
-            //作为读取的页面内容的缓冲区,各线程从其中拿待抽取的页面
-            BlockingQueue<QueueStruct> buffer = new LinkedBlockingQueue<>();
+            ParameterGetter helper = new ParameterGetter();
 
-            File news = new File("/home/data/news");
-            File projects = new File("/home/data/projects");
+            ExecutorService service = Executors.newFixedThreadPool(helper.getPoolsize());
 
+            for (File file : helper) {
+                File[] list = file.listFiles();
+                if (list != null) {
 
-            ExecutorService service = Executors.newCachedThreadPool();
+                }
+            }
             service.submit(() -> {
                 String html = getHtml(new File("/home/data/news"));
                 InfoExtract ie = new ExtractNews(html);
@@ -45,21 +45,9 @@ public class Main {
         //活动
         File activities = new File("/home/data/activities");
 
-        //作为线程池满负荷拒绝接受新线程的页面流存放缓冲区
-        BlockingQueue<QueueStruct> buffer = new LinkedBlockingQueue<>();
 
         //盛放结果的线程安全容器
         CopyOnWriteArrayList<Extractable> result = new CopyOnWriteArrayList<>();
-
-        new Thread(() -> {
-            try {
-                while (buffer.take().category != Category.OVER) {
-
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
 
         ExecutorService newsService = Executors.newCachedThreadPool();
         File[] list = news.listFiles();
@@ -73,13 +61,6 @@ public class Main {
                 });
             }
         }
-
-    }
-
-    /**
-     * 方案B：适合于分布式环境
-     */
-    public void planB() {
 
     }
 

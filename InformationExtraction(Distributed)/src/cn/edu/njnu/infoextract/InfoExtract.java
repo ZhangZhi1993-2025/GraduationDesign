@@ -107,6 +107,11 @@ public abstract class InfoExtract {
                         packDataToTuple(set, sibling);
                     }
                     dataList.add(set);
+                    root.select("ss").stream()
+                            .filter(element -> !dataList.get(dataList.size() - 1)
+                                    .contains(new InnerTuple(element.tagName(),
+                                            element.parent().hashCode(),
+                                            element.ownText()))).forEach(root::before);
                 }
             }
         }

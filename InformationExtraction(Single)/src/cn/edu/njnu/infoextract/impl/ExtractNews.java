@@ -1,9 +1,12 @@
 package cn.edu.njnu.infoextract.impl;
 
 import cn.edu.njnu.domain.Extractable;
+import cn.edu.njnu.domain.Pair;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.tidypage.TidyPage;
 import org.jsoup.nodes.Element;
+
+import java.util.ArrayList;
 
 /**
  * Created by zhangzhi on 15-12-21.

@@ -53,8 +53,8 @@ public class Main {
 
         new Thread(() -> {
             try {
-                while (buffer.take().category != Category.OVER) {
-
+                while (!Thread.currentThread().isInterrupted()) {
+                    QueueStruct struct = buffer.take();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

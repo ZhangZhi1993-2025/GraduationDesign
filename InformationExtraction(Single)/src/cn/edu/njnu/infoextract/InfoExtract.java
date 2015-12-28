@@ -1,6 +1,7 @@
 package cn.edu.njnu.infoextract;
 
 import cn.edu.njnu.domain.Extractable;
+import cn.edu.njnu.domain.Pair;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;

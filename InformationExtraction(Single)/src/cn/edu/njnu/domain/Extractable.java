@@ -1,17 +1,17 @@
 package cn.edu.njnu.domain;
 
-import java.util.HashMap;
+import cn.edu.njnu.Category;
 
-public abstract class Extractable {
+import java.util.ArrayList;
 
-    /**
-     * 存放抽取的数据
-     */
-    HashMap<String, String> data = new HashMap<>();
+/**
+ * Created by Zhi on 12/27/2015.
+ * 抽取的数据单元
+ */
+public class Extractable {
 
-    /**
-     * 持久化数据的方法
-     */
-    public abstract void persistData();
+    public Category category;
+
+    public ArrayList<Pair> data;
 
 }

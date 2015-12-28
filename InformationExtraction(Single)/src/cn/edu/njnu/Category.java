@@ -6,11 +6,16 @@ package cn.edu.njnu;
  */
 public enum Category {
 
-    //抽取结束
-    OVER,
+    //新闻类
     NEWS,
+
+    //孵化器类
     INCUBATORS,
+
+    //项目类
     PROJECTS,
+
+    //活动类
     ACTIVITIES;
 
 }

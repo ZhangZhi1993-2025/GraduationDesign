@@ -14,7 +14,7 @@ public class ExtractNews extends InfoExtract {
     public ExtractNews(String html) {
         this.html = html;
         TidyPage tp = new TidyPage(html, (root) -> {
-            //TODO:write your code here if you want to search for the target <div></div>
+            //TODO write your code here if you want to search for the target <div></div>
             return null;
         });
         this.root = tp.tidyPage();
@@ -23,13 +23,13 @@ public class ExtractNews extends InfoExtract {
     @Override
     public void parseHtmlDOM() {
         super.parseHtmlDOM();
-        //TODO:write your code here(of course you can delete this override method either)
+        //TODO write your code here(of course you can delete this override method either)
     }
 
     @Override
     public Extractable extractInformation() {
         this.parseHtmlDOM();
-        //TODO:write your code here
+        //TODO write your code here
         return null;
     }
 
