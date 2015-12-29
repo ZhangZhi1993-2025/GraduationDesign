@@ -1,6 +1,9 @@
 package cn.edu.njnu.domain.ext;
 
 import cn.edu.njnu.domain.Extractable;
+import cn.edu.njnu.tools.Pair;
+
+import java.io.*;
 
 /**
  * Created by zhangzhi on 15-12-29.
@@ -9,8 +12,18 @@ import cn.edu.njnu.domain.Extractable;
 public class Activity extends Extractable {
 
     @Override
-    public void persistData() {
+    public void persistData() throws IOException {
+        File file = new File("/home/Documents/result/activities");
+        if (!file.exists())
+            file.createNewFile();
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(file, true), "UTF-8"))) {
 
+            for (Pair pair : data)
+                bw.write(pair.key + ":" + pair.value + '\n');
+            bw.write('\n');
+
+        }
     }
 
 }

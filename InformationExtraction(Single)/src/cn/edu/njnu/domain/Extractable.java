@@ -2,6 +2,7 @@ package cn.edu.njnu.domain;
 
 import cn.edu.njnu.tools.Pair;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public abstract class Extractable {
     protected ArrayList<Pair<String, String>> data;
 
     /**
-     * 向data里面放入数据对
+     * 向data里面放入数据对(给出字段和对应值)
      *
      * @param key   字段
      * @param value 字段对应的值
@@ -24,8 +25,17 @@ public abstract class Extractable {
     }
 
     /**
+     * 向data里面放入数据对(给出pair结构)
+     *
+     * @param pair 键值对
+     */
+    public void put(Pair<String, String> pair) {
+        this.data.add(pair);
+    }
+
+    /**
      * 用于持久化抽取的数据
      */
-    public abstract void persistData();
+    public abstract void persistData() throws IOException;
 
 }

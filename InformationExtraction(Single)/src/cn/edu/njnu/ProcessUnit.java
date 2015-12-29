@@ -10,12 +10,15 @@ import java.util.List;
 
 /**
  * Created by Zhi on 12/28/2015.
- * main方法里线程池的调度单元
+ * 线程池的调度单元
  */
 public class ProcessUnit implements Runnable {
 
-    //某类网页所在的文件夹
-    protected File folder;
+    //页面存放的根目录
+    protected File baseFile;
+
+    //特定类型网页所在的文件夹名
+    protected String folderName;
 
     //所需要使用的信息抽取实例
     protected InfoExtract ie;
@@ -25,9 +28,10 @@ public class ProcessUnit implements Runnable {
      *
      * @param config 用于获得目标文件夹与信息抽取实例
      */
-    public ProcessUnit(Pair<File, String> config) {
+    public ProcessUnit(Pair<String, String> config, File file) {
         try {
-            this.folder = config.key;
+            this.baseFile = file;
+            this.folderName = config.key;
             this.ie = (InfoExtract) Class.forName(config.value).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,21 +59,6 @@ public class ProcessUnit implements Runnable {
     }
 
     /**
-     * 将流写入文件,只在测试时使用
-     *
-     * @param file 待写入的文件
-     * @param html 输入流
-     */
-    protected void setHtml(File file, String html) {
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(file), "UTF-8"))) {
-            bw.write(html);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 便于stream api使用方法引用特性,将处理过程封装
      *
      * @param f 待分析的页面文件
@@ -78,14 +67,33 @@ public class ProcessUnit implements Runnable {
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
         if (info != null)
-            info.forEach(e -> e.persistData());
+            info.forEach(extraction -> {
+                try {
+                    extraction.persistData();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+    }
+
+    /**
+     * 递归搜索每个文件夹,找到目标文件夹作处理过程
+     *
+     * @param current 当前的文件夹
+     */
+    protected void searchForTarget(File current) {
+        File[] list = current.listFiles();
+        if (list != null && current.getName().equals(folderName))
+            Arrays.stream(list).parallel().forEach(this::process);
+        else if (list != null && list[0].isFile())
+            return;
+        else if (list != null)
+            Arrays.stream(list).forEach(this::searchForTarget);
     }
 
     @Override
     public void run() {
-        File[] list = folder.listFiles();
-        if (list != null)
-            Arrays.stream(list).parallel().forEach(this::process);
+        searchForTarget(baseFile);
     }
 
 }

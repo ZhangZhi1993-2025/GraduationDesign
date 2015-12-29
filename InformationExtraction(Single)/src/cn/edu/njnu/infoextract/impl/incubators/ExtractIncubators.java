@@ -9,8 +9,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
 
+/**
+ * Created by luotianyao on 15-12-29.
+ * 孵化器类型页面抽取实现类
+ */
 public class ExtractIncubators extends InfoExtract {
 
+    @Override
     public List<Extractable> extractInformation(String html) {
         String safe = Jsoup.clean(html, Whitelist.relaxed().addAttributes(":all", "class"));
         Element root = Jsoup.parse(safe);
@@ -81,34 +86,6 @@ public class ExtractIncubators extends InfoExtract {
                 Info.put(key, value);
                 return Info;
             }
-                    /*
-                     * 匹配兄弟节点的代码
-					String pre_tag="";
-					String next_tag="";
-					if(root.previousElementSibling()==null)
-						pre_tag="";
-					else
-						pre_tag=root.previousElementSibling().tagName();
-					if(root.nextElementSibling()==null)
-						next_tag="";
-					else
-						pre_tag=root.nextElementSibling().tagName();
-					
-					if(pre_tag.equals(i.getKey_right_tag())&&next_tag.equals(i.getKey_left_tag())){
-					
-					
-						key=p.text();
-						//提取value信息,怎么筛选
-						for(Element e:root.parent().select(i.getValue_tag())){
-							String epath=PatternStore.CreatePath(e);
-							if(epath.substring(epath.length()-i.getValue_path().length(),epath.length()).equals(i.getValue_path())){
-								value=e.text();
-								e.remove();
-								Info.addvalue(key, value);
-								return true;
-							}
-						}
-					*/
         }
         return Info;
     }

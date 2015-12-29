@@ -14,24 +14,34 @@ import java.util.List;
  * Created by Zhi on 12/27/2015.
  * 用于封装congfig.xml配置文件中的参数并提供访问的接口
  */
-public class ParameterGetter implements Iterable<Pair<File, String>> {
+public class ParameterGetter implements Iterable<Pair<String, String>> {
 
+    //线程池的最大线程数量
     private int poolsize;
 
-    private List<Pair<File, String>> list = new ArrayList<>();
+    //抽取信息的根目录
+    private String rootFile;
 
+    //类别目录名及对应的解析类
+    private List<Pair<String, String>> list = new ArrayList<>();
+
+    /**
+     * default constructor
+     */
     public ParameterGetter() {
         try {
             SAXReader reader = new SAXReader();
             Document doc = reader.read(new File(
                     Main.class.getResource("/config.xml").getPath()));
             Element root = doc.getRootElement();
-            Element pool = root.element("poolsize");
-            this.poolsize = Integer.valueOf(pool.getText());
-            Element files = root.element("files");
-            List<Element> nodes = files.elements();
+            Element poolsize = root.element("poolsize");
+            this.poolsize = Integer.valueOf(poolsize.getText());
+            Element rootFile = root.element("file");
+            this.rootFile = rootFile.getText();
+            Element categories = root.element("categories");
+            List<Element> nodes = categories.elements();
             nodes.forEach(node -> list.add(new Pair<>(
-                    new File(node.attribute("path").getText()), node.getText())));
+                    node.attribute("name").getText(), node.getText())));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,15 +56,29 @@ public class ParameterGetter implements Iterable<Pair<File, String>> {
         return poolsize;
     }
 
+    /**
+     * 获得抽取信息的根目录
+     *
+     * @return 根目录的绝对路径
+     */
+    public String getRootFile() {
+        return rootFile;
+    }
+
+    /**
+     * 得到迭代器
+     *
+     * @return 内部迭代器
+     */
     @Override
-    public Iterator<Pair<File, String>> iterator() {
+    public Iterator<Pair<String, String>> iterator() {
         return new InnerIterator();
     }
 
     /**
      * 迭代器的内部类实现
      */
-    private class InnerIterator implements Iterator<Pair<File, String>> {
+    private class InnerIterator implements Iterator<Pair<String, String>> {
 
         private int cursor = 0;
 
@@ -64,7 +88,7 @@ public class ParameterGetter implements Iterable<Pair<File, String>> {
         }
 
         @Override
-        public Pair<File, String> next() {
+        public Pair<String, String> next() {
             if (hasNext())
                 return ParameterGetter.this.list.get(cursor++);
             return null;

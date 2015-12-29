@@ -21,18 +21,19 @@ import org.jsoup.select.Elements;
 
 /**
  * Created by yangyang && nannan on 15-12-29.
- * 濡炪倕婀卞ú鎵尵鐠囪尙锟介攱銇勯悽鍛婃〃闁规儼妫勮ぐ鍥╋拷鍦仧楠炲洨鐚鹃敓锟�
+ * 项目类型页面抽取实现类
  */
 public class ExtractProjects extends InfoExtract {
 
-    static boolean flag = false;  //闁告帇鍊栭弻鍥及椤栨碍鍎婄�规瓕灏欑划锟犲箥閹冪厒闁哄秴娲。锟�
-    static boolean flag_t = false; //闁哄嫷鍨伴幆渚�骞嶉幆褍鐓傞柡鍐ㄧ埣濡拷
-    static String content = ""; //濞ｅ洦绻傞悺銊х磾閹达负锟藉鎯冮崟顐㈡暥閻庣櫢鎷�
-    static String time = "";   //濞ｅ洦绻傞悺銊╁棘娴煎瓨顦柛娆愬灱閵嗗啴鎯冮崟顒侇槯闂傚偊鎷�
+    static boolean flag = false;
+    static boolean flag_t = false;
+    static String content = "";
+    static String time = "";
     static String s_match = "";
     static boolean isdiv = true;
-    static String img_url = "";  //闁搞儱澧芥晶鏍崉椤栨氨绐�
+    static String img_url = "";
 
+    @Override
     public List<Extractable> extractInformation(String html) {
 
         List<Extractable> result = new ArrayList<>();
@@ -91,7 +92,6 @@ public class ExtractProjects extends InfoExtract {
         return result;
     }
 
-    //閻庣數顢婇～锕傚蓟閵夘煈鍤勯柣銊ュ閸樻挾妲愰悩鍐测挃閻炴稑濂旂粩鏉戔枎閳╁啰绠掗幖杈剧細缁鳖參宕楅崼銉ゆ喚闁告ê妫寸槐娆撴煢閸繍鍤犲銈呮贡濞叉壆鐚剧拠鑼拷鐑芥儍閸曨厾绉瑰銈囶暜缁憋拷
     public static void traverse_my(Element root, Project news) { //root濞戞挾鍎ゅ〒鑸靛緞瑜忓▓鎱竔v闁煎搫鍊婚崑锟�
         Elements nodes_in = root.children();
         int i = nodes_in.size(); //闁兼儳鍢茶ぐ鍥╋拷娑欏姌婵☆參鎮欓崷顓熺暠濞戞搩浜濋弳锟�
@@ -181,7 +181,7 @@ public class ExtractProjects extends InfoExtract {
     }
 
     public static boolean isTimeAll(String time) {
-        Pattern p = Pattern.compile("((\\d{1,4}[-|\\/|妤犵偟锛乗\.])?\\d{1,2}[-|\\/|闁哄牆婢梊\.]\\d{1,2}([闁哄喚娈忛柛娆戯功)?(\\s)*(\\d{1,2}([闁绘劗鐣柡鍐�)?((:)?\\d{1,2}(闁告帪鎷�)?((:)?\\d{1,2}(缂佸鎷�)?)?)?)?(\\s)*(PM|AM)?)");
+        Pattern p = Pattern.compile("(\\d{1,4}[-|\\/|年|\\.]\\d{1,2}[-|\\/|月|\\.]\\d{1,2}([日|号])?(\\s)*(\\d{1,2}([点|时])?((:)?\\d{1,2}(分)?((:)?\\d{1,2}(秒)?)?)?)?(\\s)*(PM|AM)?)");
         Matcher matcher = p.matcher(time);
         if (matcher.find()) {
             s_match = matcher.group();
@@ -191,7 +191,7 @@ public class ExtractProjects extends InfoExtract {
     }
 
     public static boolean isDate(String Date) {
-        Pattern p = Pattern.compile("\\d{1,4}[-|\\/|妤犵偟锛乗\.]\\d{1,2}[-|\\/|闁哄牆婢梊\.]\\d{1,2}([闁哄喚娈忛柛娆戯功).*");
+        Pattern p = Pattern.compile("\\d{1,4}[-|\\/|年|\\.]\\d{1,2}[-|\\/|月|\\.]\\d{1,2}([日|号]).*");
         Matcher matcher = p.matcher(Date);
         if (matcher.find()) {
             s_match = matcher.group();
@@ -201,7 +201,7 @@ public class ExtractProjects extends InfoExtract {
     }
 
     public static boolean isTime(String Time) {
-        Pattern p = Pattern.compile("(\\d{1,2}([闁绘劗鐣柡鍐�)?((:)?\\d{1,2}(闁告帪鎷�)?((:)?\\d{1,2}(缂佸鎷�)?)?)?)?(\\s)*(PM|AM)?");
+        Pattern p = Pattern.compile("\\d{1,2}[点|时|:]\\d{1,2}(分)?(:)?(\\d{1,2}(秒)?)?");
         Matcher matcher = p.matcher(Time);
         if (matcher.matches()) {
             return true;
@@ -262,7 +262,6 @@ public class ExtractProjects extends InfoExtract {
         return url;
     }
 
-    //閻忓繐妫楀ù姗�鎮ч崶锔剧憮閺夌偞鍨濈粭鍛村级閿燂拷
     public static void write_Img(String url, String filename) throws IOException {  //濞戞挸顑堝ù鍥炊閸撗冾暬
         if (!url.trim().isEmpty()) {  //闁兼眹鍎卞ù姗�鎮ч崶顏嗙唴鐎垫澘瀚粭澶嬬▔閾忓厜鏁�
             URL url1 = new URL(url);

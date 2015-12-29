@@ -12,6 +12,18 @@ public class Pair<K, V> {
     //单元数据的值
     public V value;
 
+    /**
+     * default constructor
+     */
+    public Pair() {
+    }
+
+    /**
+     * 由字段与对应的值作为参数构造实例
+     *
+     * @param key   键
+     * @param value 值
+     */
     public Pair(K key, V value) {
         this.key = key;
         this.value = value;

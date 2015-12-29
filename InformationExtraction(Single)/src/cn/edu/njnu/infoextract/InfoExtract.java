@@ -28,7 +28,6 @@ public abstract class InfoExtract {
      * 所处理的DOM根节点
      */
     protected Element root;
-
     /**
      * 从<title></title>标签抽取出来的该页面的题目(主题)
      */

@@ -12,8 +12,10 @@ import java.io.*;
 public class News extends Extractable {
 
     @Override
-    public void persistData() {
-        File file = new File("/home/result/news");
+    public void persistData() throws IOException {
+        File file = new File("/home/Documents/result/news");
+        if (!file.exists())
+            file.createNewFile();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(file, true), "UTF-8"))) {
 
