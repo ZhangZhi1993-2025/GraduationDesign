@@ -77,7 +77,8 @@ public class ProcessUnit implements Runnable {
     protected void process(File f) {
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
-        info.forEach(e -> e.persistData());
+        if (info != null)
+            info.forEach(e -> e.persistData());
     }
 
     @Override

@@ -11,7 +11,17 @@ import java.util.ArrayList;
 public abstract class Extractable {
 
     //所抽取的数据的集合
-    public ArrayList<Pair<String, String>> data;
+    protected ArrayList<Pair<String, String>> data;
+
+    /**
+     * 向data里面放入数据对
+     *
+     * @param key   字段
+     * @param value 字段对应的值
+     */
+    public void put(String key, String value) {
+        this.data.add(new Pair<>(key, value));
+    }
 
     /**
      * 用于持久化抽取的数据
