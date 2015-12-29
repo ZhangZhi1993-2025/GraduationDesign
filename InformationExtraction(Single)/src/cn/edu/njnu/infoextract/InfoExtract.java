@@ -305,6 +305,6 @@ public abstract class InfoExtract {
     /**
      * 从dataList中提取出结构化信息
      */
-    public abstract Extractable extractInformation(String html);
+    public abstract List<Extractable> extractInformation(String html);
 
 }

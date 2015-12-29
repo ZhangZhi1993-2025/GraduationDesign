@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
-import static cn.edu.njnu.Main.getHtml;
+//import static cn.edu.njnu.Main.getHtml;
 
 /**
  * Created by zhangzhi on 15-12-21.

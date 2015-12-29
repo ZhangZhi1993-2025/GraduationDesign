@@ -6,6 +6,7 @@ import cn.edu.njnu.tools.Pair;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Zhi on 12/28/2015.
@@ -71,11 +72,12 @@ public class ProcessUnit implements Runnable {
     /**
      * 便于stream api使用方法引用特性,将处理过程封装
      *
-     * @param f
+     * @param f 待分析的页面文件
      */
     protected void process(File f) {
         String html = getHtml(f);
-        Extractable info = ie.extractInformation(html);
+        List<Extractable> info = ie.extractInformation(html);
+        info.forEach(e -> e.persistData());
     }
 
     @Override

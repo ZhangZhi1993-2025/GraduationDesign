@@ -60,7 +60,7 @@ public class ParameterGetter implements Iterable<Pair<File, String>> {
 
         @Override
         public boolean hasNext() {
-            return cursor < ParameterGetter.this.list.size() - 1;
+            return cursor < ParameterGetter.this.list.size();
         }
 
         @Override

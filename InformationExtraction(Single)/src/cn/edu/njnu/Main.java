@@ -18,6 +18,7 @@ public class Main {
             for (Pair<File, String> pair : helper) {
                 service.submit(new ProcessUnit(pair));
             }
+            service.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
         }
