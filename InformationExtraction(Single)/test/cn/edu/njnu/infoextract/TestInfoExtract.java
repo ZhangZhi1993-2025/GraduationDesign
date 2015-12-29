@@ -20,7 +20,7 @@ import static cn.edu.njnu.Main.getHtml;
  */
 public class TestInfoExtract {
 
-    private InfoExtract ie = new ExtractNews("sss");
+    private InfoExtract ie = new ExtractNews();
 
     @BeforeClass
     public static void initialize() {
