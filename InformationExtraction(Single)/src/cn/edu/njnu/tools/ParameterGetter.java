@@ -35,13 +35,14 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
                     Main.class.getResource("/config.xml").getPath()));
             Element root = doc.getRootElement();
             Element poolsize = root.element("poolsize");
-            this.poolsize = Integer.valueOf(poolsize.getText());
-            Element rootFile = root.element("file");
-            this.rootFile = rootFile.getText();
+            this.poolsize = Integer.valueOf(poolsize.getText().replaceAll("\n", "").trim());
+            Element rootFile = root.element("source");
+            this.rootFile = rootFile.getText().replaceAll("\n", "").trim();
             Element categories = root.element("categories");
             List<Element> nodes = categories.elements();
             nodes.forEach(node -> list.add(new Pair<>(
-                    node.attribute("name").getText(), node.getText())));
+                    node.attribute("name").getText().replaceAll("\n", "").trim(),
+                    node.getText().replaceAll("\n", "").trim())));
         } catch (Exception e) {
             e.printStackTrace();
         }

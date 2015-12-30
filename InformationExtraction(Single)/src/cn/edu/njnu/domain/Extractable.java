@@ -36,6 +36,6 @@ public abstract class Extractable {
     /**
      * 用于持久化抽取的数据
      */
-    public abstract void persistData() throws IOException;
+    public abstract void persistData(String location) throws IOException;
 
 }

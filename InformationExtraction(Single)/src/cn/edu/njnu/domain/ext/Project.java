@@ -12,8 +12,8 @@ import java.io.*;
 public class Project extends Extractable {
 
     @Override
-    public void persistData() throws IOException {
-        File file = new File("/home/zhangzhi/Documents/result/projects");
+    public void persistData(String location) throws IOException {
+        File file = new File("/home/zhangzhi/Documents/result/projects/" + location);
         if (!file.exists())
             file.createNewFile();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(

@@ -66,14 +66,15 @@ public class ProcessUnit implements Runnable {
     protected void process(File f) {
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
-        if (info != null)
+        if (info != null) {
             info.forEach(extraction -> {
                 try {
-                    extraction.persistData();
+                    extraction.persistData(f.getName().replaceAll(".html|.htm", ""));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
+        }
     }
 
     /**
