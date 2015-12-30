@@ -13,16 +13,17 @@ public class News extends Extractable {
 
     @Override
     public void persistData(String location) throws IOException {
-        File file = new File("/home/zhangzhi/Documents/result/news/" + location);
+        File file = new File("./doc/result/news/" + location);
         if (!file.exists())
             file.createNewFile();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(file, true), "UTF-8"))) {
 
-            for (Pair pair : data)
-                bw.write(pair.key + ":" + pair.value + '\n');
-            bw.write('\n');
-
+            for (Pair pair : data) {
+                bw.write(pair.key + ":" + pair.value);
+                bw.newLine();
+            }
+            System.out.println("抽取了一条新闻信息:  " + location);
         }
     }
 
