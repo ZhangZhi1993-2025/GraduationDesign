@@ -39,7 +39,7 @@ public class ExtractProjects extends InfoExtract {
         List<Extractable> result = new ArrayList<>();
         Project news = new Project();
 
-        Document doc = Jsoup.parse(html); //闁硅泛锕ｇ粩瀛樼▔椤忓懏鐎俊妤嬬到椤曨喚鎸掗敍鍕埗閻熸瑱绲鹃悗浠嬪礄閻戞ɑ闄�
+        Document doc = Jsoup.parse(html);
         String str = doc.html().replaceAll("&nbsp;", "");
         doc = Jsoup.parse(str);
         doc.select("div[class~=active*]").remove();
@@ -48,9 +48,8 @@ public class ExtractProjects extends InfoExtract {
         doc.select("div[class~=comment*]").remove();
         doc.select("div[class=des]").remove();
         doc.select("div[class~=logic*]").remove();
-        Elements div_main1 = doc.select("div[class~=(main*)|(content*)|(container*)|(article*)|(detail*)|(project*)]");  //闁硅泛锕ュ〒鑸靛緞瑜忓▓鎱竔v闁秆勵殕鐎ｄ線宕欓悜妯婚檷
+        Elements div_main1 = doc.select("div[class~=(main*)|(content*)|(container*)|(article*)|(detail*)|(project*)]");
         int i = 1;
-        //System.out.println("div闁秆勵殕閺嗙喖鏁嶉敓锟�"+div_main1.size());
         for (Element element : div_main1) {
             //element.select("a").remove();
             //element.select("div[class=inner]").remove();
@@ -61,24 +60,22 @@ public class ExtractProjects extends InfoExtract {
             //element.select("i").remove();
             element.select("span[class~=nav*]").remove();
             element.select("span[class=text-primary fs12]").remove();
-            ///////////////////////img_url = img_URL(element);    //闁兼儳鍢茶ぐ鍥亹閹惧啿顤卍iv闁秆勩仦閼垫垹鎲版担鐟邦棟闁汇劌鍩噈g闁汇劌瀚惌鎯ь嚗閿燂拷
+            ///////////////////////img_url = img_URL(element);
             //element.select("ul").remove();
             //element.select("ol").remove();
             //System.out.println("\r\n"+(i++)+"\r\n");
             flag = false;
             flag_t = false;
             traverse_my(element, news);
-            //time.trim();
-            //System.out.println(time);
-            //String title=news.hm.get("闁哄秴娲。锟�").trim();
+
             if (time.trim().isEmpty() | content.trim().isEmpty()) {
-                isdiv = false;  //濞戞挸绉靛Σ鎼佸箣閹存粍绮﹂悷鏇氱劍婢规﹢鎯冮崚顤痸闁秆嶆嫹
+                isdiv = false;
             }
             if (isdiv) {
-                news.put("闁告劕鎳庨锟�", content);
-                news.put("闁哄啫鐖煎Λ锟�", time);
+                news.put("内容", content);
+                news.put("时间", time);
 
-                //write_Img(img_url, filename);  //閻忓繐妫楀ù姗�鎮ч崶锔剧憮閺夌偞鍨濈粭鍛村级閿燂拷
+                //write_Img(img_url, filename);
                 content = "";
                 time = "";
                 isdiv = true;
@@ -92,16 +89,16 @@ public class ExtractProjects extends InfoExtract {
         return result;
     }
 
-    public static void traverse_my(Element root, Project news) { //root濞戞挾鍎ゅ〒鑸靛緞瑜忓▓鎱竔v闁煎搫鍊婚崑锟�
+    public static void traverse_my(Element root, Project news) { //root为最大的div节点
         Elements nodes_in = root.children();
-        int i = nodes_in.size(); //闁兼儳鍢茶ぐ鍥╋拷娑欏姌婵☆參鎮欓崷顓熺暠濞戞搩浜濋弳锟�
-        if (i == 0) { //闁兼眹鍎遍崣鐐▔椤撶喐锟ラ悗娑欏姌婵☆參鎮欓惂鍝ョ闁告帗鐟ラ惃銏ゅ礂閺堜絻鍘柣銊ュ閺嬪啴寮甸锟借ぐ鍥礄閿燂拷
+        int i = nodes_in.size(); //获取子节点的个数
+        if (i == 0) { //若其中无子节点，则将其中的文本取出
             String s = root.text();
             //System.out.println("@@@@@@@@"+root.tagName()+"  "+root.text());
             if (!isTitle(root, news)) {
                 if (!s.trim().isEmpty()) {
 
-                    if (flag_t == false) { //閺夆晜蓱閻ュ懘寮垫径瀣棟闁告帞澧楀鍌炴⒒閿燂拷
+                    if (flag_t == false) { //还没有找到时间
                         //System.out.println("########"+s);
                         if (isTimeAll(s)) {
 
@@ -147,11 +144,11 @@ public class ExtractProjects extends InfoExtract {
             }
             root.children().remove();
             String s2 = root.text().trim();
-            //闁告帇鍊栭弻鍥及椤栨碍鍎婇柡鍕靛灟缂嶆棃鎳撻敓锟�
+            //判断是否是作者
             //System.out.println("############"+root.tagName()+"   "+root.className()+"   "+s2);
             if ((root.tagName().equals("a")) && (root.className().equals("user-hd"))) {
                 //System.out.println("what is @@@@@@@@@@@@@");
-                news.put("濞达絾绮忛敓鏂ゆ嫹", s2);
+                news.put("作者", s2);
             } else {
                 //System.out.println("*********"+s2);
                 if (!s2.isEmpty()) {
@@ -211,23 +208,23 @@ public class ExtractProjects extends InfoExtract {
 
     public static boolean isTitle(Element root, Project news) {
         if (flag) {
-            return false;   //鐎规瓕灏欑划锟犲嫉婢跺鍨煎Λ鐗堬公缁辨繈宕氬▎搴ｇ憹闁哄嫷鍨遍悥锝嗭紣閿燂拷
+            return false;   //已经有标题，则不是标题
         }
         String tagName = root.tagName();
         if (tagName.equals("h1") | tagName.equals("h2") | tagName.equals("h3") | tagName.equals("h4")) {
-            flag = true;  //闁瑰灚鍎抽崺宀勫冀閸ヮ剦鏆�
-            //System.out.println("闁哄秴娲。浠嬫晬閿燂拷"+root.text());
-            news.put("闁哄秴娲。锟�", root.text());
+            flag = true;  //找到标题
+            //System.out.println("标题："+root.text());
+            news.put("标题", root.text());
             return flag;
         }
         return false;
     }
 
-    public static boolean isSundry(String s) {   //闁硅泛锕ｇ粭鍌涚▔閿熺晫寮ч崶锔剧憮濞戞搫鎷风紒鈥虫搐楠炴捇骞掗敓锟�
-        Pattern p = Pattern.compile("濞戞挸锕ｇ粩瀵稿姬閸ラ绐�.*");
+    public static boolean isSundry(String s) {   //把上一篇下一篇去掉
+        Pattern p = Pattern.compile("上一篇：.*");
         Matcher matcher = p.matcher(s);
         boolean pre = matcher.matches();
-        p = Pattern.compile("濞戞挸顑勭粩瀵稿姬閸ラ绐�.*");
+        p = Pattern.compile("下一篇：.*");
         matcher = p.matcher(s);
         boolean next = matcher.matches();
         if (pre | next) {
@@ -236,12 +233,12 @@ public class ExtractProjects extends InfoExtract {
         return false;
     }
 
-    public static String img_URL(Element doc) throws IOException {  //閺夊牊鎸搁崣鍡涘矗閸屾稒娈堕柡鍕靛灡濞撹埖寰勯—鐚闁煎搫鍊婚崑锟�
+    public static String img_URL(Element doc) throws IOException {
 
-        int width = 0;  //閻庣妫勭�癸拷
-        int height = 0; //濡ゅ倹锚鐎癸拷
-        int area = 0; //闂傚牄鍨昏ⅶ
-        String url = ""; //闁哄牞鎷峰鍫嗗啯绂堥柣妤�娲ㄥ▓鎱L
+        int width = 0;
+        int height = 0;
+        int area = 0;
+        String url = "";
         Elements image = doc.select("img");
         int count = image.size();
         if (count == 0) {
@@ -262,8 +259,8 @@ public class ExtractProjects extends InfoExtract {
         return url;
     }
 
-    public static void write_Img(String url, String filename) throws IOException {  //濞戞挸顑堝ù鍥炊閸撗冾暬
-        if (!url.trim().isEmpty()) {  //闁兼眹鍎卞ù姗�鎮ч崶顏嗙唴鐎垫澘瀚粭澶嬬▔閾忓厜鏁�
+    public static void write_Img(String url, String filename) throws IOException {
+        if (!url.trim().isEmpty()) {
             URL url1 = new URL(url);
             URLConnection uc = url1.openConnection();
             InputStream is = uc.getInputStream();

@@ -13,7 +13,7 @@ public class Activity extends Extractable {
 
     @Override
     public void persistData() throws IOException {
-        File file = new File("/home/Documents/result/activities");
+        File file = new File("/home/zhangzhi/Documents/result/activities");
         if (!file.exists())
             file.createNewFile();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(

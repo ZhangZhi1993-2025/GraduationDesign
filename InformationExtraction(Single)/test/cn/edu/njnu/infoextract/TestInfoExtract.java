@@ -1,41 +1,52 @@
 package cn.edu.njnu.infoextract;
 
+import cn.edu.njnu.Main;
+import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.infoextract.impl.ExtractNews;
-import cn.edu.njnu.tidypage.TidyPage;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import cn.edu.njnu.infoextract.impl.ExtractProjects;
+import cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities;
+import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
-
-//import static cn.edu.njnu.Main.getHtml;
+import java.util.List;
 
 /**
- * Created by zhangzhi on 15-12-21.
- * 测试InfoExtract类下面的方法
+ * Created by zhangzhi on 15-12-30.
+ * 测试InfoExtract的四个实现类
  */
 public class TestInfoExtract {
 
-    private InfoExtract ie = new ExtractNews();
-
-    @BeforeClass
-    public static void initialize() {
+    @Test
+    public void testExtractNews() {
+        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
+        InfoExtract ie = new ExtractNews();
+        //List<Extractable> result = ie.extractInformation(html);
+        //System.out.print(result);
     }
 
     @Test
-    public void testCanBeTime() {
-        //System.out.print(ie.canBeTime("199"));
-        //Assert.assertEquals(ie.canBeTime("199"), true);
-        Assert.assertEquals(false, ie.canBeTime("centoscddczxc"));
+    public void testExtractActivities() {
+        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
+        InfoExtract ie = new ExtractActivities();
+        //List<Extractable> result = ie.extractInformation(html);
+        //System.out.print(result);
     }
 
     @Test
-    public void testCanBePlace() throws IOException {
-        Assert.assertEquals(true, ie.canBePlace("北京创客空间", "北京"));
+    public void testExtractIncubators() {
+        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
+        InfoExtract ie = new ExtractIncubators();
+        //List<Extractable> result = ie.extractInformation(html);
+        //System.out.print(result);
+    }
+
+    @Test
+    public void testExtractProjects() {
+        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
+        InfoExtract ie = new ExtractProjects();
+        //List<Extractable> result = ie.extractInformation(html);
+        //System.out.print(result);
     }
 
 }

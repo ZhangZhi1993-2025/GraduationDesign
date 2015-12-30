@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public abstract class Extractable {
 
     //所抽取的数据的集合
-    protected ArrayList<Pair<String, String>> data;
+    protected ArrayList<Pair<String, String>> data = new ArrayList<>();
 
     /**
      * 向data里面放入数据对(给出字段和对应值)

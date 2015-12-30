@@ -13,12 +13,6 @@ public class Pair<K, V> {
     public V value;
 
     /**
-     * default constructor
-     */
-    public Pair() {
-    }
-
-    /**
      * 由字段与对应的值作为参数构造实例
      *
      * @param key   键

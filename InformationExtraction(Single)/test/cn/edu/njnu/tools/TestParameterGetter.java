@@ -14,7 +14,7 @@ public class TestParameterGetter {
     public void testParameterGetter() {
         ParameterGetter helper = new ParameterGetter();
         System.out.println(helper.getPoolsize());
-        for (Pair<File, String> pair : helper) {
+        for (Pair<String, String> pair : helper) {
             System.out.println(pair.key + " : " + pair.value);
         }
     }

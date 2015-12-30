@@ -13,7 +13,7 @@ public class Project extends Extractable {
 
     @Override
     public void persistData() throws IOException {
-        File file = new File("/home/Documents/result/projects");
+        File file = new File("/home/zhangzhi/Documents/result/projects");
         if (!file.exists())
             file.createNewFile();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
@@ -23,8 +23,6 @@ public class Project extends Extractable {
                 bw.write(pair.key + ":" + pair.value + '\n');
             bw.write('\n');
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

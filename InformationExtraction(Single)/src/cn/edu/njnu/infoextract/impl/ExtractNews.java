@@ -41,7 +41,6 @@ public class ExtractNews extends InfoExtract {
     static String time = "";   //保存新闻发表的时间
     static String s_match = "";
     static boolean isdiv = true;
-    static ArrayList<News> list = new ArrayList<News>();
 
     //判断是否是新闻类型的网页
     public static boolean isNews(Document doc) {
@@ -132,7 +131,7 @@ public class ExtractNews extends InfoExtract {
             isdiv = true;
         }
 
-        list.add(news);
+        result.add(news);
         return result;
     }
 

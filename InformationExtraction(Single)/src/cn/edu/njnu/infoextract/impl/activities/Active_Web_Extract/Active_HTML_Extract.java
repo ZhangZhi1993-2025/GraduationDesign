@@ -128,7 +128,7 @@ public class Active_HTML_Extract {
 
     private static void find_content(Element doc, Activity activity_result) {
         //查找标签为<div id=event_desc_page> <div class="mod" id="link-report">
-        Pair<String, String> content_atom = new Pair<>();
+        Pair<String, String> content_atom = new Pair<>("", "");
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         String div_rule = rule_store_tool.content_div_rule();
         String activity_key;
@@ -259,7 +259,7 @@ public class Active_HTML_Extract {
         Elements extract_element = div_leaf.children();
         System.out.println("------找到所在的div之后，输出孩子的信息------");
         for (Element one_element : extract_element) {
-            Pair<String, String> new_atom = new Pair<>();
+            Pair<String, String> new_atom = new Pair<>("", "");
             System.out.println(one_element);
             String active_key = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
@@ -383,7 +383,7 @@ public class Active_HTML_Extract {
         System.out.println("------找到所在的div之后，输出孩子的信息------");
         for (Element one_element : extract_element) {
             System.out.println(one_element);
-            Pair<String, String> new_atom = new Pair<>();
+            Pair<String, String> new_atom = new Pair<>("", "");
             String active_key = null;
             String active_value = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
@@ -404,7 +404,7 @@ public class Active_HTML_Extract {
                     if (one_li_value.contains("|")) {
                         String[] one_li_value_split = one_li_value.split("\\|");
                         for (int i = 0; i < one_li_value_split.length; i++) {
-                            Pair<String, String> activity_atom = new Pair<>();
+                            Pair<String, String> activity_atom = new Pair<>("", "");
                             active_key = key_Array[i];
                             active_value = one_li_value_split[i];
                             activity_atom.key = active_key;
@@ -419,14 +419,14 @@ public class Active_HTML_Extract {
 
                         active_key = one_li_split[0];
                         active_value = one_li_split[1];
-                        Pair<String, String> activity_atom = new Pair<>();
+                        Pair<String, String> activity_atom = new Pair<>("", "");
                         activity_atom.key = active_key;
                         activity_atom.value = active_value;
                         activity_result.put(activity_atom);
                     } else {
                         active_key = "其他";
                         active_value = one_li.text();
-                        Pair<String, String> activity_atom = new Pair<>();
+                        Pair<String, String> activity_atom = new Pair<>("", "");
                         activity_atom.key = active_key;
                         activity_atom.value = active_value;
                         activity_result.put(activity_atom);
