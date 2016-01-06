@@ -32,13 +32,13 @@ public class Active_HTML_Extract {
 
     public Activity extract_some_actives_from_one_page(Document doc) {
         Activity activity_result = new Activity();
-        //查找标签为<ul class="search-events-list>
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�<ul class="search-events-list>
         ArrayList<String> list_tags = new ArrayList<>();
         list_tags.add("ul[class~=(search-events-list*)]");
         for (int i = 0; i < list_tags.size(); i++) {
             String list_tag = list_tags.get(i);
             Elements content_list = doc.select(list_tag);
-            //查找标签 <div class="info">
+            //��濮�锟斤拷����锟斤拷���ゆ�风�锟介��锟� <div class="info">
             Elements content_detail = content_list.select("div[class~=(info*)]");
             System.out.println(content_detail.text());
         }
@@ -49,7 +49,7 @@ public class Active_HTML_Extract {
      * @return ture is only one activity ;false :some activity
      */
     public boolean Judge_Html_List(Element doc) {
-        //查找标签为div class="media-body" id="event-info"
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�div class="media-body" id="event-info"
 
         Tool_Rule_Store rule_story_tool = new Tool_Rule_Store();
         String list_rule_div = rule_story_tool.introduction_list_div_rule();
@@ -62,10 +62,10 @@ public class Active_HTML_Extract {
     }
 
     /**
-     * @param doc 提取web中活动的内容
+     * @param doc ���ゆ�烽���ゆ��web濞�锟介����煤��璇ф�凤拷��烽���ゆ�烽����锟界�告��
      */
     private static void find_active_introduction(Document doc) {
-        //查找标签为div class="media-body" id="event-info"
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�div class="media-body" id="event-info"
         Tool_Rule_Store rule_story_tool = new Tool_Rule_Store();
         String rule_div = rule_story_tool.introduction_div_rule();
         Elements introduction_div = doc.select(rule_div);
@@ -81,7 +81,7 @@ public class Active_HTML_Extract {
     }
 
     private static void find_active_introduction(Element doc, Activity activity_result) {
-        //查找标签为div class="media-body" id="event-info"
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�div class="media-body" id="event-info"
         Tool_Rule_Store rule_story_tool = new Tool_Rule_Store();
         String rule_div = rule_story_tool.introduction_div_rule();
         Elements introduction_div = doc.select(rule_div);
@@ -97,21 +97,21 @@ public class Active_HTML_Extract {
     }
 
     /**
-     * @param doc 提取web中活动的内容
+     * @param doc ���ゆ�烽���ゆ��web濞�锟介����煤��璇ф�凤拷��烽���ゆ�烽����锟界�告��
      */
     private static void find_content(Document doc) {
         //Elements content_div=doc.select("div[class~=(article*)],div[id=link-report]");
-        //System.out.println("#####内容的div："+content_div.text());
+        //System.out.println("#####���ゆ�凤拷�帮拷锟介���ゆ��div锟斤拷��锟�"+content_div.text());
         //id="event_desc_page"
-        //查找标签为<div id=event_desc_page> <div class="mod" id="link-report">
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�<div id=event_desc_page> <div class="mod" id="link-report">
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         String div_rule = rule_store_tool.content_div_rule();
         Elements content_detail = doc.select(div_rule);
-        //System.out.println("有P标签的文字"+p_tag_elements.text());
+        //System.out.println("���ゆ��P���ゆ�风�锟斤拷��烽���ゆ�烽����锟斤拷��锟�"+p_tag_elements.text());
 
         String p_rule = rule_store_tool.content_p_rule();
         Elements p_tag_elements = content_detail.select(p_rule);
-        result.append("活动内容：\n");
+        result.append("婵��讹拷璇ф�凤拷���烽����锟藉��锟介�╂��\n");
         if (!p_tag_elements.isEmpty()) {
             for (Element p_element : p_tag_elements) {
                 if (!p_element.text().trim().equals("")) {
@@ -127,19 +127,19 @@ public class Active_HTML_Extract {
     }
 
     private static void find_content(Element doc, Activity activity_result) {
-        //查找标签为<div id=event_desc_page> <div class="mod" id="link-report">
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�<div id=event_desc_page> <div class="mod" id="link-report">
         Pair<String, String> content_atom = new Pair<>("", "");
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         String div_rule = rule_store_tool.content_div_rule();
         String activity_key;
         String activity_value = "";
         Elements content_detail = doc.select(div_rule);
-        //System.out.println("有P标签的文字"+p_tag_elements.text());
+        //System.out.println("���ゆ��P���ゆ�风�锟斤拷��烽���ゆ�烽����锟斤拷��锟�"+p_tag_elements.text());
         String p_rule = rule_store_tool.content_p_rule();
         Elements p_tag_elements = content_detail.select(p_rule);
-        activity_key = "活动内容";
-        result.append("活动内容：\n");
-        //如果包含在p标签内的
+        activity_key = "婵��讹拷璇ф�凤拷���烽����锟界�告��";
+        result.append("婵��讹拷璇ф�凤拷���烽����锟藉��锟介�╂��\n");
+        //濠碘���烽���ゆ�烽���ゆ�烽���ゆ�烽���ゆ��p���ゆ�风�锟斤拷��烽���ゆ�烽��锟�
         if (!p_tag_elements.isEmpty()) {
             for (Element p_element : p_tag_elements) {
                 if (!p_element.text().trim().equals("")) {
@@ -148,7 +148,7 @@ public class Active_HTML_Extract {
                 }
             }
         }
-        //没有P标签的处理
+        //婵�锟斤拷锟介���ゆ��P���ゆ�风�锟斤拷��烽���ュ����ゆ�烽��锟�
         else {
             String[] content_splits = content_detail.text().split("  ");
             for (String one_line : content_splits) {
@@ -171,14 +171,14 @@ public class Active_HTML_Extract {
         Elements elements_in_body = root.children();
 
         for (Element element : elements_in_body) {
-            //输出每个elment的标签
+            //锟斤拷���ゆ�凤拷锟介���ゆ�峰�锟介��锟�elment���ゆ�烽���ゆ�风�锟介��锟�
             //System.out.println("element tag is :"+element.outerHtml());
             String element_text = element.text();
 
             //search_content
             //search_content(element_text);
 
-            if (reg_match(".+年.*月.*日|.*时间:", element_text) && reg_match(".*北京海淀.*|.*地点|.*广州.*|.*西安.*|.*杭州.*|.*北京.*", element_text)) {
+            if (reg_match(".+妤�锟介��锟�.*���ゆ��.*���ゆ��|.*����锟斤拷���ゆ��:", element_text) && reg_match(".*���ゆ�峰ù锟介����霉锟斤拷��锟�.*|.*���ワ拷锟介���ゆ��|.*妤�锟斤拷锟介��锟�.*|.*锟斤拷锟斤拷���ゆ��.*|.*���ゆ�风�归�╂��.*|.*���ゆ�峰ù锟介��锟�.*", element_text)) {
                 System.out.println(element.tagName());
                 if (element.tagName().equals("p") | element.tagName().equals("div")) {
                     System.out.println("element  is " + depth + element.text());
@@ -198,30 +198,30 @@ public class Active_HTML_Extract {
     }
 
     /**
-     * @param pattern ".*年.*月.*日"
-     * @param matcher 2015年10月19日 13:00 ～ 2015年10月19日 17:00
-     * @return 匹配是否成功
+     * @param pattern ".*妤�锟介��锟�.*���ゆ��.*���ゆ��"
+     * @param matcher 2015妤�锟介��锟�10���ゆ��19���ゆ�� 13:00 锟斤拷��锟� 2015妤�锟介��锟�10���ゆ��19���ゆ�� 17:00
+     * @return ����锟介���ゆ�烽���ゆ�烽���ゆ�烽���ゆ�烽���ゆ��
      */
     public static boolean reg_match(String pattern, String matcher) {
-        Pattern p = Pattern.compile(pattern);//".*年.*月.*日"
-        Matcher m = p.matcher(matcher);//"2015年10月19日 13:00 ～ 2015年10月19日 17:00"
+        Pattern p = Pattern.compile(pattern);//".*妤�锟介��锟�.*���ゆ��.*���ゆ��"
+        Matcher m = p.matcher(matcher);//"2015妤�锟介��锟�10���ゆ��19���ゆ�� 13:00 锟斤拷��锟� 2015妤�锟介��锟�10���ゆ��19���ゆ�� 17:00"
         ArrayList<String> strs = new ArrayList<String>();
         return m.find();
     }
 
-    //根据获取到的叶子，进行不同的处理
+    //����锟介���ゆ�烽�����查���ゆ�烽���ワ拷锟介���ゆ�烽����娉����ゆ�凤拷锟介���ワ拷���凤拷锟介���ワ拷���ゆ�烽���ゆ�烽���ュ����ゆ�烽��锟�
     public static void process_leaf_node(Element div_leaf) {
         HashMap<Simple_info, String> simple_info_hashmap_single = Simple_info_HashMap.getInstance();
         Simple_info new_simple_info = new Simple_info();
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         Elements extract_element = div_leaf.children();
-        System.out.println("------找到所在的div之后，输出孩子的信息------");
+        System.out.println("------���ワ拷��凤拷锟介���ゆ�烽��濮�锟窖��烽��锟�div濞�锟介���ゆ�烽��浠�锟斤拷���ワ拷锟介���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�峰ǎ锟斤拷锟介���ゆ��------");
 
         for (Element one_element : extract_element) {
             System.out.println(one_element);
             String active_key = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
-                active_key = "活动标题";
+                active_key = "婵��讹拷璇ф�凤拷锟介���ゆ�峰Λ甯���";
                 new_simple_info.setTitle(one_element.text());
             } else {
                 String em = rule_store_tool.introduction_em_rule();
@@ -234,21 +234,21 @@ public class Active_HTML_Extract {
                     System.out.println("p1" + one_element.select("span").text());
                 }
                 if (active_key.trim().equals("")) {
-                    active_key = "其他";
+                    active_key = "���ワ拷纰���";
                 }
 
             }
             String active_value = one_element.text();
-            if (active_key.contains("时间")) {
+            if (active_key.contains("����锟斤拷���ゆ��")) {
                 new_simple_info.setTime(active_value);
-            } else if (active_key.contains("地点")) {
+            } else if (active_key.contains("���ワ拷锟介���ゆ��")) {
                 new_simple_info.setAddress(active_value);
             }
             result.append(active_key + "  " + active_value + "\n");
 
         }
         simple_info_hashmap_single.put(new_simple_info, "single_activity");
-        System.out.println("输出孩子节点结束！");
+        System.out.println("锟斤拷���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�烽����锟斤拷���ゆ�烽��浠�锟斤拷��锟�");
 
     }
 
@@ -257,13 +257,13 @@ public class Active_HTML_Extract {
         Simple_info new_simple_info = new Simple_info();
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         Elements extract_element = div_leaf.children();
-        System.out.println("------找到所在的div之后，输出孩子的信息------");
+        System.out.println("------���ワ拷��凤拷锟介���ゆ�烽��濮�锟窖��烽��锟�div濞�锟介���ゆ�烽��浠�锟斤拷���ワ拷锟介���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�峰ǎ锟斤拷锟介���ゆ��------");
         for (Element one_element : extract_element) {
             Pair<String, String> new_atom = new Pair<>("", "");
             System.out.println(one_element);
             String active_key = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
-                active_key = "活动标题";
+                active_key = "婵��讹拷璇ф�凤拷锟介���ゆ�峰Λ甯���";
                 new_simple_info.setTitle(one_element.text());
             } else {
                 String em = rule_store_tool.introduction_em_rule();
@@ -276,15 +276,15 @@ public class Active_HTML_Extract {
                     System.out.println("p1" + one_element.select("span").text());
                 }
                 if (active_key.trim().equals("")) {
-                    active_key = "其他";
+                    active_key = "���ワ拷纰���";
                 }
 
             }
             String active_value = one_element.text();
 
-            if (active_key.contains("时间")) {
+            if (active_key.contains("����锟斤拷���ゆ��")) {
                 new_simple_info.setTime(active_value);
-            } else if (active_key.contains("地点")) {
+            } else if (active_key.contains("���ワ拷锟介���ゆ��")) {
                 new_simple_info.setAddress(active_value);
             }
             result.append(active_key + "  " + active_value + "\n");
@@ -293,7 +293,7 @@ public class Active_HTML_Extract {
             activity_result.put(new_atom);
         }
         simple_info_hashmap_single.put(new_simple_info, "single_activity");
-        System.out.println("输出孩子节点结束！");
+        System.out.println("锟斤拷���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�烽����锟斤拷���ゆ�烽��浠�锟斤拷��锟�");
 
     }
 
@@ -302,7 +302,7 @@ public class Active_HTML_Extract {
 
         System.out.println("start processed some_activiety webpage");
         ArrayList<Activity> some_activity = new ArrayList<Activity>();
-        //查找标签为div class="media-body" id="event-info"
+        //��濮�锟斤拷����锟斤拷���ゆ�风�锟斤拷��锟�div class="media-body" id="event-info"
         Tool_Rule_Store rule_story_tool = new Tool_Rule_Store();
         String list_rule_div = rule_story_tool.introduction_list_div_rule();
         Elements introduction_list_div = doc.select(list_rule_div);
@@ -329,13 +329,13 @@ public class Active_HTML_Extract {
         HashMap<Simple_info, String> Simple_info_hashmap = Simple_info_HashMap.getInstance();
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         Elements extract_element = div_leaf.children();
-        System.out.println("------找到所在的div之后，输出孩子的信息------");
+        System.out.println("------���ワ拷��凤拷锟介���ゆ�烽��濮�锟窖��烽��锟�div濞�锟介���ゆ�烽��浠�锟斤拷���ワ拷锟介���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�峰ǎ锟斤拷锟介���ゆ��------");
         for (Element one_element : extract_element) {
             System.out.println(one_element);
             String active_key = null;
             String active_value = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
-                active_key = "活动标题";
+                active_key = "婵��讹拷璇ф�凤拷锟介���ゆ�峰Λ甯���";
                 process_repetion_tool.save_new_simple_info(active_key, one_element.text(), new_simple_info);
                 result.append(active_key + "  " + one_element.text() + "\n");
             } else {
@@ -343,7 +343,7 @@ public class Active_HTML_Extract {
                 for (Element one_li : li_list) {
                     String one_li_value = one_li.text();
 
-                    //String[] key_Array={"时间：","地点","分类"};
+                    //String[] key_Array={"����锟斤拷��������锟�","���ワ拷锟介���ゆ��","���ゆ�风�锟介��锟�"};
                     String[] key_Array = rule_store_tool.key_Array_list_rule();
                     if (one_li_value.contains("|")) {
                         String[] one_li_value_split = one_li_value.split("\\|");
@@ -354,20 +354,20 @@ public class Active_HTML_Extract {
                             result.append(active_key + "  " + active_value + "\n");
                         }
                         continue;
-                    } else if (one_li.text().contains("：")) {
-                        String[] one_li_split = one_li.text().split("：");
+                    } else if (one_li.text().contains("锟斤拷��锟�")) {
+                        String[] one_li_split = one_li.text().split("锟斤拷��锟�");
 
                         active_key = one_li_split[0];
                         active_value = one_li_split[1];
                     } else {
-                        active_key = "其他";
+                        active_key = "���ワ拷纰���";
                         active_value = one_li.text();
                     }
                     result.append(active_key + "  " + active_value + "\n");
                 }
             }//else
             if (Simple_info_hashmap.containsKey(new_simple_info)) {
-                System.out.println("是重复元素");
+                System.out.println("���ゆ�烽���ゆ�峰�㈣�规�烽���ゆ�风�����");
             }
         }
 
@@ -380,14 +380,14 @@ public class Active_HTML_Extract {
         HashMap<Simple_info, String> Simple_info_hashmap = Simple_info_HashMap.getInstance();
         Tool_Rule_Store rule_store_tool = new Tool_Rule_Store();
         Elements extract_element = div_leaf.children();
-        System.out.println("------找到所在的div之后，输出孩子的信息------");
+        System.out.println("------���ワ拷��凤拷锟介���ゆ�烽��濮�锟窖��烽��锟�div濞�锟介���ゆ�烽��浠�锟斤拷���ワ拷锟介���ゆ�凤拷锟介��瑙ｏ拷锟介���ゆ�烽���ゆ�峰ǎ锟斤拷锟介���ゆ��------");
         for (Element one_element : extract_element) {
             System.out.println(one_element);
             Pair<String, String> new_atom = new Pair<>("", "");
             String active_key = null;
             String active_value = null;
             if (one_element.tagName().equals("h2") | one_element.tagName().equals("h1") | one_element.className().equals("event-title")) {
-                active_key = "活动标题";
+                active_key = "婵��讹拷璇ф�凤拷锟介���ゆ�峰Λ甯���";
                 active_value = one_element.text();
                 new_atom.key = active_key;
                 new_atom.value = active_value;
@@ -399,7 +399,7 @@ public class Active_HTML_Extract {
                 for (Element one_li : li_list) {
                     String one_li_value = one_li.text();
 
-                    //String[] key_Array={"时间：","地点","分类"};
+                    //String[] key_Array={"����锟斤拷��������锟�","���ワ拷锟介���ゆ��","���ゆ�风�锟介��锟�"};
                     String[] key_Array = rule_store_tool.key_Array_list_rule();
                     if (one_li_value.contains("|")) {
                         String[] one_li_value_split = one_li_value.split("\\|");
@@ -414,8 +414,8 @@ public class Active_HTML_Extract {
                             result.append(active_key + "  " + active_value + "\n");
                         }
                         continue;
-                    } else if (one_li.text().contains("：")) {
-                        String[] one_li_split = one_li.text().split("：");
+                    } else if (one_li.text().contains("锟斤拷��锟�")) {
+                        String[] one_li_split = one_li.text().split("锟斤拷��锟�");
 
                         active_key = one_li_split[0];
                         active_value = one_li_split[1];
@@ -424,7 +424,7 @@ public class Active_HTML_Extract {
                         activity_atom.value = active_value;
                         activity_result.put(activity_atom);
                     } else {
-                        active_key = "其他";
+                        active_key = "���ワ拷纰���";
                         active_value = one_li.text();
                         Pair<String, String> activity_atom = new Pair<>("", "");
                         activity_atom.key = active_key;
@@ -435,7 +435,7 @@ public class Active_HTML_Extract {
                 }
             }//else
             if (Simple_info_hashmap.containsKey(new_simple_info)) {
-                System.out.println("是重复元素");
+                System.out.println("���ゆ�烽���ゆ�峰�㈣�规�烽���ゆ�风�����");
             }
         }
 

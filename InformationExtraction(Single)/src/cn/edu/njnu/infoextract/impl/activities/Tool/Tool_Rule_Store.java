@@ -52,7 +52,7 @@ public class Tool_Rule_Store {
 
     public String[] key_Array_list_rule() {
         // TODO Auto-generated method stub
-        String[] key_Array_list = {"时间", "地点", "分类"};
+        String[] key_Array_list = {"����锟斤拷���ゆ��", "���ワ拷锟介���ゆ��", "���ゆ�风�锟介��锟�"};
         return key_Array_list;
     }
 

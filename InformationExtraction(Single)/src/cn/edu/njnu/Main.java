@@ -14,6 +14,8 @@ public class Main {
             ParameterGetter helper = new ParameterGetter();
             //调度线程池
             ExecutorService service = Executors.newFixedThreadPool(helper.getPoolsize());
+
+            //CopyOnWriteArrayList<>
             //向线程池提交任务
             for (Pair<String, String> pair : helper)
                 service.submit(new ProcessUnit(pair, new File(helper.getRootFile())));

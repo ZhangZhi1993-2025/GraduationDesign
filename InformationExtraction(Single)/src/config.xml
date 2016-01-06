@@ -8,6 +8,9 @@
     <!-- 配置数据源根目录 -->
     <source>./doc/创客网页/</source>
 
+    <!-- 配置输出目录 -->
+    <output>./doc/result</output>
+
     <!-- 配置类别目录名及对应的解析类 -->
     <categories>
 
@@ -28,5 +31,20 @@
         </category>
 
     </categories>
+
+    <!-- 配置数据库交互接口 -->
+    <interfaces>
+
+        <!-- 提交地点 -->
+        <interface type="postPlace">
+            http:// 101.201.143.103:8080/ZC/data/port/putSinglePositionData
+        </interface>
+
+        <!-- 提交数据项 -->
+        <interface type="postData">
+            http:// 101.201.143.103:8080/ZC/data/port/PutMultiACSData
+        </interface>
+
+    </interfaces>
 
 </config>
