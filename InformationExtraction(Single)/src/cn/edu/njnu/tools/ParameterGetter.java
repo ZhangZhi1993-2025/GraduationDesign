@@ -22,6 +22,16 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
     //抽取信息的根目录
     private String rootFile;
 
+    //抽取判重日志文件
+    private String outputFile;
+
+    //抽取地点pid文件
+    private String places;
+
+    private String postPlaceURL;
+
+    private String postDataURL;
+
     //类别目录名及对应的解析类
     private List<Pair<String, String>> list = new ArrayList<>();
 
@@ -34,15 +44,31 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
             Document doc = reader.read(new File(
                     Main.class.getResource("/config.xml").getPath()));
             Element root = doc.getRootElement();
+
+            Element extractLog = root.element("output");
+            this.outputFile = extractLog.getText().replaceAll("\n", "").trim();
+
+            Element places = root.element("places");
+            this.places = places.getText().replaceAll("\n", "").trim();
+
             Element poolsize = root.element("poolsize");
             this.poolsize = Integer.valueOf(poolsize.getText().replaceAll("\n", "").trim());
+
             Element rootFile = root.element("source");
             this.rootFile = rootFile.getText().replaceAll("\n", "").trim();
+
             Element categories = root.element("categories");
             List<Element> nodes = categories.elements();
             nodes.forEach(node -> list.add(new Pair<>(
                     node.attribute("name").getText().replaceAll("\n", "").trim(),
                     node.getText().replaceAll("\n", "").trim())));
+
+            Element postPlaceURL = root.element("postPlaceURL");
+            this.postPlaceURL = postPlaceURL.getText().replaceAll("\n", "").trim();
+
+            Element postDataURL = root.element("postPlaceURL");
+            this.postDataURL = postDataURL.getText().replaceAll("\n", "").trim();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,10 +86,42 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
     /**
      * 获得抽取信息的根目录
      *
-     * @return 根目录的绝对路径
+     * @return 根目录的路径
      */
     public String getRootFile() {
         return rootFile;
+    }
+
+    /**
+     * 抽取判重日志文件
+     *
+     * @return 抽取判重日志文件
+     */
+    public String getOutputFile() {
+        return outputFile;
+    }
+
+    /**
+     * 抽取地点pid文件
+     *
+     * @return 抽取地点pid文件
+     */
+    public String getPlaces() {
+        return places;
+    }
+
+    /**
+     * @return
+     */
+    public String getPostPlaceURL() {
+        return postPlaceURL;
+    }
+
+    /**
+     * @return
+     */
+    public String getPostDataURL() {
+        return postDataURL;
     }
 
     /**

@@ -11,6 +11,12 @@
     <!-- 配置输出目录 -->
     <output>./doc/result</output>
 
+    <!-- 配置抽取网页判重的日志文件 -->
+    <bloomFilter>./doc/extractLog</bloomFilter>
+
+    <!-- 配置地点存放文件 -->
+    <places>./doc/places</places>
+
     <!-- 配置类别目录名及对应的解析类 -->
     <categories>
 
@@ -36,12 +42,12 @@
     <interfaces>
 
         <!-- 提交地点 -->
-        <interface type="postPlace">
+        <interface type="postPlaceURL">
             http:// 101.201.143.103:8080/ZC/data/port/putSinglePositionData
         </interface>
 
         <!-- 提交数据项 -->
-        <interface type="postData">
+        <interface type="postDataURL">
             http:// 101.201.143.103:8080/ZC/data/port/PutMultiACSData
         </interface>
 

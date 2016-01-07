@@ -23,13 +23,17 @@ public class ProcessUnit implements Runnable {
     //所需要使用的信息抽取实例
     protected InfoExtract ie;
 
+    //输出地址
+    protected String outputFile;
+
     /**
      * 构造器
      *
      * @param config 用于获得目标文件夹与信息抽取实例
      */
-    public ProcessUnit(Pair<String, String> config, File file) {
+    public ProcessUnit(Pair<String, String> config, File file, String outputFile) {
         try {
+            this.outputFile = outputFile;
             this.baseFile = file;
             this.folderName = config.key;
             this.ie = (InfoExtract) Class.forName(config.value).newInstance();
@@ -64,6 +68,7 @@ public class ProcessUnit implements Runnable {
      * @param f 待分析的页面文件
      */
     protected void process(File f) {
+
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
