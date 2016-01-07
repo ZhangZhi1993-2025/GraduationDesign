@@ -31,6 +31,11 @@ public class ExtractIncubators extends InfoExtract {
         return result;
     }
 
+    @Override
+    public String getType() {
+        return "";
+    }
+
     public static boolean Extract(Element root, Incubator Info) {
         String s_value = "";
         Element e_value = null;

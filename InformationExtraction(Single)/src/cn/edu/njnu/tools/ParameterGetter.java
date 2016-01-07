@@ -111,14 +111,14 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
     }
 
     /**
-     * @return
+     * @return 地点上传接口
      */
     public String getPostPlaceURL() {
         return postPlaceURL;
     }
 
     /**
-     * @return
+     * @return 数据上传接口
      */
     public String getPostDataURL() {
         return postDataURL;

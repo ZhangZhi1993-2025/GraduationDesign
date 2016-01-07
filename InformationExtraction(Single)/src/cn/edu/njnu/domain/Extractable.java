@@ -38,7 +38,7 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
     /**
      * 用于持久化抽取的数据
      */
-    public abstract void persistData(String location) throws IOException;
+    public abstract void persistData(String outputFile) throws IOException;
 
     /**
      * 得到迭代器
@@ -67,6 +67,11 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
             if (hasNext())
                 return Extractable.this.data.get(cursor++);
             return null;
+        }
+
+        @Override
+        public void remove() {
+            Extractable.this.data.remove(cursor);
         }
 
     }

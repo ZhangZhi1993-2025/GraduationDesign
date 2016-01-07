@@ -34,6 +34,11 @@ public class ExtractProjects extends InfoExtract {
     static String img_url = "";
 
     @Override
+    public String getType() {
+        return "项目";
+    }
+
+    @Override
     public List<Extractable> extractInformation(String html) {
 
         List<Extractable> result = new ArrayList<>();

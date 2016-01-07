@@ -6,7 +6,6 @@ import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 import cn.edu.njnu.tools.CoordinateGetter;
 import cn.edu.njnu.tools.Pair;
 import cn.edu.njnu.tools.ParameterGetter;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -80,7 +79,7 @@ public class PlacesExtract implements Runnable {
      *
      * @return 是否成功
      */
-    protected boolean postPlace(String title, String desc, String abs, String url) {
+    protected boolean postPlace(String title, String desc, String abs, String url, JSONObject other) {
         try {
             double lng;
             double lat;
@@ -109,7 +108,7 @@ public class PlacesExtract implements Runnable {
                 data.put("lat", lat);
                 data.put("lng", lng);
                 data.put("type", "孵化器");
-                data.put("other", new JSONArray());
+                data.put("other", other);
                 StringEntity entity = new StringEntity(data.toString(), "utf-8");
                 entity.setContentEncoding("UTF-8");
                 entity.setContentType("application/json");
@@ -149,8 +148,11 @@ public class PlacesExtract implements Runnable {
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
             for (int i = 0; i < info.size(); i++) {
+                JSONObject other = new JSONObject();
                 for (Pair<String, String> pair : info.get(i)) {
                     if (pair.key.equals("标题"))
+                        title = pair.value;
+                    if (pair.key.equals("名称"))
                         title = pair.value;
                     if (pair.key.equals("地点"))
                         desc = pair.value;
@@ -160,8 +162,9 @@ public class PlacesExtract implements Runnable {
                         abs = pair.value;
                     if (pair.key.equals("描述"))
                         abs = pair.value;
+                    other.put(pair.key, pair.value);
                 }
-                if (postPlace(title, desc, abs, url))
+                if (postPlace(title, desc, abs, url, other))
                     return true;
             }
         }
