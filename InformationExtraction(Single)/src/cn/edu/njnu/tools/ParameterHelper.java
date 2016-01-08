@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Zhi on 12/27/2015.
  * 用于封装congfig.xml配置文件中的参数并提供访问的接口
  */
-public class ParameterGetter implements Iterable<Pair<String, String>> {
+public class ParameterHelper implements Iterable<Pair<String, String>> {
 
     //线程池的最大线程数量
     private int poolsize;
@@ -38,7 +38,7 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
     /**
      * default constructor
      */
-    public ParameterGetter() {
+    public ParameterHelper() {
         try {
             SAXReader reader = new SAXReader();
             Document doc = reader.read(new File(
@@ -63,11 +63,10 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
                     node.attribute("name").getText().replaceAll("\n", "").trim(),
                     node.getText().replaceAll("\n", "").trim())));
 
-            Element postPlaceURL = root.element("postPlaceURL");
-            this.postPlaceURL = postPlaceURL.getText().replaceAll("\n", "").trim();
-
-            Element postDataURL = root.element("postPlaceURL");
-            this.postDataURL = postDataURL.getText().replaceAll("\n", "").trim();
+            Element interfaces = root.element("interfaces");
+            nodes = interfaces.elements();
+            this.postPlaceURL = nodes.get(0).getText().replaceAll("\n", "").trim();
+            this.postDataURL = nodes.get(1).getText().replaceAll("\n", "").trim();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,13 +142,13 @@ public class ParameterGetter implements Iterable<Pair<String, String>> {
 
         @Override
         public boolean hasNext() {
-            return cursor < ParameterGetter.this.list.size();
+            return cursor < ParameterHelper.this.list.size();
         }
 
         @Override
         public Pair<String, String> next() {
             if (hasNext())
-                return ParameterGetter.this.list.get(cursor++);
+                return ParameterHelper.this.list.get(cursor++);
             return null;
         }
 

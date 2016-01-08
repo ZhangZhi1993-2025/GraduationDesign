@@ -3,19 +3,20 @@
 <config>
 
     <!-- 配置线程数 -->
-    <poolsize>4</poolsize>
+    <poolsize>3</poolsize>
 
     <!-- 配置数据源根目录 -->
-    <source>./doc/创客网页/</source>
+    <source>
+        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/data/
+    </source>
 
     <!-- 配置输出目录 -->
-    <output>./doc/result</output>
-
-    <!-- 配置抽取网页判重的日志文件 -->
-    <bloomFilter>./doc/extractLog</bloomFilter>
+    <output>
+        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/result/
+    </output>
 
     <!-- 配置地点存放文件 -->
-    <places>./doc/places</places>
+    <places>./places</places>
 
     <!-- 配置类别目录名及对应的解析类 -->
     <categories>
@@ -28,12 +29,12 @@
             cn.edu.njnu.infoextract.impl.ExtractProjects
         </category>
 
-        <category name="incubators">
-            cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators
-        </category>
-
         <category name="activities">
             cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities
+        </category>
+
+        <category name="incubators">
+            cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators
         </category>
 
     </categories>

@@ -3,16 +3,20 @@ package cn.edu.njnu;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.tools.Pair;
-import cn.edu.njnu.tools.ParameterGetter;
+import cn.edu.njnu.tools.ParameterHelper;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -43,11 +47,13 @@ public class ProcessUnit implements Runnable {
      *
      * @param config 用于获得目标文件夹与信息抽取实例
      */
-    public ProcessUnit(Pair<String, String> config, File file, String outputFile) {
+    public ProcessUnit(Pair<String, String> config, File file,
+                       String outputFile, Map<String, String> placeToPid) {
         try {
             this.outputFile = outputFile;
             this.baseFile = file;
             this.folderName = config.key;
+            this.placeToPid = placeToPid;
             this.ie = (InfoExtract) Class.forName(config.value).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,10 +86,10 @@ public class ProcessUnit implements Runnable {
      * @param pid  地点的id号
      * @param info 待上传的数据
      */
-    protected void postData(String pid, List<Extractable> info) {
+    protected boolean postData(String pid, List<Extractable> info) {
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost method = new HttpPost(new ParameterGetter().getPostDataURL());
+            HttpPost method = new HttpPost(new ParameterHelper().getPostDataURL());
             JSONObject data = new JSONObject();
             JSONArray array = new JSONArray();
             for (Extractable extractable : info) {
@@ -106,19 +112,28 @@ public class ProcessUnit implements Runnable {
                 item.put("time", time);
                 item.put("content", content);
                 item.put("pid", pid);
-                item.put("pic", "");
+                item.put("pic", "http://img0.pconline.com.cn/pconline/1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
                 item.put("other", other);
                 array.put(item);
             }
             data.put("acs", array);
 
-            StringEntity entity = new StringEntity(data.toString(), "utf-8");
-            entity.setContentEncoding("UTF-8");
-            entity.setContentType("application/json");
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("data", data.toString()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
             method.setEntity(entity);
+
             HttpResponse result = httpClient.execute(method);
+            String resData = EntityUtils.toString(result.getEntity());
+            //获得结果
+            JSONObject resJson = JSONObject.fromObject(resData);
+            if (resJson.getInt("code") == 1) {
+                JSONObject result2 = resJson.getJSONObject("data");
+                return result2.getInt("status") == 1;
+            } else
+                return false;
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 
@@ -129,13 +144,18 @@ public class ProcessUnit implements Runnable {
      */
     protected void process(File f, String outputFile, String place) {
         String html = getHtml(f);
+        int index = 0;
+        while (html.charAt(index) != '<')
+            index++;
+        String url = html.substring(0, index);
+        html = html.substring(index, html.length() - 1);
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
             if (placeToPid.containsKey(place)) {
-                postData(placeToPid.get(place), info);
+                boolean hasPost = postData(placeToPid.get(place), info);
                 info.forEach(extraction -> {
                     try {
-                        extraction.persistData(outputFile);
+                        extraction.persistData(outputFile, url, hasPost);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

@@ -3,20 +3,17 @@ package cn.edu.njnu;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
-import cn.edu.njnu.tools.CoordinateGetter;
+import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
-import cn.edu.njnu.tools.ParameterGetter;
+import cn.edu.njnu.tools.ParameterHelper;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.*;
@@ -90,14 +87,14 @@ public class PlacesExtract implements Runnable {
         try {
             double lng;//经度
             double lat;//纬度
-            CoordinateGetter coordinateGetter = new
-                    CoordinateGetter("http://api.map.baidu.com/geocoder/v2/");
-            coordinateGetter.addParam("output", "json").addParam("ak", CoordinateGetter.appkey)
+            CoordinateHelper coordinateHelper = new
+                    CoordinateHelper("http://api.map.baidu.com/geocoder/v2/");
+            coordinateHelper.addParam("output", "json").addParam("ak", CoordinateHelper.appkey)
                     .addParam("address", desc).addParam("city", city);
-            coordinateGetter.addRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-            coordinateGetter.addRequestProperty("Accept", "application/json");
+            coordinateHelper.addRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            coordinateHelper.addRequestProperty("Accept", "application/json");
             //请求经纬度
-            String result = coordinateGetter.post();
+            String result = coordinateHelper.post();
             JSONObject jo = JSONObject.fromObject(result);
             if (jo.getInt("status") == 0) {
                 JSONObject rt = jo.getJSONObject("result");
@@ -106,13 +103,12 @@ public class PlacesExtract implements Runnable {
                 lat = lc.getDouble("lat");
 
                 HttpClient httpClient = new DefaultHttpClient();
-                //HttpPost method = new HttpPost(new ParameterGetter().getPostPlaceURL());
-                HttpPost method = new HttpPost("http://101.201.143.103:8080/ZC/data/port/putSinglePositionData");
+                HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
                 JSONObject data = new JSONObject();
                 data.put("title", title);
                 data.put("des", desc);
                 data.put("abs", abs);
-                data.put("pic", "http://www.baidu.com/123.jpg");
+                data.put("pic", "http://img0.pconline.com.cn/pconline/1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
                 data.put("url", url);
                 data.put("lat", lat);
                 data.put("lng", lng);
@@ -184,13 +180,23 @@ public class PlacesExtract implements Runnable {
         return false;
     }
 
+    /**
+     * 查找所在城市
+     *
+     * @param current 当前目录
+     * @return 城市名
+     */
     protected String findCity(File current) {
         File last = current;
-        while (current.getName() != baseFile.getName()) {
+        while (!current.getName().equals(baseFile.getName())) {
             last = current;
             current = current.getParentFile();
         }
-        return last.getName();
+        //如果是个网址,则返回北京
+        if (last.getName().matches("https?://[\\w./]+"))
+            return "北京";
+        else//否则返回本身
+            return last.getName();
     }
 
     /**

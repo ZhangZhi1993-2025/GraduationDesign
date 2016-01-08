@@ -16,7 +16,7 @@ import java.util.List;
  * Created by chukaiyue on 16-1-7.
  * 根据地点名称获取坐标
  */
-public class CoordinateGetter {
+public class CoordinateHelper {
     public static String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
     public static String REQ_METHOD_GET = "GET";
     public static String REQ_METHOD_POST = "POST";
@@ -43,7 +43,7 @@ public class CoordinateGetter {
     private HttpURLConnection conn;
 
 
-    public CoordinateGetter(String address) throws KeyManagementException, NoSuchAlgorithmException, IOException {
+    public CoordinateHelper(String address) throws KeyManagementException, NoSuchAlgorithmException, IOException {
         this.address = address;
         this.conn = build();
     }
@@ -203,7 +203,7 @@ public class CoordinateGetter {
         this.address = address;
     }
 
-    public CoordinateGetter addParam(String key, String val) {
+    public CoordinateHelper addParam(String key, String val) {
 
         if (key != null && key.length() > 0) {
             params.add(key + "=" + val);

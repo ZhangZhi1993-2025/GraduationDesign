@@ -37,8 +37,13 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
 
     /**
      * 用于持久化抽取的数据
+     *
+     * @param outputFile 待输出的文件
+     * @param url        网页文件的URL
+     * @param hasPost    是否成功提交远程数据库
+     * @throws IOException
      */
-    public abstract void persistData(String outputFile) throws IOException;
+    public abstract void persistData(String outputFile, String url, boolean hasPost) throws IOException;
 
     /**
      * 得到迭代器
