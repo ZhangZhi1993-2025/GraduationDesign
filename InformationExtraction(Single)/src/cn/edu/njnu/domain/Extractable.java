@@ -69,11 +69,6 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
             return null;
         }
 
-        @Override
-        public void remove() {
-            Extractable.this.data.remove(cursor);
-        }
-
     }
 
 }

@@ -9,7 +9,7 @@ public class Simple_info_HashMap {
     //    private static Simple_info_HashMap Simple_info_HashMap_single=null;
     private static HashMap<Simple_info, String> simple_info_HashMap_single = null;
 
-    //���ゆ�烽���ゆ�风�规��锟姐���烽���ゆ�风��锟介��锟�
+    //静态工厂方法
     public static HashMap<Simple_info, String> getInstance() {
         if (simple_info_HashMap_single == null) {
             simple_info_HashMap_single = new HashMap<Simple_info, String>();

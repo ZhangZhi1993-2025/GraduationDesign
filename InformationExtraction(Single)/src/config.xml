@@ -43,12 +43,12 @@
 
         <!-- 提交地点 -->
         <interface type="postPlaceURL">
-            http:// 101.201.143.103:8080/ZC/data/port/putSinglePositionData
+            http://101.201.143.103:8080/ZC/data/port/putSinglePositionData
         </interface>
 
         <!-- 提交数据项 -->
         <interface type="postDataURL">
-            http:// 101.201.143.103:8080/ZC/data/port/PutMultiACSData
+            http://101.201.143.103:8080/ZC/data/port/PutMultiACSData
         </interface>
 
     </interfaces>

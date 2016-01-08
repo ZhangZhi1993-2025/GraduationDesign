@@ -74,10 +74,16 @@ public class ProcessUnit implements Runnable {
         }
     }
 
+    /**
+     * 上传数据接口
+     *
+     * @param pid  地点的id号
+     * @param info 待上传的数据
+     */
     protected void postData(String pid, List<Extractable> info) {
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost method = new HttpPost(new ParameterGetter().getPostPlaceURL());
+            HttpPost method = new HttpPost(new ParameterGetter().getPostDataURL());
             JSONObject data = new JSONObject();
             JSONArray array = new JSONArray();
             for (Extractable extractable : info) {
@@ -106,7 +112,7 @@ public class ProcessUnit implements Runnable {
             }
             data.put("acs", array);
 
-            StringEntity entity = new StringEntity(data.toString(), "utf-8");//解决中文乱码问题
+            StringEntity entity = new StringEntity(data.toString(), "utf-8");
             entity.setContentEncoding("UTF-8");
             entity.setContentType("application/json");
             method.setEntity(entity);

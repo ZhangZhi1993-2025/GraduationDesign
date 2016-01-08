@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class RegularMatch {
     public static String reg_match(String pattern, String matcher) {
-        Pattern p = Pattern.compile(pattern);    //".*妤�锟介��锟�.*���ゆ��.*���ゆ��"
-        Matcher m = p.matcher(matcher);            //"2015妤�锟介��锟�10���ゆ��19���ゆ�� 13:00 锟斤拷��锟� 2015妤�锟介��锟�10���ゆ��19���ゆ�� 17:00"
+        Pattern p = Pattern.compile(pattern);    //".*年.*月.*日"
+        Matcher m = p.matcher(matcher);            //"2015年10月19日 13:00 ～ 2015年10月19日 17:00"
         ArrayList<String> strs = new ArrayList<String>();
         while (m.find()) {
             strs.add(m.group(0));

@@ -8,13 +8,19 @@ import cn.edu.njnu.tools.Pair;
 import cn.edu.njnu.tools.ParameterGetter;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -79,16 +85,18 @@ public class PlacesExtract implements Runnable {
      *
      * @return 是否成功
      */
-    protected boolean postPlace(String title, String desc, String abs, String url, JSONObject other) {
+    protected boolean postPlace(String title, String desc, String abs, String url,
+                                JSONObject other, String city) {
         try {
-            double lng;
-            double lat;
+            double lng;//经度
+            double lat;//纬度
             CoordinateGetter coordinateGetter = new
                     CoordinateGetter("http://api.map.baidu.com/geocoder/v2/");
             coordinateGetter.addParam("output", "json").addParam("ak", CoordinateGetter.appkey)
-                    .addParam("address", desc).addParam("city", "北京");
+                    .addParam("address", desc).addParam("city", city);
             coordinateGetter.addRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
             coordinateGetter.addRequestProperty("Accept", "application/json");
+            //请求经纬度
             String result = coordinateGetter.post();
             JSONObject jo = JSONObject.fromObject(result);
             if (jo.getInt("status") == 0) {
@@ -98,24 +106,29 @@ public class PlacesExtract implements Runnable {
                 lat = lc.getDouble("lat");
 
                 HttpClient httpClient = new DefaultHttpClient();
-                HttpPost method = new HttpPost(new ParameterGetter().getPostPlaceURL());
+                //HttpPost method = new HttpPost(new ParameterGetter().getPostPlaceURL());
+                HttpPost method = new HttpPost("http://101.201.143.103:8080/ZC/data/port/putSinglePositionData");
                 JSONObject data = new JSONObject();
                 data.put("title", title);
                 data.put("des", desc);
                 data.put("abs", abs);
-                data.put("pic", "");
+                data.put("pic", "http://www.baidu.com/123.jpg");
                 data.put("url", url);
                 data.put("lat", lat);
                 data.put("lng", lng);
                 data.put("type", "孵化器");
                 data.put("other", other);
-                StringEntity entity = new StringEntity(data.toString(), "utf-8");
-                entity.setContentEncoding("UTF-8");
-                entity.setContentType("application/json");
+
+                List<NameValuePair> params = new ArrayList<>();
+                params.add(new BasicNameValuePair("data", data.toString()));
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
                 method.setEntity(entity);
 
+                //请求post
                 HttpResponse result2 = httpClient.execute(method);
                 String resData = EntityUtils.toString(result2.getEntity());
+
+                //获得结果
                 JSONObject resJson = JSONObject.fromObject(resData);
                 if (resJson.getInt("code") == 1) {
                     JSONObject result3 = resJson.getJSONObject("data");
@@ -140,7 +153,7 @@ public class PlacesExtract implements Runnable {
      *
      * @param f 待分析的页面文件
      */
-    protected boolean process(File f, String url) {
+    protected boolean process(File f, String url, String city) {
         String title = "";
         String desc = "";
         String abs = "";
@@ -164,11 +177,20 @@ public class PlacesExtract implements Runnable {
                         abs = pair.value;
                     other.put(pair.key, pair.value);
                 }
-                if (postPlace(title, desc, abs, url, other))
+                if (postPlace(title, desc, abs, url, other, city))
                     return true;
             }
         }
         return false;
+    }
+
+    protected String findCity(File current) {
+        File last = current;
+        while (current.getName() != baseFile.getName()) {
+            last = current;
+            current = current.getParentFile();
+        }
+        return last.getName();
     }
 
     /**
@@ -181,7 +203,7 @@ public class PlacesExtract implements Runnable {
         File[] list = current.listFiles();
         if (list != null && current.getName().equals(folderName)) {
             for (int i = 0; i < list.length; i++) {
-                if (process(list[i], url))
+                if (process(list[i], url, findCity(current)))
                     break;
             }
         } else if (list != null && list[0].isFile())
