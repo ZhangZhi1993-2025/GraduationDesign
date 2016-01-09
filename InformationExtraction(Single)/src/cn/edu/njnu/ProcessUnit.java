@@ -83,6 +83,21 @@ public class ProcessUnit implements Runnable {
     }
 
     /**
+     * 将标记过的内容重新写入文件
+     *
+     * @param file 待写入的文件
+     * @param html 标记过的内容
+     */
+    protected void writeHtml(File file, String html) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(file), "UTF-8"))) {
+            bw.write(html);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 上传数据接口
      *
      * @param pid  地点的id号
@@ -94,9 +109,9 @@ public class ProcessUnit implements Runnable {
             JSONObject data = new JSONObject();
             JSONArray array = new JSONArray();
             for (Extractable extractable : info) {
-                String title = "";
-                String time = "";
-                String content = "";
+                String title = " ";
+                String time = " ";
+                String content = " ";
                 JSONObject other = new JSONObject();
                 for (Pair<String, String> pair : extractable) {
                     if (pair.key.contains("标题"))
@@ -108,8 +123,8 @@ public class ProcessUnit implements Runnable {
                     else
                         other.put(pair.key, pair.value);
                 }
-                if (title.equals("") || time.equals("") || content.equals(""))
-                    continue;
+                //if (title.equals("") || time.equals("") || content.equals(""))
+                // continue;
                 JSONObject item = new JSONObject();
                 item.put("title", title);
                 item.put("type", ie.getType());
@@ -150,7 +165,7 @@ public class ProcessUnit implements Runnable {
      *
      * @param f 待分析的页面文件
      */
-    protected void process(File f, String outputFile, String place) {
+    protected void process(File f, String place) {
         String html = getHtml(f);
 
         //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
@@ -164,6 +179,8 @@ public class ProcessUnit implements Runnable {
             index++;
         String url = html.substring(0, index);
         html = html.substring(index, html.length() - 1);
+        //将除去URL标记的html重新写入页面文件中
+        writeHtml(f, html);
 
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
@@ -191,7 +208,7 @@ public class ProcessUnit implements Runnable {
             if (current.getName().equals(folderName)) {
                 String place = current.getParentFile().getName();
                 for (File file : list)
-                    process(file, outputFile, place);
+                    process(file, place);
             } else {
                 if (list[0].isFile())
                     return;

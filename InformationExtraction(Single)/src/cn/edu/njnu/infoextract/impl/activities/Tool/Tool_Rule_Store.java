@@ -1,10 +1,10 @@
 package cn.edu.njnu.infoextract.impl.activities.Tool;
 
-import java.io.IOException;
-
 public class Tool_Rule_Store {
 
-    String files_direction = "./cn/edu/njnu/infoextract/impl/activities/rule_store/";
+    String files_direction = "/home/zhangzhi/Documents/graduation_design/" +
+            "code/InformationExtraction(Single)/out/production/InformationExtraction" +
+            "/cn/edu/njnu/infoextract/impl/activities/rule_store/";
 
     public String content_div_rule() {
         //div id="content"

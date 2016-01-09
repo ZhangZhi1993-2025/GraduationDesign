@@ -14,12 +14,8 @@ public class Main {
             ParameterHelper helper = new ParameterHelper();
             //加载地点与pid的映射文件
             ConcurrentHashMap<String, String> placesToPid = Main.loadPlaceToId(helper);
-
             //加载新地点信息
-            ExecutorService handlePlace = Executors.newFixedThreadPool(1);
-            handlePlace.submit(new PlacesExtract
-                    (helper.getRootFile(), helper.getOutputFile(), placesToPid));
-            handlePlace.shutdown();
+            new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
 
             //调度线程池
             ExecutorService handlePage = Executors.newFixedThreadPool(helper.getPoolsize());

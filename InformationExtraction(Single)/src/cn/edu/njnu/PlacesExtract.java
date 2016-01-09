@@ -26,7 +26,7 @@ import java.util.Map;
  * Created by zhangzhi on 16-1-7.
  * 用于提取孵化器地址
  */
-public class PlacesExtract implements Runnable {
+public class PlacesExtract {
 
     //页面存放的根目录
     protected File baseFile;
@@ -149,9 +149,9 @@ public class PlacesExtract implements Runnable {
      * @param f 待分析的页面文件
      */
     protected boolean process(File f, String url, String city) {
-        String title = "";
-        String desc = "";
-        String abs = "";
+        String title = " ";
+        String desc = " ";
+        String abs = " ";
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
@@ -173,10 +173,16 @@ public class PlacesExtract implements Runnable {
                     else
                         other.put(pair.key, pair.value);
                 }
-                if (title.equals("") || desc.equals("") || abs.equals(""))
-                    continue;
-                if (postPlace(title, desc, abs, url, other, city))
+                //if (title.equals("") || desc.equals("") || abs.equals(""))
+                //continue;
+                if (postPlace(title, desc, abs, url, other, city)) {
+                    try {
+                        extractable.persistData(outputFile, url, true);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     return true;
+                }
             }
         }
         return false;
@@ -227,7 +233,9 @@ public class PlacesExtract implements Runnable {
         }
     }
 
-    @Override
+    /**
+     * 运行方法更新地点-pid映射表
+     */
     public void run() {
         searchForTarget(baseFile);
     }
