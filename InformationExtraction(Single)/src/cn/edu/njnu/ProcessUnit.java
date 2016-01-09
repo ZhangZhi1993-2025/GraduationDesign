@@ -8,10 +8,10 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Zhi on 12/28/2015.
@@ -87,8 +89,7 @@ public class ProcessUnit implements Runnable {
      * @param info 待上传的数据
      */
     protected boolean postData(String pid, List<Extractable> info) {
-        try {
-            HttpClient httpClient = new DefaultHttpClient();
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpPost method = new HttpPost(new ParameterHelper().getPostDataURL());
             JSONObject data = new JSONObject();
             JSONArray array = new JSONArray();
@@ -98,31 +99,38 @@ public class ProcessUnit implements Runnable {
                 String content = "";
                 JSONObject other = new JSONObject();
                 for (Pair<String, String> pair : extractable) {
-                    if (pair.key.equals("标题"))
+                    if (pair.key.contains("标题"))
                         title = pair.value;
-                    if (pair.key.equals("时间"))
+                    else if (pair.key.contains("时间"))
                         time = pair.value;
-                    if (pair.key.equals("内容"))
+                    else if (pair.key.contains("内容"))
                         content = pair.value;
-                    other.put(pair.key, pair.value);
+                    else
+                        other.put(pair.key, pair.value);
                 }
+                if (title.equals("") || time.equals("") || content.equals(""))
+                    continue;
                 JSONObject item = new JSONObject();
                 item.put("title", title);
                 item.put("type", ie.getType());
                 item.put("time", time);
                 item.put("content", content);
                 item.put("pid", pid);
-                item.put("pic", "http://img0.pconline.com.cn/pconline/1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
+                item.put("pic", "http://img0.pconline.com.cn/pconline" +
+                        "/1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
                 item.put("other", other);
                 array.put(item);
             }
+            if (array.length() == 0)
+                return false;
             data.put("acs", array);
-
+            //生成参数对
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("data", data.toString()));
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
             method.setEntity(entity);
 
+            //请求post
             HttpResponse result = httpClient.execute(method);
             String resData = EntityUtils.toString(result.getEntity());
             //获得结果
@@ -144,11 +152,19 @@ public class ProcessUnit implements Runnable {
      */
     protected void process(File f, String outputFile, String place) {
         String html = getHtml(f);
+
+        //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
+        //若没有则说明已访问过,continue;
+        Pattern pattern = Pattern.compile("https?://[\\w./]+");
+        Matcher matcher = pattern.matcher(html);
+        if (!matcher.find())
+            return;
         int index = 0;
         while (html.charAt(index) != '<')
             index++;
         String url = html.substring(0, index);
         html = html.substring(index, html.length() - 1);
+
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
             if (placeToPid.containsKey(place)) {
@@ -172,13 +188,16 @@ public class ProcessUnit implements Runnable {
     protected void searchForTarget(File current) {
         String url = current.getParentFile().getName();
         File[] list = current.listFiles();
-        if (list != null && current.getName().equals(folderName)) {
-            for (File file : list)
-                process(file, outputFile, url);
-        } else if (list != null && list[0].isFile())
-            return;
-        else if (list != null)
-            Arrays.stream(list).forEach(this::searchForTarget);
+        if (list != null) {
+            if (current.getName().equals(folderName)) {
+                for (File file : list)
+                    process(file, outputFile, url);
+            } else {
+                if (list[0].isFile())
+                    return;
+                Arrays.stream(list).forEach(this::searchForTarget);
+            }
+        }
     }
 
     @Override

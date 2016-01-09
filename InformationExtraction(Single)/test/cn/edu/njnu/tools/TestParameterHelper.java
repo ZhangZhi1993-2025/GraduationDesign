@@ -6,10 +6,10 @@ import org.junit.Test;
  * Created by zhangzhi on 15-12-29.
  * 测试配置文件解析工具
  */
-public class TestParameterGetter {
+public class TestParameterHelper {
 
     @Test
-    public void testParameterGetter() {
+    public void testParameterHelper() {
         ParameterHelper helper = new ParameterHelper();
         System.out.println(helper.getPoolsize());
         System.out.println(helper.getRootFile());

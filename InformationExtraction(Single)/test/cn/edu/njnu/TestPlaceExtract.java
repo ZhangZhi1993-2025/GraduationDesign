@@ -18,8 +18,8 @@ public class TestPlaceExtract {
         String url = "www.makerspace.com";
         String city = "北京";
         JSONObject other = new JSONObject();
-        Assert.assertEquals(true, new PlacesExtract("ss", null, null).
-                postPlace(title, desc, abs, url, other, city));
+        Assert.assertEquals(true, new PlacesExtract("ss", null, null)
+                .postPlace(title, desc, abs, url, other, city));
     }
 
 }
