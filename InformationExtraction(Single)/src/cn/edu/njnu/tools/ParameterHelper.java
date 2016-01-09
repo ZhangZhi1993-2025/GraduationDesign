@@ -22,14 +22,16 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     //抽取信息的根目录
     private String rootFile;
 
-    //抽取判重日志文件
+    //抽取数据本地输出目录路径
     private String outputFile;
 
-    //抽取地点pid文件
+    //抽取地点与pid映射文件
     private String places;
 
+    //上传地点数据的接口地址
     private String postPlaceURL;
 
+    //上传内容数据的接口地址
     private String postDataURL;
 
     //类别目录名及对应的解析类
@@ -92,9 +94,9 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     }
 
     /**
-     * 抽取判重日志文件
+     * 抽取数据本地输出目录路径
      *
-     * @return 抽取判重日志文件
+     * @return 抽取数据本地输出目录路径
      */
     public String getOutputFile() {
         return outputFile;

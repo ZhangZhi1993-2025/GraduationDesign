@@ -37,7 +37,7 @@ public class PlacesExtract implements Runnable {
     //所需要使用的信息抽取实例
     protected InfoExtract ie;
 
-    //输出地址
+    //抽取数据本地输出目录路径
     protected String outputFile;
 
     //地点与pid的映射
@@ -207,16 +207,16 @@ public class PlacesExtract implements Runnable {
      * @param current 当前的文件夹
      */
     protected void searchForTarget(File current) {
-        //如果已经存在该地点到pid的映射则continue;
+        //如果已经存在该地点到pid的映射则跳过;
         if (placeToPid.containsKey(current.getName()))
             return;
         File[] list = current.listFiles();
         if (list != null) {
             //找到孵化器目录从中提取地点相关信息
             if (current.getName().equals(folderName)) {
-                String url = current.getParentFile().getName();
+                String place = current.getParentFile().getName();
                 for (File file : list) {
-                    if (process(file, url, findCity(current)))
+                    if (process(file, place, findCity(current)))
                         break;
                 }
             } else {

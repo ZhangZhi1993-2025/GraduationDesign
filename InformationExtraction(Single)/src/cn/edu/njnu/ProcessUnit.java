@@ -38,7 +38,7 @@ public class ProcessUnit implements Runnable {
     //所需要使用的信息抽取实例
     protected InfoExtract ie;
 
-    //输出地址
+    //抽取数据本地输出目录路径
     protected String outputFile;
 
     //地点与pid的映射
@@ -154,7 +154,7 @@ public class ProcessUnit implements Runnable {
         String html = getHtml(f);
 
         //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
-        //若没有则说明已访问过,continue;
+        //若没有则说明已访问过,跳过之;
         Pattern pattern = Pattern.compile("https?://[\\w./]+");
         Matcher matcher = pattern.matcher(html);
         if (!matcher.find())
@@ -186,12 +186,12 @@ public class ProcessUnit implements Runnable {
      * @param current 当前的文件夹
      */
     protected void searchForTarget(File current) {
-        String url = current.getParentFile().getName();
         File[] list = current.listFiles();
         if (list != null) {
             if (current.getName().equals(folderName)) {
+                String place = current.getParentFile().getName();
                 for (File file : list)
-                    process(file, outputFile, url);
+                    process(file, outputFile, place);
             } else {
                 if (list[0].isFile())
                     return;
