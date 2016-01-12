@@ -3,7 +3,7 @@ package cn.edu.njnu;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.domain.ext.News;
 import cn.edu.njnu.tools.Pair;
-import org.junit.Assert;
+import cn.edu.njnu.tools.PostDataHelper;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -32,8 +32,10 @@ public class TestPostContent {
         news2.put("内容", "测试新闻上传接口2");
         news2.put("重要性", "较低");
         info.add(news2);
-        Assert.assertEquals(true, new ProcessUnit(
+        PostDataHelper postDataHelper = new PostDataHelper();
+        new ProcessUnit(
                 new Pair<>("news", "cn.edu.njnu.infoextract.impl.ExtractNews"),
-                null, null, null).postData(pid, info));
+                null, null, null, postDataHelper).postData(pid, info);
+        postDataHelper.post();
     }
 }

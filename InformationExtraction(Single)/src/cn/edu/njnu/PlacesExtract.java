@@ -173,11 +173,11 @@ public class PlacesExtract {
                     else
                         other.put(pair.key, pair.value);
                 }
-                //if (title.equals("") || desc.equals("") || abs.equals(""))
-                //continue;
+                if (title.equals("") || desc.equals("") || abs.equals(""))
+                    continue;
                 if (postPlace(title, desc, abs, url, other, city)) {
                     try {
-                        extractable.persistData(outputFile, url, true);
+                        extractable.persistData(outputFile, url);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

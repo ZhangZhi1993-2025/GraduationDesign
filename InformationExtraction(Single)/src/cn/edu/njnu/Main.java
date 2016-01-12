@@ -2,9 +2,10 @@ package cn.edu.njnu;
 
 import cn.edu.njnu.tools.Pair;
 import cn.edu.njnu.tools.ParameterHelper;
+import cn.edu.njnu.tools.PostDataHelper;
 
 import java.io.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
 
@@ -13,17 +14,23 @@ public class Main {
             //从ParameterGetter中获取配置文件的配置参数
             ParameterHelper helper = new ParameterHelper();
             //加载地点与pid的映射文件
-            ConcurrentHashMap<String, String> placesToPid = Main.loadPlaceToId(helper);
+            ConcurrentHashMap<String, String> placesToPid = loadPlaceToId(helper);
             //加载新地点信息
             new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
+            //上传数据的地址
+            PostDataHelper postDataHelper = new PostDataHelper();
 
-            //调度线程池
-            ExecutorService handlePage = Executors.newFixedThreadPool(helper.getPoolsize());
             //向线程池提交任务
-            for (Pair<String, String> pair : helper)
-                handlePage.submit(new ProcessUnit
-                        (pair, new File(helper.getRootFile()), helper.getOutputFile(), placesToPid));
-            handlePage.shutdown();
+            for (Pair<String, String> pair : helper) {
+                Thread thread = new Thread(new ProcessUnit
+                        (pair, new File(helper.getRootFile()), helper.getOutputFile(),
+                                placesToPid, postDataHelper));
+                thread.start();
+                thread.join();
+            }
+
+            //向服务器端提交数据
+            postDataHelper.post();
 
             //写入地点与pid映射文件
             persisitPlaceToId(helper, placesToPid);
