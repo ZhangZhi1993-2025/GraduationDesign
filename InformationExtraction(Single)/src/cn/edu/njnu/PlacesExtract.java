@@ -149,9 +149,9 @@ public class PlacesExtract {
      * @param f 待分析的页面文件
      */
     protected boolean process(File f, String url, String city) {
-        String title = " ";
-        String desc = " ";
-        String abs = " ";
+        String title = "";
+        String desc = "暂无";
+        String abs = "暂无";
         String html = getHtml(f);
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
@@ -173,7 +173,7 @@ public class PlacesExtract {
                     else
                         other.put(pair.key, pair.value);
                 }
-                if (title.equals("") || desc.equals("") || abs.equals(""))
+                if (title.equals(""))
                     continue;
                 if (postPlace(title, desc, abs, url, other, city)) {
                     try {

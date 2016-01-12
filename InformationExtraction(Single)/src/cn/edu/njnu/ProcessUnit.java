@@ -101,9 +101,9 @@ public class ProcessUnit implements Runnable {
     protected void postData(String pid, List<Extractable> info) {
         JSONArray array = new JSONArray();
         for (Extractable extractable : info) {
-            String title = " ";
-            String time = " ";
-            String content = " ";
+            String title = "暂无";
+            String time = "暂无";
+            String content = "暂无";
             JSONObject other = new JSONObject();
             for (Pair<String, String> pair : extractable) {
                 if (pair.key.contains("标题"))
@@ -143,9 +143,9 @@ public class ProcessUnit implements Runnable {
 
         //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
         //若没有则说明已访问过,跳过之;
-        Pattern pattern = Pattern.compile("https?://[\\w./]+");
+        Pattern pattern = Pattern.compile("^https?://[\\w./]+");
         Matcher matcher = pattern.matcher(html);
-        if (!matcher.find())
+        if (!matcher.matches())
             return;
         int index = 0;
         while (html.charAt(index) != '<')
@@ -161,7 +161,7 @@ public class ProcessUnit implements Runnable {
                 postData(placeToPid.get(place), info);
                 info.forEach(extraction -> {
                     try {
-                        extraction.persistData(outputFile, url);
+                        extraction.persistData(outputFile, "www.makerspace.com");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

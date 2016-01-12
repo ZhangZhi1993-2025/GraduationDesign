@@ -30,7 +30,9 @@ public class Main {
             }
 
             //向服务器端提交数据
-            postDataHelper.post();
+            boolean[] hasPosted = postDataHelper.post();
+            for (boolean b : hasPosted)
+                System.out.println(b);
 
             //写入地点与pid映射文件
             persisitPlaceToId(helper, placesToPid);
