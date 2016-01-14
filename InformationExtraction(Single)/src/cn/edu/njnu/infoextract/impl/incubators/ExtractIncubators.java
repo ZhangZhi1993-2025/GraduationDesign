@@ -34,18 +34,10 @@ public class ExtractIncubators extends InfoExtract {
 
     @Override
     public String getType() {
-        return "";
+        return "新闻资讯";
     }
 
-    public static Incubator Traverse(Element root, Incubator info) {
-        for (Element i : root.children()) {
-            info = Extract(i, info);
-            info = Traverse(i, info);
-        }
-        return info;
-    }
-
-    public static Incubator Extract(Element root, Incubator Info) {
+    public static boolean Extract(Element root, Incubator Info) {
         String s_value = "";
         String s_key = "";
         String s_tag = "";

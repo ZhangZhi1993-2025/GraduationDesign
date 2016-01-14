@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,19 +39,24 @@ public class ProcessUnit implements Runnable {
     //批量上传的帮助类
     protected PostDataHelper postDataHelper;
 
+    //用于线程同步的锁存器
+    protected CountDownLatch latch;
+
     /**
      * 构造器
      *
      * @param config 用于获得目标文件夹与信息抽取实例
      */
     public ProcessUnit(Pair<String, String> config, File file, String outputFile,
-                       Map<String, String> placeToPid, PostDataHelper postDataHelper) {
+                       Map<String, String> placeToPid,
+                       PostDataHelper postDataHelper, CountDownLatch latch) {
         try {
             this.outputFile = outputFile;
             this.baseFile = file;
             this.folderName = config.key;
             this.placeToPid = placeToPid;
             this.postDataHelper = postDataHelper;
+            this.latch = latch;
             this.ie = (InfoExtract) Class.forName(config.value).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,7 +149,7 @@ public class ProcessUnit implements Runnable {
 
         //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
         //若没有则说明已访问过,跳过之;
-        Pattern pattern = Pattern.compile("^https?://[\\w./]+");
+        /*Pattern pattern = Pattern.compile("^https?://[\\w./]+");
         Matcher matcher = pattern.matcher(html);
         if (!matcher.matches())
             return;
@@ -153,7 +159,7 @@ public class ProcessUnit implements Runnable {
         String url = html.substring(0, index);
         html = html.substring(index, html.length() - 1);
         //将除去URL标记的html重新写入页面文件中
-        writeHtml(f, html);
+        writeHtml(f, html);*/
 
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
@@ -193,6 +199,7 @@ public class ProcessUnit implements Runnable {
     @Override
     public void run() {
         searchForTarget(baseFile);
+        latch.countDown();
     }
 
 }

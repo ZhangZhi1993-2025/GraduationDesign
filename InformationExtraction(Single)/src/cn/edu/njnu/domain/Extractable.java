@@ -36,6 +36,20 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
     }
 
     /**
+     * 根据键值得到对应的value
+     *
+     * @param key 键值
+     * @return 对应的value
+     */
+    public String get(String key) {
+        for (Pair<String, String> pair : data) {
+            if (pair.key.equals(key))
+                return pair.value;
+        }
+        return null;
+    }
+
+    /**
      * 用于持久化抽取的数据
      *
      * @param outputFile 待输出的文件

@@ -16,7 +16,7 @@ public class TestPageFlag {
     public void testPageFlag() {
         new ProcessUnit(
                 new Pair<>("news", "cn.edu.njnu.infoextract.impl.ExtractNews"),
-                null, null, null, new PostDataHelper())
+                null, null, null, new PostDataHelper(), null)
                 .process(new File("/home/zhangzhi/Documents/data"), "www.makerspace.com");
     }
 

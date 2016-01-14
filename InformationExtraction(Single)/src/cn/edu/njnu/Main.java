@@ -6,6 +6,9 @@ import cn.edu.njnu.tools.PostDataHelper;
 
 import java.io.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
@@ -14,25 +17,26 @@ public class Main {
             //从ParameterGetter中获取配置文件的配置参数
             ParameterHelper helper = new ParameterHelper();
             //加载地点与pid的映射文件
-            ConcurrentHashMap<String, String> placesToPid = loadPlaceToId(helper);
+            ConcurrentHashMap<String, String> placesToPid = loadPlaceToPId(helper);
             //加载新地点信息
             new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
             //上传数据的地址
             PostDataHelper postDataHelper = new PostDataHelper();
 
             //向线程池提交任务
-            for (Pair<String, String> pair : helper) {
-                Thread thread = new Thread(new ProcessUnit
+            ExecutorService handlePage = Executors.newFixedThreadPool(helper.getPoolsize());
+            CountDownLatch latch = new CountDownLatch(helper.getPoolsize());
+            for (Pair<String, String> pair : helper)
+                handlePage.submit(new ProcessUnit
                         (pair, new File(helper.getRootFile()), helper.getOutputFile(),
-                                placesToPid, postDataHelper));
-                thread.start();
-                thread.join();
-            }
+                                placesToPid, postDataHelper, latch));
+            handlePage.shutdown();
+            latch.await();
 
             //向服务器端提交数据
             boolean[] hasPosted = postDataHelper.post();
             for (boolean b : hasPosted)
-                System.out.println(b);
+                System.out.println("该json是否成功post到服务器端:" + b);
 
             //写入地点与pid映射文件
             persisitPlaceToId(helper, placesToPid);
@@ -51,7 +55,7 @@ public class Main {
      * @throws ClassNotFoundException
      */
     @SuppressWarnings("unchecked")
-    public static ConcurrentHashMap<String, String> loadPlaceToId(ParameterHelper helper)
+    public static ConcurrentHashMap<String, String> loadPlaceToPId(ParameterHelper helper)
             throws IOException, ClassNotFoundException {
         File placesFile = new File(helper.getPlaces());
         if (placesFile.exists()) {

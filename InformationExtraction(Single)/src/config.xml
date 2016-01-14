@@ -34,11 +34,7 @@
         <category name="activities">
             cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities
         </category>
-        <!--
-        <category name="incubators">
-            cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators
-        </category>
-        -->
+
     </categories>
 
     <!-- 配置数据库交互接口 -->
