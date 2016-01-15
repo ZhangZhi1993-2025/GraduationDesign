@@ -13,6 +13,11 @@ import java.util.*;
 public class TidyPage {
 
     /**
+     * 用于统计页面的特征数量
+     */
+    public static int num = 0;
+
+    /**
      * 页面流对应的DOM树
      */
     private Element root;

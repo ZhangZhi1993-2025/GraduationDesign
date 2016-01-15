@@ -1,8 +1,10 @@
 package cn.edu.njnu;
 
 import cn.edu.njnu.domain.Extractable;
+import cn.edu.njnu.domain.ext.Incubator;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
+
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
 import cn.edu.njnu.tools.ParameterHelper;
@@ -10,6 +12,7 @@ import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -83,7 +86,7 @@ public class PlacesExtract {
      * @return 是否成功
      */
     protected boolean postPlace(String title, String desc, String abs, String url,
-                                JSONObject other, String city) {
+                                JSONObject other, String city, Extractable extractable) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             double lng;//经度
             double lat;//纬度
@@ -101,43 +104,49 @@ public class PlacesExtract {
                 JSONObject lc = rt.getJSONObject("location");
                 lng = lc.getDouble("lng");
                 lat = lc.getDouble("lat");
+            } else {
+                JSONObject redata = ie.canBePlace(desc, city);
+                lng = redata.getJSONObject("location").getDouble("lng");
+                lat = redata.getJSONObject("location").getDouble("lat");
+                title = redata.getString("name");
+                desc = redata.getString("address");
+            }
+            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
+            JSONObject data = new JSONObject();
+            data.put("title", title);
+            data.put("des", desc);
+            data.put("abs", abs);
+            data.put("pic", "http://img0.pconline.com.cn/pconline/" +
+                    "1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
+            data.put("url", url);
+            data.put("lat", lat);
+            data.put("lng", lng);
+            data.put("type", "孵化器");
+            data.put("other", other);
+            //生成参数对
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("data", data.toString()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+            method.setEntity(entity);
 
-                HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
-                JSONObject data = new JSONObject();
-                data.put("title", title);
-                data.put("des", desc);
-                data.put("abs", abs);
-                data.put("pic", "http://img0.pconline.com.cn/pconline/" +
-                        "1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
-                data.put("url", url);
-                data.put("lat", lat);
-                data.put("lng", lng);
-                data.put("type", "孵化器");
-                data.put("other", other);
-                //生成参数对
-                List<NameValuePair> params = new ArrayList<>();
-                params.add(new BasicNameValuePair("data", data.toString()));
-                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
-                method.setEntity(entity);
-
-                //请求post
-                HttpResponse result2 = httpClient.execute(method);
-                String resData = EntityUtils.toString(result2.getEntity());
-                //获得结果
-                JSONObject resJson = JSONObject.fromObject(resData);
-                if (resJson.getInt("code") == 1) {
-                    JSONObject result3 = resJson.getJSONObject("data");
-                    if (result3.getInt("status") == 1) {
-                        String pid = result3.getString("pid");
-                        placeToPid.put(url, pid);
-                        return true;
-                    } else
-                        return false;
+            //请求post
+            HttpResponse result2 = httpClient.execute(method);
+            String resData = EntityUtils.toString(result2.getEntity());
+            //获得结果
+            JSONObject resJson = JSONObject.fromObject(resData);
+            if (resJson.getInt("code") == 1) {
+                JSONObject result3 = resJson.getJSONObject("data");
+                if (result3.getInt("status") == 1) {
+                    String pid = result3.getString("pid");
+                    placeToPid.put(url, pid);
+                    extractable.put("标题", title);
+                    extractable.put("地址", desc);
+                    return true;
                 } else
                     return false;
-            } else {
+            } else
                 return false;
-            }
+
         } catch (Exception e) {
             return false;
         }
@@ -146,46 +155,48 @@ public class PlacesExtract {
     /**
      * 便于stream api使用方法引用特性,将处理过程封装
      *
-     * @param f 待分析的页面文件
+     * @param list 待分析的页面文件
      */
-    protected boolean process(File f, String url, String city) {
+    protected void process(File[] list, String url, String city) {
         String title = "";
-        String desc = "暂无";
+        String desc = "";
         String abs = "暂无";
-        String html = getHtml(f);
-        List<Extractable> info = ie.extractInformation(html);
-        if (info != null) {
-            for (Extractable extractable : info) {
-                JSONObject other = new JSONObject();
-                for (Pair<String, String> pair : extractable) {
-                    if (pair.key.contains("标题"))
-                        title = pair.value;
-                    else if (pair.key.contains("名称"))
-                        title = pair.value;
-                    else if (pair.key.contains("地点"))
-                        desc = pair.value;
-                    else if (pair.key.contains("地址"))
-                        desc = pair.value;
-                    else if (pair.key.contains("简介"))
-                        abs = pair.value;
-                    else if (pair.key.contains("描述"))
-                        abs = pair.value;
-                    else
-                        other.put(pair.key, pair.value);
-                }
-                if (title.equals(""))
-                    continue;
-                if (postPlace(title, desc, abs, url, other, city)) {
-                    try {
-                        extractable.persistData(outputFile, url);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        JSONObject other = new JSONObject();
+        for (File f : list) {
+            String html = getHtml(f);
+            List<Extractable> info = ie.extractInformation(html);
+            if (info != null) {
+                for (Extractable extractable : info) {
+                    for (Pair<String, String> pair : extractable) {
+                        if (pair.key.contains("标题") && pair.value.length() > title.length())
+                            title = pair.value;
+                        else if (pair.key.contains("名称") && pair.value.length() > title.length())
+                            title = pair.value;
+                        else if (pair.key.contains("地点") && pair.value.length() > desc.length())
+                            desc = pair.value;
+                        else if (pair.key.contains("地址") && pair.value.length() > desc.length())
+                            desc = pair.value;
+                        else if (pair.key.contains("简介") && pair.value.length() > abs.length())
+                            abs = pair.value;
+                        else if (pair.key.contains("描述") && pair.value.length() > abs.length())
+                            abs = pair.value;
+                        else
+                            other.put(pair.key, pair.value);
                     }
-                    return true;
                 }
             }
         }
-        return false;
+        try {
+            Extractable extractable = new Incubator();
+            extractable.put("标题", title);
+            extractable.put("地址", desc);
+            extractable.put("描述", abs);
+            postPlace(title, desc, abs, url, other, city, extractable);
+            extractable.persistData(outputFile, url);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
 
     /**
@@ -221,10 +232,7 @@ public class PlacesExtract {
             //找到孵化器目录从中提取地点相关信息
             if (current.getName().equals(folderName)) {
                 String place = current.getParentFile().getName();
-                for (File file : list) {
-                    if (process(file, place, findCity(current)))
-                        break;
-                }
+                process(list, place, findCity(current));
             } else {
                 if (list[0].isFile())
                     return;

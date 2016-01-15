@@ -12,8 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Zhi on 12/28/2015.
@@ -147,19 +145,21 @@ public class ProcessUnit implements Runnable {
     protected void process(File f, String place) {
         String html = getHtml(f);
 
-        //检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
-        //若没有则说明已访问过,跳过之;
-        /*Pattern pattern = Pattern.compile("^https?://[\\w./]+");
-        Matcher matcher = pattern.matcher(html);
-        if (!matcher.matches())
-            return;
+        // 检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
+        // 若没有则说明已访问过,跳过之;
         int index = 0;
+        String url;
         while (html.charAt(index) != '<')
             index++;
-        String url = html.substring(0, index);
-        html = html.substring(index, html.length() - 1);
-        //将除去URL标记的html重新写入页面文件中
-        writeHtml(f, html);*/
+        String head = html.substring(0, index);
+        if (head.startsWith("flag"))
+            return;
+        else {
+            url = html.substring(0, index);
+            html = "flag " + html;
+        }
+        // 将除去URL标记的html重新写入页面文件中
+        writeHtml(f, html);
 
         List<Extractable> info = ie.extractInformation(html);
         if (info != null) {
@@ -167,7 +167,7 @@ public class ProcessUnit implements Runnable {
                 postData(placeToPid.get(place), info);
                 info.forEach(extraction -> {
                     try {
-                        extraction.persistData(outputFile, "www.makerspace.com");
+                        extraction.persistData(outputFile, url);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

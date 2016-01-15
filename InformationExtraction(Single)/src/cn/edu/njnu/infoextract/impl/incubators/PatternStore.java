@@ -6,6 +6,7 @@ import java.util.List;
 import org.jsoup.nodes.Element;
 
 public class PatternStore {
+	public static int page = 0;
 	public static List<Feature> allpattern=new ArrayList<Feature>();
 	static{
 		allpattern.add(new Feature("/div/p/b","b","lxfs","div","lxfs","span","","/div/p/span","span","lxfs"));//创客秀

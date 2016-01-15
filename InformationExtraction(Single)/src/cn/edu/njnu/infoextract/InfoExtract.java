@@ -3,18 +3,25 @@ package cn.edu.njnu.infoextract;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.tidypage.PreProcess;
 import cn.edu.njnu.tidypage.TidyPage;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+
+import static cn.edu.njnu.infoextract.impl.incubators.PatternStore.page;
+
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+
+import static cn.edu.njnu.tidypage.TidyPage.num;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -201,10 +208,9 @@ public abstract class InfoExtract {
      */
     protected String getResponseFromRequest(String request) throws IOException {
         HttpGet get = new HttpGet(request);
-        try {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             //使用apache的开源网络工具箱请求语料库数据
-            HttpClient http = new DefaultHttpClient();
-            HttpResponse response = http.execute(get);
+            HttpResponse response = httpClient.execute(get);
             if (response.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity = response.getEntity();
                 InputStream in = entity.getContent();
@@ -230,18 +236,15 @@ public abstract class InfoExtract {
      * @param type 地址或地名,地址为true,地名为false
      * @return 抽取的可能的地址或地名的字符串
      */
-    protected String[] getJsonInfo(String json, boolean type) {
+    protected JSONObject getJsonInfo(String json, boolean type) {
         JSONObject jsonObj = JSONObject.fromObject(json);
         JSONArray array = jsonObj.getJSONArray("results");
-        String[] list = new String[array.length()];
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject item = array.getJSONObject(i);
-            if (type)
-                list[i] = item.getString("address");
-            else
-                list[i] = item.getString("name");
+        JSONObject item = array.getJSONObject(num++);
+        if (num == array.length()) {
+            num = 0;
+            page++;
         }
-        return list;
+        return item;
     }
 
     /**
@@ -281,24 +284,16 @@ public abstract class InfoExtract {
      * @param city 查找的城市(必须给出此字段,否则该方法达不到预期效果)
      * @return 是否是一个地点
      */
-    protected boolean canBePlace(String item, String city) throws IOException {
+    public JSONObject canBePlace(String item, String city) throws IOException {
         final String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
         String request = "http://api.map.baidu.com/place/v2/search?" +
-                "q=" + item + "&region=" + city + "&output=json&ak=" + appkey;
+                "q=创业" + "&region=" + city + "&output=json&ak=" + appkey
+                + "&page_num=" + page;
         String response = getResponseFromRequest(request);
-        String[] places;
-        String[] addresses;
         if (response != null) {
-            addresses = getJsonInfo(response, true);
-            places = getJsonInfo(response, false);
-            for (int i = 0; i < places.length; i++) {
-                if (isSimilar(item, places[i]))
-                    return true;
-                if (isSimilar(item, addresses[i]))
-                    return true;
-            }
+            return getJsonInfo(response, true);
         }
-        return false;
+        return null;
     }
 
     /**
