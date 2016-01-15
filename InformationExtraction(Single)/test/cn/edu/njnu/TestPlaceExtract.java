@@ -13,7 +13,7 @@ public class TestPlaceExtract {
     @Test
     public void testPlaceExtract() {
         String title = "extractInformation";
-        String desc = "中关村科技园";
+        String desc = "暂无";     //"中关村科技园";
         String abs = "测试数据上传接口";
         String url = "www.makerspace.com";
         String city = "北京";
