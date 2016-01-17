@@ -145,20 +145,20 @@ public class ProcessUnit implements Runnable {
     protected void process(File f, String place) {
         String html = getHtml(f);
 
-        // 检测html开头是否有标记URL,若有则说明该页面没有被访问过,提取URL并将其去除;
-        // 若没有则说明已访问过,跳过之;
+        // 检测html开头是否有标记flag,若没有则说明该页面没有被访问过;
+        // 若有则说明已访问过,跳过之;
         int index = 0;
         String url;
         while (html.charAt(index) != '<')
             index++;
-        String head = html.substring(0, index);
-        if (head.startsWith("flag"))
-            return;
-        else {
-            url = html.substring(0, index);
-            html = "flag " + html;
-        }
-        // 将除去URL标记的html重新写入页面文件中
+        //String head = html.substring(0, index);
+        //if (head.startsWith("flag"))
+        //   return;
+        // else {
+        url = html.substring(0, index);
+        //    html = "flag " + html;
+        //}
+        // 将标记flag的html重新写入页面文件中
         writeHtml(f, html);
 
         List<Extractable> info = ie.extractInformation(html);
@@ -167,7 +167,7 @@ public class ProcessUnit implements Runnable {
                 postData(placeToPid.get(place), info);
                 info.forEach(extraction -> {
                     try {
-                        extraction.persistData(outputFile, url);
+                        extraction.persistData(outputFile, url, true);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

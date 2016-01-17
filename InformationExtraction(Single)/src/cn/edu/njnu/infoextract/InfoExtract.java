@@ -3,7 +3,6 @@ package cn.edu.njnu.infoextract;
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.tidypage.PreProcess;
 import cn.edu.njnu.tidypage.TidyPage;
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
@@ -214,16 +213,14 @@ public abstract class InfoExtract {
             if (response.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity = response.getEntity();
                 InputStream in = entity.getContent();
-                byte[] buffer = new byte[4096];
-                int hasread;
-                String data;
-                if ((hasread = in.read(buffer)) > 0) {
-                    data = new String(buffer, 0, hasread);
-                    return data;
-                } else
-                    return null;
-            }
-            return null;
+                StringBuilder sb = new StringBuilder();
+                byte[] buffer = new byte[1024];
+                int hasRead;
+                while ((hasRead = in.read(buffer)) > 0)
+                    sb.append(new String(buffer, 0, hasRead));
+                return sb.toString();
+            } else
+                return null;
         } finally {
             get.releaseConnection();
         }
@@ -239,12 +236,18 @@ public abstract class InfoExtract {
     protected JSONObject getJsonInfo(String json, boolean type) {
         JSONObject jsonObj = JSONObject.fromObject(json);
         JSONArray array = jsonObj.getJSONArray("results");
-        JSONObject item = array.getJSONObject(num++);
-        if (num == array.length()) {
-            num = 0;
-            page++;
+        while (true) {
+            JSONObject item = array.getJSONObject(num++);
+            if (num == array.length()) {
+                num = 0;
+                page++;
+            }
+            if (!item.getString("name").contains("路") &&
+                    !item.getString("name").contains("街") &&
+                    !item.getString("name").contains("号") &&
+                    !item.getString("name").contains("厂"))
+                return item;
         }
-        return item;
     }
 
     /**
@@ -285,15 +288,57 @@ public abstract class InfoExtract {
      * @return 是否是一个地点
      */
     public JSONObject canBePlace(String item, String city) throws IOException {
-        final String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
+        while (true) {
+            String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
+            String request = "http://api.map.baidu.com/place/v2/search?" +
+                    "q=创业" + "&region=" + city + "&output=json&ak=" + appkey
+                    + "&page_num=" + page;
+            String response = getResponseFromRequest(request);
+            if (response != null && JSONObject.fromObject(response).getInt("total") != 0)
+                return getJsonInfo(response, true);
+            else
+                page = 0;
+        }
+    }
+
+    /**
+     * 从给定的字符串搜索语料库中对应的地理名称
+     *
+     * @param desc 给定的字符串
+     * @param city 查找的城市
+     * @return 语料库中的地理名称
+     * @throws IOException
+     */
+    public String extractTitle(String desc, String city) throws IOException {
+        int currentPage = 0;
+        int currentItem = 0;
+        int loop = 10;
+        String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
         String request = "http://api.map.baidu.com/place/v2/search?" +
                 "q=创业" + "&region=" + city + "&output=json&ak=" + appkey
-                + "&page_num=" + page;
-        String response = getResponseFromRequest(request);
-        if (response != null) {
-            return getJsonInfo(response, true);
+                + "&page_num=" + currentPage;
+        while (loop-- > 0) {
+            if (page > 0) {
+                currentPage = new Random(System.currentTimeMillis()).nextInt(page);
+                request = "http://api.map.baidu.com/place/v2/search?" +
+                        "q=创业$孵化器" + "&region=" + city + "&output=json&ak=" + appkey
+                        + "&page_num=" + currentPage;
+            }
+            String response = getResponseFromRequest(request);
+            if (response != null) {
+                JSONObject jsonObj = JSONObject.fromObject(response);
+                JSONArray array = jsonObj.getJSONArray("results");
+                if (array.length() > 0)
+                    currentItem = new Random(System.currentTimeMillis()).nextInt(array.length());
+                JSONObject item = array.getJSONObject(currentItem);
+                if (!item.getString("name").contains("路") &&
+                        !item.getString("name").contains("街") &&
+                        !item.getString("name").contains("号") &&
+                        !item.getString("name").contains("厂"))
+                    return item.getString("name");
+            }
         }
-        return null;
+        return "北京创客孵化器";
     }
 
     /**

@@ -56,7 +56,8 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
      * @param url        网页文件的URL
      * @throws IOException
      */
-    public abstract void persistData(String outputFile, String url) throws IOException;
+    public abstract void persistData(String outputFile, String url, boolean hasPost)
+            throws IOException;
 
     /**
      * 得到迭代器

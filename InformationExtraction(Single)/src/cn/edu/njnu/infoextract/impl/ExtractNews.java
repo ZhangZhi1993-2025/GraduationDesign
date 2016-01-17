@@ -32,14 +32,14 @@ import java.util.*;
  */
 public class ExtractNews extends InfoExtract {
 
-    static boolean flag = false;  //判断是否已经找到标题
-    static boolean flag_t = false; //判断是否找到时间
+    static boolean flag = false;    //判断是否已经找到标题
+    static boolean flag_t = false;  //判断是否找到时间
     static boolean flag_t1 = false; //判断时间的另一个标准
-    static boolean flag_n = false; //是否是新闻
-    static boolean brief = false; //下面是否是摘要
-    static String content = ""; //保存网页的内容
-    static String content1 = ""; //保存一个div节点中的内容
-    static String time = "";   //保存新闻发表的时间
+    static boolean flag_n = false;  //是否是新闻
+    static boolean brief = false;  //下面是否是摘要
+    static String content = "";   //保存网页的内容
+    static String content1 = "";  //保存一个div节点中的内容
+    static String time = "";     //保存新闻发表的时间
     static String s_match = "";
     static boolean isdiv = true;
 
@@ -49,21 +49,21 @@ public class ExtractNews extends InfoExtract {
         for (Element e : es) {
             text = e.text();
             if (text.contains("新闻") | text.contains("资讯") | text.contains("动态")) {
+
                 return true;
             }
         }
         es = doc.select("div");
         for (Element e : es) {
-            if (e.children().size() == 0) {
-                text = e.text();
-                if (isSource(text)) {
-                    return true;
-                }
+            text = e.text();
+            if (isSource(text)) {
+                return true;
             }
         }
         es = doc.select("p");
         for (Element e : es) {
             text = e.text();
+            //System.out.println();
             if (isSource(text)) {
                 return true;
             }
@@ -97,13 +97,13 @@ public class ExtractNews extends InfoExtract {
         Elements div_main1 = doc.select("div[class~=(main*)|content*|(container*)|(article*)|(detail*)]");  //把最大的div块拿出来
         Elements div_main2 = doc.select("div[id~=(main*)|(content*)|(container*)|(article*)|(detail*)]");
         Elements div_main3 = doc.select("table");
-        div_main1.addAll(div_main2);
         div_main1.addAll(div_main3);
+        div_main1.addAll(div_main2);
         Elements es = doc.select("div[class=news-item-excerpts]");
         for (Element e : es) {
             news.put("摘要", e.text().trim());
         }
-        doc.select("div[class=news-item-excerpts]").remove();
+        doc.select("div[class=news-item-excerpts]").remove();    //保证下次不再取此摘要
         int i = 1;
         for (Element element : div_main1) {
             element.select("a").remove();
@@ -111,7 +111,7 @@ public class ExtractNews extends InfoExtract {
             //element.select("div[class=inner]").remove();
             element.select("div[class=pic]").remove();
             element.select("div[class=tit]").remove();
-            element.select("div[class=txt]").remove();
+            //element.select("div[class=txt]").remove();
             element.select("div[class=page_right right]").remove();
             element.select("button").remove();
             element.select("i").remove();
@@ -127,7 +127,8 @@ public class ExtractNews extends InfoExtract {
             traverse_my(element, news);
 
             if (news.get("标题").trim().isEmpty() | content.trim().isEmpty()) {
-                isdiv = false;
+                //System.out.println("$$$$$$$$$");
+                isdiv = false;    //不是我们要找的div块
             }
             if (isdiv) {
                 news.put("内容", content);
@@ -135,22 +136,29 @@ public class ExtractNews extends InfoExtract {
                 content = "";
                 time = "";
                 isdiv = true;
+                news.put("摘要", "");
+                news.put("标题", "");
                 break;
             }
             content = "";
             time = "";
             isdiv = true;
+            news.put("标题", "");
         }
-
+        news.put("摘要", "");
         result.add(news);
         return result;
     }
 
     public static void traverse_my(Element root, News news) {
         Elements nodes_in = root.children();
-        int i = nodes_in.size();
-        if (i == 0) {
+        int i = nodes_in.size();  //获取子节点的个数
+        if (i == 0) {    //若其中无子节点，则将其中的文本取出
+            //System.out.println("judge！");
             String s = root.text().trim();
+            //System.out.println("########"+s);
+            //寻找摘要（比较局限）
+            //System.out.println("########"+s);
             if (s.contains("文章简介") | s.contains("导读")) {
                 brief = true;
             } else {
@@ -160,12 +168,13 @@ public class ExtractNews extends InfoExtract {
                     if (!isTitle(root, news)) {
                         //System.out.println(s);
                         if (!s.trim().isEmpty()) {
-                            if (!flag_t) {
+                            if (flag_t == false) {    //还没有找到时间
                                 if (isTimeAll(s)) {
+                                    System.out.println("@@@@@@@" + s);
                                     time += s_match;
                                     time += " ";
                                     s_match = "";
-                                    flag_t1 = true; //找到了时间的开始标志
+                                    flag_t1 = true;  //找到了时间的开始标志
                                     //System.out.println("@@@@@"+time);
                                     if (root.nextElementSibling() != null) {
                                         String time = root.nextElementSibling().text();
@@ -189,7 +198,7 @@ public class ExtractNews extends InfoExtract {
                                             content = content + root.text();
                                         }
                                     } else {
-                                        if ((!isTag(s)) && (!isSpecial(s)) && (!isView(s)) && (!isSymbol(s))) {  //若不是无用标签，则为网页内容content
+                                        if ((!isTag(s)) && (!isSpecial(s)) && (!isView(s)) && (!isSymbol(s))) {    //若不是无用标签，则为网页内容content
                                             if (isNum(s) | isKanji(s)) {
                                                 content = content + root.text();
                                             } else {
@@ -200,12 +209,12 @@ public class ExtractNews extends InfoExtract {
                                 }
                             } else {
                                 String s1 = root.text().trim();
-                                if (!(s1.isEmpty() || s1.equals(""))) {
+                                if (!(s1.isEmpty() || s1 == "")) {
                                     if ((!isSundry(s1)) && (!isTag(s1)) && (!isSpecial(s1)) && (!isView(s1)) && (!isSymbol(s1))) {
                                         if (isNum(s1) | isKanji(s1)) {
                                             content = content + s1;
                                         } else {
-                                            content = content + "\r\n" + s1; //在上一个content1的基础上加
+                                            content = content + "\r\n" + s1;    //在上一个content1的基础上加
                                             //System.out.println("%%%%%%%%%"+root.tagName()+"   "+root.id()+"  "+s1);
                                         }
                                     }
@@ -216,19 +225,21 @@ public class ExtractNews extends InfoExtract {
                     }
                 }
             }
+
+
         } else {
             for (Element node : nodes_in) {
                 traverse_my(node, news);
             }
             root.children().remove();
-            String s2 = root.text().trim();
+            String s2 = root.text().trim();   //获得剩余的文本
             if (!s2.isEmpty()) {
                 if (flag_t == false) {
                     if (isTimeAll(s2)) {
                         time += s_match;
                         time += " ";
                         s_match = "";
-                        flag_t1 = true; //找到了时间的开始标志
+                        flag_t1 = true;  //找到了时间的开始标志
                         //System.out.println("@@@@@"+time);
                         if (root.nextElementSibling() != null) {
                             String time = root.nextElementSibling().text();
@@ -250,7 +261,7 @@ public class ExtractNews extends InfoExtract {
                             s_match = "";
                         } else {
                             if ((!isSundry(s2)) && (!isTag(s2)) && (!isSpecial(s2)) && (!isView(s2)) && (!isSymbol(s2))) {
-                                if (brief) { //如果是简介
+                                if (brief) {   //如果是简介
                                     news.put("摘要", s2);
                                     brief = false;
                                 } else {
@@ -265,11 +276,20 @@ public class ExtractNews extends InfoExtract {
                 } else {
                     if (!(s2.isEmpty() || s2 == "")) {
                         if ((!isSundry(s2)) && (!isTag(s2)) && (!isSpecial(s2)) && (!isView(s2)) && (!isSymbol(s2))) {
-                            content = content + "\r\n" + s2; //在上一个content1的基础上加
-                            //System.out.println("%%%%%%%%%"+root.tagName()+"   "+root.id()+"  "+s1);
+                            //System.out.println("%%%%%%%%%%%$$$$$$$$^^^^^^^^^^^^^^^^^^^^^^^^");
+                            if (brief) {   //如果是简介
+                                news.put("摘要", s2);
+                                brief = false;
+                            } else {
+                                if (!s2.equals("无")) {
+                                    content = content + "\r\n" + s2;
+                                    //System.out.println("%%%%%%%%%"+root.tagName()+"   "+root.id()+"  "+s2);
+                                }
+                            }
                         }
                     }
                 }
+
             }
         }
 
@@ -328,21 +348,29 @@ public class ExtractNews extends InfoExtract {
             return false;   //已经有标题，则不是标题
         }
         String tagName = root.tagName();
-        if (tagName.equals("h1") | tagName.equals("h2") | tagName.equals("h3") | tagName.equals("h4") | root.tagName().equals("font") | root.tagName().equals("strong")) {
-            flag = true;  //找到标题
+        if (tagName.equals("h1") | tagName.equals("h2") | tagName.equals("h3") | tagName.equals("h4") | root.tagName().equals("font")) {
+            flag = true;    //找到标题
             //System.out.println("标题："+root.text());
             news.put("标题", root.text());
             return flag;
         }
         if (root.className().equals("title") | root.className().contains("head")) {
-            flag = true;  //找到标题
+            flag = true;    //找到标题
             news.put("标题", root.text());
             return flag;
+        }
+        if (root.tagName().equals("strong")) {
+            String s = root.text().trim();
+            if (s.getBytes().length > 20) {
+                flag = true;
+                news.put("标题", s);
+                return flag;
+            }
         }
         return false;
     }
 
-    public static boolean isSource(String s) { //判断是否是新闻：依据：含有“来源：”字样
+    public static boolean isSource(String s) {
         Pattern p = Pattern.compile("来源：");
         Matcher matcher = p.matcher(s);
         if (matcher.find()) {
@@ -356,16 +384,22 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isView(String s) { //网友看法
+    public static boolean isView(String s) {
         Pattern p = Pattern.compile("网友看法");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
             return true;
         }
+        if (s.contains("评论")) {
+            if (!s.contains("评论，") && (!s.contains("评论”"))) {
+                return true;
+            }
+
+        }
         return false;
     }
 
-    public static boolean isNum(String s) { //单数字
+    public static boolean isNum(String s) {
         Pattern p = Pattern.compile("\\d{1,4}");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
@@ -374,7 +408,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isKanji(String s) { //单个汉字
+    public static boolean isKanji(String s) {
         Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
@@ -424,7 +458,7 @@ public class ExtractNews extends InfoExtract {
         return doc;
     }
 
-    public static Document web_Clean(Document doc) {
+    public static Document web_Clean(Document doc) {   //网页清洗，去掉无用标签
         doc.select("div[class~=active*]").remove();
         //doc.select("div[class~=box*]").remove();
         doc.select("div[class=tit clr]").remove();
@@ -472,6 +506,9 @@ public class ExtractNews extends InfoExtract {
         doc.select("table[id=news2]").remove();
         doc.select("table[id=news]").remove();
         doc.select("table[class=left_border]").remove();
+        doc.select("td[class=hjpl]").remove();
+        doc.select("div[class=right_12 fr]").remove();
+        doc.select("div[class=right fl]").remove();
         //doc.select("ul").remove();
         //doc.select("ol").remove();
         doc.select("span[class=close-button]").remove();   //关闭雷锋广告
@@ -479,7 +516,12 @@ public class ExtractNews extends InfoExtract {
     }
 
     public static Document clean_Again(Document doc) {
-        doc.select("ul").remove();
+        Elements uls = doc.select("ul");
+        for (Element ul : uls) {
+            if (!ul.parent().className().equals("text")) {
+                ul.remove();
+            }
+        }
         doc.select("ol").remove();
         doc.select("div[class=mainmiddle-left]").remove();
         return doc;

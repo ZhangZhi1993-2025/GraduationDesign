@@ -20,6 +20,10 @@
         /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/places
     </places>
 
+    <pattern>
+        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/cn/edu/njnu/infoextract/impl/activities/rule_store/
+    </pattern>
+
     <!-- 配置类别目录名及对应的解析类 -->
     <categories>
 
@@ -29,10 +33,6 @@
 
         <category name="projects">
             cn.edu.njnu.infoextract.impl.ExtractProjects
-        </category>
-
-        <category name="activities">
-            cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities
         </category>
 
     </categories>

@@ -61,12 +61,12 @@ public class ExtractIncubators extends InfoExtract {
         for (ValueFeature i : PatternStore.valuepattern) {
             Elements MatchRootList = root.select("[" + i.getAttr() + "~=(.*)" + i.getClassname() + "(.*)]");
             if (MatchRootList.isEmpty() == false) {
-                System.out.println(i.toString());
+                //System.out.println(i.toString());
                 for (int index = 0; index < MatchRootList.size(); index++) {
                     Element MatchRoot = MatchRootList.get(index);
                     for (Element p : MatchRoot.select(i.getTag())) {
                         if (p == null) {//没有匹配对应到对应标签，可能不是这棵子树
-                            System.out.println("p===null");
+                            //System.out.println("p===null");
                             break;
                         } else {
                             if (IspatternValue(p, i) == true) {
@@ -77,7 +77,7 @@ public class ExtractIncubators extends InfoExtract {
                                     s_value = p.absUrl("src");
                                 } else
                                     s_value = p.text();
-                                System.out.println("s_value alone:" + s_value);
+                                //System.out.println("s_value alone:" + s_value);
                                 p.remove();
                                 break;
                             } else
@@ -99,27 +99,27 @@ public class ExtractIncubators extends InfoExtract {
                 kflag = false;
                 Elements MatchedParentRoots = root.select(i.getKey_parent_tag() + "[class~=(.*)" + i.getKey_parent_class() + "(.*)]");
                 if (MatchedParentRoots.isEmpty() == false) { // if get matched parent roots' list.
-                    System.out.println("find parent root");
+                    //System.out.println("find parent root");
                     for (int index_parent = 0; index_parent < MatchedParentRoots.size(); index_parent++) {
-                        System.out.println(i.toString());
+                        //System.out.println(i.toString());
                         Element MatchedParentRoot = MatchedParentRoots.get(index_parent);
                         //find key root.
                         Elements MatchedKeyRoots = MatchedParentRoot.select("[class~=(.*)" + i.getKey_class() + "(.*)]");
                         if (MatchedKeyRoots.isEmpty() == false) {
-                            System.out.println("find key root");
+                            //System.out.println("find key root");
                             for (int index_key = 0; index_key < MatchedKeyRoots.size(); index_key++) {
                                 Element MatchedKeyRoot = MatchedKeyRoots.get(index_key);
                                 //find key tag
                                 Elements tags = MatchedKeyRoot.select(i.getKey_tag());
                                 if (!tags.isEmpty()) {
-                                    System.out.println("find key tag");
+                                    //System.out.println("find key tag");
                                     for (int index_tag = 0; index_tag < tags.size(); index_tag++) {
                                         Element tag = tags.get(index_tag);
                                         if (IspatternKey(tag, i)) {
                                             if (!tag.equals(MatchedKeyRoot)) {
                                                 kflag = true;
                                                 //find matched key
-                                                System.out.println("Key::" + tag.text());
+                                                //System.out.println("Key::" + tag.text());
                                                 s_key = tag.text();
                                                 tag.remove();
                                                 break;
@@ -138,21 +138,21 @@ public class ExtractIncubators extends InfoExtract {
                         } else//if it isnt find key, look for next parent root.
                             continue;
                         if (kflag == true) {//if it has find key, then look for matched value
-                            System.out.println("look for matched value");
+                            //System.out.println("look for matched value");
                             Elements MatchedValueRoots = MatchedParentRoots.select("[class~=(.*)" + i.getValue_class() + "(.*)]");
                             if (!MatchedValueRoots.isEmpty()) {
-                                System.out.println("find value root");
+                                //System.out.println("find value root");
                                 for (int index_value = 0; index_value < MatchedValueRoots.size(); index_value++) {
                                     Element MatchedValueRoot = MatchedValueRoots.get(index_value);
                                     Elements tags = MatchedValueRoot.select(i.getValue_tag());
                                     if (!tags.isEmpty()) {
-                                        System.out.println("find value tag");
+                                        //System.out.println("find value tag");
                                         for (int index_tag = 0; index_tag < tags.size(); index_tag++) {
                                             Element tag = tags.get(index_tag);
                                             if (IsKey_Value(tag, i)) {
                                                 if (!tag.equals(MatchedValueRoot)) {
-                                                    System.out.println("find value");
-                                                    System.out.println("value::" + tag.text());
+                                                    //System.out.println("find value");
+                                                    //System.out.println("value::" + tag.text());
                                                     s_value = tag.text();
                                                     tag.remove();
                                                     vflag = true;
@@ -201,7 +201,7 @@ public class ExtractIncubators extends InfoExtract {
                 //String[] brsplit=new String[1];
                 //brsplit[0]=s_value;
                 for (int i = 0; i < brsplit.length; i++) {
-                    System.out.println("index" + i + "::" + brsplit[i]);
+                    //System.out.println("index" + i + "::" + brsplit[i]);
                     Pattern patternx = Pattern.compile("(.{0,8})(:|：)(.*)");
                     Matcher mx = patternx.matcher(brsplit[i]);
                     if (mx.matches()) {
@@ -248,8 +248,8 @@ public class ExtractIncubators extends InfoExtract {
                 next_tag = "last";
             else
                 next_tag = root.nextElementSibling().tagName();
-            System.out.println("pre_tag:" + pre_tag);
-            System.out.println("next_tag:" + next_tag);
+            //System.out.println("pre_tag:" + pre_tag);
+            //System.out.println("next_tag:" + next_tag);
             if (pre_tag.equals(feature.getLeft_tag()) && next_tag.equals(feature.getRight_tag())) {
                 return true;
             } else

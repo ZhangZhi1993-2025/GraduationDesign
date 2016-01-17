@@ -12,12 +12,12 @@ import java.io.*;
 public class Incubator extends Extractable {
 
     @Override
-    public void persistData(String outputFile, String url) throws IOException {
+    public void persistData(String outputFile, String url, boolean hasPost) throws IOException {
         File file = new File(outputFile + "incubators");
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(file, true), "UTF-8"))) {
 
-            bw.write("**************" + url + "********************");
+            bw.write("**************" + url + "********************是否成功提交数据库:" + hasPost);
             bw.newLine();
             for (Pair pair : data) {
                 bw.write(pair.key + ":" + pair.value);

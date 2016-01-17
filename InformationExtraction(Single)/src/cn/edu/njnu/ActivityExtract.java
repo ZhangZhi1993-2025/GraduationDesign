@@ -1,9 +1,9 @@
 package cn.edu.njnu;
 
 import cn.edu.njnu.domain.Extractable;
-import cn.edu.njnu.domain.ext.Incubator;
+import cn.edu.njnu.domain.ext.Activity;
 import cn.edu.njnu.infoextract.InfoExtract;
-import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
+import cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities;
 
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
@@ -24,9 +24,9 @@ import java.util.*;
 
 /**
  * Created by zhangzhi on 16-1-7.
- * 用于提取孵化器地址
+ * 用于提取活动地址
  */
-public class PlacesExtract {
+public class ActivityExtract {
 
     //页面存放的根目录
     protected File baseFile;
@@ -49,11 +49,11 @@ public class PlacesExtract {
      * @param baseFile   页面存放的根目录
      * @param outputFile outputFile
      */
-    public PlacesExtract(String baseFile, String outputFile, Map<String, String> placeToPid) {
+    public ActivityExtract(String baseFile, String outputFile, Map<String, String> placeToPid) {
         this.outputFile = outputFile;
         this.baseFile = new File(baseFile);
-        this.folderName = "incubators";
-        this.ie = new ExtractIncubators();
+        this.folderName = "activities";
+        this.ie = new ExtractActivities();
         this.placeToPid = placeToPid;
     }
 
@@ -101,53 +101,48 @@ public class PlacesExtract {
                 JSONObject lc = rt.getJSONObject("location");
                 lng = lc.getDouble("lng");
                 lat = lc.getDouble("lat");
-            } else {
-                JSONObject redata = ie.canBePlace(desc, city);
-                lng = redata.getJSONObject("location").getDouble("lng");
-                lat = redata.getJSONObject("location").getDouble("lat");
-                title = redata.getString("name");
-                desc = redata.getString("address");
-            }
-            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
-            JSONObject data = new JSONObject();
-            if (title.equals(""))
-                title = ie.extractTitle(desc, city);
-            data.put("title", title);
-            data.put("des", desc);
-            data.put("abs", abs);
-            data.put("pic", pic);
-            data.put("url", url);
-            data.put("lat", lat);
-            data.put("lng", lng);
-            data.put("type", "孵化器");
-            data.put("other", other);
-            //生成参数对
-            List<NameValuePair> params = new ArrayList<>();
-            params.add(new BasicNameValuePair("data", data.toString()));
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
-            method.setEntity(entity);
 
-            //请求post
-            HttpResponse result2 = httpClient.execute(method);
-            String resData = EntityUtils.toString(result2.getEntity());
-            //获得结果
-            JSONObject resJson = JSONObject.fromObject(resData);
-            if (resJson.getInt("code") == 1) {
-                JSONObject result3 = resJson.getJSONObject("data");
-                if (result3.getInt("status") == 1) {
-                    String pid = result3.getString("pid");
-                    placeToPid.put(url, pid);
-                    extractable.put("标题", title);
-                    extractable.put("地址", desc);
-                    extractable.put("描述", abs);
-                    extractable.put("URL", url);
-                    extractable.put("坐标", "(E" + lng + ",N" + lat + ")");
-                    return true;
+                HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
+                JSONObject data = new JSONObject();
+                if (title.equals(""))
+                    title = "创客聚会";
+                data.put("title", title);
+                data.put("des", desc);
+                data.put("abs", abs);
+                data.put("pic", pic);
+                data.put("url", url);
+                data.put("lat", lat);
+                data.put("lng", lng);
+                data.put("type", "众创活动");
+                data.put("other", other);
+                //生成参数对
+                List<NameValuePair> params = new ArrayList<>();
+                params.add(new BasicNameValuePair("data", data.toString()));
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+                method.setEntity(entity);
+
+                //请求post
+                HttpResponse result2 = httpClient.execute(method);
+                String resData = EntityUtils.toString(result2.getEntity());
+                //获得结果
+                JSONObject resJson = JSONObject.fromObject(resData);
+                if (resJson.getInt("code") == 1) {
+                    JSONObject result3 = resJson.getJSONObject("data");
+                    if (result3.getInt("status") == 1) {
+                        String pid = result3.getString("pid");
+                        placeToPid.put(url, pid);
+                        extractable.put("标题", title);
+                        extractable.put("地址", desc);
+                        extractable.put("描述", abs);
+                        extractable.put("URL", url);
+                        extractable.put("坐标", "( E" + lng + ",  N" + lat + " )");
+                        return true;
+                    } else
+                        return false;
                 } else
                     return false;
             } else
                 return false;
-
         } catch (Exception e) {
             return false;
         }
@@ -191,7 +186,7 @@ public class PlacesExtract {
             }
         }
         try {
-            Extractable extractable = new Incubator();
+            Extractable extractable = new Activity();
             Iterator iterator = other.keys();
             while (iterator.hasNext()) {
                 String key = (String) iterator.next();

@@ -60,8 +60,9 @@ public class ExtractProjects extends InfoExtract {
             //element.select("div[class=inner]").remove();
             element.select("div[class=pic]").remove();
             element.select("div[class=tit]").remove();
-            element.select("div[class=txt]").remove();
+           // element.select("div[class=txt]").remove();
             element.select("button").remove();
+            element.select("div[class=position]").remove();
             //element.select("i").remove();
             element.select("span[class~=nav*]").remove();
             element.select("span[class=text-primary fs12]").remove();
@@ -74,7 +75,7 @@ public class ExtractProjects extends InfoExtract {
             flag = false;
             flag_t = false;
             traverse_my(element, news);
-
+ 
             if (news.get("标题").isEmpty() | content.trim().isEmpty()) {
                 isdiv = false;
             }
@@ -112,32 +113,49 @@ public class ExtractProjects extends InfoExtract {
                 if (!s.trim().isEmpty()) {
 
                     if (flag_t == false) {
-                        //System.out.println("########"+s);
-                        if (isTimeAll(s)) {
-
-                            //System.out.println(root.tagName()+"  "+root.text());
-                            if (s.contains(":")) {
-                                flag_t = true;
-                            }
-                            time += s_match;
-                            time += " ";
-                            s_match = "";
-
-                        } else {
-                            if (isTime(s)) {
-                                time += s_match;
-                                flag_t = true;
-                                s_match = "";
-                            } else {
-                                /*if(root.text().contains("\\b")){
-                                    System.out.println("###########"+root.text());
-								}*/
-                                //root.text().replaceAll("\0x3F", "");
-                                root.text().trim();
-
-                                content = content + "\r\n" + root.text();
-                            }
-                        }
+                		if(isTimeAll(s)){
+    						
+    						//System.out.println(root.tagName()+"  "+root.text());
+    						if(s.contains(":")){
+    							flag_t=true;
+    						}
+    						time+=s_match;
+    						time+=" ";
+    						s_match="";
+    						
+    						
+    					}else{
+    						if(isTime(s)){
+    							time+=s_match;
+    							flag_t=true;
+    							s_match="";
+    						}
+    						else{
+    					
+    							/*if(root.text().contains("\\b")){
+    								System.out.println("###########"+root.text());
+    							}*/
+    							//root.text().replaceAll("\0x3F", "");
+    							
+    							root.text().trim();
+    							if(root.text().contains("：")&&root.tagName()=="li")
+    							{
+    							//	System.out.println("uuuuuuuuu"+root.text());
+    								String[] temp = root.text().trim().split("：");
+    								news.put(temp[0], temp[1]);
+    							//	System.out.println(temp[0]);
+    							}
+    							else{
+    								if(root.text().contains("»"))
+    								{
+    									root.text().replace("»","");
+    									
+    								}
+    								content=content+"\r\n"+root.text();}
+    							
+    						}
+    						
+    					}
                     } else {
                         String s1 = root.text().trim();
                         if (!(s1.isEmpty() || s1 == "")) {
@@ -163,26 +181,49 @@ public class ExtractProjects extends InfoExtract {
             } else {
                 //System.out.println("*********"+s2);
                 if (!s2.isEmpty()) {
-                    if (isTimeAll(s2)) {
-                        //System.out.println("@@@@@@@@@@"+s2);
-                        if (s2.contains(":")) {
-
-                            flag_t = true;
-                        }
-                        time += s_match;
-                        time += " ";
-                        s_match = "";
-                    } else {
-                        if (isTime(s2)) {
-                            time += s_match;
-                            flag_t = true;
-                            s_match = "";
-                        } else {
-                            if (!isSundry(s2)) {
-                                content = content + "\r\n" + s2;
-                            }
-                        }
-                    }
+		if(isTimeAll(s2)){
+						
+						//System.out.println(root.tagName()+"  "+root.text());
+						if(s2.contains(":")){
+							flag_t=true;
+						}
+						time+=s_match;
+						time+=" ";
+						s_match="";
+						
+						
+					}else{
+						if(isTime(s2)){
+							time+=s_match;
+							flag_t=true;
+							s_match="";
+						}
+						else{
+					
+							/*if(root.text().contains("\\b")){
+								System.out.println("###########"+root.text());
+							}*/
+							//root.text().replaceAll("\0x3F", "");
+							
+							root.text().trim();
+							if(root.text().contains("：")&&root.tagName()=="li")
+							{
+							//	System.out.println("uuuuuuuuu"+root.text());
+								String[] temp = root.text().trim().split("：");
+								news.put(temp[0], temp[1]);
+							//	System.out.println(temp[0]);
+							}
+							else{
+								if(root.text().contains("»"))
+								{
+									root.text().replace("»","");
+									
+								}
+								content=content+"\r\n"+root.text();}
+							
+						}
+						
+					}
                 }
             }
         }

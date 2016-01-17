@@ -20,6 +20,7 @@ public class Main {
             ConcurrentHashMap<String, String> placesToPid = loadPlaceToPId(helper);
             //加载新地点信息
             new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
+            new ActivityExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
             //上传数据的地址
             PostDataHelper postDataHelper = new PostDataHelper();
 

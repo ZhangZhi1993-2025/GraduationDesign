@@ -34,6 +34,8 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     //上传内容数据的接口地址
     private String postDataURL;
 
+    private String patternFile;
+
     //类别目录名及对应的解析类
     private List<Pair<String, String>> list = new ArrayList<>();
 
@@ -58,6 +60,9 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
 
             Element rootFile = root.element("source");
             this.rootFile = rootFile.getText().replaceAll("\n", "").trim();
+
+            Element patternFile = root.element("pattern");
+            this.patternFile = patternFile.getText().replaceAll("\n", "").trim();
 
             Element categories = root.element("categories");
             List<Element> nodes = categories.elements();
@@ -123,6 +128,13 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
      */
     public String getPostDataURL() {
         return postDataURL;
+    }
+
+    /**
+     * @return 模式的地址
+     */
+    public String getPatternFile() {
+        return patternFile;
     }
 
     /**
