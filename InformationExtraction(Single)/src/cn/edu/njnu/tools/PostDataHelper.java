@@ -12,11 +12,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by zhangzhi on 16-1-12.
@@ -24,7 +23,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PostDataHelper {
 
+    //记录各个地点所对应的内容信息
     Map<String, JSONObject> postMap = new ConcurrentHashMap<>();
+
+    //数据上传日志
+    List<Pair<Date, Boolean>> postLog = new CopyOnWriteArrayList<>();
 
     /**
      * 往指定JSONObject里添加一个内容项
@@ -33,11 +36,20 @@ public class PostDataHelper {
      * @param data 待添加的内容项
      */
     public void addData(String pid, JSONArray data) {
+        ReentrantLock lock = new ReentrantLock();
         if (postMap.containsKey(pid)) {
-            JSONObject json = postMap.get(pid);
-            JSONArray array = json.getJSONArray("acs");
-            for (int i = 0; i < data.length(); i++)
-                array.put(data.get(i));
+            try {
+                lock.lock();
+                JSONObject json = postMap.get(pid);
+                JSONArray array = json.getJSONArray("acs");
+                for (int i = 0; i < data.length(); i++)
+                    array.put(data.get(i));
+                //数据量大于50则触发批量上传
+                if (array.length() > 50)
+                    post(pid);
+            } finally {
+                lock.unlock();
+            }
         } else {
             JSONObject json = new JSONObject();
             json.put("acs", data);
@@ -46,27 +58,36 @@ public class PostDataHelper {
     }
 
     /**
-     * 批量上传数据
-     *
-     * @return 各pid对应的数据是否成功上传
+     * 打印日志
      */
-    public boolean[] post() {
+    public void printLog() {
+        System.out.println(postLog);
+    }
+
+    protected void post(String pid) {
+        JSONObject data = postMap.get(pid);
+        postMap.remove(pid);
+        new Thread(() -> {
+            postOnePlace(data);
+        });
+    }
+
+    /**
+     * 批量上传数据
+     */
+    public void post() {
         Set<String> keySet = postMap.keySet();
-        boolean[] hasPosted = new boolean[keySet.size()];
-        int index = 0;
         for (String pid : keySet) {
-            hasPosted[index++] = postEachPlace(postMap.get(pid));
+            postOnePlace(postMap.get(pid));
         }
-        return hasPosted;
     }
 
     /**
      * 上传某pid对应的所有数据
      *
      * @param data 某pid下的所有数据
-     * @return 是否上传成功
      */
-    protected boolean postEachPlace(JSONObject data) {
+    protected void postOnePlace(JSONObject data) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
             HttpPost method = new HttpPost(new ParameterHelper().getPostDataURL());
@@ -83,13 +104,14 @@ public class PostDataHelper {
             JSONObject resJson = JSONObject.fromObject(resData);
             if (resJson.getInt("code") == 1) {
                 JSONObject result2 = resJson.getJSONObject("data");
-                return result2.getInt("status") == 1;
+                postLog.add(new Pair<>(new Date(), result2.getInt("status") == 1));
             } else
-                return false;
+                postLog.add(new Pair<>(new Date(), false));
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            postLog.add(new Pair<>(new Date(), false));
+
         }
     }
 

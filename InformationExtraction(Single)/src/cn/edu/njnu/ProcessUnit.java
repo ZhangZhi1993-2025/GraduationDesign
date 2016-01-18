@@ -102,11 +102,11 @@ public class ProcessUnit implements Runnable {
      * @param pid  地点的id号
      * @param info 待上传的数据
      */
-    protected void postData(String pid, List<Extractable> info) {
+    protected void postData(String pid, List<Extractable> info, String url) {
         JSONArray array = new JSONArray();
         for (Extractable extractable : info) {
-            String title = "暂无";
-            String time = "暂无";
+            String title = "";
+            String time = "2015.12.21";
             String content = "暂无";
             String pic = "";
             JSONObject other = new JSONObject();
@@ -122,8 +122,15 @@ public class ProcessUnit implements Runnable {
                 else
                     other.put(pair.key, pair.value);
             }
-            if (title.equals(""))
-                continue;
+            try {
+                if (title.equals("")) {
+                    extractable.persistData(outputFile, url, false);
+                    continue;
+                } else
+                    extractable.persistData(outputFile, url, true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JSONObject item = new JSONObject();
             item.put("title", title);
             item.put("type", ie.getType());
@@ -161,20 +168,12 @@ public class ProcessUnit implements Runnable {
         //    html = "flag " + html;
         //}
         // 将标记flag的html重新写入页面文件中
-        writeHtml(f, html);
+        //writeHtml(f, html);
 
         List<Extractable> info = ie.extractInformation(html);
         if (info != null && info.size() > 0) {
-            if (placeToPid.containsKey(place)) {
-                postData(placeToPid.get(place), info);
-                info.forEach(extraction -> {
-                    try {
-                        extraction.persistData(outputFile, url, true);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-            }
+            if (placeToPid.containsKey(place))
+                postData(placeToPid.get(place), info, url);
         }
     }
 

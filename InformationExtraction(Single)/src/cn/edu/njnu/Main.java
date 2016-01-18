@@ -44,9 +44,8 @@ public class Main {
 
             System.out.println("开始向服务器端写数据");
             //向服务器端提交数据
-            boolean[] hasPosted = postDataHelper.post();
-            for (boolean b : hasPosted)
-                System.out.println("该json是否成功post到服务器端:" + b);
+            postDataHelper.post();
+            postDataHelper.printLog();
 
             //写入地点与pid映射文件
             persisitPlaceToId(helper.getIncubatorsPlaces(), IncubatorsToPid);
