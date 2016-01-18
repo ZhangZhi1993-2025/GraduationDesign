@@ -1,6 +1,6 @@
 package cn.edu.njnu.tools;
 
-import cn.edu.njnu.Main;
+import cn.edu.njnu.ExtractModule;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -49,7 +49,7 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
         try {
             SAXReader reader = new SAXReader();
             Document doc = reader.read(new File(
-                    Main.class.getResource("/config.xml").getPath()));
+                    ExtractModule.class.getResource("/config.xml").getPath()));
             Element root = doc.getRootElement();
 
             Element extractLog = root.element("output");

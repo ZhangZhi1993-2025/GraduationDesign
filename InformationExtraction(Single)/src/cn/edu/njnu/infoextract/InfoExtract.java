@@ -2,6 +2,9 @@ package cn.edu.njnu.infoextract;
 
 import cn.edu.njnu.domain.Extractable;
 import cn.edu.njnu.tidypage.PreProcess;
+
+import static cn.edu.njnu.tools.CoordinateHelper.authority;
+
 import cn.edu.njnu.tidypage.TidyPage;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -289,9 +292,8 @@ public abstract class InfoExtract {
      */
     public JSONObject canBePlace(String item, String city) throws IOException {
         while (true) {
-            String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
             String request = "http://api.map.baidu.com/place/v2/search?" +
-                    "q=创业" + "&region=" + city + "&output=json&ak=" + appkey
+                    "q=创业" + "&region=" + city + "&output=json&ak=" + authority
                     + "&page_num=" + page;
             String response = getResponseFromRequest(request);
             if (response != null && JSONObject.fromObject(response).getInt("total") != 0)
@@ -313,15 +315,14 @@ public abstract class InfoExtract {
         int currentPage = 0;
         int currentItem = 0;
         int loop = 10;
-        String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
         String request = "http://api.map.baidu.com/place/v2/search?" +
-                "q=创业" + "&region=" + city + "&output=json&ak=" + appkey
+                "q=创业" + "&region=" + city + "&output=json&ak=" + authority
                 + "&page_num=" + currentPage;
         while (loop-- > 0) {
             if (page > 0) {
                 currentPage = new Random(System.currentTimeMillis()).nextInt(page);
                 request = "http://api.map.baidu.com/place/v2/search?" +
-                        "q=创业$孵化器" + "&region=" + city + "&output=json&ak=" + appkey
+                        "q=创业$孵化器" + "&region=" + city + "&output=json&ak=" + authority
                         + "&page_num=" + currentPage;
             }
             String response = getResponseFromRequest(request);

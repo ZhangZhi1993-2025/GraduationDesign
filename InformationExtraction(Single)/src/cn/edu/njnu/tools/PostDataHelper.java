@@ -44,8 +44,8 @@ public class PostDataHelper {
                 JSONArray array = json.getJSONArray("acs");
                 for (int i = 0; i < data.length(); i++)
                     array.put(data.get(i));
-                //数据量大于50则触发批量上传
-                if (array.length() > 50)
+                //数据量大于30则触发批量上传
+                if (array.length() > 30)
                     post(pid);
             } finally {
                 lock.unlock();
