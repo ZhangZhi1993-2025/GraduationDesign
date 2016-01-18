@@ -9,6 +9,7 @@ import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,10 +20,23 @@ public class TestInfoExtract {
 
     @Test
     public void testExtractNews() {
-        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
-        InfoExtract ie = new ExtractNews();
-        //List<Extractable> result = ie.extractInformation(html);
-        //System.out.print(result);
+        /*try {
+            File folder = new File("/home/zhangzhi/Documents/folder");
+            File[] list = folder.listFiles();
+            if (list != null) {
+                for (File file : list) {
+                    String html = Main.getHtml(file);
+                    InfoExtract ie = new ExtractNews();
+                    List<Extractable> result = ie.extractInformation(html);
+                    if (result != null) {
+                        for (Extractable e : result)
+                            e.persistData("/home/zhangzhi/Documents/folder2", "", true);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Test
@@ -43,10 +57,35 @@ public class TestInfoExtract {
 
     @Test
     public void testExtractProjects() {
-        //String html = Main.getHtml(new File("/home/zhangzhi/Documents/test.htm"));
-        InfoExtract ie = new ExtractProjects();
-        //List<Extractable> result = ie.extractInformation(html);
-        //System.out.print(result);
+        /*try {
+            File folder = new File("/home/zhangzhi/Documents/folder");
+            File[] list = folder.listFiles();
+            if (list != null) {
+                for (File file : list) {
+                    String html = Main.getHtml(file);
+                    InfoExtract ie = new ExtractProjects();
+                    List<Extractable> result = ie.extractInformation(html);
+                    if (result != null) {
+                        for (Extractable e : result)
+                            e.persistData("/home/zhangzhi/Documents/", "", true);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        /*try {
+            File file = new File("/home/zhangzhi/Documents/test.htm");
+            String html = Main.getHtml(file);
+            InfoExtract ie = new ExtractProjects();
+            List<Extractable> result = ie.extractInformation(html);
+            if (result != null) {
+                for (Extractable e : result)
+                    e.persistData("/home/zhangzhi/Documents/", "", true);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
 }

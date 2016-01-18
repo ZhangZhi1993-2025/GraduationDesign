@@ -25,8 +25,11 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     //抽取数据本地输出目录路径
     private String outputFile;
 
-    //抽取地点与pid映射文件
-    private String places;
+    //抽取孵化器地点与pid映射文件
+    private String incubatorsPlaces;
+
+    //抽取活动地点与pid映射文件
+    private String activitiesPlaces;
 
     //上传地点数据的接口地址
     private String postPlaceURL;
@@ -52,8 +55,11 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
             Element extractLog = root.element("output");
             this.outputFile = extractLog.getText().replaceAll("\n", "").trim();
 
-            Element places = root.element("places");
-            this.places = places.getText().replaceAll("\n", "").trim();
+            Element incubatorsPlaceslaces = root.element("incubatorsPlaces");
+            this.incubatorsPlaces = incubatorsPlaceslaces.getText().replaceAll("\n", "").trim();
+
+            Element activitiesPlaces = root.element("activitiesPlaces");
+            this.activitiesPlaces = activitiesPlaces.getText().replaceAll("\n", "").trim();
 
             Element poolsize = root.element("poolsize");
             this.poolsize = Integer.valueOf(poolsize.getText().replaceAll("\n", "").trim());
@@ -107,13 +113,13 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
         return outputFile;
     }
 
-    /**
-     * 抽取地点pid文件
-     *
-     * @return 抽取地点pid文件
-     */
-    public String getPlaces() {
-        return places;
+
+    public String getIncubatorsPlaces() {
+        return incubatorsPlaces;
+    }
+
+    public String getActivitiesPlaces() {
+        return activitiesPlaces;
     }
 
     /**

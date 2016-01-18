@@ -16,31 +16,41 @@ public class Main {
         try {
             //从ParameterGetter中获取配置文件的配置参数
             ParameterHelper helper = new ParameterHelper();
+
             //加载地点与pid的映射文件
-            ConcurrentHashMap<String, String> placesToPid = loadPlaceToPId(helper);
+            ConcurrentHashMap<String, String> IncubatorsToPid =
+                    loadPlaceToPId(helper.getIncubatorsPlaces());
+            ConcurrentHashMap<String, String> ActivitiesToPid =
+                    loadPlaceToPId(helper.getActivitiesPlaces());
+
             //加载新地点信息
-            new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
-            new ActivityExtract(helper.getRootFile(), helper.getOutputFile(), placesToPid).run();
+            new PlacesExtract(helper.getRootFile(), helper.getOutputFile(), IncubatorsToPid).run();
+            new ActivityExtract(helper.getRootFile(), helper.getOutputFile(), ActivitiesToPid).run();
+
             //上传数据的地址
             PostDataHelper postDataHelper = new PostDataHelper();
 
             //向线程池提交任务
             ExecutorService handlePage = Executors.newFixedThreadPool(helper.getPoolsize());
             CountDownLatch latch = new CountDownLatch(helper.getPoolsize());
+
             for (Pair<String, String> pair : helper)
                 handlePage.submit(new ProcessUnit
                         (pair, new File(helper.getRootFile()), helper.getOutputFile(),
-                                placesToPid, postDataHelper, latch));
+                                IncubatorsToPid, postDataHelper, latch));
             handlePage.shutdown();
+            System.out.println("****************** latch********************");
             latch.await();
 
+            System.out.println("开始向服务器端写数据");
             //向服务器端提交数据
             boolean[] hasPosted = postDataHelper.post();
             for (boolean b : hasPosted)
                 System.out.println("该json是否成功post到服务器端:" + b);
 
             //写入地点与pid映射文件
-            persisitPlaceToId(helper, placesToPid);
+            persisitPlaceToId(helper.getIncubatorsPlaces(), IncubatorsToPid);
+            persisitPlaceToId(helper.getActivitiesPlaces(), ActivitiesToPid);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,15 +60,15 @@ public class Main {
     /**
      * 加载地点与pid的映射文件
      *
-     * @param helper 参数获得类
+     * @param place 参数获得类
      * @return 地点到pid的映射map
      * @throws IOException
      * @throws ClassNotFoundException
      */
     @SuppressWarnings("unchecked")
-    public static ConcurrentHashMap<String, String> loadPlaceToPId(ParameterHelper helper)
+    public static ConcurrentHashMap<String, String> loadPlaceToPId(String place)
             throws IOException, ClassNotFoundException {
-        File placesFile = new File(helper.getPlaces());
+        File placesFile = new File(place);
         if (placesFile.exists()) {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(placesFile));
             return (ConcurrentHashMap<String, String>) ois.readObject();
@@ -69,20 +79,33 @@ public class Main {
     /**
      * 写入地点与pid映射文件
      *
-     * @param helper      参数获得类
+     * @param place       参数获得类
      * @param placesToPid 地点到pid的映射map
      * @throws IOException
      * @throws ClassNotFoundException
      */
     @SuppressWarnings("unchecked")
     public static void persisitPlaceToId
-    (ParameterHelper helper, ConcurrentHashMap<String, String> placesToPid)
+    (String place, ConcurrentHashMap<String, String> placesToPid)
             throws IOException, ClassNotFoundException {
-        File placesFile = new File(helper.getPlaces());
+        File placesFile = new File(place);
         if (!placesFile.exists())
             placesFile.createNewFile();
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(placesFile));
         oos.writeObject(placesToPid);
     }
 
+ /*   public static String getHtml(File file) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                new FileInputStream(file), "UTF-8"))) {
+            StringBuilder sb = new StringBuilder();
+            String buffer;
+            while ((buffer = br.readLine()) != null)
+                sb.append(buffer);
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }*/
 }

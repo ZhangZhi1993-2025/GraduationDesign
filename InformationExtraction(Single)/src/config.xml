@@ -3,7 +3,7 @@
 <config>
 
     <!-- 配置线程数 -->
-    <poolsize>3</poolsize>
+    <poolsize>2</poolsize>
 
     <!-- 配置数据源根目录路径 -->
     <source>
@@ -16,9 +16,13 @@
     </output>
 
     <!-- 配置地点存放文件路径 -->
-    <places>
-        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/places
-    </places>
+    <incubatorsPlaces>
+        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/IncubatorsPlaces
+    </incubatorsPlaces>
+
+    <activitiesPlaces>
+        /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/ActivitiesPlaces
+    </activitiesPlaces>
 
     <pattern>
         /home/zhangzhi/Documents/graduation_design/code/InformationExtraction(Single)/out/production/InformationExtraction/cn/edu/njnu/infoextract/impl/activities/rule_store/

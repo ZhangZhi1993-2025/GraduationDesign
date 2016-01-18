@@ -2,6 +2,8 @@ package cn.edu.njnu.infoextract.impl.activities.Tool;
 
 import cn.edu.njnu.tools.ParameterHelper;
 
+import java.io.IOException;
+
 public class Tool_Rule_Store {
 
     String files_direction = new ParameterHelper().getPatternFile();

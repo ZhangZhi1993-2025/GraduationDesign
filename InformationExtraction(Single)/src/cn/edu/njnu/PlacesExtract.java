@@ -5,6 +5,7 @@ import cn.edu.njnu.domain.ext.Incubator;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 
+import cn.edu.njnu.tidypage.TidyPage;
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
 import cn.edu.njnu.tools.ParameterHelper;
@@ -105,7 +106,10 @@ public class PlacesExtract {
                 JSONObject redata = ie.canBePlace(desc, city);
                 lng = redata.getJSONObject("location").getDouble("lng");
                 lat = redata.getJSONObject("location").getDouble("lat");
-                title = redata.getString("name");
+                if (title.equals("")) {
+                    title = redata.getString("name");
+                    url = new TidyPage("").tidyURL(url);
+                }
                 desc = redata.getString("address");
             }
             HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
@@ -167,7 +171,7 @@ public class PlacesExtract {
         for (File f : list) {
             String html = getHtml(f);
             List<Extractable> info = ie.extractInformation(html);
-            if (info != null) {
+            if (info != null && info.size() > 0) {
                 for (Extractable extractable : info) {
                     for (Pair<String, String> pair : extractable) {
                         if (pair.key.contains("标题") && pair.value.length() > title.length())
@@ -239,7 +243,9 @@ public class PlacesExtract {
                 String place = current.getParentFile().getName();
                 process(list, place, findCity(current));
             } else {
-                if (list[0].isFile())
+                if (list.length == 0)
+                    return;
+                else if (list[0].isFile())
                     return;
                 Arrays.stream(list).forEach(this::searchForTarget);
             }

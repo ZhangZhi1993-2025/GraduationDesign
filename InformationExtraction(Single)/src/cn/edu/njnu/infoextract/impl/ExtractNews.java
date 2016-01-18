@@ -35,7 +35,7 @@ public class ExtractNews extends InfoExtract {
     static boolean flag = false;    //判断是否已经找到标题
     static boolean flag_t = false;  //判断是否找到时间
     static boolean flag_t1 = false; //判断时间的另一个标准
-    static boolean flag_n = false;  //是否是新闻
+    static boolean flag_t2 = false;  //是否是新闻
     static boolean brief = false;  //下面是否是摘要
     static String content = "";   //保存网页的内容
     static String content1 = "";  //保存一个div节点中的内容
@@ -43,6 +43,8 @@ public class ExtractNews extends InfoExtract {
     static String s_match = "";
     static boolean isdiv = true;
 
+    //判断是否是新闻类型的网页
+    //判断是否是新闻类型的网页
     public static boolean isNews(Document doc) {
         Elements es = doc.select("a");
         String text = "";
@@ -78,6 +80,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
+
     @Override
     public String getType() {
         return "新闻资讯";
@@ -86,10 +89,10 @@ public class ExtractNews extends InfoExtract {
     @Override
     public List<Extractable> extractInformation(String html) {
         Document doc = parseHTML(html);
-        doc = web_Clean(doc);
+        doc = web_Clean(doc); //网页清洗
         if (!isNews(doc))
             return null;
-        doc = clean_Again(doc);
+        doc = clean_Again(doc);    //再次清洗
         List<Extractable> result = new ArrayList<>();
         News news = new News();
 
@@ -123,7 +126,7 @@ public class ExtractNews extends InfoExtract {
             flag_t = false;
             flag_t1 = false;
             news.put("标题", "");
-
+            //深度优先遍历
             traverse_my(element, news);
 
             if (news.get("标题").trim().isEmpty() | content.trim().isEmpty()) {
@@ -133,24 +136,21 @@ public class ExtractNews extends InfoExtract {
             if (isdiv) {
                 news.put("内容", content);
                 news.put("时间", time);
-                content = "";
-                time = "";
-                isdiv = true;
-                news.put("摘要", "");
-                news.put("标题", "");
-                break;
+                result.add(news);
+                return result;
             }
             content = "";
             time = "";
             isdiv = true;
             news.put("标题", "");
         }
-        news.put("摘要", "");
-        result.add(news);
-        return result;
+
+        return new ArrayList<>();
     }
 
-    public static void traverse_my(Element root, News news) {
+    //对被查询的元素执行一次深度优先遍历（针对新闻类型的网页）
+    public static void traverse_my(Element root, News news) {  //root为最大的div节点
+        //System.out.println("@@@@@"+"  "+root.tagName()+" "+root.children().size()+"  "+root.text());
         Elements nodes_in = root.children();
         int i = nodes_in.size();  //获取子节点的个数
         if (i == 0) {    //若其中无子节点，则将其中的文本取出
@@ -202,7 +202,11 @@ public class ExtractNews extends InfoExtract {
                                             if (isNum(s) | isKanji(s)) {
                                                 content = content + root.text();
                                             } else {
-                                                content = content + "\r\n" + root.text();
+                                                if (flag_t2) {
+                                                    flag_t2 = false;
+                                                } else {
+                                                    content = content + "\r\n" + root.text();
+                                                }
                                             }
                                         }
                                     }
@@ -214,8 +218,12 @@ public class ExtractNews extends InfoExtract {
                                         if (isNum(s1) | isKanji(s1)) {
                                             content = content + s1;
                                         } else {
-                                            content = content + "\r\n" + s1;    //在上一个content1的基础上加
-                                            //System.out.println("%%%%%%%%%"+root.tagName()+"   "+root.id()+"  "+s1);
+                                            if (flag_t2) {
+                                                flag_t2 = false;
+                                            } else {
+                                                content = content + "\r\n" + s1;    //在上一个content1的基础上加
+                                                //System.out.println("%%%%%%%%%"+root.tagName()+"   "+root.id()+"  "+s1);
+                                            }
                                         }
                                     }
                                 }
@@ -225,8 +233,6 @@ public class ExtractNews extends InfoExtract {
                     }
                 }
             }
-
-
         } else {
             for (Element node : nodes_in) {
                 traverse_my(node, news);
@@ -292,14 +298,14 @@ public class ExtractNews extends InfoExtract {
 
             }
         }
-
     }
 
-    public static void img_URL(Element doc, String filename) throws IOException {
+    //下载图片
+    public static void img_URL(Element doc, String filename) throws IOException { //输入参数是最大div节点
 
         Element image = doc.select("img").first();
         String url = image.absUrl("src");
-
+        //下载图片
         URL url1 = new URL(url);
         URLConnection uc = url1.openConnection();
         InputStream is = uc.getInputStream();
@@ -315,7 +321,6 @@ public class ExtractNews extends InfoExtract {
         Pattern p = Pattern.compile("(\\d{1,4}[-|\\/|年|\\.]\\d{1,2}[-|\\/|月|\\.]\\d{1,2}([日|号])?(\\s)*(\\d{1,2}([点|时])?((:)?\\d{1,2}(分)?((:)?\\d{1,2}(秒)?)?)?)?(\\s)*(PM|AM)?)");
         Matcher matcher = p.matcher(time);
         if (matcher.find()) {
-
             s_match = matcher.group();
             return true;
         }
@@ -327,7 +332,6 @@ public class ExtractNews extends InfoExtract {
         Matcher matcher = p.matcher(Date);
         if (matcher.find()) {
             s_match = matcher.group();
-            //System.out.println("@@@@@@@@@@@@"+s_match);
             return true;
         }
         return false;
@@ -370,7 +374,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isSource(String s) {
+    public static boolean isSource(String s) { //判断是否是新闻：依据：含有“来源：”字样
         Pattern p = Pattern.compile("来源：");
         Matcher matcher = p.matcher(s);
         if (matcher.find()) {
@@ -384,7 +388,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isView(String s) {
+    public static boolean isView(String s) {  //网友看法
         Pattern p = Pattern.compile("网友看法");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
@@ -399,7 +403,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isNum(String s) {
+    public static boolean isNum(String s) {  //单数字
         Pattern p = Pattern.compile("\\d{1,4}");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
@@ -408,7 +412,7 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isKanji(String s) {
+    public static boolean isKanji(String s) {  //单个汉字
         Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]");
         Matcher matcher = p.matcher(s);
         if (matcher.matches()) {
@@ -437,22 +441,23 @@ public class ExtractNews extends InfoExtract {
         return false;
     }
 
-    public static boolean isSpecial(String s) {  //判断字符串中是否含有">>"
+    public static boolean isSpecial(String s) {   //判断字符串中是否含有">>"
         if (s.contains("»")) {
             return true;
         }
         return false;
     }
 
-    public static boolean isSymbol(String s) {  //判断字符串中是否含有">"
+    public static boolean isSymbol(String s) {   //判断字符串中是否含有">"
         if (s.contains(">")) {
             return true;
         }
         return false;
     }
 
+
     public static Document parseHTML(String html) {
-        Document doc = Jsoup.parse(html);
+        Document doc = Jsoup.parse(html, "UTF-8"); //把一个文档对象给解析出来
         String str = doc.html().replaceAll("&nbsp;", "");
         doc = Jsoup.parse(str);
         return doc;
@@ -509,6 +514,9 @@ public class ExtractNews extends InfoExtract {
         doc.select("td[class=hjpl]").remove();
         doc.select("div[class=right_12 fr]").remove();
         doc.select("div[class=right fl]").remove();
+        doc.select("div[class=proCard-cnt]").remove();
+        doc.select("div[class=rank]").remove();
+        doc.select("div[class=lph-right]").remove();
         //doc.select("ul").remove();
         //doc.select("ol").remove();
         doc.select("span[class=close-button]").remove();   //关闭雷锋广告
@@ -526,4 +534,5 @@ public class ExtractNews extends InfoExtract {
         doc.select("div[class=mainmiddle-left]").remove();
         return doc;
     }
+
 }

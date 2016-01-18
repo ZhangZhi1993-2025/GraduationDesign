@@ -60,7 +60,7 @@ public class ExtractProjects extends InfoExtract {
             //element.select("div[class=inner]").remove();
             element.select("div[class=pic]").remove();
             element.select("div[class=tit]").remove();
-           // element.select("div[class=txt]").remove();
+            // element.select("div[class=txt]").remove();
             element.select("button").remove();
             element.select("div[class=position]").remove();
             //element.select("i").remove();
@@ -71,31 +71,28 @@ public class ExtractProjects extends InfoExtract {
             //element.select("ol").remove();
             //System.out.println("\r\n"+(i++)+"\r\n");
             news.put("标题", "");
-            img_url = img_URL(element);      //获取当前div块中要找的img的路径
+            //img_url = img_URL(element);      //获取当前div块中要找的img的路径
             flag = false;
             flag_t = false;
             traverse_my(element, news);
- 
+
             if (news.get("标题").isEmpty() | content.trim().isEmpty()) {
                 isdiv = false;
             }
             if (isdiv) {
-                content = content.substring(0, 200);
+                if (content.length() > 200)
+                    content = content.substring(0, 200);
                 news.put("内容", content);
                 news.put("时间", time);
-                news.put("图片路径", img_url);
-                //write_Img(img_url, filename);
-                content = "";
-                time = "";
-                isdiv = true;
-                break;
+                //news.put("图片路径", img_url);
+                result.add(news);
+                return result;
             }
             content = "";
             time = "";
             isdiv = true;
         }
-        result.add(news);
-        return result;
+        return new ArrayList<>();
     }
 
     @Override
@@ -113,53 +110,52 @@ public class ExtractProjects extends InfoExtract {
                 if (!s.trim().isEmpty()) {
 
                     if (flag_t == false) {
-                		if(isTimeAll(s)){
-    						
-    						//System.out.println(root.tagName()+"  "+root.text());
-    						if(s.contains(":")){
-    							flag_t=true;
-    						}
-    						time+=s_match;
-    						time+=" ";
-    						s_match="";
-    						
-    						
-    					}else{
-    						if(isTime(s)){
-    							time+=s_match;
-    							flag_t=true;
-    							s_match="";
-    						}
-    						else{
-    					
+                        if (isTimeAll(s)) {
+
+                            //System.out.println(root.tagName()+"  "+root.text());
+                            if (s.contains(":")) {
+                                flag_t = true;
+                            }
+                            time += s_match;
+                            time += " ";
+                            s_match = "";
+
+
+                        } else {
+                            if (isTime(s)) {
+                                time += s_match;
+                                flag_t = true;
+                                s_match = "";
+                            } else {
+
     							/*if(root.text().contains("\\b")){
-    								System.out.println("###########"+root.text());
+                                    System.out.println("###########"+root.text());
     							}*/
-    							//root.text().replaceAll("\0x3F", "");
-    							
-    							root.text().trim();
-    							if(root.text().contains("：")&&root.tagName()=="li")
-    							{
-    							//	System.out.println("uuuuuuuuu"+root.text());
-    								String[] temp = root.text().trim().split("：");
-    								news.put(temp[0], temp[1]);
-    							//	System.out.println(temp[0]);
-    							}
-    							else{
-    								if(root.text().contains("»"))
-    								{
-    									root.text().replace("»","");
-    									
-    								}
-    								content=content+"\r\n"+root.text();}
-    							
-    						}
-    						
-    					}
+                                //root.text().replaceAll("\0x3F", "");
+
+                                root.text().trim();
+                                if ((!isShare(s)) && (!isMore(s))) {
+                                    content = content + "\r\n" + root.text();
+                                }
+                                if (root.text().contains("：") && root.tagName() == "li") {
+                                    //	System.out.println("uuuuuuuuu"+root.text());
+                                    String[] temp = root.text().trim().split("：");
+                                    //	System.out.println(temp[0]);
+                                } else {
+                                    if (root.text().contains("»")) {
+                                        root.text().replace("»", "");
+
+                                    }
+                                    content = content + "\r\n" + root.text();
+                                }
+
+                            }
+
+                        }
                     } else {
                         String s1 = root.text().trim();
                         if (!(s1.isEmpty() || s1 == "")) {
-                            if (!isSundry(s1)) {
+                            if ((!isSundry(s1)) && (!isShare(s1)) && (!isMore(s1))) {
                                 content = content + "\r\n" + s1;
                             }
                         }
@@ -181,49 +177,45 @@ public class ExtractProjects extends InfoExtract {
             } else {
                 //System.out.println("*********"+s2);
                 if (!s2.isEmpty()) {
-		if(isTimeAll(s2)){
-						
-						//System.out.println(root.tagName()+"  "+root.text());
-						if(s2.contains(":")){
-							flag_t=true;
-						}
-						time+=s_match;
-						time+=" ";
-						s_match="";
-						
-						
-					}else{
-						if(isTime(s2)){
-							time+=s_match;
-							flag_t=true;
-							s_match="";
-						}
-						else{
-					
+                    if (isTimeAll(s2)) {
+
+                        //System.out.println(root.tagName()+"  "+root.text());
+                        if (s2.contains(":")) {
+                            flag_t = true;
+                        }
+                        time += s_match;
+                        time += " ";
+                        s_match = "";
+
+
+                    } else {
+                        if (isTime(s2)) {
+                            time += s_match;
+                            flag_t = true;
+                            s_match = "";
+                        } else {
+
 							/*if(root.text().contains("\\b")){
-								System.out.println("###########"+root.text());
+                                System.out.println("###########"+root.text());
 							}*/
-							//root.text().replaceAll("\0x3F", "");
-							
-							root.text().trim();
-							if(root.text().contains("：")&&root.tagName()=="li")
-							{
-							//	System.out.println("uuuuuuuuu"+root.text());
-								String[] temp = root.text().trim().split("：");
-								news.put(temp[0], temp[1]);
-							//	System.out.println(temp[0]);
-							}
-							else{
-								if(root.text().contains("»"))
-								{
-									root.text().replace("»","");
-									
-								}
-								content=content+"\r\n"+root.text();}
-							
-						}
-						
-					}
+                            //root.text().replaceAll("\0x3F", "");
+
+                            root.text().trim();
+                            if (root.text().contains("：") && root.tagName() == "li") {
+                                //	System.out.println("uuuuuuuuu"+root.text());
+                                String[] temp = root.text().trim().split("：");
+                                //	System.out.println(temp[0]);
+                            } else {
+                                if (root.text().contains("»")) {
+                                    root.text().replace("»", "");
+
+                                }
+                                if ((!isSundry(s2)) && (!isShare(s2)) && (!isMore(s2))) {
+                                    content = content + "\r\n" + root.text();
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -308,6 +300,25 @@ public class ExtractProjects extends InfoExtract {
             }
         }
         return url;
+    }
+
+    public static boolean isShare(String s) {  //判断是否是“分享：”
+        Pattern p = Pattern.compile("分享：");
+        Matcher matcher = p.matcher(s);
+        if (matcher.find()) {
+            return true;
+        }
+        return false;
+    }
+
+    //判断是否是“更多”字样
+    public static boolean isMore(String s) {
+        Pattern p = Pattern.compile("更多");
+        Matcher matcher = p.matcher(s);
+        if (matcher.matches()) {
+            return true;
+        }
+        return false;
     }
 
     public static void write_Img(String url, String filename) throws IOException {

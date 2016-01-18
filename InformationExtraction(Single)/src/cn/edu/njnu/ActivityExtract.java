@@ -101,44 +101,45 @@ public class ActivityExtract {
                 JSONObject lc = rt.getJSONObject("location");
                 lng = lc.getDouble("lng");
                 lat = lc.getDouble("lat");
+            } else {
+                JSONObject redata = ie.canBePlace(desc, city);
+                lng = redata.getJSONObject("location").getDouble("lng");
+                lat = redata.getJSONObject("location").getDouble("lat");
+                desc = redata.getString("address");
+            }
+            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
+            JSONObject data = new JSONObject();
+            data.put("title", title);
+            data.put("des", desc);
+            data.put("abs", abs);
+            data.put("pic", pic);
+            data.put("url", url);
+            data.put("lat", lat);
+            data.put("lng", lng);
+            data.put("type", "众创活动");
+            data.put("other", other);
+            //生成参数对
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("data", data.toString()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+            method.setEntity(entity);
 
-                HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
-                JSONObject data = new JSONObject();
-                if (title.equals(""))
-                    title = "创客聚会";
-                data.put("title", title);
-                data.put("des", desc);
-                data.put("abs", abs);
-                data.put("pic", pic);
-                data.put("url", url);
-                data.put("lat", lat);
-                data.put("lng", lng);
-                data.put("type", "众创活动");
-                data.put("other", other);
-                //生成参数对
-                List<NameValuePair> params = new ArrayList<>();
-                params.add(new BasicNameValuePair("data", data.toString()));
-                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
-                method.setEntity(entity);
-
-                //请求post
-                HttpResponse result2 = httpClient.execute(method);
-                String resData = EntityUtils.toString(result2.getEntity());
-                //获得结果
-                JSONObject resJson = JSONObject.fromObject(resData);
-                if (resJson.getInt("code") == 1) {
-                    JSONObject result3 = resJson.getJSONObject("data");
-                    if (result3.getInt("status") == 1) {
-                        String pid = result3.getString("pid");
-                        placeToPid.put(url, pid);
-                        extractable.put("标题", title);
-                        extractable.put("地址", desc);
-                        extractable.put("描述", abs);
-                        extractable.put("URL", url);
-                        extractable.put("坐标", "( E" + lng + ",  N" + lat + " )");
-                        return true;
-                    } else
-                        return false;
+            //请求post
+            HttpResponse result2 = httpClient.execute(method);
+            String resData = EntityUtils.toString(result2.getEntity());
+            //获得结果
+            JSONObject resJson = JSONObject.fromObject(resData);
+            if (resJson.getInt("code") == 1) {
+                JSONObject result3 = resJson.getJSONObject("data");
+                if (result3.getInt("status") == 1) {
+                    String pid = result3.getString("pid");
+                    placeToPid.put(url, pid);
+                    extractable.put("标题", title);
+                    extractable.put("地址", desc);
+                    extractable.put("描述", abs);
+                    extractable.put("URL", url);
+                    extractable.put("坐标", "( E" + lng + ",  N" + lat + " )");
+                    return true;
                 } else
                     return false;
             } else
@@ -185,17 +186,19 @@ public class ActivityExtract {
                 }
             }
         }
-        try {
-            Extractable extractable = new Activity();
-            Iterator iterator = other.keys();
-            while (iterator.hasNext()) {
-                String key = (String) iterator.next();
-                extractable.put(key, other.getString(key));
+        if (!title.equals("")) {
+            try {
+                Extractable extractable = new Activity();
+                Iterator iterator = other.keys();
+                while (iterator.hasNext()) {
+                    String key = (String) iterator.next();
+                    extractable.put(key, other.getString(key));
+                }
+                boolean hasPost = postPlace(title, desc, abs, place, pic, other, city, extractable);
+                extractable.persistData(outputFile, place, hasPost);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            boolean hasPost = postPlace(title, desc, abs, place, pic, other, city, extractable);
-            extractable.persistData(outputFile, place, hasPost);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -234,7 +237,9 @@ public class ActivityExtract {
                 String place = current.getParentFile().getName();
                 process(list, place, findCity(current));
             } else {
-                if (list[0].isFile())
+                if (list.length == 0)
+                    return;
+                else if (list[0].isFile())
                     return;
                 Arrays.stream(list).forEach(this::searchForTarget);
             }

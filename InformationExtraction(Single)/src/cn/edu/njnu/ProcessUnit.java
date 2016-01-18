@@ -108,6 +108,7 @@ public class ProcessUnit implements Runnable {
             String title = "暂无";
             String time = "暂无";
             String content = "暂无";
+            String pic = "";
             JSONObject other = new JSONObject();
             for (Pair<String, String> pair : extractable) {
                 if (pair.key.contains("标题"))
@@ -116,10 +117,12 @@ public class ProcessUnit implements Runnable {
                     time = pair.value;
                 else if (pair.key.contains("内容"))
                     content = pair.value;
+                else if (pair.key.contains("图片"))
+                    pic = pair.value;
                 else
                     other.put(pair.key, pair.value);
             }
-            if (title.equals("") || time.equals("") || content.equals(""))
+            if (title.equals(""))
                 continue;
             JSONObject item = new JSONObject();
             item.put("title", title);
@@ -127,8 +130,7 @@ public class ProcessUnit implements Runnable {
             item.put("time", time);
             item.put("content", content);
             item.put("pid", pid);
-            item.put("pic", "http://img0.pconline.com.cn/pconline" +
-                    "/1308/06/3415302_3cbxat8i1_bdls7k5b.jpg");
+            item.put("pic", pic);
             item.put("other", other);
             array.put(item);
         }
@@ -162,7 +164,7 @@ public class ProcessUnit implements Runnable {
         writeHtml(f, html);
 
         List<Extractable> info = ie.extractInformation(html);
-        if (info != null) {
+        if (info != null && info.size() > 0) {
             if (placeToPid.containsKey(place)) {
                 postData(placeToPid.get(place), info);
                 info.forEach(extraction -> {
@@ -189,7 +191,9 @@ public class ProcessUnit implements Runnable {
                 for (File file : list)
                     process(file, place);
             } else {
-                if (list[0].isFile())
+                if (list.length == 0)
+                    return;
+                else if (list[0].isFile())
                     return;
                 Arrays.stream(list).forEach(this::searchForTarget);
             }
