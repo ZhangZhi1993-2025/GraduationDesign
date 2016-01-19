@@ -29,6 +29,12 @@ public class PostDataHelper {
     //数据上传日志
     List<Pair<Date, Boolean>> postLog = new CopyOnWriteArrayList<>();
 
+    protected Map<String, String> placeToPid;
+
+    public PostDataHelper(Map<String, String> placeToPid) {
+        this.placeToPid = placeToPid;
+    }
+
     /**
      * 往指定JSONObject里添加一个内容项
      *
@@ -68,7 +74,7 @@ public class PostDataHelper {
         JSONObject data = postMap.get(pid);
         postMap.remove(pid);
         new Thread(() -> {
-            postOnePlace(data);
+            postContent(data);
         });
     }
 
@@ -78,16 +84,77 @@ public class PostDataHelper {
     public void post() {
         Set<String> keySet = postMap.keySet();
         for (String pid : keySet) {
-            postOnePlace(postMap.get(pid));
+            postContent(postMap.get(pid));
         }
     }
 
     /**
-     * 上传某pid对应的所有数据
-     *
-     * @param data 某pid下的所有数据
+     * 上传数据的三个方法
      */
-    protected void postOnePlace(JSONObject data) {
+
+    public String postIncubator(String place) {
+        String data = placeToPid.get(place);
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+
+            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
+            //生成参数对
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("data", data));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+            method.setEntity(entity);
+
+            //请求post
+            HttpResponse result = httpClient.execute(method);
+            String resData = EntityUtils.toString(result.getEntity());
+            //获得结果
+            JSONObject resJson = JSONObject.fromObject(resData);
+            if (resJson.getInt("code") == 1) {
+                JSONObject result2 = resJson.getJSONObject("data");
+                if (result2.getInt("status") == 1) {
+                    String pid = result2.getString("pid");
+                    placeToPid.put(place, pid);
+                    return pid;
+                } else
+                    return null;
+            } else {
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String postActivity(JSONObject data) {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
+            //生成参数对
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("data", data.toString()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+            method.setEntity(entity);
+
+            //请求post
+            HttpResponse result = httpClient.execute(method);
+            String resData = EntityUtils.toString(result.getEntity());
+            //获得结果
+            JSONObject resJson = JSONObject.fromObject(resData);
+            if (resJson.getInt("code") == 1) {
+                JSONObject result2 = resJson.getJSONObject("data");
+                if (result2.getInt("status") == 1) {
+                    return result2.getString("pid");
+                } else
+                    return null;
+            } else {
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean postContent(JSONObject data) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
             HttpPost method = new HttpPost(new ParameterHelper().getPostDataURL());
@@ -104,14 +171,13 @@ public class PostDataHelper {
             JSONObject resJson = JSONObject.fromObject(resData);
             if (resJson.getInt("code") == 1) {
                 JSONObject result2 = resJson.getJSONObject("data");
-                postLog.add(new Pair<>(new Date(), result2.getInt("status") == 1));
-            } else
-                postLog.add(new Pair<>(new Date(), false));
-
+                return result2.getInt("status") == 1;
+            } else {
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
-            postLog.add(new Pair<>(new Date(), false));
-
+            return false;
         }
     }
 

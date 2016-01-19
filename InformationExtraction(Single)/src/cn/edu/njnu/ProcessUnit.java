@@ -99,10 +99,9 @@ public class ProcessUnit implements Runnable {
     /**
      * 上传数据接口
      *
-     * @param pid  地点的id号
      * @param info 待上传的数据
      */
-    protected void postData(String pid, List<Extractable> info, String url) {
+    protected void postData(List<Extractable> info, String url, String place) {
         JSONArray array = new JSONArray();
         for (Extractable extractable : info) {
             String title = "";
@@ -125,25 +124,33 @@ public class ProcessUnit implements Runnable {
             try {
                 if (title.equals("")) {
                     extractable.persistData(outputFile, url, false);
-                    continue;
-                } else
-                    extractable.persistData(outputFile, url, true);
+                } else {
+                    String pid = placeToPid.get(place);
+                    if (pid == null)
+                        return;
+                    else if (pid.startsWith("{")) {
+                        pid = postDataHelper.postIncubator(place);
+                        if (pid == null)
+                            return;
+                    }
+                    JSONObject item = new JSONObject();
+                    item.put("title", title);
+                    item.put("type", ie.getType());
+                    item.put("time", time);
+                    item.put("content", content);
+                    item.put("pid", pid);
+                    item.put("pic", pic);
+                    item.put("other", other);
+                    array.put(item);
+                    JSONObject json = new JSONObject();
+                    json.put("acs", array);
+                    boolean hasPosted = postDataHelper.postContent(json);
+                    extractable.persistData(outputFile, url, hasPosted);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            JSONObject item = new JSONObject();
-            item.put("title", title);
-            item.put("type", ie.getType());
-            item.put("time", time);
-            item.put("content", content);
-            item.put("pid", pid);
-            item.put("pic", pic);
-            item.put("other", other);
-            array.put(item);
         }
-        if (array.length() == 0)
-            return;
-        postDataHelper.addData(pid, array);
     }
 
     /**
@@ -172,8 +179,7 @@ public class ProcessUnit implements Runnable {
 
         List<Extractable> info = ie.extractInformation(html);
         if (info != null && info.size() > 0) {
-            if (placeToPid.containsKey(place))
-                postData(placeToPid.get(place), info, url);
+            postData(info, url, place);
         }
     }
 

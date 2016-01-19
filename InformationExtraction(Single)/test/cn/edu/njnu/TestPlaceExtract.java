@@ -1,6 +1,7 @@
 package cn.edu.njnu;
 
 import cn.edu.njnu.tools.ParameterHelper;
+import cn.edu.njnu.tools.PostDataHelper;
 import net.sf.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,7 +34,7 @@ public class TestPlaceExtract {
     public void testActivityExtract() {
         File folder = new File("/home/zhangzhi/Documents/samples");
         ActivityExtract pe = new ActivityExtract("ss", new ParameterHelper().getOutputFile(),
-                new HashMap<>());
+                new HashMap<>(), new PostDataHelper(new HashMap<>()));
         File[] list = folder.listFiles();
         if (list != null) {
             for (File file : list) {

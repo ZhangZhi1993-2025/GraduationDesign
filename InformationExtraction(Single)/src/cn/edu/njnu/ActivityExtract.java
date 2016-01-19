@@ -7,17 +7,8 @@ import cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities;
 
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
-import cn.edu.njnu.tools.ParameterHelper;
+import cn.edu.njnu.tools.PostDataHelper;
 import net.sf.json.JSONObject;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 import java.util.*;
@@ -43,18 +34,23 @@ public class ActivityExtract {
     //地点与pid的映射
     protected Map<String, String> placeToPid;
 
+    //批量上传的帮助类
+    protected PostDataHelper postDataHelper;
+
     /**
      * 构造器
      *
      * @param baseFile   页面存放的根目录
      * @param outputFile outputFile
      */
-    public ActivityExtract(String baseFile, String outputFile, Map<String, String> placeToPid) {
+    public ActivityExtract(String baseFile, String outputFile, Map<String, String> placeToPid
+            , PostDataHelper postDataHelper) {
         this.outputFile = outputFile;
         this.baseFile = new File(baseFile);
         this.folderName = "activities";
         this.ie = new ExtractActivities();
         this.placeToPid = placeToPid;
+        this.postDataHelper = postDataHelper;
     }
 
     /**
@@ -84,7 +80,7 @@ public class ActivityExtract {
      */
     protected boolean postPlace(String title, String desc, String abs, String url, String pic,
                                 JSONObject other, String city, Extractable extractable) {
-        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+        try {
             double lng;//经度
             double lat;//纬度
             CoordinateHelper coordinateHelper = new
@@ -107,7 +103,6 @@ public class ActivityExtract {
                 lat = redata.getJSONObject("location").getDouble("lat");
                 desc = redata.getString("address");
             }
-            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
             JSONObject data = new JSONObject();
             data.put("title", title);
             data.put("des", desc);
@@ -118,32 +113,17 @@ public class ActivityExtract {
             data.put("lng", lng);
             data.put("type", "众创活动");
             data.put("other", other);
-            //生成参数对
-            List<NameValuePair> params = new ArrayList<>();
-            params.add(new BasicNameValuePair("data", data.toString()));
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
-            method.setEntity(entity);
-
-            //请求post
-            HttpResponse result2 = httpClient.execute(method);
-            String resData = EntityUtils.toString(result2.getEntity());
-            //获得结果
-            JSONObject resJson = JSONObject.fromObject(resData);
-            if (resJson.getInt("code") == 1) {
-                JSONObject result3 = resJson.getJSONObject("data");
-                if (result3.getInt("status") == 1) {
-                    String pid = result3.getString("pid");
-                    placeToPid.put(url, pid);
-                    extractable.put("标题", title);
-                    extractable.put("地址", desc);
-                    extractable.put("描述", abs);
-                    extractable.put("URL", url);
-                    extractable.put("坐标", "( E" + lng + ",  N" + lat + " )");
-                    return true;
-                } else
-                    return false;
-            } else
+            String pid = postDataHelper.postActivity(data);
+            if (pid != null)
+                placeToPid.put(url, pid);
+            else
                 return false;
+            extractable.put("标题", title);
+            extractable.put("地址", desc);
+            extractable.put("描述", abs);
+            extractable.put("URL", url);
+            extractable.put("坐标", "( E" + lng + ",  N" + lat + " )");
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -228,8 +208,8 @@ public class ActivityExtract {
      */
     protected void searchForTarget(File current) {
         //如果已经存在该地点到pid的映射则跳过;
-        if (placeToPid.containsKey(current.getName()))
-            return;
+        //if (placeToPid.containsKey(current.getName()))
+        // return;
         File[] list = current.listFiles();
         if (list != null) {
             //找到目标目录从中提取地点相关信息

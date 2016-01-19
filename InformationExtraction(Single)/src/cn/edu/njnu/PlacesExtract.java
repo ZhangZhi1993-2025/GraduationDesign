@@ -8,17 +8,7 @@ import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 import cn.edu.njnu.tidypage.TidyPage;
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
-import cn.edu.njnu.tools.ParameterHelper;
 import net.sf.json.JSONObject;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 import java.util.*;
@@ -85,9 +75,10 @@ public class PlacesExtract {
      */
     protected boolean postPlace(String title, String desc, String abs, String url, String pic,
                                 JSONObject other, String city, Extractable extractable) {
-        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+        try {
             double lng;//经度
             double lat;//纬度
+            String url2 = new String(url);
             CoordinateHelper coordinateHelper = new
                     CoordinateHelper("http://api.map.baidu.com/geocoder/v2/");
             coordinateHelper.addParam("output", "json").addParam("ak", CoordinateHelper.appkey)
@@ -112,7 +103,6 @@ public class PlacesExtract {
                 }
                 desc = redata.getString("address");
             }
-            HttpPost method = new HttpPost(new ParameterHelper().getPostPlaceURL());
             JSONObject data = new JSONObject();
             if (title.equals(""))
                 title = ie.extractTitle(desc, city);
@@ -125,33 +115,14 @@ public class PlacesExtract {
             data.put("lng", lng);
             data.put("type", "孵化器");
             data.put("other", other);
-            //生成参数对
-            List<NameValuePair> params = new ArrayList<>();
-            params.add(new BasicNameValuePair("data", data.toString()));
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
-            method.setEntity(entity);
 
-            //请求post
-            HttpResponse result2 = httpClient.execute(method);
-            String resData = EntityUtils.toString(result2.getEntity());
-            //获得结果
-            JSONObject resJson = JSONObject.fromObject(resData);
-            if (resJson.getInt("code") == 1) {
-                JSONObject result3 = resJson.getJSONObject("data");
-                if (result3.getInt("status") == 1) {
-                    String pid = result3.getString("pid");
-                    placeToPid.put(url, pid);
-                    extractable.put("标题", title);
-                    extractable.put("地址", desc);
-                    extractable.put("描述", abs);
-                    extractable.put("URL", url);
-                    extractable.put("坐标", "(E" + lng + ",N" + lat + ")");
-                    return true;
-                } else
-                    return false;
-            } else
-                return false;
-
+            placeToPid.put(url2, data.toString());
+            extractable.put("标题", title);
+            extractable.put("地址", desc);
+            extractable.put("描述", abs);
+            extractable.put("URL", url);
+            extractable.put("坐标", "(E" + lng + ",N" + lat + ")");
+            return true;
         } catch (Exception e) {
             return false;
         }
@@ -234,8 +205,8 @@ public class PlacesExtract {
      */
     protected void searchForTarget(File current) {
         //如果已经存在该地点到pid的映射则跳过;
-        if (placeToPid.containsKey(current.getName()))
-            return;
+        //if (placeToPid.containsKey(current.getName()))
+        //return;
         File[] list = current.listFiles();
         if (list != null) {
             //找到目标目录从中提取地点相关信息

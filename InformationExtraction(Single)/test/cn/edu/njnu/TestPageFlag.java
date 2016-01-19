@@ -5,6 +5,7 @@ import cn.edu.njnu.tools.PostDataHelper;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * Created by zhangzhi on 16-1-12.
@@ -16,7 +17,7 @@ public class TestPageFlag {
     public void testPageFlag() {
         new ProcessUnit(
                 new Pair<>("news", "cn.edu.njnu.infoextract.impl.ExtractNews"),
-                null, null, null, new PostDataHelper(), null)
+                null, null, null, new PostDataHelper(new HashMap<>()), null)
                 .process(new File("/home/zhangzhi/Documents/data"), "www.makerspace.com");
     }
 

@@ -7,6 +7,7 @@ import cn.edu.njnu.tools.PostDataHelper;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,10 +33,10 @@ public class TestPostContent {
         news2.put("内容", "测试新闻上传接口2");
         news2.put("重要性", "较低");
         info.add(news2);
-        PostDataHelper postDataHelper = new PostDataHelper();
+        PostDataHelper postDataHelper = new PostDataHelper(new HashMap<>());
         new ProcessUnit(
                 new Pair<>("news", "cn.edu.njnu.infoextract.impl.ExtractNews"),
-                null, null, null, postDataHelper, null).postData(pid, info, "");
+                null, null, null, postDataHelper, null).postData(info, "", "");
         postDataHelper.post();
     }
 }
