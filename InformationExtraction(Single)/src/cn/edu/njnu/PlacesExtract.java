@@ -157,6 +157,8 @@ public class PlacesExtract {
                             abs = pair.value;
                         else if (pair.key.contains("描述") && pair.value.length() > abs.length())
                             abs = pair.value;
+                        else if (pair.key.contains("内容") && pair.value.length() > abs.length())
+                            abs = pair.value;
                         else if (pair.key.contains("图片") && pair.value.length() > pic.length())
                             pic = pair.value;
                         else

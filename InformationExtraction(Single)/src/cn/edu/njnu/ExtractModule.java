@@ -95,4 +95,18 @@ public class ExtractModule {
         oos.writeObject(placesToPid);
     }
 
+    public static String getHtml(File file) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                new FileInputStream(file), "UTF-8"))) {
+            StringBuilder sb = new StringBuilder();
+            String buffer;
+            while ((buffer = br.readLine()) != null)
+                sb.append(buffer);
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

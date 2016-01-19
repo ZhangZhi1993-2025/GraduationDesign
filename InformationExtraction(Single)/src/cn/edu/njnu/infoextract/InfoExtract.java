@@ -210,6 +210,7 @@ public abstract class InfoExtract {
      */
     protected String getResponseFromRequest(String request) throws IOException {
         HttpGet get = new HttpGet(request);
+        get.addHeader("Content-Type", "text/html;charset=" + System.getProperty("file.encoding"));
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             //使用apache的开源网络工具箱请求语料库数据
             HttpResponse response = httpClient.execute(get);
