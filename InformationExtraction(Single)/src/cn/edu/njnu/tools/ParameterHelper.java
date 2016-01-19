@@ -40,7 +40,7 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     private String patternFile;
 
     //类别目录名及对应的解析类
-    private List<Pair<String, String>> list = new ArrayList<>();
+    public List<Pair<String, String>> list = new ArrayList<>();
 
     /**
      * default constructor

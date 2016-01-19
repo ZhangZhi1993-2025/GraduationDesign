@@ -3,7 +3,7 @@
 <config>
 
     <!-- 配置线程数 -->
-    <poolsize>2</poolsize>
+    <poolsize>1</poolsize>
 
     <!-- 配置数据源根目录路径 -->
     <source>
@@ -37,6 +37,10 @@
 
         <category name="projects">
             cn.edu.njnu.infoextract.impl.ExtractProjects
+        </category>
+
+        <category name="activities">
+            cn.edu.njnu.infoextract.impl.activities.main_process.ExtractActivities
         </category>
 
     </categories>

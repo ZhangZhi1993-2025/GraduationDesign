@@ -20,6 +20,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.*;
 
 import static cn.edu.njnu.tidypage.TidyPage.num;
@@ -209,24 +210,24 @@ public abstract class InfoExtract {
      * @return 返回response字符串
      */
     protected String getResponseFromRequest(String request) throws IOException {
-        HttpGet get = new HttpGet(request);
-        get.addHeader("Content-Type", "text/html;charset=" + System.getProperty("file.encoding"));
+        HttpGet method = new HttpGet(request);
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             //使用apache的开源网络工具箱请求语料库数据
-            HttpResponse response = httpClient.execute(get);
+            HttpResponse response = httpClient.execute(method);
             if (response.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity = response.getEntity();
                 InputStream in = entity.getContent();
                 StringBuilder sb = new StringBuilder();
                 byte[] buffer = new byte[1024];
+                Charset utf8 = Charset.forName("UTF-8");
                 int hasRead;
                 while ((hasRead = in.read(buffer)) > 0)
-                    sb.append(new String(buffer, 0, hasRead));
+                    sb.append(new String(buffer, 0, hasRead, utf8));
                 return sb.toString();
             } else
                 return null;
         } finally {
-            get.releaseConnection();
+            method.releaseConnection();
         }
     }
 
