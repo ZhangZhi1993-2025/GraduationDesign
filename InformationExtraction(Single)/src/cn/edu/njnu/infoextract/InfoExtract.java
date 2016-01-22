@@ -238,9 +238,20 @@ public abstract class InfoExtract {
      * @param type 地址或地名,地址为true,地名为false
      * @return 抽取的可能的地址或地名的字符串
      */
+/*
     protected JSONObject getJsonInfo(String json, boolean type) {
+
         JSONObject jsonObj = JSONObject.fromObject(json);
         JSONArray array = jsonObj.getJSONArray("results");
+        String[] list = new String[array.length()];
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = array.getJSONObject(i);
+            if (type)
+                list[i] = item.getString("address");
+            else
+                list[i] = item.getString("name");
+        }
+        return list;
         while (true) {
             JSONObject item = array.getJSONObject(num++);
             if (num == array.length()) {
@@ -254,12 +265,11 @@ public abstract class InfoExtract {
                 return item;
         }
     }
+    */
 
     /**
      * 判断待查询的字符串是否与语料库返回的结果相一致
      *
-     * @param item   待查询的字符串
-     * @param result 语料库返回的结果
      * @return 是否可能是地址
      */
     protected boolean isSimilar(String item, String result) {
@@ -285,14 +295,7 @@ public abstract class InfoExtract {
         return dp[item.length() - 1][result.length() - 1] > 4;
     }
 
-    /**
-     * 判断一个字段项是否是地点
-     *
-     * @param item 待判断的字段
-     * @param city 查找的城市(必须给出此字段,否则该方法达不到预期效果)
-     * @return 是否是一个地点
-     */
-    public JSONObject canBePlace(String item, String city) throws IOException {
+    /*public JSONObject extractPlace(String item, String city) throws IOException {
         while (true) {
             String request = "http://api.map.baidu.com/place/v2/search?" +
                     "q=创业" + "&region=" + city + "&output=json&ak=" + authority
@@ -302,6 +305,58 @@ public abstract class InfoExtract {
                 return getJsonInfo(response, true);
             else
                 page = 0;
+        }
+    }*/
+
+    protected boolean patternMatching(String target, String pattern) {
+        int i = 0;
+        int j = 0;
+        while (i < target.length() && j < pattern.length()) {
+            if (target.charAt(i) == pattern.charAt(j)) {
+                ++i;
+                ++j;
+            } else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+        return j == pattern.length();
+    }
+
+    /**
+     * 判断一个字段项是否是地点
+     *
+     * @param pattern 待判断的字段
+     * @param city    查找的城市(必须给出此字段,否则该方法达不到预期效果)
+     * @return 是否是一个地点
+     */
+    public boolean canBePlace(String pattern, String city, Extractable extractable) {
+        try {
+            final String appkey = "dnHbgky1GB0HMRt7GReO0Sxp";
+            String request = "http://api.map.baidu.com/place/v2/search?" +
+                    "q=" + pattern + "&region=" + city + "&output=json&ak=" + appkey;
+            String response = getResponseFromRequest(request);
+            if (response != null) {
+                JSONArray results = JSONObject.fromObject(response).getJSONArray("results");
+                if (results.length() > 0) {
+                    JSONObject result = (JSONObject) results.get(0);
+                    String target = result.getString("address");
+                    if (target != null && isSimilar(pattern, target)) {
+                        extractable.put("finaladdress", result.getString("address"));
+                        extractable.put("finaltitle", result.getString("name"));
+                        return true;
+                    }
+                    target = result.getString("name");
+                    if (target != null && isSimilar(pattern, target)) {
+                        extractable.put("finaladdress", result.getString("address"));
+                        extractable.put("finaltitle", result.getString("name"));
+                        return true;
+                    }
+                }
+            }
+            return false;
+        } catch (IOException e) {
+            return false;
         }
     }
 
@@ -313,7 +368,7 @@ public abstract class InfoExtract {
      * @return 语料库中的地理名称
      * @throws IOException
      */
-    public String extractTitle(String desc, String city) throws IOException {
+    /*public String extractTitle(String desc, String city) throws IOException {
         int currentPage = 0;
         int currentItem = 0;
         int loop = 10;
@@ -342,7 +397,7 @@ public abstract class InfoExtract {
             }
         }
         return "北京创客孵化器";
-    }
+    }*/
 
     /**
      * 从dataList中提取出结构化信息

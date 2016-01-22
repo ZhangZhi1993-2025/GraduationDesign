@@ -37,17 +37,14 @@ public class ExtractModule {
             ExecutorService handlePage = Executors.newFixedThreadPool(helper.getPoolsize());
             CountDownLatch latch = new CountDownLatch(helper.getPoolsize());
 
-            Pair<String, String> pair;
-            //Iterator<Pair<String, String>> iterator = helper.iterator();
+            Iterator<Pair<String, String>> iterator = helper.iterator();
             for (int i = 0; i < 2; i++) {
-                pair = helper.list.get(i);
                 handlePage.submit(new ProcessUnit
-                        (pair, new File(helper.getRootFile()), helper.getOutputFile(),
+                        (iterator.next(), new File(helper.getRootFile()), helper.getOutputFile(),
                                 IncubatorsToPid, postDataHelper, latch));
             }
-            pair = helper.list.get(2);
             handlePage.submit(new ProcessUnit
-                    (pair, new File(helper.getRootFile()), helper.getOutputFile(),
+                    (iterator.next(), new File(helper.getRootFile()), helper.getOutputFile(),
                             ActivitiesToPid, postDataHelper, latch));
 
             handlePage.shutdown();

@@ -85,12 +85,15 @@ public class TestInfoExtract {
             ParameterHelper helper = new ParameterHelper();
             ConcurrentHashMap<String, String> IncubatorsToPid =
                     ExtractModule.loadPlaceToPId(helper.getIncubatorsPlaces());
-            PlacesExtract pe = new PlacesExtract(helper.getRootFile(), helper.getOutputFile(),
+            PlacesExtract pe = new PlacesExtract(helper.getRootFile(), "/home/zhangzhi/Documents/",
                     IncubatorsToPid);
 
             if (list != null) {
                 for (File file : list) {
-                    //pe.process(file.listFiles(), "www.makerspace.com", "北京");
+                    for (File subfile : file.listFiles()) {
+                        if (subfile.getName().equals("incubators"))
+                            pe.process(subfile.listFiles(), file.getName(), "北京");
+                    }
                 }
             }
         } catch (IOException | ClassNotFoundException e) {

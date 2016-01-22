@@ -98,10 +98,11 @@ public class ActivityExtract {
                 lng = lc.getDouble("lng");
                 lat = lc.getDouble("lat");
             } else {
-                JSONObject redata = ie.canBePlace(desc, city);
-                lng = redata.getJSONObject("location").getDouble("lng");
-                lat = redata.getJSONObject("location").getDouble("lat");
-                desc = redata.getString("address");
+                return false;
+                //JSONObject redata = ie.extractPlace(desc, city);
+                //lng = redata.getJSONObject("location").getDouble("lng");
+                //lat = redata.getJSONObject("location").getDouble("lat");
+                //desc = redata.getString("address");
             }
             JSONObject data = new JSONObject();
             data.put("title", title);
@@ -139,28 +140,38 @@ public class ActivityExtract {
         String desc = "";
         String abs = "暂无";
         String pic = "";
+        String finalAddress = "";
         JSONObject other = new JSONObject();
         for (File f : list) {
             String html = getHtml(f);
+            html = city + " " + html;
             List<Extractable> info = ie.extractInformation(html);
             if (info != null) {
                 for (Extractable extractable : info) {
                     for (Pair<String, String> pair : extractable) {
-                        if (pair.key.contains("标题") && pair.value.length() > title.length())
+                        if (pair.key.contains("标题") &&
+                                pair.value.length() > title.length())
                             title = pair.value;
-                        else if (pair.key.contains("名称") && pair.value.length() > title.length())
+                        else if (pair.key.contains("名称") &&
+                                pair.value.length() > title.length())
                             title = pair.value;
-                        else if (pair.key.contains("地") && pair.value.length() > desc.length())
+                        else if (pair.key.contains("地") &&
+                                pair.value.length() > desc.length())
                             desc = pair.value;
-                        else if (pair.key.contains("址") && pair.value.length() > desc.length())
+                        else if (pair.key.contains("址") &&
+                                pair.value.length() > desc.length())
                             desc = pair.value;
-                        else if (pair.key.contains("简介") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("简介") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("描述") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("描述") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("内容") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("内容") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("图片") && pair.value.length() > pic.length())
+                        else if (pair.key.contains("图片") &&
+                                pair.value.length() > pic.length())
                             pic = pair.value;
                         else
                             other.put(pair.key, pair.value);
@@ -171,6 +182,8 @@ public class ActivityExtract {
         if (!title.equals("")) {
             try {
                 Extractable extractable = new Activity();
+                if (desc.equals("") && finalAddress.equals(""))
+                    desc = finalAddress;
                 Iterator iterator = other.keys();
                 while (iterator.hasNext()) {
                     String key = (String) iterator.next();

@@ -48,6 +48,18 @@ public abstract class Extractable implements Iterable<Pair<String, String>> {
     }
 
     /**
+     * 删除某个键值对
+     *
+     * @param key 键的内容
+     */
+    public void remove(String key) {
+        for (int i = 0; i < data.size(); i++) {
+            if (key.equals(data.get(i).key))
+                data.remove(i);
+        }
+    }
+
+    /**
      * 根据键值得到对应的value
      *
      * @param key 键值

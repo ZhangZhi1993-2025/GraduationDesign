@@ -17,30 +17,30 @@ import java.util.List;
 public class ParameterHelper implements Iterable<Pair<String, String>> {
 
     //线程池的最大线程数量
-    private int poolsize;
+    protected int poolsize;
 
     //抽取信息的根目录
-    private String rootFile;
+    protected String rootFile;
 
     //抽取数据本地输出目录路径
-    private String outputFile;
+    protected String outputFile;
 
     //抽取孵化器地点与pid映射文件
-    private String incubatorsPlaces;
+    protected String incubatorsPlaces;
 
     //抽取活动地点与pid映射文件
-    private String activitiesPlaces;
+    protected String activitiesPlaces;
 
     //上传地点数据的接口地址
-    private String postPlaceURL;
+    protected String postPlaceURL;
 
     //上传内容数据的接口地址
-    private String postDataURL;
+    protected String postDataURL;
 
-    private String patternFile;
+    protected String patternFile;
 
     //类别目录名及对应的解析类
-    public List<Pair<String, String>> list = new ArrayList<>();
+    protected List<Pair<String, String>> list = new ArrayList<>();
 
     /**
      * default constructor
@@ -156,9 +156,9 @@ public class ParameterHelper implements Iterable<Pair<String, String>> {
     /**
      * 迭代器的内部类实现
      */
-    private class InnerIterator implements Iterator<Pair<String, String>> {
+    protected class InnerIterator implements Iterator<Pair<String, String>> {
 
-        private int cursor = 0;
+        protected int cursor = 0;
 
         @Override
         public boolean hasNext() {

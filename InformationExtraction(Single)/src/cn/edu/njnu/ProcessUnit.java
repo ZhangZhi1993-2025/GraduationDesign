@@ -130,8 +130,10 @@ public class ProcessUnit implements Runnable {
                         return;
                     else if (pid.startsWith("{")) {
                         pid = postDataHelper.postIncubator(place);
-                        if (pid == null)
+                        if (pid == null) {
+                            placeToPid.remove(place);
                             return;
+                        }
                     }
                     JSONObject item = new JSONObject();
                     item.put("title", title);

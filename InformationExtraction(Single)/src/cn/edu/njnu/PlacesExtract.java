@@ -78,7 +78,7 @@ public class PlacesExtract {
         try {
             double lng;//经度
             double lat;//纬度
-            String url2 = new String(url);
+            //String url2 = new String(url);
             CoordinateHelper coordinateHelper = new
                     CoordinateHelper("http://api.map.baidu.com/geocoder/v2/");
             coordinateHelper.addParam("output", "json").addParam("ak", CoordinateHelper.appkey)
@@ -94,18 +94,21 @@ public class PlacesExtract {
                 lng = lc.getDouble("lng");
                 lat = lc.getDouble("lat");
             } else {
-                JSONObject redata = ie.canBePlace(desc, city);
-                lng = redata.getJSONObject("location").getDouble("lng");
-                lat = redata.getJSONObject("location").getDouble("lat");
-                if (title.equals("")) {
-                    title = redata.getString("name");
-                    url = new TidyPage("").tidyURL(url);
-                }
-                desc = redata.getString("address");
+                /*
+                 * JSONObject redata = ie.extractPlace(desc, city);
+                 * lng = redata.getJSONObject("location").getDouble("lng");
+                 * lat = redata.getJSONObject("location").getDouble("lat");
+                 * if (title.equals("")) {
+                 *   title = redata.getString("name");
+                 *   url = new TidyPage("").tidyURL(url);
+                 * }
+                 * desc = redata.getString("address");
+                 */
+                return false;
             }
             JSONObject data = new JSONObject();
-            if (title.equals(""))
-                title = ie.extractTitle(desc, city);
+            /*if (title.equals(""))
+                title = ie.extractTitle(desc, city);*/
             data.put("title", title);
             data.put("des", desc);
             data.put("abs", abs);
@@ -116,7 +119,7 @@ public class PlacesExtract {
             data.put("type", "孵化器");
             data.put("other", other);
 
-            placeToPid.put(url2, data.toString());
+            placeToPid.put(url, data.toString());
             extractable.put("标题", title);
             extractable.put("地址", desc);
             extractable.put("描述", abs);
@@ -133,33 +136,50 @@ public class PlacesExtract {
      *
      * @param list 待分析的页面文件
      */
-    protected void process(File[] list, String place, String city) {
+    public void process(File[] list, String place, String city) {
         String title = "";
         String desc = "";
         String abs = "暂无";
         String pic = "";
+        String finalTitle = "";
+        String finalAddress = "";
         JSONObject other = new JSONObject();
         for (File f : list) {
             String html = getHtml(f);
+            html = city + " " + html;
             List<Extractable> info = ie.extractInformation(html);
             if (info != null && info.size() > 0) {
                 for (Extractable extractable : info) {
                     for (Pair<String, String> pair : extractable) {
-                        if (pair.key.contains("标题") && pair.value.length() > title.length())
+                        if (pair.key.equals("finaltitle") &&
+                                pair.value.length() > finalTitle.length())
+                            finalTitle = pair.value;
+                        if (pair.key.equals("finaladdress") &&
+                                pair.value.length() > finalAddress.length())
+                            finalAddress = pair.value;
+                        if (pair.key.contains("标题") &&
+                                pair.value.length() > title.length())
                             title = pair.value;
-                        else if (pair.key.contains("名称") && pair.value.length() > title.length())
+                        else if (pair.key.contains("名称") &&
+                                pair.value.length() > title.length())
                             title = pair.value;
-                        else if (pair.key.contains("地") && pair.value.length() > desc.length())
+                        else if (pair.key.contains("地") &&
+                                pair.value.length() > desc.length())
                             desc = pair.value;
-                        else if (pair.key.contains("址") && pair.value.length() > desc.length())
+                        else if (pair.key.contains("址") &&
+                                pair.value.length() > desc.length())
                             desc = pair.value;
-                        else if (pair.key.contains("简介") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("简介") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("描述") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("描述") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("内容") && pair.value.length() > abs.length())
+                        else if (pair.key.contains("内容") &&
+                                pair.value.length() > abs.length())
                             abs = pair.value;
-                        else if (pair.key.contains("图片") && pair.value.length() > pic.length())
+                        else if (pair.key.contains("图片") &&
+                                pair.value.length() > pic.length())
                             pic = pair.value;
                         else
                             other.put(pair.key, pair.value);
@@ -169,6 +189,22 @@ public class PlacesExtract {
         }
         try {
             Extractable extractable = new Incubator();
+            if (title.equals("") && !desc.equals("")) {
+                if (ie.canBePlace(desc, city, extractable)) {
+                    title = extractable.get("finaltitle");
+                    extractable.put("标题", title);
+                }
+            } else if (desc.equals("") && !title.equals("")) {
+                if (ie.canBePlace(desc, city, extractable)) {
+                    desc = extractable.get("finaladdress");
+                    extractable.put("地点", title);
+                }
+            } else if (desc.equals("") && title.equals("")) {
+                if (!finalAddress.equals("") && !finalTitle.equals("")) {
+                    title = finalTitle;
+                    desc = finalAddress;
+                }
+            }
             Iterator iterator = other.keys();
             while (iterator.hasNext()) {
                 String key = (String) iterator.next();
