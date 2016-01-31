@@ -15,7 +15,7 @@ public class Project extends Extractable {
     public void persistData(String outputFile, String url, boolean hasPost) throws IOException {
         File file = new File(outputFile + "projects");
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(file, true), "UTF-8"))) {
+                new FileOutputStream(file, false), "UTF-8"))) {
 
             bw.write("**************" + url + "********************是否成功提交数据库:" + hasPost);
             bw.newLine();

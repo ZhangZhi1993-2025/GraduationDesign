@@ -5,7 +5,7 @@ import cn.edu.njnu.domain.ext.Incubator;
 import cn.edu.njnu.infoextract.InfoExtract;
 import cn.edu.njnu.infoextract.impl.incubators.ExtractIncubators;
 
-import cn.edu.njnu.tidypage.TidyPage;
+//import cn.edu.njnu.tidypage.TidyPage;
 import cn.edu.njnu.tools.CoordinateHelper;
 import cn.edu.njnu.tools.Pair;
 import net.sf.json.JSONObject;
