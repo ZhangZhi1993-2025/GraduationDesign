@@ -12,8 +12,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>info-extract</module>
+        <module>data-service</module>
         <module>thematic-crawler</module>
+        <module>info-extract</module>
     </modules>
 
     <properties>
@@ -23,7 +24,7 @@
         <guava.version>19</guava.version>
         <jsoup.version>1.8.3</jsoup.version>
         <tomcat.version>7.0.30</tomcat.version>
-        <dbcp.version>1.4</dbcp.version>
+        <servlet.version>2.5</servlet.version>
         <junit.version>4.10</junit.version>
         <jackson.version>2.3.0</jackson.version>
 
@@ -32,6 +33,8 @@
 
         <mybatis.mybatis.version>3.2.3</mybatis.mybatis.version>
         <mybatis.spring.version>1.2.1</mybatis.spring.version>
+        <mysql.version>5.1.21</mysql.version>
+        <dbcp.version>1.4</dbcp.version>
 
     </properties>
 
@@ -50,20 +53,6 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <!--Apache log4j redirect to slf4j -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <!--Java Util Logging redirect to slf4j -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
                 <scope>runtime</scope>
             </dependency>
@@ -138,7 +127,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.21</version>
+                <version>${mysql.version}</version>
                 <scope>runtime</scope>
             </dependency>
 
@@ -161,6 +150,13 @@
                 <artifactId>tomcat-jdbc</artifactId>
                 <version>${tomcat.version}</version>
                 <scope>runtime</scope>
+            </dependency>
+            <!-- servlet -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- base tools -->
@@ -202,6 +198,32 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <!-- logging -->
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- base tools -->
 
         <dependency>
             <groupId>com.google.guava</groupId>
