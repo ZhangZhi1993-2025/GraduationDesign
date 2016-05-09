@@ -1,0 +1,392 @@
+http://www.kejisi.com/apply/
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<title>TechTemple(科技寺)入寺申请表</title>
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/DatePicker/WdatePicker.js"></script>
+		<script>
+            $(function () {
+                var v = new Array()
+                var t = new Array()
+                for (i = 0; i < 50; i++) {
+                    v[i] = $("input:eq(" + i + ")").val();
+                    t[i] = $("textarea:eq(" + i + ")").val();
+                };
+                $("input").focus(function () {
+                    $(this).css("color", "#333")
+                    var m = $(this).val();
+                    var i = $("input").index(this);
+                    if (m == v[i]) {
+                        $(this).val("");
+                    }
+                });
+                $("input").blur(function () {
+                    var m = $(this).val();
+                    var i = $("input").index(this);
+                    if (m == "") {
+                        $(this).val(v[i]);
+                        $(this).css("color", "#ddd")
+                    }
+                });
+                $("textarea").focus(function () {
+                    $(this).css("color", "#333");
+                    var t1 = $(this).val();
+                    var i = $("textarea").index(this);
+                    if (t1 == t[i]) {
+                        $(this).val("");
+                    }
+                });
+                $("textarea").blur(function () {
+                    var t1 = $(this).val();
+                    var i = $("textarea").index(this);
+                    if (t1 == "") {
+                        $(this).val(t[i]);
+                        $(this).css("color", "#ddd");
+                    }
+                });
+            });
+            //写cookies
+
+            function setCookie(name, value) {
+                var Days = 1;
+                var exp = new Date();
+                exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+                document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+            }
+
+            //读取cookies
+            function getCookie(name) {
+                var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+                if (arr = document.cookie.match(reg))
+
+                    return (arr[2]);
+                else
+                    return null;
+            }
+
+            function SubmitApplicationInfo() {
+                if (getCookie("status") == "1") { alert("不允许重复提交!"); return;}
+                var Name = $("#Name").val() == "公司全称" ? "" : $("#Name").val();
+                var ShortName = $("#ShortName").val() == "公司简称" ? "" : $("#ShortName").val();
+                var Contact_Name = $("#Contact_Name").val() == "CEO姓名" ? "" : $("#Contact_Name").val();
+                var Contact_Phone = $("#Contact_Phone").val() == "CEO手机" ? "" : $("#Contact_Phone").val();
+                var Contact_EMail = $("#Contact_EMail").val() == "CEO电邮" ? "" : $("#Contact_EMail").val();
+                var Established_Data = $("#Established_Data").val() == "公司成立时间" ? "" : $("#Established_Data").val();
+                var Address = $("#Address").val() == "" ? "公司地址" : $("#Address").val();
+                var Team_Size = $("#Team_Size").val() == "团队人数" ? "" : $("#Team_Size").val();
+                var Product = $("#Product").val() == "产品服务名称" ? "" : $("#Product").val();
+                var Business = $("#Business").val() == "产品服务简述" ? "" : $("#Business").val();
+                var Detail = $("#Detail").val() == "" ? "产品服务详述" : $("#Detail").val();
+                var Category = $("#Category").val() == "业务类别" ? "" : $("#Category").val();
+                var Development = $("#Development").val() == "业务-发展程度" ? "" : $("#Development").val();
+                var Business_Model = $("#Business_Model").val() == "业务-商业模式" ? "" : $("#Business_Model").val();
+                var Business_Market = $("#Business_Market").val() == "" ? "业务-市场竞争" : $("#Business_Market").val();
+                var Other_Supplement = $("#Other_Supplement").val() == "产品技术优势特点" ? "" : $("#Other_Supplement").val();
+                var Structure_Founder = $("#Structure_Founder").val() == "创始人姓名" ? "" : $("#Structure_Founder").val();
+                var Structure_Job = $("#Structure_Job").val() == "职位" ? "" : $("#Structure_Job").val();
+                var Structure_Email = $("#Structure_Email").val() == "邮箱" ? "" : $("#Structure_Email").val();
+                var Structure_Phone = $("#Structure_Phone").val() == "手机" ? "" : $("#Structure_Phone").val();
+                var Structure_Weibo = $("#Structure_Weibo").val() == "微博Weibo" ? "" : $("#Structure_Weibo").val();
+                var Structure_Description = $("#Structure_Description").val() == "过去工作经历描述" ? "" : $("#Structure_Description").val();
+                var Structure_Other = $("#Structure_Other").val() == "其他" ? "" : $("#Structure_Other").val();
+                var Investor = $("#Investor").val() == "融资-资金来源" ? "" : $("#Investor").val();
+                var Financing_Plan = $("#Financing_Plan").val() == "未来发展与下一步融资计划" ? "" : $("#Financing_Plan").val();
+                var Website_Address = $("#Website_Address").val() == "业务-演示网址" ? "" : $("#Website_Address").val();
+                var Client_Platform = $("#Client_Platform").val() == "技术-客户端平台" ? "" : $("#Client_Platform").val();
+                var Applicate_Reason = $("#Applicate_Reason").val() == "加入原因" ? "" : $("#Applicate_Reason").val();
+                var Applicate_SecondReason = $("#Applicate_SecondReason").val() == "自荐原因" ? "" : $("#Applicate_SecondReason").val();
+                var Help = $("#Help").val() == "所需帮助" ? "" : $("#Help").val();
+                var Problem = $("#Problem").val() == "挑战与问题" ? "" : $("#Problem").val();
+                var Channel = $("#Channel").val() == "信息渠道名称" ? "" : $("#Channel").val();
+
+                if (Name == "") { alert("请填写公司名称!"); $("#Name").focus(); return;}
+                //if (ShortName == "") { alert("请填写公司简称!"); $("#ShortName").focus(); return; }
+                if (Established_Data == "") { alert("请填写公司何时成立!"); $("#Established_Data").focus(); return; }
+                //if (Address == "") { alert("请填写公司地址!"); $("#Address").focus(); return; }
+                if (Team_Size == "") { alert("请填写全职团队人数!"); $("#Team_Size").focus(); return; }
+                if (Product == "") { alert("请填写产品或服务名称!"); $("#Product").focus(); return; }
+                if (Business == "") { alert("请填写您的公司业务!"); $("#Business").focus(); return; }
+                //if (Detail == "") { alert("请填写贵公司的产品或服务是什么!"); $("#Detail").focus(); return; }
+                //if (Category == "") { alert("请填写产品或服务的类别!"); $("#Category").focus(); return; }
+                //if (Development == "") { alert("请填写该产品或服务现在发展的程度!"); $("#Development").focus(); return; }
+                if (Business_Model == "") { alert("请填写商业模式!"); $("#Business_Model").focus(); return; }
+                if (Other_Supplement == "") { alert("请填写产品技术优势特点!"); $("#Other_Supplement").focus(); return; }
+                //if (Business_Market == "") { alert("请填写您的市场!"); $("#Business_Market").focus(); return; }
+                
+                if (Structure_Founder == "") { alert("请填写创始人姓名!"); $("#Structure_Founder").focus(); return; }
+                if (Structure_Job == "") { alert("请填写职位!"); $("#Structure_Job").focus(); return; }
+                //if (Structure_Email == "") { alert("请填写邮箱!"); $("#Structure_Email").focus(); return; }
+                //if (Structure_Phone == "") { alert("请填写手机!"); $("#Structure_Phone").focus(); return; }
+                //if (Structure_Weibo == "") { alert("请填写微博Weibo!"); $("#Structure_Weibo").focus(); return; }
+                if (Structure_Other == "") { alert("请填写其他(如LinkedIn地址)!"); $("#Structure_Other").focus(); return; }
+                if (Structure_Description == "") { alert("请填写过去工作经历描述!"); $("#Structure_Description").focus(); return; }
+                if (Financing_Plan == "") { alert("请填写未来发展与下一步融资计划!"); $("#Financing_Plan").focus(); return; }
+                if (Applicate_Reason == "") { alert("请填写加入原因!"); $("#Applicate_Reason").focus(); return; }
+                if (Help == "") { alert("请填写所需帮助!"); $("#Help").focus(); return; }
+                if (Problem == "") { alert("请填写挑战与问题!"); $("#Problem").focus(); return; }
+                if (Channel == "") { alert("请填写信息渠道名称!"); $("#Channel").focus(); return; }
+                //if (Client_Platform == "") { alert("请填写产品或服务所支持的客户端平台!"); $("#Client_Platform").focus(); return; }
+                if (Contact_Name == "") { alert("请填写联系人姓名!"); $("#Contact_Name").focus(); return; }
+                if (Contact_Phone == "") { alert("请填写联系人手机!"); $("#Contact_Phone").focus(); return; }
+                if (Contact_EMail == "") { alert("请填写联系人邮件!"); $("#Contact_EMail").focus(); return; }
+
+                if (confirm("确定信息填写无误吗?")) {
+                    $.ajax({
+                        type: "POST"
+                       , url: "Handler.ashx"
+                       , data: "Name=" + escape(Name) + "&ShortName=" + escape(ShortName) + "&Contact_Name=" + escape(Contact_Name) + "&Contact_Phone=" + escape(Contact_Phone) + "&Contact_EMail=" + escape(Contact_EMail)
+                           + "&Established_Data=" + escape(Established_Data) + "&Address=" + escape(Address) + "&Team_Size=" + escape(Team_Size) + "&Product=" + escape(Product) + "&Business=" + escape(Business)
+                           + "&Detail=" + escape(Detail) + "&Category=" + escape(Category) + "&Development=" + escape(Development) + "&Business_Model=" + escape(Business_Model) + "&Business_Market=" + escape(Business_Market)
+                           + "&Other_Supplement=" + escape(Other_Supplement) + "&Structure_Founder=" + escape(Structure_Founder) + "&Structure_Job=" + escape(Structure_Job) + "&Structure_Email=" + escape(Structure_Email)
+                           + "&Structure_Phone=" + escape(Structure_Phone) + "&Structure_Weibo=" + escape(Structure_Weibo) + "&Structure_Description=" + escape(Structure_Description) + "&Structure_Other=" + escape(Structure_Other)
+                           + "&Investor=" + escape(Investor) + "&Financing_Plan=" + escape(Financing_Plan) + "&Website_Address=" + escape(Website_Address) + "&Client_Platform=" + escape(Client_Platform) + "&Applicate_Reason=" + escape(Applicate_Reason)
+                           + "&Applicate_SecondReason=" + escape(Applicate_SecondReason) + "&Help=" + escape(Help) + "&Problem=" + escape(Problem) + "&Channel=" + escape(Channel)
+                           + "&time=" + new Date()
+                       , success: function (result) {
+                           setCookie("status", "1");
+                           alert(result);
+                           location.href = location.href;
+                       }
+                    });
+                }
+            }
+		</script>
+	</head>
+	<body>		
+	    <div class="content radius-8px">
+			<div class="headname">TechTemple(科技寺)入寺申请表</div>
+			<p>请填写以下表格加入我们第一期的招募计划</p>
+			<div class="formlist">
+				<ul>
+					<li class="event">
+						<dl>
+							<dd class="title">您的团队或公司名称？<span>*</span></dd>
+							<dd class="q">公司全称</dd>
+							<dd class="info"><input id="Name" value="公司全称" /></dd>
+							<!--<dd class="q">公司简称</dd>
+							<dd class="info"><input id="ShortName" value="公司简称" /></dd>-->
+						</dl>
+					</li>
+					
+					<li class="event">
+						<dl>
+							<dd class="title">1.您的公司何时成立？<span>*</span></dd>
+							<dd class="info"><input id="Established_Data" value="公司成立时间" readonly="readonly" onclick="WdatePicker({})" /></dd>
+						</dl>
+					</li>
+					<!--<li class="event">
+						<dl>
+							<dd class="title">2.您的公司地址？<span>*</span></dd>
+							<dd class="info"><input id="Address" value="公司地址" /></dd>
+						</dl>
+					</li>-->
+					<li class="event">
+						<dl>
+							<dd class="title">2.您的全职团队人数？<span>*</span></dd>
+							<dd class="info"><input id="Team_Size" value="团队人数" onkeyup="value=value.replace(/[^\d]/g,'')" /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">3.请描述您的产品或服务是什么。<span>*</span></dd>
+							<dd class="q">1)产品或服务名称</dd>
+							<dd class="info"><input id="Product" value="产品服务名称" /></dd>
+							<dd class="q">2)请简述一下您的公司业务(140字以内)</dd>
+							<dd class="info"><textarea id="Business">产品服务简述</textarea></dd>
+							<!--<dd class="q">3)请具体描述一下贵公司的产品或服务是什么？有哪些创新或不一样的地方？</dd>
+							<dd class="info"><input id="Detail" value="产品服务详述" /></dd>
+							<dd class="q">4)产品或服务的类别</dd>
+							<dd class="info"><input id="Category" value="业务类别" /></dd>-->
+						<!--</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">5.请具体描述以下内容<span>*</span></dd>
+							<dd class="q">1)该产品或服务现在发展的程度（产品构想阶段/产品原型/成型产品，业务规模..）？</dd>
+							<dd class="info"><input id="Development" value="业务-发展程度" /></dd>-->
+							<dd class="q">3)请简述您的商业模式。如何盈利？</dd>
+							<dd class="info"><textarea id="Business_Model">业务-商业模式</textarea></dd>
+                            <dd class="q">4)产品技术优势特点</dd>
+                            <dd class="info"><textarea id="Other_Supplement">产品技术优势特点</textarea></dd>
+							<!--<dd class="q">3)请描述您的市场，包括当前及可能的竞争对手。</dd>
+							<dd class="info"><input id="Business_Market" value="业务-市场竞争" /></dd>
+							<dd class="q">4)其他补充说明</dd>
+							<dd class="info"><input id="Other_Supplement" value="业务-补充信息" /></dd>-->
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+                            <dd class="title">4.请描述创始人及核心团队的构成<span>*</span></dd>
+                            <dd class="q">1)创始人姓名</dd>
+                            <dd class="info"><input id="Structure_Founder" value="创始人姓名" /></dd>
+                            <dd class="q">2)职位</dd>
+                            <dd class="info"><input id="Structure_Job" value="职位" /></dd>
+                            <!--<dd class="q">3)邮箱</dd>
+                            <dd class="info"><input id="Structure_Email" value="邮箱" /></dd>
+                            <dd class="q">4)手机</dd>
+                            <dd class="info"><input id="Structure_Phone" value="手机" /></dd>
+                            <dd class="q">5)微博Weibo</dd>
+                            <dd class="info"><input id="Structure_Weibo" value="微博Weibo" /></dd>-->
+                            <dd class="q">3)其他(如LinkedIn地址)</dd>
+                            <dd class="info"><input id="Structure_Other" value="其他" /></dd>
+                            <dd class="q">4)过去工作经历描述</dd>
+                            <dd class="info"><textarea id="Structure_Description">过去工作经历描述</textarea></dd>
+						</dl>
+					</li>
+					<!--<li class="event">
+						<dl>
+							<dd class="title">7.如果有,投资者是谁？投资金额及所占股份？</dd>
+							<dd class="info"><input id="Investor" value="融资-资金来源" /></dd>
+						</dl>
+					</li>-->
+					<li class="event">
+						<dl>
+							<dd class="title">5.未来发展与下一步融资计划</dd>
+							<dd class="info"><textarea id="Financing_Plan">未来发展与下一步融资计划</textarea></dd>
+						</dl>
+					</li>
+					<!--<li class="event">
+						<dl>
+							<dd class="title">9.如果您已拥有网站或演示,请提供网址。</dd>
+							<dd class="info"><input id="Website_Address" value="业务-演示网址" /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">10.请描述产品或服务所支持的客户端平台（iOS, Android, Windows Phone, Win8,Web…..）<span>*</span></dd>
+							<dd class="info"><input id="Client_Platform" value="技术-客户端平台" /></dd>
+						</dl>
+					</li>-->
+					<li class="event">
+						<dl>
+							<dd class="title">6.您为何想加入TechTemple？</dd>
+							<dd class="info"><input id="Applicate_Reason" value="加入原因" /></dd>
+						</dl>
+					</li>
+					<!--<li class="event">
+						<dl>
+							<dd class="title">12.您觉得为什么应该选择您的公司加入TechTemple(科技寺)?</dd>
+							<dd class="info"><input id="Applicate_SecondReason" value="自荐原因" /></dd>
+						</dl>
+					</li>-->
+					<li class="event">
+						<dl>
+							<dd class="title">7.您希望TechTemple(科技寺)为您提供哪些帮助？</dd>
+							<dd class="info"><input id="Help" value="所需帮助" /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">8.您有哪些潜在的挑战和问题需要在未来去解决？</dd>
+							<dd class="info"><input id="Problem" value="挑战与问题" /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">9.您是通过什么渠道了解到我们的？</dd>
+							<dd class="info"><input id="Channel" value="信息渠道名称" /></dd>
+						</dl>
+					</li>
+                    <li class="event">
+                        <dl>
+                            <dd class="title">TechTemple入寺申请相关事宜的联系人信息<span>*</span></dd>
+                            <dd class="q">联系人姓名</dd>
+                            <dd class="info"><input id="Contact_Name" value="CEO姓名" /></dd>
+                            <dd class="q">联系人手机</dd>
+                            <dd class="info"><input id="Contact_Phone" value="CEO手机" /></dd>
+                            <dd class="q">联系人邮件</dd>
+                            <dd class="info"><input id="Contact_EMail" value="CEO电邮" /></dd>
+                        </dl>
+                    </li>
+					<!--<li class="event">
+						<dl>
+							<dd class="title">选择行业<span>请选择您所属的行业</span></dd>
+							<dd class="info select-type">
+								<select name="">
+									<option>网吧</option>
+									<option>咖啡店</option>
+									<option>饭店</option>
+									<option>美容美发</option>
+									<option>保健中心</option>
+									<option>宾馆</option>
+								</select>
+							</dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">选择地区</dd>
+							<dd class="info  select-add">
+								<div class="left" style="margin-right:15px;">
+									<select name="">
+										<option>省</option>
+										<option>北京</option>
+										<option>上海</option>
+										<option>新疆</option>
+										<option>广东</option>
+										<option>湖南</option>
+									</select>
+								</div>
+								<div class="left" style="margin-right:15px;">
+									<select name="">
+										<option>市</option>
+										<option>北京</option>
+										<option>上海</option>
+										<option>乌鲁木齐</option>
+										<option>深圳</option>
+										<option>长沙</option>
+									</select>
+								</div>
+								<div class="left" style="margin-right:15px;">
+									<select name="">
+										<option>区</option>
+										<option>海淀区</option>
+										<option>朝阳区</option>
+										<option>东城区</option>
+										<option>宣武区</option>
+										<option>顺义区</option>
+									</select>
+								</div>
+								<div class="left"><a href="#">定位</a></div>
+							</dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">详细地址</dd>
+							<dd class="info"><input /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">联系人</dd>
+							<dd class="info"><input /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">联系电话</dd>
+							<dd class="info"><input /></dd>
+						</dl>
+					</li>
+					<li class="event">
+						<dl>
+							<dd class="title">营业面积</dd>
+							<dd class="info"><input /></dd>
+						</dl>
+					</li>-->
+				</ul>
+			</div>
+			<div class="submit">
+				<ul>
+					<li><span class="button-gred"><a href="javascript:SubmitApplicationInfo();">保存</a></span></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

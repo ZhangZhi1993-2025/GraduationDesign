@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="stylesheet" id="wtf" href="./wp-content/themes/lo/clock.css" type="text/css" media="all">
+<script>
+    function updateTime()
+    {
+        var d=new Date();
+        var ss = parseInt(d.getTime()/1000 );
+        var es = 1443715200
+        var ds = es-ss;
+        var sec = ds%60;
+        var min = parseInt((ds/60)%60);
+        var hour = parseInt((ds/3600)%24);
+        var day = parseInt(ds/(3600*24));
+        document.getElementById('day').innerHTML=day;
+        document.getElementById('hour').innerHTML=hour;
+        document.getElementById('min').innerHTML=min;
+        document.getElementById('sec').innerHTML=sec;
+    }
+    setInterval('updateTime()',500);
+</script>
+<div style='height:100%;background-color:#fee101;'>
+<div style='width:100%;position:relative;top:0;background-color:#fee101;'>
+	<img src='http://bjmakercarnival.com/wp-content/uploads/2014/09/home-home..png' style='width:100%;'>
+</div>
+
+<div style='width:100%;height:auto;position:relative;top:48px;background-color:#fee101;'>
+	<div id="unit" style='position:relative;top:0px;padding-bottom:80px;background-color:#fee101;'>
+    	<div class='unit233' style='width:33.3%;position:relative;float:left;'>
+			<div style='text-align:center;min-width:220px; background-color:#fee101;'>
+				<div class='wpb_wrapper'>
+					<h2 style='text-align: center;color:#000000;font-family:'Microsoft YaHei';'>时间&nbsp; |&nbsp; TIME</h2>
+					<p style='font-size: 20px; text-align: center;color:#000000'>2014.10.2 – 10.3</p>
+				</div>
+			</div>
+    	</div>
+    	<div class='unit233'style='width:33.3%;position:relative;float:left;'>
+    		<div style='text-align:center;margin:0 auto;'>
+    			<div class='wpb_wrapper' >
+					<h2 style='text-align: center;color:#000000'>地点&nbsp; |&nbsp; PLACE</h2>
+					<p style='font-size: 20px; text-align: center;color:#000000'>北京798艺术区,创意广场798 Originality Square,Beijing 798 Art Zone,Beijing</p>
+				</div>
+    		</div>
+    	</div>
+    	<div class='unit233' style='width:33.3%;position:relative;float:left;'>
+      		<div style='text-align:center;'>
+    			<h2 style='color:#000000;'>倒计时&nbsp  |&nbsp  COUNTDOWN</h2>
+    			<div id='CountdownWrapper' class='hasCountdown' style='top:+13px;position:relative;'  >
+    				<span class='countdown_row countdown_show4';style='height:0%;' >
+    					<span class='countdown_section'>
+        					<span class='countdown_amount' id='day' >29</span>
+        					<br>
+        					<span class='countdown_unit' style='font-size:20px;'>天</span>
+						</span>
+						<span class='countdown_section'>
+							<span class='countdown_amount' id='hour'>15</span>
+							<br>
+							<span class='countdown_unit'>时</span>
+						</span>
+						<span class='countdown_section'>
+							<span class='countdown_amount' id='min'>23</span>
+							<br>
+							<span class='countdown_unit'>分</span>    
+						</span>
+						<span class='countdown_section'><span class='countdown_amount' id='sec'>28</span>
+						<br>
+						<span class='countdown_unit'>秒</span>
+					</span>
+				</div>
+				</span>
+			</div>
+		</div>
+	    <br style="clear:both" />
+	</div>
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-CN" class="lt-ie9 lt-ie8 lt-ie7 ie6"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-CN" class="lt-ie9 lt-ie8 ie7"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-CN" class="lt-ie9 ie8"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="zh-CN"> <!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<title>MakerCarnival</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<link rel="shortcut icon" href="http://127.0.0.1/favicon.ico" />
+<link rel="apple-touch-icon" href="http://127.0.0.1/apple-touch-icon-precomposed.png" />
+
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://bjmakercarnival.com/xmlrpc.php" />
+
+<meta name="keywords" content="" />
+<meta name="description" content="[vc_row][vc_column][vc_column_text]2014创客嘉年华精彩视频 | Video[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width="1/1"][vc_raw_html]JTNDZW1iZWQlMjB3bW9kZSUzRCUyMmRpcmVjdCUyMiUyMGZsYXNodmFycyUzRCUyMnZpZCUzRHcwMTQwMjl2bXpjJTI2…" />
+
+<!--[if lt IE 9]><script src="http://bjmakercarnival.com/wp-content/themes/lo/js/vendor/html5shiv.js"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="MakerCarnival &raquo; Feed" href="http://bjmakercarnival.com/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="MakerCarnival &raquo; 评论Feed" href="http://bjmakercarnival.com/?feed=comments-rss2" />
+<link rel='stylesheet' id='minty-style-css'  href='http://bjmakercarnival.com/wp-content/themes/lo/style.css?ver=3.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='minty-style-customize-css'  href='http://bjmakercarnival.com/wp-content/themes/lo/theme-css.php?ver=3.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='featured-widget-css-css'  href='http://bjmakercarnival.com/wp-content/plugins/featured-page-widget/templates/featured-page-widget.css?ver=3.8.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpcountdown-css'  href='http://bjmakercarnival.com/wp-content/plugins/wpcountdown/static/css/main.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-content/plugins/wpcountdown/static/js/countdown.js?ver=1.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://bjmakercarnival.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://bjmakercarnival.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='next' title='关于创客嘉年华' href='http://bjmakercarnival.com/?page_id=25' />
+<meta name="generator" content="WordPress 3.8.5" />
+<link rel='canonical' href='http://bjmakercarnival.com/' />
+<link rel='shortlink' href='http://bjmakercarnival.com/?p=23' />
+<meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
+</head>
+
+<body class="home page page-id-23 page-template-default wpb-js-composer js-comp-ver-3.7.4 vc_responsive" itemscope itemtype="http://schema.org/WebPage">
+	<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+				<a id="hgroup" href="http://bjmakercarnival.com/" rel="home">
+			<h4 id="logo">MakerCarnival</h4>
+						
+		</a>
+
+		<a class="screen-reader-text skip-link" href="#main">跳至内容</a>
+
+		
+		<div class="connect">
+						
+			<a target="_blank" href="http://weibo.com/bjmakerspace" class="weibo" title="新浪微博"><span>新浪微博</span></a><a target="_blank" href="http://bjmakercarnival.com" class="twitter" title="Twitter"><span>Twitter</span></a><a target="_blank" href="http://bjmakercarnival.com" class="facebook" title="Facebook"><span>Facebook</span></a><a target="_blank" href="http://bjmakercarnival.com" class="googleplus" title="Google+"><span>Google+</span></a>			<form role="search" method="get" id="searchform" action="http://bjmakercarnival.com/">
+	<input type="search" placeholder="搜索…" value="" name="s" id="s" title="搜索" required x-moz-errormessage="请输入搜索关键字" />
+	<input type="submit" id="searchsubmit" value="搜索" />
+</form>		</div>
+
+		<nav id="nav" role="navigation" itemscope >
+			<!--<div class="nav-menu"><ul><li class="page_item page-item-23 current_page_item"><a href="http://bjmakercarnival.com/">&nbsp;</a></li><li class="page_item page-item-1720"><a href="http://bjmakercarnival.com/?page_id=1720">2012-2014年活动回顾</a></li><li class="page_item page-item-1074"><a href="http://bjmakercarnival.com/?page_id=1074">2014全球创客嘉年华活动回顾</a></li><li class="page_item page-item-960"><a href="http://bjmakercarnival.com/?page_id=960">2014创客嘉年华现场照片 | Photos</a></li><li class="page_item page-item-1053"><a href="http://bjmakercarnival.com/?page_id=1053">tmp</a></li><li class="page_item page-item-25"><a href="http://bjmakercarnival.com/?page_id=25">关于创客嘉年华</a></li><li class="page_item page-item-185"><a href="http://bjmakercarnival.com/?page_id=185">创客招募</a></li><li class="page_item page-item-33"><a href="http://bjmakercarnival.com/?page_id=33">合作伙伴</a></li><li class="page_item page-item-195"><a href="http://bjmakercarnival.com/?page_id=195">志愿者招募 | Volunteer</a></li><li class="page_item page-item-29"><a href="http://bjmakercarnival.com/?page_id=29">活动信息</a></li><li class="page_item page-item-31"><a href="http://bjmakercarnival.com/?page_id=31">联系我们</a></li></ul></div>
+-->
+			<div class="nav-menu">
+				<ul style=width:"502px">
+					<li class="" style="margin-left:-10px;"><a href="http://bjmakercarnival.com/?page_id=25" target="_self">关于创客嘉年华<br/>ABOUT MAKER<br/>CARNIVAL</a></li>
+					<li class=""><a href="http://bjmakercarnival.com/?page_id=185" target="_self">创客招募<br/>CALL FOR </br>MAKER</a></li>
+					<li class=""><a href="http://bjmakercarnival.com/?cat=10" target="_self">媒体报道<br/>MEDIA <br/>REPORT</a></li>
+					<li class=""><a href="http://bjmakercarnival.com/?page_id=29" target="_self">活动信息<br/>MAKER <br/>ACTIVITY</a></li>
+					<li class="" ><a href="http://bjmakercarnival.com/?page_id=31" target="_self">联系我们<br/>CONTACT <br/>US</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="m-btns">
+			<div class="menu" title="菜单">
+				<!--<ul><option value="http://bjmakercarnival.com/">&nbsp;</option><option value="http://bjmakercarnival.com/?page_id=1720">2012-2014年活动回顾</option><option value="http://bjmakercarnival.com/?page_id=1074">2014全球创客嘉年华活动回顾</option><option value="http://bjmakercarnival.com/?page_id=960">2014创客嘉年华现场照片 | Photos</option><option value="http://bjmakercarnival.com/?page_id=1053">tmp</option><option value="http://bjmakercarnival.com/?page_id=25">关于创客嘉年华</option><option value="http://bjmakercarnival.com/?page_id=185">创客招募</option><option value="http://bjmakercarnival.com/?page_id=33">合作伙伴</option><option value="http://bjmakercarnival.com/?page_id=195">志愿者招募 | Volunteer</option><option value="http://bjmakercarnival.com/?page_id=29">活动信息</option><option value="http://bjmakercarnival.com/?page_id=31">联系我们</option></ul>
+-->
+				<!--<div style="border:1px solid red">
+					<a href="">关于创客嘉年华</a><br/>
+					<a href="">创客招募</a><br/>
+					<a href="">活动信息</a><br/>
+					<a href="">合作伙伴</a><br/>
+					<a href="">联系我们</a><br/>
+				</div>-->
+			</div>
+			<span class="search" title="搜索"></span>
+					</div>
+	</header>
+
+	<!--[if lt IE 8]><div id="browsehappy">你正在使用的浏览器版本过低，请<a href="http://browsehappy.com/"><strong>升级你的浏览器</strong></a>，获得最佳的浏览体验！</div><![endif]-->
+
+	<div id="container" class="clearfix">
+
+		
+        
+	<main id="main" class="hfeed" role="main" itemscope>
+
+	
+		<article id="post-23" class="post-23 page type-page status-publish hentry">
+
+
+			<div class="entry-content" itemprop="articleBody">
+				<div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2>2014创客嘉年华精彩视频 | Video</h2>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html">
+		<div class="wpb_wrapper">
+			<embed wmode="direct" flashvars="vid=w014029vmzc&amp;tpid=3&amp;showend=1&amp;showcfg=1&amp;searchbar=1&amp;shownext=1&amp;list=2&amp;autoplay=1&amp;ptag=www_baidu_com%7Cmytv1.cover.vpp&amp;outhost=http%3A%2F%2Fv.qq.com%2Fpage%2Fw%2Fz%2Fc%2Fw014029vmzc.html&amp;refer=http%3A%2F%2Fv.qq.com%2Fmytv%2Fupload.html&amp;openbc=0&amp;title=%202014%E5%85%A8%E7%90%83%E5%88%9B%E5%AE%A2%E5%98%89%E5%B9%B4%E5%8D%8E%E5%AE%A3%E4%BC%A0%E7%89%87" src="http://imgcache.qq.com/tencentvideo_v1/player/TencentPlayer.swf?max_age=86400&amp;v=20140714" quality="high" name="tenvideo_flash_player_1415683364155" id="tenvideo_flash_player_1415683364155" bgcolor="#000000" width="650px" height="472px" align="middle" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/" style="width: 100%; height: 472px;">
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2>2015创客嘉年华现场照片 | Photos</h2>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<p style="text-align: right;"><img style="margin-bottom: -4px;" alt="" src="http://bjmakercarnival.com/wp-content/uploads/2014/08/2014-08-07_153458.png" /> <a href="http://bjmakercarnival.com/?page_id=960"><span style="color: #ffe000;">查看全部</span></a></p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_right">
+		<div class="wpb_wrapper">
+			
+			<img width="2448" height="1624" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/DSC06724.jpg" class="attachment-full" alt="DSC06724" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="2448" height="1624" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/DSC06646.jpg" class="attachment-full" alt="DSC06646" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="2448" height="1624" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/DSC07066.jpg" class="attachment-full" alt="DSC07066" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="1050" height="700" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/活动现场3.jpg" class="attachment-full" alt="活动现场3" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="1050" height="700" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/26.jpg" class="attachment-full" alt="2" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="1047" height="700" src="http://bjmakercarnival.com/wp-content/uploads/2014/10/DSC_0202.jpg" class="attachment-full" alt="DSC_0202" />
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2>参展项目 | EXHIBITION</h2>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<p style="text-align: right;"><img style="margin-bottom: -4px;" alt="" src="http://bjmakercarnival.com/wp-content/uploads/2014/08/2014-08-07_151414.png" /> <span style="color: #ffe000;">申请展位</span></p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<p style="text-align: right;"><img style="margin-bottom: -4px;" alt="" src="http://bjmakercarnival.com/wp-content/uploads/2014/08/2014-08-07_153458.png" /> <a href="http://bjmakercarnival.com/?cat=3"><span style="color: #ffe000;">查看全部</span></a></p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/2-150x150.jpg" class="attachment-thumbnail" alt="2" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;">
+<div>
+<h2><a href="http://bjmakercarnival.com/?p=283">壹枱The ONE智能钢琴</a></h2>
+</div>
+<div>作者：小叶子（北京）科技</div>
+<div>壹枱The ONE智能钢琴是世界首台苹果公司认证的智能钢琴，也是全球第一台智能钢琴。它可以跟iPad/iPhone及安卓设备连接，跟着指示灯弹，不识谱也能弹，像玩节奏大师一样弹钢琴！</div>
+<p>…</p>
+</div>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/MG_9492-150x150.png" class="attachment-thumbnail" alt="_MG_9492" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;">
+<h2><a href="http://bjmakercarnival.com/?p=288">极米Z3无屏超级电视</a></h2>
+<p>&nbsp;</p>
+</div>
+<div style="text-align: center;">作者：极米</div>
+<div style="text-align: center;">极米无屏电视Z3是一台高性价比的智能电视。极米无屏电视采用Mstar电视芯片、3色LED光源，能为用户提供流畅、高清、色彩艳丽、180寸超大屏的观影体验。</div>
+<div style="text-align: center;"></div>
+<div style="text-align: center;">…</div>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/14-150x150.jpg" class="attachment-thumbnail" alt="1" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;">
+<h2><a href="http://bjmakercarnival.com/?p=292">乐器以及声音合成器</a></h2>
+<p>作者：孟奇<br />
+人在面对不同演奏界面的时候，情感表达的结果是完全不同的。<br />
+这次我会展出几个通过对演奏界面界面和合成/效果器电路的探索和实验，制作而成的一些乐器。</p>
+</div>
+<div style="text-align: center;"></div>
+<div style="text-align: center;">…</div>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/2-150x150.png" class="attachment-thumbnail" alt="2" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center;"><a href="http://bjmakercarnival.com/?p=298">Flipdots</a></h2>
+<p style="text-align: center;">作者：神经元视觉</p>
+<p style="text-align: center;">身处于电子信息时代的我们,，早已对电子屏幕司空见惯。但更明亮，更炫目的感官刺激偶尔带给我们的却是疲劳和空虚。</p>
+<p style="text-align: center;">…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/IMG_20140904_192047-150x150.jpg" class="attachment-thumbnail" alt="IMG_20140904_192047" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center;"><a href="http://bjmakercarnival.com/?p=302">北京科技大学-机器人乐队</a></h2>
+<p style="text-align: center;">作者：北京科技大学机器人乐队<br />
+演奏机器人由舵机、电磁铁、步进电机、气缸等方式驱动，演奏控制程序由专门开发的软件将乐谱编译成驱动控制代码，驱动控制代码经上位机串口实时传输到控制电路板进行驱动器控制，实现机器人的演奏乐器动作。</p>
+<p style="text-align: center;">…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<img width="150" height="150" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/ballbot_1-150x150.jpg" class="attachment-thumbnail" alt="ballbot_1" />
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center;"><a href="http://bjmakercarnival.com/?p=307">清华大学未来智能机器人团队</a></h2>
+<p style="text-align: center;">作者：未来智能机器人<br />
+Ballbot采用圆球作为行走方式，通过三个万向轮驱动圆球，间接实现机器人的行走。<br />
+和现有的轮式机器人相比，球式驱动机器人的优点在于运动更加灵活、可以快速地向任意方向移动</p>
+<p style="text-align: center;">…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2>创客工作坊 | WORKSHOP</h2>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span6 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span8 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<p style="text-align: right;"><img style="margin-bottom: -4px;" alt="" src="http://bjmakercarnival.com/wp-content/uploads/2014/08/2014-08-07_151414.png" /> <span style="color: #ffe000;">申请为工作坊组织者</span></p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<p style="text-align: right;"><img style="margin-bottom: -4px;" alt="" src="http://bjmakercarnival.com/wp-content/uploads/2014/08/2014-08-07_153458.png" /> <a href="http://bjmakercarnival.com/?cat=4">查看全部</a></p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div><div class="wpb_row vc_row-fluid">
+	<div class="vc_span12 wpb_column column_container">
+		<div class="wpb_wrapper">
+			<div class="wpb_row vc_row-fluid">
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<a href="http://bjmakercarnival.com/?p=504"><img width="300" height="300" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/s_28.jpg" class="attachment-full" alt="s_28" /></a>
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;">
+<p><a href="http://bjmakercarnival.com/?p=504">自制Flyppy bird游戏机</a></p>
+</div>
+<p style="text-align: center;">上下上下左右左右……手机上的Flyppy Bird玩腻了？不如自己来做一个随身携带不会没电的随身Flyppy Bird游戏机吧！</p>
+<p style="text-align: center;">工作坊中使用的LED点阵和控制板不仅可以作为游戏机，更兼容可是化编程软件，让你不用写代码也能轻松改变显示的内容～传说是向女神表白的神器哟！<br />
+…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<a href="http://bjmakercarnival.com/?p=523"><img width="300" height="300" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/s_fnchdfg.jpg" class="attachment-full" alt="s_fnchdfg" /></a>
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;"><a href="http://bjmakercarnival.com/?p=523">Candy Monster</a></div>
+<p style="text-align: center;">这个工作坊上我们不仅会介绍开源硬件的来龙去脉，更会教你亲自动手制作一个贱贱的有人靠近睁眼看你的“守护者怪物”。如果你想要学习Arduino相关的入门知识，这将是个再好不过的机会～<br />
+…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+
+	<div class="vc_span4 wpb_column column_container">
+		<div class="wpb_wrapper">
+			
+	<div class="wpb_single_image wpb_content_element wpb_animate_when_almost_visible wpb_appear vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<a href="http://bjmakercarnival.com/?p=525"><img width="300" height="300" src="http://bjmakercarnival.com/wp-content/uploads/2014/09/s_bf.jpg" class="attachment-full" alt="s_bf" /></a>
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<div style="text-align: center;">
+<p><a href="http://bjmakercarnival.com/?p=525">私人蓝牙折叠台灯</a></p>
+</div>
+<p style="text-align: center;">你现在的办公室桌面上是不是堆满了便利贴、签字笔、记事本、手机、书本……如果你还没有购买桌面书架的话，那就和我们一起亲自动手“叠”一个美观又有趣的收纳盒吧！不只如此，它还是个具有身份识别功能的有趣台灯（只有你走近它才会逐渐点亮）。无聊的时候就用它跟来做客的朋友同事开个小玩笑。<br />
+…</p>
+
+		</div> 
+	</div> 
+		</div> 
+	</div> 
+</div>
+		</div> 
+	</div> 
+</div>
+							</div>
+		</article>
+
+		
+		
+	
+	</main>
+
+
+<div id="sidebar" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+
+	<div id="sidebar-top">
+		<aside id="text-2" class="widget widget_text clearfix">			<div class="textwidget"><IMG SRC="http://bjmakercarnival.com/wp-content/uploads/2014/09/website_v03-13.jpg" /></div>
+		</aside><aside id="text-3" class="widget widget_text clearfix">			<div class="textwidget"><a href="http://bjmakercarnival.com/?page_id=195" target="_self"><IMG SRC="http://bjmakercarnival.com/wp-content/uploads/2014/09/volunteer.jpg" /></a></div>
+		</aside><aside id="text-4" class="widget widget_text clearfix">			<div class="textwidget"><IMG SRC="http://bjmakercarnival.com/wp-content/uploads/2014/09/sh-mc.jpg" /></div>
+		</aside><aside id="text-5" class="widget widget_text clearfix">			<div class="textwidget"><IMG SRC="http://bjmakercarnival.com/wp-content/uploads/2014/09/website_v031.jpg" /></div>
+		</aside>	</div>
+
+
+</div>
+
+			</div>
+
+	<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+		<!--<nav class="links">
+			<a href="http://bjmakercarnival.com/">&nbsp;</a><a href="http://bjmakercarnival.com/?page_id=1720">2012-2014年活动回顾</a><a href="http://bjmakercarnival.com/?page_id=1074">2014全球创客嘉年华活动回顾</a><a href="http://bjmakercarnival.com/?page_id=960">2014创客嘉年华现场照片 | Photos</a><a href="http://bjmakercarnival.com/?page_id=1053">tmp</a><a href="http://bjmakercarnival.com/?page_id=25">关于创客嘉年华</a><a href="http://bjmakercarnival.com/?page_id=185">创客招募</a><a href="http://bjmakercarnival.com/?page_id=33">合作伙伴</a><a href="http://bjmakercarnival.com/?page_id=195">志愿者招募 | Volunteer</a><a href="http://bjmakercarnival.com/?page_id=29">活动信息</a><a href="http://bjmakercarnival.com/?page_id=31">联系我们</a>
+		</nav>-->
+		<div class="copyright">
+			&copy; 2015 <a href="http://bjmakercarnival.com/">MakerCarnival</a>   京ICP备13049894号-2
+		</div>
+		<a id="rocket" href="#top" title="返回顶部"><i></i></a>
+	</footer>
+
+
+<script>MINTY = {"ajaxurl":"http:\/\/bjmakercarnival.com\/wp-admin\/admin-ajax.php","lazyload":false,"stickySidebar":"disabled","keyboardNavigation":false,"infiniteScroll":"0","slidesTimeout":"4000"}</script>
+
+<link rel='stylesheet' id='js_composer_front-css'  href='http://bjmakercarnival.com/wp-content/plugins/js_composer/assets/css/js_composer_front.css?ver=3.7.4' type='text/css' media='all' />
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-content/themes/lo/js/script.js'></script>
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-content/plugins/js_composer/assets/js/js_composer_front.js?ver=3.7.4'></script>
+<script type='text/javascript' src='http://bjmakercarnival.com/wp-content/plugins/js_composer/assets/lib/jquery-waypoints/waypoints.min.js?ver=3.7.4'></script>
+</body>
+</html>

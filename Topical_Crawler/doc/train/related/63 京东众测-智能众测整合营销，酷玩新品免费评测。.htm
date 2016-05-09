@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东众测-智能众测整合营销，酷玩新品免费评测。</title>
+    <meta name="keywords" content="京东，京东智能社区，智能产品，小站广场，京东众测，免费众测"/>
+    <meta name="description" content="京东众测 – 整合京东商城资源，打通线上众测与线下体验，汇集专业达人，为企业提供全面的众测业务整合营销方案。" />
+    <meta name="og:description" content="京东众测 – 整合京东商城资源，打通线上众测与线下体验，汇集专业达人，为企业提供全面的众测业务整合营销方案。"/>
+    <link rel="stylesheet" href="//static.360buyimg.com/nsng/jingzhi/try/skin/resetStyle.css"/>
+    <link rel="stylesheet" href="//static.360buyimg.com/nsng/jingzhi/try/skin/commonStyle.css"/>
+    <link rel="stylesheet" href="//static.360buyimg.com/nsng/jingzhi/try/skin/try.css"/>
+    <link rel="stylesheet" href="//static.360buyimg.com/nsng/jingzhi/try/skin/try-index.css"/>
+    <link rel="shortcut icon" href="//static.360buyimg.com/nsng/jingzhi/try/img/favicon.ico"/>
+</head>
+<body style="background:#fff;">
+    <!--header begin-->
+<div class="header">
+    <div class="top_nav_main">
+        <div class="top_nav">
+            <p class="r_con" style="">
+                <a class="en_admin" href="//jingzhi.jd.com/entrance/userenter/" target="_blank" style="display:none;" tag>进入管理后台</a>
+                <span class="welcome">欢迎进入京东智能社区</span>
+                <a class="back" href="javascript:logout();" style="display:none;" tag>[退出]</a>
+            </p>
+            <a href="//www.jd.com/">京东首页</a>
+        </div>
+    </div>
+    <div class="head_main clearfix">
+        <div class="h_logo" tag>
+            <a href="//jingzhi.jd.com/">
+                <img src="//static.360buyimg.com/nsng/jingzhi/1.0/imgs/logo-2015.png" alt="京东智能社区">
+                <i><img src="//static.360buyimg.com/nsng/jingzhi/1.0/imgs/logo_icon.gif" alt=""></i>
+            </a>
+        </div>
+        <div class="h_menu">
+            <!--当前页面加cur-->
+            <a tag href="//jingzhi.jd.com/">首页</a>
+            <a tag class="cur" href="/">众测</a>
+            <a tag href="//jingzhi.jd.com/open/bsite/square">小站广场</a>
+        </div>
+        <!-- 已登录 开始 -->
+        <div class="is_login" style="display:none;">
+            <a class="il_portrait" target="_blank" href="" tag>
+                <img src="//static.360buyimg.com/nsng/jingzhi/try/skin/i/userImg_nologin.png" alt="">
+                <span class="bg_cover"></span>
+            </a>
+            <a class="il_user" target="_blank" href="" tag>个人中心</a>
+            <!-- 鼠标移入动态添加“il_message_selected”class，移出则移除-->
+            <div class="il_message_wrapper">
+                <div class="il_message_handler">
+                    <a href="javascript:;" class="il_message"><span style="display:none;"></span></a>
+                </div>
+                <div class="il_message_list">
+                    <a href="" target="_blank" class="ilm_item" tag>关注动态<span></span></a>
+                    <a href="" target="_blank" class="ilm_item" tag>消息动态<span></span></a>
+                    <a href="" target="_blank" class="ilm_item2" tag>系统通知<span></span></a>
+                </div>
+            </div>
+        </div>
+        <!-- 已登录 结束 -->
+        <!-- 未登录 开始 -->
+        <!--隐藏 display:none;-->
+        <div class="not_login" style="display:none;">
+            <a tag class="nl_portrait" href="javascript:login();"></a>
+            <a tag class="nl_login" href="javascript:login();">登录</a>
+            <a tag class="nl_register" href="javascript:register();">注册</a>
+        </div>
+        <!-- 未登录 结束 -->
+        <div class="h_search">
+            <span class="hs_icon" tag></span>
+            <input type="text" class="hs_input" maxlength="60">
+        </div>
+    </div>
+</div>
+<!--header end-->
+
+    <!-- #try-trying end -->
+    <div class="i_tryBannerBox" id="try-trying" tag>
+        <a href="/try/81/" target="_blank">
+            <span class="try_bannerImg"  style="background:#efefef url(//img30.360buyimg.com/smart/jfs/t2326/359/1564804176/40090/cd3d33e0/5668f17cN1ff117e0.jpg) no-repeat;"></span>
+            <div class="c01 personNum"><em class="en" data-personnum="227">0</em>人已申请</div>
+            <div class="c02">
+                <span class="btn">免费申请</span>
+                <!--如果banner的底色是深色系 加 otherInfo02-->
+                <p class="otherInfo otherInfo0">
+                    <span class="freeProductNum">数量:<em class="en">10</em>个</span>
+                    <!--"data-time" 为活动结束时间的时间戳 -->
+                    <span class="remain_time" data-time="1450324800000">剩余时间：<em class="day">00</em>天<em class="hours">00</em>时<em class="minutes">00</em>分<em class="seconds">00</em>秒</span>
+                    <!-- zus智能车载充电器 标题 -->
+                    <!-- ${trying.description} 副标题 -->
+                </p>
+            </div>
+            <span class="tryNO"><i class="icon"></i><em class="numBox">第<b class="num en">81</b>期</em></span>
+        </a>
+    </div>
+    <!-- #try-trying end -->
+
+    <!-- #try-ongoing start -->
+    <div class="i_newtryBox" id="try-ongoinig">
+        <ul class="i_newtryListBox">
+                                                            <li class="item01" tag>
+                    <div class="img"> 
+                        <a href="/try/80/" target="_blank">
+                            <img src="//img30.360buyimg.com/smart/jfs/t2221/295/1605926255/27145/ac2ed664/5668f9d6N0714599c.jpg" alt="">
+                            <p class="imgBg"></p>
+                            <h4 class="name">浦桑尼克JOJO-T1拖地机器人</h4>
+                            <span class="btn">免费申请</span>
+                        </a>
+                    </div>
+                    <div class="con">
+                        <p class="p01"><span class="personNum"><em class="num">236</em>人已申请</span></p>
+                        <p class="otherInfo">
+                            <span class="freeProductNum">数量:<em class="en">3</em>个</span>
+                            <span class="remain_time" data-time="1450324800000">剩余时间：<em class="day">--</em>天<em class="hours">--</em>时<em class="minutes">--</em>分<em class="seconds">--</em>秒</span>
+                        </p>
+                    </div>
+                </li>
+                                                                                                                                            <li class="item01" tag>
+                    <div class="img"> 
+                        <a href="/try/82/" target="_blank">
+                            <img src="//img30.360buyimg.com/smart/jfs/t2185/18/1636333643/20677/5c889b8c/5668fbb7N5a8ac7a9.jpg" alt="">
+                            <p class="imgBg"></p>
+                            <h4 class="name">有品魔秤CQ 智能体脂秤</h4>
+                            <span class="btn">免费申请</span>
+                        </a>
+                    </div>
+                    <div class="con">
+                        <p class="p01"><span class="personNum"><em class="num">229</em>人已申请</span></p>
+                        <p class="otherInfo">
+                            <span class="freeProductNum">数量:<em class="en">10</em>个</span>
+                            <span class="remain_time" data-time="1450325400000">剩余时间：<em class="day">--</em>天<em class="hours">--</em>时<em class="minutes">--</em>分<em class="seconds">--</em>秒</span>
+                        </p>
+                    </div>
+                </li>
+                                                                                                                                            <li class="item01" tag>
+                    <div class="img"> 
+                        <a href="/try/78/" target="_blank">
+                            <img src="//img30.360buyimg.com/smart/jfs/t1981/112/1494672773/44459/d17d883a/56666d5aN25031fcb.jpg" alt="">
+                            <p class="imgBg"></p>
+                            <h4 class="name">京东来点</h4>
+                            <span class="btn">免费申请</span>
+                        </a>
+                    </div>
+                    <div class="con">
+                        <p class="p01"><span class="personNum"><em class="num">984</em>人已申请</span></p>
+                        <p class="otherInfo">
+                            <span class="freeProductNum">数量:<em class="en">18</em>个</span>
+                            <span class="remain_time" data-time="1450152000000">剩余时间：<em class="day">--</em>天<em class="hours">--</em>时<em class="minutes">--</em>分<em class="seconds">--</em>秒</span>
+                        </p>
+                    </div>
+                </li>
+                                                                                                                                            <li class="item01" tag>
+                    <div class="img"> 
+                        <a href="/try/79/" target="_blank">
+                            <img src="//img30.360buyimg.com/smart/jfs/t2536/248/783767951/102648/1001bcd/5668f9bfN288867f0.jpg" alt="">
+                            <p class="imgBg"></p>
+                            <h4 class="name">睿米车载蓝牙播放器</h4>
+                            <span class="btn">免费申请</span>
+                        </a>
+                    </div>
+                    <div class="con">
+                        <p class="p01"><span class="personNum"><em class="num">1448</em>人已申请</span></p>
+                        <p class="otherInfo">
+                            <span class="freeProductNum">数量:<em class="en">5</em>个</span>
+                            <span class="remain_time" data-time="1450152000000">剩余时间：<em class="day">--</em>天<em class="hours">--</em>时<em class="minutes">--</em>分<em class="seconds">--</em>秒</span>
+                        </p>
+                    </div>
+                </li>
+                                                                                                    </ul>
+    </div>
+    <!-- #try-ongoing end -->
+    <div class="wrap980">
+        <!--往期众测 begin-->
+        <div class="i_afterTryBox">
+            <div class="pmTitle01">
+                <a class="more" href="/tries/" target="_blank" tag><i class="icon"></i>更多</a>
+                <h2>往期众测</h2>
+            </div>
+            <div class="i_afterTryListBox" id="passed">
+                <div class="loading"></div>
+            </div>
+        </div>
+        <!--往期众测 end-->
+
+        <!--精品评测 begin-->
+        <div class="i_tryReviewBox" id="besteval">
+            <div class="pmTitle01">
+                <h2>精品评测</h2>
+            </div>
+            <div class="i_tryReviewListBox">
+                <a class="load_more hasmore" href="javascript:void(0);">
+                    <img src="//static.360buyimg.com/nsng/jingzhi/1.0/imgs/loading-white.gif" style="height:100%;margin-right:10px;">
+                    <span class="text-hasmore">加载更多</span>
+                    <span class="text-loading">加载中</span>
+                    <span class="text-nomore">没有更多了</span>
+                </a>
+            </div>
+        </div>
+        <!--精品评测 end-->
+    </div>
+
+    <!--footer begin-->
+<div class="footer">
+    <div class="foot">
+        <ul class="foot-lists">
+            <li><a tag href="//jingzhi.jd.com/open/help/about.html" class="ninenine-word">关于我们</a></li>
+            <li><a tag href="//jingzhi.jd.com/open/help/howto.html" class="ninenine-word">品牌合作</a></li>
+            <li><a tag href="//jingzhi.jd.com/open/help/contact.html" class="ninenine-word">联系我们</a></li>
+        </ul>
+        <span tag class="copyright">Copyright © 2004-2015 京东JD.com 版权所有 </span>
+    </div>
+</div>
+<!--footer end-->
+<script src="//static.360buyimg.com/nsng/jingzhi/try/js/lib/jquery-1.11.3.js"></script>
+<script src="//static.360buyimg.com/nsng/jingzhi/try/js/lib/juicer-0.6.9.js"></script>
+<script src="/api/js/user/info.js?_=1449735224156"></script>
+<script src="//static.360buyimg.com/nsng/jingzhi/try/js/common.js"></script>
+<script src="//static.360buyimg.com/nsng/jingzhi/try/js/tpl_index.js"></script>
+<script src="//static.360buyimg.com/nsng/jingzhi/try/js/try-index.js"></script>
+</body>
+</html>

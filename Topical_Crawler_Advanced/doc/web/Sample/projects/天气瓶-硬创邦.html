@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气瓶-硬创邦</title>
+    <meta name="keywords" content="智能硬件,移动互联网,互联网媒体,移动终端" />
+    <meta name="description" content="国内最早关注智能硬件行业的互联网科技媒体,这里有最酷炫的智能硬件终端,有深度的创业介绍,雷锋网是移动互联网时代智能硬件终端第一媒体,我们在这里展现未来." />
+    <meta name="renderer" content="webkit">
+    <meta name="applicable-device" content="pc">
+    <link rel="stylesheet" href="http://www.leiphone.com/resWeb/css/common/base.css">
+    <link rel="stylesheet" href="http://www.leiphone.com/resWeb/css/common/footer.css">
+    <link rel="stylesheet" href="http://www.leiphone.com/resWeb/ycb/css/index.css">
+    <script>
+        window.mobilecheck = function() {
+            var check = false;
+            (function(a,b){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+            return check;
+        }
+        var check = mobilecheck();
+        if(check && (window.location.host == 'www.leiphone.com')){
+            window.location.href="http://m.leiphone.com" + window.location.pathname + window.location.search;
+        }
+
+                //百度统计开始
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0f7e8686c8fcc36f05ce11b84012d5ee";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        //百度统计结束
+        
+        var SCRIPT_URL  = "http://www.leiphone.com/";
+        var BASE_URL    = "http://www.leiphone.com/";
+        var HOME_URL    = "http://home.leiphone.com/";
+        var IS_LOGIN    = "1";
+        var LEIPHONE_HOME_URL = USER_CENTER  = "http://home.leiphone.com/";
+        var TRYOUT_URL = "http://tryout.leiphone.com/";
+        var MAKER_URL = "http://maker.leiphone.com";
+    </script>
+    <script src="http://www.leiphone.com/resWeb/zhongce/js/libs/jquery-sea.js"></script>
+    <script>
+        seajs.use(BASE_URL+"resWeb/zhongce/js/common/global.js");
+    </script>
+    <script type="text/javascript" src="http://www.leiphone.com/resCommon/js/yp_tipBoxes/tips.js"></script>
+
+</head>
+<body>
+<!--[if lte IE 8]>
+<script>
+    (function(){var e=['abbr', 'article', 'aside', 'audio', 'canvas', 'datalist', 'details', 'dialog', 'eventsource', 'figure', 'footer', 'header', 'hgroup', 'mark', 'menu', 'meter', 'nav', 'output', 'progress', 'section', 'time', 'video'];for(var i = e.length; i--;) document.createElement(e[i])})()
+    //低版本浏览器
+    document.getElementById("low-explorer").style.display = 'block';
+</script>
+<![endif]-->
+<script>
+    document.domain = "leiphone.com";
+    // 英鹏账号登录回调
+    function yingpengIslogin_callback(){
+        location.reload();
+        // seajs.use('http://www.leiphone.com/resWeb/zhongce/js/common/com_login',function(user) {
+        //  user.init();
+        // });
+    }
+</script>
+<div class="zc-sites">
+    <div class="container clr">
+        <div class="menu">
+            <!-- 首页、硬创邦、搞机、产品、试用、极客购、活动 -->
+            <a href="http://www.leiphone.com">首页</a>
+            <a rel="nofollow" href="http://maker.leiphone.com">硬创邦</a>
+            <a rel="nofollow" href="http://7.leiphone.com">搞机</a>
+            <a rel="nofollow" href="http://product.leiphone.com">产品</a>
+            <a rel="nofollow" href="http://tryout.leiphone.com">试用</a>
+            <a rel="nofollow" href="http://gou.leiphone.com">极客购</a>
+            <a rel="nofollow" href="http://www.leiphone.com/events/list">活动</a>
+        </div>
+        <div class="ucenter clr" id="yp-header-user">
+            
+        </div>
+    </div>
+</div>
+<!-- navbar -->
+<div class="navbar">
+    <div class="container">
+        
+        <div class="brand">
+            <a href="http://maker.leiphone.com"><img src="http://www.leiphone.com/resWeb/ycb/images/logo-ycb.png" alt=""></a>
+        </div>
+        <!-- <div class="logo">
+            <a href="http://maker.leiphone.com"><img src="http://www.leiphone.com/resWeb/ycb/images/logo-ycb.png" alt="硬创邦"></a>
+        </div> -->
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+    var COMMENT_TYPE = "12";
+    var ITEM_ID = "94";
+</script>
+<link rel="stylesheet" href="http://www.leiphone.com/resWeb/ycb/css/detail.css">
+<link rel="stylesheet" href="http://www.leiphone.com/resWeb/css/article.css">
+<script type="text/javascript" src="http://www.leiphone.com/resWeb/"></script>
+<div class="ycb-main">
+    <div class="container">
+        <div class="detail-tt">
+            <a href="http://product.leiphone.com/otherProduct/otherMemberId/4278009" target="_blank" class="user-hd">
+                <img src="http://www.leiphone.com/uploads/new/avatar/04/27/80/09_avatar_pic_100_100.jpg?updateTime=1" height="37" width="37" alt="世界的牛奶">
+                世界的牛奶            </a>
+            <span class="time">发布于 12月07日 12:23</span>
+            <!-- <div class="share" id="bdshare">
+                分享 <a class="bds_tsina weibo-btn share-btn lpatrshare-btn2 "  data-cmd="tsina"  href="#"><img src="http://www.leiphone.com/resWeb/ycb/images/weibo.png" alt="微博"></a>
+                <a class="weixin-btn bds_weixin share-btn lpatrshare-btn2" data-cmd="weixin" href="#"><img src="http://www.leiphone.com/resWeb/ycb/images/wechat.png" alt="微信"></a>
+            </div> -->
+            <div class="article-left">
+                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare baidu-share baidu-share bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1447834382472">
+                                    <span class="s-txt">分享：</span>
+                                    <a class="bds_tsina weibo-btn share-btn lpatrshare-btn2 " data-cmd="tsina" href="#" title="分享到新浪微博"><i></i><!-- 分享到微博 --></a>
+                                    <a class="weixin-btn bds_weixin share-btn lpatrshare-btn2" data-cmd="weixin" title="分享到微信">
+                                        <i></i>
+                                        <!-- 分享到朋友圈 -->
+                                        <!-- <div id="weixin-qt">
+                                            <div id="weixin-qt-msg">
+                                                打开微信，点击底部的“发现”，使用“扫一扫”即可将网页分享至朋友圈。
+                                            </div>
+                                        </div> -->
+                                    </a>
+                                    <a class="wy-btn lpatrshare-btn2" target="_blank" href="http://hot.163.com/share.html?title=Google手里掌控的这9家机器人公司，个个都是行业标杆&amp;image=&amp;url=http://www.leiphone.com/news/201511/HIZUWRJiIrIJGkyh.html" title="分享到网易">
+                                        <i></i>
+                                    </a>
+                                    <a class="bds_more more-btn share-btn" href="#" data-cmd="more">更多</a>
+                                </div>
+            </div>
+                            <script type="text/javascript">
+                                                //在这里定义bds_config
+                                                var bds_config = {'snsKey':{'tsina':'2475906690'}};
+                                                var qcode = {
+                                                    api : "http://qr.liantu.com/api.php?text=",
+                                                    url :  window.location.href,
+                                                    exist : false,
+                                                    create : function(){
+                                                        if(!this.exist){
+                                                            var image = document.createElement('img');
+                                                            image.src = this.api + this.url;
+                                                            image.width = 120;
+                                                            this.exist = true;
+                                                            return image;
+                                                        }
+                                                    }
+                                                };
+                                            </script>
+        </div>
+        <script type="text/javascript">
+            with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+         <script type="text/javascript">
+            //在这里定义bds_config
+            var bds_config = {'snsKey':{'tsina':'2475906690'}};
+            var qcode = {
+                api : "http://qr.liantu.com/api.php?text=",
+                url :  window.location.href,
+                exist : false,
+                create : function(){
+                    if(!this.exist){
+                        var image = document.createElement('img');
+                        image.src = this.api + this.url;
+                        image.width = 120;
+                        this.exist = true;
+                        return image;
+                    }
+                }
+            };
+        </script>
+        <!-- Baidu Button END -->
+        <div class="article">
+            <h1>天气瓶 <!-- <i class="ico-landscape"></i> --></h1>
+            <p>
+                温度天气瓶，是运用温度气压产生不同的结晶来判断天气，密封玻璃种方有特制液体（乙醇和樟脑），里面的液体可以从透明变成浑浊、雪花或者其他结晶，从而判断出外界的天气是阴晴还是雨雪            </p>
+
+            <!-- slider [[ -->
+                        <div id="slider">
+                <div class="show-box ">
+                    <ul>
+                                            <li class="show" style="display: block;" >
+                            <a href="javascript:"><img src="http://7te8bu.com1.z0.glb.clouddn.com/uploads/new/makerProject/pic/201512/5665045fee5e0.png?imageMogr2/thumbnail/!600x400r/gravity/Center/crop/600x400/quality/90" width="600" height="400" alt="1"></a>
+                        </li>
+                                            <li  class="" style="display: none;" >
+                            <a href="javascript:"><img src="http://7te8bu.com1.z0.glb.clouddn.com/uploads/new/makerProject/pic/201512/5665045f30ae1.png?imageMogr2/thumbnail/!600x400r/gravity/Center/crop/600x400/quality/90" width="600" height="400" alt="1"></a>
+                        </li>
+                                        </ul>
+                </div>
+                <div class="minImgs">
+                    <a href="javascript:;" class="min-prev min-btn"></a>
+                    <a href="javascript:;" class="min-next min-btn"></a>
+                    <div class="min-box">
+                        <ul class="min-box-list" style="width: 120px;">
+                                                            <li class="cur" >
+                                    <a href="javascript:"><img src="http://7te8bu.com1.z0.glb.clouddn.com/uploads/new/makerProject/pic/201512/5665045fee5e0.png?imageMogr2/thumbnail/!120x90/gravity/Center/crop/120x90/quality/90" width="600" height="400" alt="1"></a>
+                                </li>
+                                                            <li  class="" >
+                                    <a href="javascript:"><img src="http://7te8bu.com1.z0.glb.clouddn.com/uploads/new/makerProject/pic/201512/5665045f30ae1.png?imageMogr2/thumbnail/!120x90/gravity/Center/crop/120x90/quality/90" width="600" height="400" alt="1"></a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+                        <!-- slider ]] -->
+            <!-- <h1>项目简介</h1>
+            <div class="clr">
+                
+                
+            </div> -->
+
+            <h1 class="small">项目开发重点</h1>
+            <div class="clr">
+                
+                <p>&nbsp; &nbsp; 瓶内结晶的变化，主要是由于溶液内的樟脑、硝酸钾、氯化铵在水与乙醇混和溶剂内的溶解度会随着温度变化。温度改变时，三种物质的结晶析出、溶解速度有差异而造成的交互作用。而温度的变化速度，则会影响结晶的成长大小与结构。这些因素加总起来，造成瓶内晶体型态万千的美丽变化。</p><p>&nbsp; &nbsp; 现代研究证实，温度是影响瓶内结晶型态的最主要因素；与天气的对应关系几乎成随机分布，无预测价值。虽然不能用来预报天气，但天气瓶随着外界温度展现出多变的晶体变化，仍可作为一个美丽的装饰。也可做为有趣的科学教材，学习溶液的配置与结晶行为。</p><p><br/></p>
+            </div>
+        </div>
+        <div class="supportBox clr"  data-id="94">
+            <div class="left ">
+                <span><a href="javascript:;">0</a></span>
+            </div>
+            <div class="right">
+                0人已顶
+                <ul>
+                                </ul>
+            </div>
+        </div>
+        <script>
+        //顶接口
+        $('.supportBox').on('click','.left a',function(){
+            var $parent = $(this).closest('.supportBox');
+            var itemId = $parent.data('id');
+            var num = parseInt($(this).text());
+            var cur = $(this);
+            $.ajax({
+                url: MAKER_URL+'/LikeProject',
+                type: 'GET',
+                data: {id: itemId },
+            })
+            .done(function(data) {
+                if(data.status !== 1){
+                    YP_error(data.msg);
+                    return false;
+                }
+                YP_tip(data.msg); //success
+                $parent.find('.left').addClass('active');
+                num++;
+                console.log(num);
+                cur.text(num);
+            });
+            
+        });
+        </script>
+        <!-- 评论 [[ -->
+        <div class="article-coment">
+            <div class="lp-comment useComJs" id="lph-comment">
+                <input id="lp_item_id" type="hidden" name="item_id" value="94">
+                <input id="lp_item_type" type="hidden" name="type" value="12">
+
+                <div class="submit clr" id="commentForm">
+                    <div class="text">
+                        <textarea name="Comment[content]" placeholder="我有话要说……" id="saytext0"></textarea>
+                    </div>
+                    <div class="sub clr publishtosina">
+                        <!-- <span class="emotionc emotion0" data-emotion="0">表情</span> -->
+                        <!-- <label><input id="" type="checkbox" name="pushForWeibo"> 同步到新浪微博</label> -->
+                        <div class="qqFace" style="position:absolute; display:none; z-index:10"></div>
+                        <button type="submit" title="提交">提交</button>
+                    </div>
+                </div>
+
+                <div class="article-comment-container" data-item-id="94" data-type-id="12"> 
+                        <div class="words">                     
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        <!-- 评论 ]] -->
+    </div>
+</div>
+<script src="http://www.leiphone.com/resWeb/js/libs/jquery.SuperSlide.js"></script>
+<script src="http://www.leiphone.com/resWeb/ycb/js/detail.js"></script>
+<script>
+    seajs.use("http://www.leiphone.com/resWeb/js/common/com_comment",function(comment){
+        comment.pc();
+    });
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="http://www.leiphone.com/resWeb/css/common/footer.css?v=20150520" media="all" />
+<div class="yp-footer">
+    <div class="inner container">
+       <div class="yp-footer-top clr">
+            <div class="left">
+                <div class="flogo">
+                    <img src="http://www.leiphone.com/resWeb/images/common/lph-footer-logo.png">
+                </div>
+            </div>
+            <div class="right clr">
+                <div class="links">
+                    <a rel="nofollow" href="http://www.leiphone.com/us/concact">联系我们</a>|
+                    <a rel="nofollow" href="http://www.leiphone.com/us/index">关于我们</a>|
+                    <a rel="nofollow" href="http://www.leiphone.com/contribute/index">投稿</a>|
+                    <a rel="nofollow" href="http://www.leiphone.com/news/201410/x8AfHAEDgcsONrdF.html">加入我们</a>
+                    <div class="us">
+                        <a rel="nofollow" class="weibo" href="http://www.weibo.com/p/1006062118746300" target="_blank"></a>
+                        <a rel="nofollow" class="email" href="mailto:web@leiphone.com " title="web@leiphone.com"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+       <!--  <div class="cooperate">
+            
+        </div> -->
+        <div class="yp-footer-btm">
+            <br>
+            <span style="font-size: 13px; color: #636363;">友情链接：</span><ul class="clr"><li><a href="http://www.3dker.cn" target="_blank">3D客</a></li><li><a href="http://www.nanjixiong.com" target="_blank">南极熊3D打印网</a></li><li><a href="http://www.dfrobot.com.cn" target="_blank">DFRobot创客社区</a></li><li><a href="http://www.arduino.cn/" target="_blank">Arduino 中文社区</a></li><li><a href="http://www.techkedu.com" target="_blank">刻度网</a></li></ul>        </div>
+    </div>
+    <div class="yp-copyright">
+
+        <div class="inner container">
+            <p>Copyright © 2011-2015 www.leiphone.com 雷锋网-移动互联网智能终端第一媒体 All Rights Reserved 粤ICP备11095991号-1
+                <a rel="nofollow" key="550b8046efbfb05947002fb1" logo_size="83x30" logo_type="business" href="http://www.anquan.org/authenticate/cert/?site=&amp;at=business" target="_blank">
+                <!--
+                <script src="http://static.anquan.org/static/outer/js/aq_auth.js">
+                </script>
+                -->
+                <img src="https://static.anquan.org/static/outer/image/hy_83x30.png" alt="安全联盟认证" width="83" height="30" style="border: none;"></a>
+                &nbsp;&nbsp;
+                <a href="http://www.leiphone.com/resWeb/images/ICP.jpg" target="_blank" style="color:#6f6f6f">ICP证粤B2-20150332</a>
+                <a href="http://www.qiniu.com/" target="_blank" rel="nofollow" style="float:right">
+                    <img src="http://www.leiphone.com/resWeb/images/common/hzs4.png">
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="gotoBar">
+    <a class="top" rel="nofollow" href="javascript:;" data-goto="0" data-start="100" title="返回顶部" ><em></em></a>
+</div>
+</body>
+</html>
+<script>
+$(document).ready(function() {
+    //加载更多
+    $('.timeList .more').on('click',function(event){
+        event.preventDefault();
+        if(IS_MORE > 0 && NEXT_PAGE != undefined){
+            $.getJSON(MAKER_URL+"/projectList?page="+NEXT_PAGE+'&callback=?',function(data){
+                console.log(data);
+                if(data.status !== 1){
+                    YP_error(data.msg);
+                    return false;
+                }
+                NEXT_PAGE = data.content.nextPage;
+                IS_MORE = data.content.isMore;
+                $('.timeList ul').append(data.content.content);
+                if(!data.content.isMore){
+                    $('.timeList .more').remove();
+                }
+            });
+        }
+    });
+    //顶接口
+    $('.timeList').on('click','li .left a',function(){
+        var $li = $(this).closest('li');
+        var itemId = $li.data('id');
+        var num = parseInt($(this).text());
+        var cur = $(this);
+        $.ajax({
+            url: MAKER_URL+'/LikeProject',
+            type: 'GET',
+            data: {id: itemId },
+        })
+        .done(function(data) {
+            console.log(data);
+            if(data.status !== 1){
+                YP_error(data.msg);
+                return false;
+            }
+            YP_tip(data.msg); //success
+            $li.find('.left').addClass('active');
+            num++;
+            console.log(num);
+            cur.text(num);
+        });
+        
+    });
+}); 
+</script>
+<script>
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://www.leiphone.com/resWeb/home/js/login/yp_login.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<div style="display:none">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256559715'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256559715' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<script type="text/javascript" src="http://www.leiphone.com/resCommon/js/yp_tipBoxes/tips.js"></script>

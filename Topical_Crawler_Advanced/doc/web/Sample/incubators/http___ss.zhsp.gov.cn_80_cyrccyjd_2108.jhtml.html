@@ -1,0 +1,509 @@
+http://ss.zhsp.gov.cn:80/cyrccyjd/2108.jhtml
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中关村核心区创新创业服务平台</title>
+<link href="/r/cms/sl/default/css/base.css" rel="stylesheet" type="text/css">
+<link href="/r/cms/sl/default/css/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/r/cms/sl/default/slider/slider.css" />
+<script src="/r/cms/sl/default/slider/slider.js" ></script>
+<script src="/r/cms/sl/default/js/jquery-1.5.2.min.js"></script>
+<link href="/r/cms/sl/default/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+<script src="/r/cms/sl/default/ligerUI/js/core/base.js" ></script>
+<script src="/r/cms/sl/default/ligerUI/js/plugins/ligerTree.js" ></script>
+<script type="text/javascript" src="/lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="/lhgdialog/lhgdialog.min.js?s=chrome"></script>
+<link href="/r/cms/sl/default/css/reset_zxzx.css" rel="stylesheet" type="text/css">
+<script src="/r/cms/front.js" type="text/javascript"></script>
+<link href="/r/cms/sl/default/css/zxzx.css" rel="stylesheet" type="text/css">
+<script src="/r/cms/sl/default/js/ssDialog.js" type="text/javascript"></script>
+<style type="text/css"> 
+        .l-tree .l-tree-icon-none img{width:16px; height:16px; margin:3px;}
+</style>
+<script type="text/javascript">
+	$(function ()
+	{
+		var main = 'images/treeroot.jpg';
+		var memeber = 'images/treeitem.jpg';
+		var memeberx = 'images/treeitem.jpg';
+		$("#tree1").ligerTree({
+			data: [
+			{ text: '组织结构', icon: main, children: [
+				{ text: '总经理', icon: main, children: [
+					 { text: '赵新良', jianjie:'jianjie1', icon: memeber },
+					 
+					 { text: '赵新鸣', jianjie:'jianjie2', icon: memeber }
+				]
+				},
+				{ text: '综合管理部', icon: main, isexpand:false, children: [
+					 { text: '刘  京', jianjie:'jianjie1', icon: memeber },
+					 { text: '刘  洋', jianjie:'jianjie2', icon: memeber }
+				]
+				},
+				{ text: '财务管理部', icon: main, isexpand:false, children: [
+					 { text: '李艳伟', jianjie:'jianjie1', icon: memeber },
+					 { text: '钟杰立', jianjie:'jianjie2', icon: memeber },
+					 { text: '白  玉', jianjie:'jianjie1', icon: memeber },
+					 { text: '朱  伟', jianjie:'jianjie2', icon: memeber }
+				]
+				},
+				{ text: '创业服务部', icon: main, isexpand:false, children: [
+					 { text: '宁  荔', jianjie:'jianjie1', icon: memeber },
+					 { text: '李  娜', jianjie:'jianjie2', icon: memeber },
+					 { text: '周  鑫', jianjie:'jianjie1', icon: memeber },
+					 { text: '刘  佳', jianjie:'jianjie2', icon: memeber }
+				]
+				},
+				{ text: '项目管理部', icon: main, isexpand:false, children: [
+					 { text: '韩卫星', jianjie:'jianjie1', icon: memeber },
+					 { text: '陈亮', jianjie:'jianjie2', icon: memeber }
+				]
+				}
+				]
+			}
+			],
+			onClick:function(o){if(o.data.jianjie){$('.jianjie').hide();$('#'+o.data.jianjie).show();}}
+
+		});
+	});
+
+	function changeDiv() {
+		Cms.viewCount("","2108");
+	}
+</script>
+<style>
+	.map{border:1px solid blue;width:900px;height:400px;margin:20px 50px 50px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=25447367304377decf7f4db3b81df7a2"></script></head>
+
+<body>
+<div class="header">
+    <div class="nav">
+      <a href= "/"><span class="index_logo"><img src="/r/cms/sl/default/images/index_logo.png" width="233" height="81" /></span></a>
+        <div class="index_ss">
+          <ul class="index_fl">
+                <li><a class="index_selected" href="javascript:;" title="0" onclick="select(this);">搜全部</a></li>
+                <li><a href="javascript:;" title="1" onclick="select(this);">搜机构</a></li>
+                <li><a href="javascript:;" title="2" onclick="select(this);">搜企业</a></li>
+            </ul>
+          <div class="index_sousuo">
+		  <form action="/search.jspx" name="search" id="search" target="_self">
+                  <input name="s" id="scope" value="0" style="display:none;" />
+		  <input name="q" id="values" value="" style="vertical-align: middle;line-height:29px;" type="text" class="index_srk" size="10" />
+		  <input class="index_an" type="submit" value="" />
+		  </form></div>
+            <div class="index_bq">
+                   <span style="margin:0px 13px 0px 0px;"><a  href="/sl/jzbgq/" target="_self">创业孵化服务机构</a></span>
+                   <span style="margin:0px 13px 0px 0px;"><a  href="/sl/gdyx/" target="_self">产学研合作机构</a></span>
+                   <span style="margin:0px 13px 0px 0px;"><a  href="/sl/yszjgzz/" target="_self">高端人才服务机构</a></span>
+                   <span style="margin:0px 13px 0px 0px;"><a  href="/sl/lmxh/" target="_self">科技中介</a></span>
+
+            </div>
+        </div>
+       <div class="headerButton"><a href="http://fwtx.zhsp.gov.cn" class="Pt">回到平台首页</a></div>  
+    </div>
+</div><div class="content_l">
+    <div class="tit">您当前所在位置：<a href="http://fwtx.zhsp.gov.cn">首页</a> > 
+		 <!--雏鹰基地-->
+				<a  href="/sl/yszjgzz/" target="_self">高端人才服务机构</a>  > 
+			<a href="/sl/cyrccyjd/">雏鹰人才创业基地</a> > 
+     <a href="http://ss.zhsp.gov.cn:80/cyrccyjd/2108.jhtml" target="_self">北京海银创业科技孵化器投资中心</a>
+	 </div>
+
+<div class="box">
+	<div class="hdp float_left" id="idTransformView2" style="background:#e3e3e3; width:436px; height:275px; position:relative; top:0px; left:20px;">
+	    
+		  <ul class="slider slider2" id="idSlider2">
+				
+					<li><img src="/u/cms/sl/201310/15164624wpoh.jpg" style="width:436px;height:275px;"/></li>
+					<li><img src="/u/cms/sl/201309/18141320a69c.jpg" style="width:436px;height:275px;"/></li>
+					<li><img src="/u/cms/sl/201310/151646187dzh.jpg" style="width:436px;height:275px;"/></li>
+					<li><img src="/u/cms/sl/201310/15164556p2oe.jpg" style="width:436px;height:275px;"/></li>
+          </ul>
+		
+		  <ul class="num" id="idNum12" style="background:#909090;z-index:10;position:absolute;bottom:0px;margin:0px 28px;">
+		               
+					<li><img src="/u/cms/sl/201310/15164624wpoh.jpg" style="width:75px;height:70px;top:0px;display:inline;"/></li>
+					<li><img src="/u/cms/sl/201309/18141320a69c.jpg" style="width:75px;height:70px;top:0px;display:inline;"/></li>
+					<li><img src="/u/cms/sl/201310/151646187dzh.jpg" style="width:75px;height:70px;top:0px;display:inline;"/></li>
+					<li><img src="/u/cms/sl/201310/15164556p2oe.jpg" style="width:75px;height:70px;top:0px;display:inline;"/></li>
+				
+          </ul> 
+		<div id="numL" style="background:url('/r/cms/sl/default/images/qhtl.jpg')"></div>
+		<div id="numR" style="background:url('/r/cms/sl/default/images/qhtr.jpg')"></div>
+	</div>
+    <div class="js">
+     <h1>北京海银创业科技孵化器投资中心</h1>
+			评　　价：<img src="/r/cms/sl/default/images/xing.jpg" width="93" height="17"><br>
+			地　　址：<br>
+			联 系 人： 张志鹏<br>
+			联系电话： 010-6183421-8819<br>
+<br>
+	<div class="jiathis_style" style="text-align:center;">    
+		<span style="float:left;line-height:18px;">分享到：</span>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_tqq"></a>
+		<a class="jiathis_button_renren"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+		<a class="jiathis_counter_style"></a>
+	</div>	
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script><br>
+	   <!--
+	   <a href="#" ><img src="/r/cms/sl/default/images/zxzx.jpg" width="165" height="45"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		申请入园隐藏
+	   <a href="#"><img src="/r/cms/sl/default/images/sqry.jpg" width="165" height="45"></a>
+		-->
+		<a href="#zxzxModule"><img src="/r/cms/sl/default/images/zxzx.jpg" width="165" height="45"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<p><img src="/r/cms/sl/default/images/fx.jpg" width="249" height="143"></p>-->
+      </div>
+      <div class="clear"></div>
+  </div>
+  
+	<div><img src="/r/cms/sl/default/images/img01.jpg" width="1002" height="36"></div>
+  		<div class="box_js"><p>海银孵化器的定位是专注对社会化网络创业公司的孵化，王煜全是海银创业孵化器和海银投资<font color='#ff0000'>基金</font>的创始人、CEO。据王煜全透露，海银孵化器的LP主要是君联资本，人民币<font color='#ff0000'>基金</font>是自己募集的，将主要布局在高端电商领域。电商有两类机会，一类是以京东、凡客为代表，是相对低端的电商，争夺性价比，不做附加值。还有一类是高端</p></div>
+		<!-- 隐藏
+        <div><img src="images/img02.jpg" width="1002" height="36"></div>
+        <div class="box_js">
+          <div class="float_left tree">
+		      <div style="width: 225px; height: 240px; margin: 0px; float: left; border: 1px solid #ccc; overflow: auto;">
+					<ul id="tree1">
+					</ul>
+			  </div>
+		  </div>
+          <div id="jianjie1" class="jianjie">
+          <p><img src="images/zhaoxl.jpg" width="125" height="150"></p>
+            <div class="name">
+              <h1>赵新良</h1>
+            职　　务：主任<br>
+            地　　址： 海淀区上地信息路26号中关村创业大厦<br>
+            联系电话： 010-82898748<br>
+			传　　真： 010-82898748<br>
+			            邮　　箱：zhaoxl@zhongguancun.com.cn<br>
+						 网　　址：www.ospp.com<br>
+            </div>
+          </div>
+		  <div id="jianjie2" class="jianjie" style="display:none;">
+          <p><img src="images/pop01.jpg" width="125" height="150"></p>
+            <div class="name">
+              <h1>赵新鸣</h1>
+            职　　务：主任<br>
+            地　　址： 海淀区上地信息路26号中关村创业大厦<br>
+            联系电话： 010-82898748<br>
+			传　　真： 010-82898748<br>
+			            邮　　箱：wangsq@zhongguancun.com.cn<br>
+						网　　址：www.ospp.com<br>
+            </div>
+          </div>
+		  
+          <div class="clear"></div>
+        </div>
+         <div><img src="images/img03.jpg" width="1002" height="36"></div>
+         <div class="box">
+        <div class="list">
+	<dl>
+		<dt><a href="#"><img src="images/lppicon1.png" /></a></dt>
+        <dd><a href="#">楼宇空间</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon2.png" /></a></dt>
+        <dd><a href="#">融资服务</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon3.png" /></a></dt>
+        <dd><a href="#">物业服务</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon4.png" /></a></dt>
+        <dd><a href="#">法律服务</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon5.png" /></a></dt>
+        <dd><a href="#">中介服务</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon6.png" /></a></dt>
+        <dd><a href="#">咨询培训</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon7.png" /></a></dt>
+        <dd><a href="#">专业化资源</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon8.png" /></a></dt>
+        <dd><a href="#">项目申报</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon9.png" /></a></dt>
+        <dd><a href="#">商务交流</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon10.png" /></a></dt>
+        <dd><a href="#">信息共享</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon11.png" /></a></dt>
+        <dd><a href="#">工商注册</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#"><img src="images/lppicon12.png" /></a></dt>
+        <dd><a href="#">咨询服务</a></dd>
+	</dl>
+    <div class="clear"></div>
+</div>
+  </div>
+      <div><img src="images/img04.jpg" width="1002" height="36"></div>
+<div class="list">
+	<dl>
+		<dt><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html"><img src="images/lppicon1.png" /></a></dt>
+        <dd><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html">在园企业</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html"><img src="images/lppicon2.png" /></a></dt>
+        <dd><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html">毕业企业</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html"><img src="images/lppicon3.png" /></a></dt>
+        <dd><a href="03北京北达燕园科技孵化器有限公司企业列表首页(1).html">出园企业</a></dd>
+	</dl>
+	
+	</dl>
+    <div class="clear"></div>
+</div>
+隐藏-->
+	<div><img src="/r/cms/sl/default/images/img05.jpg" width="1002" height="36"></div>
+	<div style=" text-align:center" >
+		<!--<img src="images/map.jpg" width="851" height="378">-->
+		<input type="checkbox"  name="answer" value="楼盘" onClick="selectedCheckbox(this);" /><img src="/r/cms/sl/default/images/loupan.jpg"/>楼盘&nbsp;&nbsp;&nbsp;&nbsp; 
+		<input type="checkbox"  name="answer" value="公交" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/gongjiao.jpg"/>公交&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="餐饮" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/canyin.jpg"/>餐饮 &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="银行" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/yinhang.jpg"/>银行 &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="超市" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/chaoshi.jpg"/>超市 &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="商场" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/shangchang.jpg"/>商场&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="学校" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/xuexiao.jpg"/>学校 &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="checkbox"  name="answer" value="医院" onClick="selectedCheckbox(this);"/><img src="/r/cms/sl/default/images/yiyuan.jpg"/>医院 
+		
+		<div class="map" id="l-map"></div>
+	</div>
+<!--在线咨询开始 -->
+	<div class="mAuto" style="width:1002px;" id="zxzxModule" ><img src="/r/cms/sl/default/images/img06.jpg" width="1002" height="36"></div>
+	<div style=" text-align:left;margin-bottom:10px;" >
+		<div class="wrap w950 mAuto">
+		<div class="problem w950 mAuto" style="margin-top:10px;">
+		</div>
+		
+		<!-- 新增在线咨询内容 -->
+		<span ><a href="javascript:void(0);" onclick="showAddZxContent()" class="blueLink1 floatL">新增咨询</a></span>
+		<div class="wrap w800 mAuto" style="padding-top:60px; padding-bottom:60px;" id="addZxContent" >
+		<input type="hidden" name="replyId" id="replyId" value="150728"/>
+		<table class="zxform mAuto">
+		  <tr>
+			<th height="35">咨询主题:</th>
+			<td><input type="text" name="consultationTitle" id="consultationTitle" /></td>
+		  </tr>
+		  <tr>
+			<th height="40">咨询内容:</th>
+			<td><textarea name="consultationContent" id="consultationContent" cols="45" rows="5"></textarea></td>
+		  </tr>
+		  
+		</table>
+		 <div class="mTop15" style="width:635px;">
+			<a href="javascript:void(0);" onclick="ajax_consultation();" class="blueLink1 floatR">保 存</a>
+		 </div>
+		</div>	
+		</div>
+	</div>
+
+   <!--在线咨询结束 -->
+</div>
+<div class="footer">版权所有：中关村科技园区海淀园管理委员会<br/>地址：北京市海淀区四季青路6号海淀招商大厦6、7层 &nbsp; 服务热线: 010－68944225</div></body>
+</html>
+<script type="text/javascript">
+	$(function(){$("#scope").val($(".index_fl .index_selected").attr("title"));});
+	function select(o){
+		$(".index_selected").removeClass("index_selected");
+		$(o).addClass("index_selected");
+			$("#scope").val(o.title);
+	}
+
+	var map = new BMap.Map("l-map");            // 创建Map实例
+	var point = new BMap.Point(116.488143,39.914822);
+	map.centerAndZoom(point, 17);
+	map.enableScrollWheelZoom();
+	map.disableDoubleClickZoom();
+   map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP,BMAP_PERSPECTIVE_MAP]}));     //2D图，卫星图
+    map.addControl(new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_RIGHT}));    //右上角，默认地图控件
+    map.setCurrentCity("北京");   //由于有3D图，需要设置城市哦
+
+	var marker = new BMap.Marker(point);
+    var label=new BMap.Label("北京海银创业科技孵化器投资中心");
+    marker.setLabel(label);
+    map.addOverlay(marker);
+	
+
+function returnImage(value){
+	if(value=="楼盘")
+	return '/r/cms/sl/default/images/loupan.jpg';
+	if(value=="公交")
+	return '/r/cms/sl/default/images/gongjiao.jpg';
+	if(value=="餐饮")
+	return '/r/cms/sl/default/images/canyin.jpg';
+	if(value=="银行")
+	return '/r/cms/sl/default/images/yinhang.jpg';
+	if(value=="超市")
+	return '/r/cms/sl/default/images/chaoshi.jpg';
+	if(value=="商场")
+	return '/r/cms/sl/default/images/shangchang.jpg';
+	if(value=="学校")
+	return '/r/cms/sl/default/images/xuexiao.jpg';
+	if(value=="医院")
+	return '/r/cms/sl/default/images/yiyuan.jpg';
+};
+
+function selectedCheckbox(obj){
+   map.clearOverlays();//清除所有的标注
+   var label = new BMap.Label("北京海银创业科技孵化器投资中心");
+   marker.setLabel(label);
+   map.addOverlay(marker);
+   var boxs=document.getElementsByName("answer");
+   for(i=0;i<boxs.length;i++){
+       var obj=boxs[i];
+	   if(obj.checked==true){//选中
+		   var image=returnImage(obj.value);
+		   search(obj.value,image);
+	   }
+   }
+ }
+
+function search(text,image){
+	var size=new BMap.Size(20,20);
+	var icon=new BMap.Icon(image,size);
+	var local=new BMap.LocalSearch(map,{
+	 renderOptions: {map: map},
+	 onMarkersSet: function(results){
+		
+		for(i=0;i<results.length;i++){
+			results[i].marker.setIcon(icon);
+			results[i].marker.setTitle(results[i].title); 
+
+		}
+     }
+	});
+	local.disableFirstResultSelection();//禁用自动选择第一个检索结果
+	local.searchNearby(text,point,1000);
+	local.disableAutoViewport();
+}
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+   $(".zxzxContent").each(function(){
+			$(this).hide();
+		});
+   $(".bcpop").each(function(){
+			$(this).hide();
+		});
+  $("#addZxContent").hide();
+})
+
+function showZxContent(idName){
+	$("#"+idName).toggle();
+}
+function showSupplementary(){
+	$("#addSupplementary").toggle();
+}
+
+function showAddAsk(idName){
+	$("#"+idName).toggle();
+}
+function showAddZxContent(){
+    var userName = "login";
+    if(userName=='login'){
+	ssLogin("/zxqyTb/loginView.jspx?webSiteType=sl&loginMsg=4")
+    }else{
+	$("#addZxContent").toggle();
+    }
+}
+
+//在线咨询问题异步提交
+function ajax_consultation(){
+
+		$("#consultationBtn").attr("disabled","disabled");
+		$.ajax({
+			url:"/onlineConsultation/saveConsultation.jspx",
+			type:"POST",
+			data:{'consultationTitle':$("#consultationTitle").val(),'consultationContent':$("#consultationContent").val(),'replyId':$("#replyId").val()},
+			dataType:"json",
+			success:function(data){
+				if(data.isSuccess==1){
+					alert("咨询问题提交成功！");
+					window.location.reload();
+					//$('#supplementaryContent').val('');
+				}else{
+					alert("咨询问题提交失败！");
+				}
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				alert("咨询问题提交失败！");
+		   }	
+		})
+
+}
+
+//补充问题异步提交
+function ajax_supplementary(consultationId){
+
+		$("#supplementaryBtn").attr("disabled","disabled");
+		$.ajax({
+			url:"/onlineConsultation/saveSupplementary.jspx",
+			type:"POST",
+			data:{'consultationId':consultationId,'contentMsg':encodeURIComponent($("#supplementaryContent").val())},
+			dataType:"json",
+			success:function(data){
+				if(data.isSuccess==1){
+					alert("补充问题提交成功！");
+					window.location.reload();
+					//$('#supplementaryContent').val('');
+				}else{
+					alert("补充问题提交失败！");
+				}
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				alert("补充问题提交失败！");
+		   }	
+		})
+
+}
+
+//回复追问异步提交
+function ajax_addAsk(consultationId,replyId,thisBtn,thisObj){
+	var userName = "login";
+    if(userName=='login'){
+		alert('未登录');
+		opLogDg('ssfrontLogin');
+    }else{
+		alert('已登录');
+		$(thisBtn).attr("disabled","disabled");
+		$.ajax({
+			url:"/onlineConsultation/saveAddAsk.jspx",
+			type:"POST",
+			data:{'consultationId':consultationId,'replyId':replyId,'contentMsg':encodeURIComponent($('#'+thisObj).val())},
+			dataType:"json",
+			success:function(data){
+				if(data.isSuccess==1){
+					alert("回复追问问题提交成功！");
+					window.location.reload();
+					//$('#addAskContent').val('')
+				}else{
+					alert("回复追问问题提交失败！");
+				}
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				alert("回复追问问题提交失败！");
+		   }	
+		})
+	}
+}
+</script>

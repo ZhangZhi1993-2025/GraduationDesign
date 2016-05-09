@@ -1,0 +1,689 @@
+http://jdj.jd.com/incubator
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>京东JD+开放孵化器</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no,email=no" name="format-detection"><!--去除对邮箱、数字的识别-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="京东，智能家居，JD+" name="keywords" />
+    <meta content="本页显示的是京东JD+开放孵化器的页面" name="description" />
+    <meta content="lqf" name="author" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/jdj.css" />
+    <link rel="shortcut icon" href="http://www.360buy.com/favicon.ico">
+    <script src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jdj.com.js"></script>
+    <script type="text/javascript" src="/assets/js/jdj_inc.js"></script>
+</head>
+<div style="display:none;" ><img src="/assets/img/icon/ico_share_logo.png" /></div>
+<body>
+
+
+<link type="text/css" rel="stylesheet"  href="//misc.360buyimg.com/jdf/1.0.0/unit/??ui-base/1.0.0/ui-base.css,shortcut/2.0.0/shortcut.css,myjd/2.0.0/myjd.css"/>
+<style>
+    body{font-family:"Microsoft Yahei";}
+    /*shortcut样式*/
+    #shortcut-2014 li.return-jd {background: url(//static.360buyimg.com/nsng/smart/2.0/skin/i/icon-home.png) no-repeat center left;padding-left: 20px;}
+    #shortcut-2014 a{color:#666;text-decoration:none}#shortcut-2014 a:hover{color:#C81623}
+    #shortcut-2014 .w{width: 1200px;font-family:"Microsoft Yahei";}
+    /*head样式*/
+    .header-2015{width: 100%;position: relative;z-index:10;background: url(//img13.360buyimg.com/cms/jfs/t2428/5/1519449266/1075/95cf4103/565eb8ffNb68e2b1e.png) repeat-x bottom #fff;background-size: 100% 1px;height: 80px;*height:auto;*background: url(//img13.360buyimg.com/cms/jfs/t2428/5/1519449266/1075/95cf4103/565eb8ffNb68e2b1e.png) repeat-x 0 80px #fff;}
+    .header-2015 a{text-decoration: none;}
+    .header-2015 sup{line-height: 0px;*line-height:10px;}
+    .header-2015 .link-2015 li.curr{*margin-top:-5px;}
+    #nav3{*margin-top:-3px;}
+    #nav4{*margin-top:-3px;}
+    #nav5{*margin-top:-3px;}
+    .header-2015 .w{width:1200px;font-family:"Microsoft Yahei";}
+    .header-2015 #logo-2015{width: 300px;float: left;height: 60px;padding-top: 20px;}
+    .header-2015 #logo-2015 .logo{background: url(//static.360buyimg.com/nsng/smart/imgs/jds_logo.png) no-repeat;width: 182px;height: 41px;display: block;text-indent: -20000px;}
+    .header-2015 .link-2015{float: right;padding-right: 35px;}
+    .header-2015 .link-2015 li{float: left;padding:40px 0 20px 0;}
+    .header-2015 .link-2015 li a{padding:15px 15px;color:#333;font-size: 16px;}
+    .header-2015 .link-2015 li.curr a{color: #fc3538;}
+    .header-2015 .link-2015 li a:hover{color:#fc3538;}
+    .header-2015 .smart-header{position: relative;}
+    .header-2015 .nav02{width: 100%;height: 45px;top:80px;left:0;background: #fff;border-bottom:1px solid #dedede;z-index: 100;overflow: hidden;}
+    .header-2015 .nav02 ul{float: right;padding-right: 35px;}
+    .header-2015 .nav02 li{float: left;line-height: 45px;}
+    .header-2015 .nav02 li a{padding:0 15px;color:#333;font-size: 14px;}
+    .header-2015 .nav02 li a:hover{color: #fc3538;}
+    .header-2015 .nav02 li span{padding:15px 15px;color:#333;font-size: 14px;cursor: pointer;}
+    .header-2015 .nav02 li.curr a{color: #fc3538;}
+
+    /*foot样式*/
+    #footer .foot-grap{border-top: 1px solid #E5E5E5;padding: 20px 0 30px;text-align: center;}
+    #footer .foot-grap .links a{margin: 0 10px;font-size: 14px;color:#333;}
+    #footer .foot-grap .links a:hover{color:#fe5050;}
+    #footer .foot-grap .copyright{margin: 10px 0;font-size: 12px;color:#c3c3c3;}
+    #footer .foot-grap .copyright a{font-size: 12px;color:#c3c3c3;}
+    #footer .foot-grap .authentication a{margin: 0 5px;text-decoration: none;}
+    #footer .foot-grap .authentication a img {border: 0;vertical-align: middle;}
+    #footer a{text-decoration: none;}
+    #footer sup{line-height: 0;}
+    #footer .w{width:1200px;font-family:"Microsoft Yahei";}
+</style>
+<div id="shortcut-2014" tag="10">
+    <div class="w">
+        <ul class="fl">
+            <li class="return-jd"><a href="//www.jd.com/">京东首页</a></li>
+        </ul>
+        <ul class="fr">
+            <li class="fore1" id="ttbar-login">
+                <a target="_blank" href="javascript:login();" class="link-login">你好，请登录</a>&nbsp;&nbsp;<a href="javascript:regist();" class="link-regist style-red">免费注册</a>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore2">
+                <div class="dt">
+                    <a target="_blank" href="//order.jd.com/center/list.action">我的订单</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore3 dorpdown" id="ttbar-myjd">
+                <div class="dt cw-icon">
+                    <i class="ci-right"><s>◇</s></i>
+                    <a target="_blank" href="//home.jd.com/">我的京东</a>
+                </div>
+                <div class="dd dorpdown-layer"></div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore4">
+                <div class="dt">
+                    <a target="_blank" href="//vip.jd.com/">京东会员</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore5">
+                <div class="dt">
+                    <a target="_blank" href="//b.jd.com/">企业采购</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore6 dorpdown" id="ttbar-apps">
+                <div class="dt cw-icon">
+                    <i class="ci-left"></i>
+                    <i class="ci-right"><s>◇</s></i>
+                    <a target="_blank" href="//app.jd.com/">手机京东</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore7 dorpdown" id="ttbar-atte">
+                <div class="dt cw-icon">
+                    <i class="ci-right"><s>◇</s></i>关注京东
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore8 dorpdown" id="ttbar-serv">
+                <div class="dt cw-icon">
+                    <i class="ci-right"><s>◇</s></i>客户服务
+                </div>
+                <div class="dd dorpdown-layer"></div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore9 dorpdown" id="ttbar-navs">
+                <div class="dt cw-icon">
+                    <i class="ci-right"><s>◇</s></i>网站导航
+                </div>
+                <div class="dd dorpdown-layer"></div>
+            </li>
+        </ul>
+        <span class="clr"></span>
+    </div>
+</div>
+<div class="header-2015">
+    <div class="w smart-header">
+        <div id="logo-2015" tag="1">
+            <a href="//smart.jd.com/" class="logo">京东智能</a>
+        </div>
+        <div class="link-2015">
+            <ul>
+                <li><a target="_blank" href="//smart.jd.com/">首页</a></li>
+                <li class="curr"><a href="//s.jd.com/">JD<sup>+</sup>生态</a></li>
+                <li><a target="_blank" href="//s.jd.com/incubator/">孵化器</a></li>
+                <li><a target="_blank" href="//smarthome.jd.com/">微联</a></li>
+                <li><a target="_blank" href="//new.jd.com/">首发</a></li>
+                <li><a target="_blank" href="//powerup.jd.com/">PowerUP</a></li>
+                <li><a target="_blank" href="//now.jd.com/">来点</a></li>
+                <li><a target="_blank" href="//jingzhi.jd.com/">社区</a></li>
+            </ul>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="nav02">
+        <div class="w">
+            <ul>
+                <li id="nav1"><a href="//s.jd.com/">六大能力</a></li>
+                <li id="nav2"><a href="//s.jd.com/incubator/">孵化器</a></li>
+                <li id="nav3"><a href="//s.jd.com/new/">JD<sup>+</sup>首发</a></li>
+                <li id="nav4"><a href="//s.jd.com/jdesign/">JD<sup>+</sup>设计</a></li>
+                <li id="nav5"><a href="//s.jd.com/sc/">JD<sup>+</sup>供应链</a></li>
+                <li id="nav6"><a href="//s.jd.com/powerup/">国际业务</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript" src="//misc.360buyimg.com/jdf/1.0.0/unit/base/1.0.0/base.js"></script>
+<script>
+    seajs.use(['//misc.360buyimg.com/jdf/1.0.0/unit/globalInit/2.0.0/globalInit.js'],function(globalInit){
+        globalInit();
+        (function(){
+            var A="";
+            var B=["微联 智能空调"];
+            B=pageConfig.FN_GetRandomData(B);
+            $("#hotwords-2014").html(A);
+            $("#key").val(B).css("color","#ccc").bind("focus",function(){if (this.value==B){this.value="";this.style.color="#333"}}).bind("blur",function(){if (!this.value){this.value=B;this.style.color="#999"}});
+        })();
+    });
+</script>
+<script>document.getElementById("nav2").className="curr";</script>
+
+
+<!--container begin-->
+    <!--banner begin-->
+    <div class="inc_t_banner"></div>
+    <!--banner end-->
+    <!--main01 begin-->
+    <div class="inc_main01">
+    	<dl class="inc_bd">
+    		<dt class="title"><h3>JD<sup>+</sup>开放孵化器</h3></dt>
+    		<dd class="con">
+    			<p>京东JD<sup>+</sup>开放孵化器是京东旗下专注智能硬件创业服务的创新型孵化器，是JD<sup>+</sup>的重要组成部分。<br>
+				致力于聚合京东的特色市场资源和专业服务资源，为国内外智能硬件创业项目提供专业孵化服务。</p>
+                <div class="p02">
+                    <a class="btn_addus" href="/apply/showApply" target="_blank">立即参与</a>
+                    <span class="email">也可发送BP至：jdfh@jd.com</span>
+                </div>
+    		</dd>
+    	</dl>
+    </div>
+    <!--main01 end-->
+    <!--main02 begin-->
+    <div class="inc_main02">
+    	<dl class="inc_bd">
+    		<dt class="title"><h3>服务政策</h3></dt>
+    		<dd class="con">
+    			<h4 class="tit">服务一</h4>
+    			<p class="txt">智能硬件营销服务：京东智能（京东一级栏目，用户在京东寻找智能硬件入口）营销资源，首发、试用、社区小站。</p>
+    			<h4 class="tit">服务二</h4>
+    			<p class="txt">创业空间：中关村创业大街、苏州街银丰大厦、深圳湾创业广场4栋，提供行业交流、产品展示及项目路演服务。</p>
+    			<h4 class="tit">服务三</h4>
+    			<p class="txt">便捷对接供应链、工业设计、京东众筹、采销等资源。</p>
+    		</dd>
+    	</dl>
+    </div>
+    <!--main02 end-->
+    <!--main03 begin-->
+    <div class="inc_main03">
+    	<dl class="inc_bd">
+    		<dt class="title"><h3>招募对象</h3></dt>
+    		<dd class="con">
+    			<ul class="zmdxList">
+    				<li class="c01">
+    					<p class="lc"></p>
+    					<p class="rc">智能家居、智能健康、其他与京东业务有关的项目。</p>
+    				</li>
+    				<li class="c02">
+    					<p class="lc"></p>
+    					<p class="rc">完成手板。</p>
+    				</li>
+    				<li class="c03">
+    					<p class="lc"></p>
+    					<p class="rc">相对于现有产品有明显的创新性，市场前景明朗。</p>
+    				</li>
+    				<li class="c04">
+    					<p class="lc"></p>
+    					<p class="rc">创业导师或创客空间、孵化器推荐。</p>
+    				</li>
+    			</ul>
+    		</dd>
+    	</dl>
+    </div>
+    <!--main03 end-->
+    <!--main04 begin-->
+    <div class="inc_main04">
+    	<dl class="inc_bd">
+    		<dt class="title"><h3>招募计划</h3></dt>
+    		<dd class="con">
+    			<div class="c c01">
+    				<h4>2015年5月</h4>
+    				<p>启动第一批招募</p>
+    			</div>
+    			<div class="c c02">
+    				<h4>2015年8月</h4>
+    				<p>北京第一期<br />招募项目评选完成</p>
+    			</div>
+    			<div class="c c03">
+    				<h4>2015年9月</h4>
+    				<p>北京第一期<br />项目入驻孵化器</p>
+    			</div>
+    		</dd>
+    	</dl>
+    </div>
+    <!--main04 end-->
+    <!--main07 孵化项目 begin-->
+    <div class="inc_main07">
+        <dl class="inTeamMain">
+            <dt class="title"><h3>入驻团队</h3></dt>
+            <dd class="con">
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo01.png" alt="" /></p>
+                    <h4 class="company_name">北京淘氪科技有限公司</h4>
+                    <div class="company_txt company_txt02">
+                        <div class="txt">
+                        北京淘氪科技有限公司的3位创始团队来自清华博士，分别负责产品、营销和研发。原创微滴场净化技术，领先的水洗空气概念，零耗材、绿色天然的智能空气净化器。
+                        </div>
+                    </div>
+                    <div class="btn_box"></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo02.png" alt="" /></p>
+                    <h4 class="company_name">深圳市傅里叶科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        深圳市傅里叶科技有限公司专注于智能健身领域，秉承让健身更有趣的理念。第一款产品燃速（RunRunFast）智能健身车，用物联网思维，打造最有好玩的健身车。燃速始于一个技术宅解决健身惰性的念头，践行着把想法变成现实的创客精神，从众筹到发行，一路成长。以玩的理念，改变世界。我们玩世不恭，我们天马行空。时代在变，要玩，就玩到极致。
+                        </div>
+                    </div>
+                    <div class="btn_box"></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo03.png" alt="" /></p>
+                    <h4 class="company_name">厦门趣奇信息科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        厦门趣奇信息科技有限公司的3位创始团队来自厦门大学MBA，有多次创业经历，精通智能硬件，熟悉移动互联网。曲奇单车是一群热爱单车、热爱生活的年轻人，是一个充满感性和科技创造力的团队。厚重的所谓“情怀”不适于曲奇单车，我们更希望创造出轻松有趣的骑行文化与科技产品，给予用户好玩、轻松、简单的骑行体验。我们创造了骑行APP、曲奇智能码表和曲奇智能自行车，这一系列的科技产品让骑行变成一件更轻松，更有趣的事情，同时我们吸引了许多单车爱好者参与其中，享受着乐趣也分享着自己的骑行乐趣。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo05.png" alt="" /></p>
+                    <h4 class="company_name">北京贝贝林教育科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        北京贝贝林教育科技有限公司的创始人苏乐家，是世界50强高管，MBA。创始团队拥有丰富的教育机器人行业经验和国际化视野。“Solbit”是一款人工智能家庭教育型机器人，它采用云技术，将人工智能，各种传感器以及以STEAM教学为框架的教学模式巧妙的融为一体，集成了摄像头和语音识别功能，为孩子提供全新的学习体验。Solbit主要针对4-7岁的儿童，其首要任务是陪伴孩子并与孩子一起学习和成长，培养孩子良好的时间概念和习惯，提高孩子的学习兴趣，做到对知识的理解和运用。Solbit不仅是孩子的学习伙伴，也是家庭伙伴，它能连接家中的智能硬件，帮助父母更智能的管理家庭设备，体验高科技带来的便捷生活。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo07.png" alt="" /></p>
+                    <h4 class="company_name">上海康觅信息科技发展有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        “花生觅”是一款全球最薄柔性可穿戴式智能体温计。相较于传统的智能体温计，本产品具有超薄(0.6mm)柔性设计、量测精度高、与皮肤贴合度高、佩戴异物感小等绝对领先的技术优势。本产品功能强大，完全可以替代传统体温计，使家长的操作更加便利，同时也使病痛中的孩子更加容易接受和配合家长的操作。与智能手机终端的配合使用，更加贴近年轻父母们的使用习惯，真真切切为病痛中的孩子及煎熬的家长送去一份安心。同时，本产品可植入贴身衣物之中，同样适用于女性群体基础体温的监测，以及卧床老人及病患的看护。我们追求“用户体验至上”的原则，是创新设计理念、颠覆产品工艺和跨界技术整合的集大成者。花生觅Healthme.Life致力于用科技和设计便利您的生活。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo08.png" alt="" /></p>
+                    <h4 class="company_name">北京天狼讯业信息有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        “小狼智能硬件“（北京天狼讯业信息有限公司），专注于提供自组网位置识别与呼救功能的智能硬件终端和解决方案。其中小狼智能信标是一款借助蓝牙BLE与智能手机连接的便携式通信设备，小狼智能信标非常适合户外的团队活动以及应对自然灾害的紧急通信设备。可以通过其配套App应用与组队的成员进行短距离通信和相互位置分享。它不需要手机信号和WIFI就可以与组队成员在有效通讯距离内（10公里左右）进行聊天，发送位置，轨迹识别等功能。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo09.png" alt="" /></p>
+                    <h4 class="company_name">北京薇小暖科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        北京薇小暖科技有限公司（小暖科技）是一家致力于康复理疗领域的移动互联网医疗公司。公司通过智能的个体化康复理疗设备、手机端应用程序及云端专家服务，以“设备＋应用＋服务”的创新模式，帮助用户实现简单方便的康复理疗、数据采集、 远程问诊、日常提醒和建议、病友社交等全方位闭环的健康管理。“薇暖”智能暖宝是公司针对女性健康市场推出的全球第一款智能可穿戴式暖宝，“薇暖”内置高能锂电、蓝牙智能温控、超薄穿戴设计、在线健康管理，同时可以和第三方健康管理平台互联互通。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo10.png" alt="" /></p>
+                    <h4 class="company_name">深圳森克普科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        森克普是一家专注气体传感器在智能便携产品应用的创业公司，核心技术基于10年的气体传感器应用算法。目前，森克普科技的主打产品是：
+                        <br />1、智能酒精测试器-小酒保，该产品同时兼容IOS、Android智能手机的智能酒精测试器，提供预估解酒时间、一键呼叫出租、代驾，实现饮酒与个人健康管理、财产与人身安全保护、娱乐与社交分享。是一个随时为饮酒人士提供个人安全保护和健康关爱的实用小工具。
+                        <br />2、可穿戴空气质量实时监测，这是一款针对孕妇、婴儿人群开发的，可穿戴空气质量实时监测产品，进入空气质量污染区域，就会给你发出警告！并上传污染数据到云地图，实现出行路径规划。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo12.png" alt="" /></p>
+                    <h4 class="company_name">广州英卓电子科技</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        “墨武士”（广州英卓电子科技），专注开发车联网智能平台的软硬件，实现车辆导航、行车记录、社交互动、定位、安防、语音识别等。产品：墨武士智能后视镜，为企业车队提供管理后台，实现任务推送、行车记录、远程监控影像等功能。为私家车主提供导航、行车记录、手机app／微信/网页查看车辆位置，远程拍照监控，车辆+手机地图组队对讲等智能体验。英卓车载组队功能平台获国家发明专利申请。跟第三方产品结合，还可把传统车载功能智能化，如跟obd结合，可评估监控车况，跟摄像头结合，可接入倒车影像并录像，以及跟胎压监测结合等等。产品经过一年的研发、试产，已实现量产，用户包含大型工程车队、专车车队、小货车车队、以及众多私家车。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo13.png" alt="" /></p>
+                    <h4 class="company_name">北京轩辕联科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        轩辕联（北京轩辕联科技有限公司）是一家专注于车联网解决方案的公司，致力于将互联网服务安全的带入车内，为用户提供更好的驾驶体验，通过打造智能车载抬头显示设备（HUD）-智坐标（Cardinate），可以让用户在行车时更安全的使用互联网服务，我们设计了更科学的交互方案，在保障安全的前提下，满足用户在行车过程中的沟通、娱乐、信息获取等需求。做车内场景的第一入口，通过车载网络+安全的显示及交互方案，打通车内网与车外网。轩辕联致力于成为国内最领先的车联网公司。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo14.png" alt="" /></p>
+                    <h4 class="company_name">北京车小二网络科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        北京车小二网络科技有限公司注册于2014年4月，坐落于海淀上地信息路26号中关村创业大厦10层。现有团队12人，合伙人3人，获得了中关村高新技术企业，北京市“金种子”孵化企业，北京新四板展示企业等荣誉，公司注册资本500万元。“车雅途”是该公司旗下的一款基于车主驾驶行为制作驾驶征信的车载精算系统，主要应用于车险费率和租车费用的个性化定价。围绕用户核心需求和数据采集的严谨性，公司开发一款智能车载硬件终端（autoeye），为用户提供人性和快捷的行车安全保障。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo15.png" alt="" /></p>
+                    <h4 class="company_name">深圳创达云睿智能科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        云睿智能(EEGSmart)，是一家专注于脑电应用研究的智能可穿戴创业公司，致力于打造全球领先的脑电应用解决方案和智能可穿戴产品，让意念创新无处不在。我们研发的意念控制头环通过采集人大脑的脑电数据，分离出的脑电波特征值结合Otago大学心理学系研究成果，分析出大脑的精神状态，疲劳，兴奋，注意力，集中度，方向控制，情绪等特性和功能。应用场景覆盖心理健康、场景游戏、儿童教育、智能玩具 等产业，针对心理健康提供可视化情绪管理，情感陪伴和心理咨询平台疏导；提供虚拟现实游戏情感交互维度和意念控制功能，将人游合一，情趣互动；在学前教育方面，提供学前孩童注意力、集中度的训练，增加大脑开发和学习效率的提高；提供开放平台SDK和API接口，供智能玩具厂商适配，实现意念控制适配多种智能玩具。公司拥有核心算法技术同时申请了2项采集设备的方法技术专利。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo16.png" alt="" /></p>
+                    <h4 class="company_name">深圳市小牛车科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        深圳市小牛车科技有限公司专注于智能硬件销售服务和车联网运营，主营车载安全智能辅助驾驶系统（ADAS），智能后视镜等，品质、创新、价值、共赢是我们的经营理念，公司通过了车厂级品质标准（TS：16949），拥有前装级客户运营经验，十五年行业沉淀和广泛的车厂客户，为您提供安全、快捷、高效的运营服务，为您的出行保驾护航是我们的职责。
+                        </div>
+                    </div>
+                    <div class="btn_box"></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo17.png" alt="" /></p>
+                    <h4 class="company_name">深圳市云投科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        深圳市云投科技有限公司的创始人刘志锋，曾在华阳多媒体任职，具有15年投影领域研发、销售和市场经验。创始团队熟悉投影产品的市场运作及上下游资源的整合。主打产品云投智能投影仪定位于中小会议室的智能投影仪。整合高亮、长寿命的投影和办公电脑，视频会议系统等。
+                        </div>
+                    </div>
+                    <div class="btn_box"></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo18.png" alt="" /></p>
+                    <h4 class="company_name">杭州以撒科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        杭州以撒科技有限公司的3位联合创始人与团队核心成员大部分来自于浙江大学，分别负责软硬件技术开发、市场营销与供应链整合。主要产品皓洁智能电动牙刷通过独有的智能电动牙刷，结合多层神经网络与云端数据库，来为用户提供实时的刷牙状况反馈，让用户看到自己正在刷哪颗牙，并且牙齿是否已经被完全清洁。
+                        </div>
+                    </div>
+                    <div class="btn_box"></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo20.png" alt="" /></p>
+                    <h4 class="company_name">北京视卫科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        “视卫科技”是一家由京东智能孵化的、专注于青少年近视防治的产品及服务提供商。视卫科技通过智能照明及可穿戴技术实现用眼环境的最优化及用眼情况监测的实时化。视卫科技站在父母的角度，精准把握青少年近视防治中的实际需求，为父母提供自我监测、咨询问诊、预约挂号、辅助就医、康复管理等全程“门对门”医疗服务。我们的产品可以根据环境及孩子用眼的情况自动调节照明环境，当孩子的用眼姿态不正确时可以实时提醒并记录，针对性的制定治疗方案。帮助家长更加简便、高效的控制孩子近视的发生及发展。视卫科技已与首都医科大学附属北京同仁医院国家眼科诊断与治疗工程技术研究中心达成战略合作协议，由其为视卫科技的客户提供医疗服务支持。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo21.png" alt="" /></p>
+                    <h4 class="company_name">深圳市码头智能科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        深圳市码头智能科技是京东+孵化器第一批入孵企业，Mato-tek的愿景是做好用的智能硬件，用包括各种传感器，云计算，超低功耗wifi，大数据在内的新科技手段改造传统家居行业，开发新颖的视频和音频智慧家庭应用，为人们居家生活提供有趣，好玩的产品，团体成员有云端技术专家，软硬件资深工程师，多年射频经验的产品经理，安卓和ios的发烧友开发者，伙伴们为了相同的理由走在一起，花一年的时间打造一个不一样的mato wifi云门铃，希望大家能够喜欢。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo24.png" alt="" /></p>
+                    <h4 class="company_name">深圳市泉盾科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                       泉盾智能净水器是一款新锐的家庭智能净水器。通过硬件、软件、配件，结合极致的服务，打造家庭安全用水解决方案服务商。创始团队来自TCL、长虹、万兴科技、沁园等，有10多年产品开发经验。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo25.png" alt="" /></p>
+                    <h4 class="company_name">联齐科技股份有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+        NextDrive Plug物联插头是一款可以让各式装置联网的智能插头。以物联插头为核心，打造物廉价美的智能家居系统。创始团队来自台湾，拥有多年软硬件开发、产品运营、市场营销、供应链管理等领域经验。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo22.png" alt="" /></p>
+                    <h4 class="company_name">深圳东方酷音信息技术有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                        深圳东方酷音信息技术有限公司，成立于2014年9月18日，是一家国内新兴3D音效研究及3D音乐耳机制造的软硬件综合研发生产企业，是服务于全球的电声技术品牌。拥有多项声学领域的国家发明专利，在声场还原算法、ANC降噪领域拥有核心技术。 “Coolhear”是东方酷音的品牌，产品为一款有沉浸感的3D头戴耳机，产品内置陀螺仪传感器配合VR虚拟现实设备使用。创始团队来自华为、腾讯、富士康、联想、南京大学声学研究等，拥有丰富的声学和互联网领域经验。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+                <!--公司介绍 begin-->
+                <div class="inc_companyItem">
+                    <p class="company_logo"><img src="/assets/img/inc/company_logo23.png" alt="" /></p>
+                    <h4 class="company_name">呼噜（天津）科技有限公司</h4>
+                    <div class="company_txt">
+                        <div class="txt">
+                       呼噜科技成立于2014年，致力于通过创新的智能睡眠产品，引领健康时尚的睡眠生活。HULOO智能眼罩为一款可以有效改善睡眠的智能睡眠眼罩。拥有自主发明专利，通过独特的光照疗法，调节睡眠节律，改善睡眠问题。在2014 Startup Weekend - 深圳创客之夜总决赛中获得一等奖，陆续获得新闻联播、凤凰卫视、南方日报等二十余家媒体的报道 。创始团队来自海外名校，腾讯，中科院等。
+                        </div>
+                    </div>
+                    <div class="btn_box"><span class="btn_updown"><i></i></span></div>
+                </div>
+                <!--公司介绍 end-->
+            </dd>
+        </dl>
+    </div>
+    <!--main07 孵化项目 end-->
+    <!--main08 begin-->
+    <a name="plan" id="plan"></a>
+    <div class="inc_main08">
+        <dl class="inc_bd">
+            <dt class="title"><h3>联合孵化计划</h3></dt>
+            <dd class="con inc_planBox">
+                <div class="inc_planItem">
+                    <h4 class="tit">“十百千”联合孵化计划</h4>
+                    <p class="p01">“十百千”联合孵化计划是京东JD<sup>+</sup>开放孵化器发起的一项智能硬件创业项目扶持计划。提供<b>千万级</b>营销资源，通过与<b>20家</b>优秀的孵化器合作，扶持<b>100家</b>优秀的智能硬件创业项目。其中每家智能硬件创业项目扶持资源不低于10万元，通过合作孵化器提供给创业项目，权益归本计划的合作孵化器。加入本计划的合作孵化器还可以获得京东JD+开放孵化器的创业服务体系资源和JD+平台服务资源。</p>
+                    <div class="item">
+                        <h5>1.千万级营销资源</h5>
+                        <p class="p01">线上资源位于智能栏目（<a href="http://smart.jd.com" target="_blank">smart.jd.com</a>）,京东一级栏目，智能硬件产品入口，含试用、首发、社区小站等；线下提供京东JD<sup>+</sup>智能奶茶馆店内展示、海报、屏幕轮播展示等。</p>
+                    </div>
+                    <div class="item">
+                        <h5>2. 京东JD<sup>+</sup>开放孵化器创业服务体系</h5>
+                        <p class="p01">
+                            东路演：北京、深圳京东JD<sup>+</sup>智能奶茶馆举办，每月一期<br />
+                            合作方式：推荐项目、联合承办<br />
+                            东令营：提供融资主题、营销主题等创业培训，每季度一期<br />
+                            合作方式：推荐学员
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h5>3. 京东JD<sup>+</sup>平台服务能力</h5>
+                        <p class="p01">
+                            投资服务、智能硬件营销、智能硬件细分领域数据报告、JD<sup>+</sup>设计和JD<sup>+</sup>供应链等<br />
+                            合作方式：向联合孵化项目开放JD<sup>+</sup>平台服务
+                        </p>
+                    </div>
+                </div>
+                <div class="inc_blanItem">
+                    <h4 class="tit">如何加入</h4>
+                    <div class="item">
+                        <h5>第一步：</h5>
+                        <p class="p01 download_plan">下载填写<a href="http://storage.jd.com/other/jdj_open_incubator_apply.docx">《京东JD<sup>+</sup>开放孵化器联合孵化计划申请表》<img src="/assets/img/icon/inc_downloadIcon.png" /></a></p>
+                    </div>
+                    <div class="item">
+                        <h5>第二步：</h5>
+                        <p class="p01 toemail">将填写后的《京东JD<sup>+</sup>开放孵化器联合孵化计划申请表》发送至：<a href="mailto:jdfh@jd.com">jdfh@jd.com</a></p>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <!--main08 end-->
+    <!--main05 begin-->
+    <div class="inc_main05">
+    	<dl class="inc_bd">
+    		<dt class="title"><h3>合作伙伴</h3></dt>
+    		<dd class="con">
+    			<div class="inc_hzList">
+    				<span class="item">中科创客学院</span>
+                    <span class="item">太火鸟</span>
+                    <span class="item">京东E港国际创客空间</span>
+                    <span class="item">创业邦</span>
+                    <span class="item">创新谷</span>
+                    <span class="item">创客空间</span>
+                    <span class="item">南极圈</span>
+                    <span class="item">天使汇</span>
+                    <span class="item">长城会</span>
+                    <span class="item">HWTrek</span>
+    			</div>
+    		</dd>
+    	</dl>
+    </div>
+    <!--main05 end-->
+<!--container end-->
+<!--footer begin-->
+<div id="footer" tag="70">
+    <div class="w">
+        <div class="foot-grap">
+            <div class="links">
+                <a href="//s.jd.com/" target="_blank">JD<sup>+</sup>生态</a>|
+                <a href="//s.jd.com/incubator/" target="_blank">孵化器</a>|
+                <a href="//smarthome.jd.com/" target="_blank">微联</a>|
+                <a href="//s.jd.com/new/" target="_blank">JD<sup>+</sup>首发</a>|
+                <a href="//s.jd.com/sc/" target="_blank">JD<sup>+</sup>供应链</a>|
+                <a href="//jingzhi.jd.com/" target="_blank">智能社区</a>|
+                <a href="//s.jd.com/jdesign/" target="_blank">创界同盟</a>|
+                <a href="//s.jd.com/powerup/" target="_blank">国际业务</a>
+            </div>
+            <div class="copyright">北京市公安局朝阳分局备案编号110105014669&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="//img14.360buyimg.com/da/jfs/t256/349/769670066/270505/3b03e0bb/53f16c24N7c04d9e9.jpg">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br><a rel="nofollow" href="//misc.360buyimg.com/skin/df/i/com/f_music.jpg" target="_blank">音像制品经营许可证苏宿批005号</a>&nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证编号新出发(苏)批字第N-012号&nbsp;&nbsp;|&nbsp;&nbsp;互联网出版许可证编号新出网证(京)字150号<br><a href="//misc.360buyimg.com/wz/wlwhjyxkz.jpg" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;违法和不良信息举报电话：4006561155&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2004-2015&nbsp;&nbsp;京东JD.com&nbsp;版权所有<br>京东旗下网站：<a target="_blank" href="//www.360top.com/">360TOP</a>&nbsp;&nbsp;<a href="//www.paipai.com/" target="_blank">拍拍网</a>&nbsp;&nbsp;<a href="https://www.wangyin.com/" target="_blank">网银在线</a></div>
+            <div class="authentication">
+                <a rel="nofollow" target="_blank" href="//www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026">
+                    <img width="103" height="32" alt="经营性网站备案中心" src="//img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png" class="err-product">
+                </a>
+                
+                <a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005">
+                    <img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="//img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png" class="err-product">
+                </a>
+                <a rel="nofollow" target="_blank" href="//www.bj.cyberpolice.cn/index.do">
+                    <img width="103" height="32" alt="朝阳网络警察" src="//img11.360buyimg.com/da/jfs/t559/186/1172042286/2795/7d90b036/54b8874bN694454a5.png" class="err-product">
+                </a>
+                <a rel="nofollow" target="_blank" href="https://search.szfw.org/cert/l/CX20120111001803001836">
+                    <img width="103" height="32" src="//img11.360buyimg.com/da/jfs/t451/173/1189513923/1992/ec69b14a/54b8875fNad1e0c4c.png" class="err-product">
+                </a>
+                <a target="_blank" href="//jubao.china.cn:13225/reportform.do">
+                    <img width="185" height="32" src="//img10.360buyimg.com/da/jfs/t520/303/1151687373/1180/2f8340fc/54b8863dN8d2c61ec.png" class="err-product">
+                </a>
+            </div>
+        </div>
+    </div>
+</div><!--footer end-->
+
+<script type="text/javascript">
+var browser = { 
+    versions : function() { 
+        var u = navigator.userAgent, app = navigator.appVersion; 
+        return {//移动终端浏览器版本信息                                 
+            trident : u.indexOf('Trident') > -1, //IE内核                                  
+            presto : u.indexOf('Presto') > -1, //opera内核                                  
+            webKit : u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核                                  
+            gecko : u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核                                 
+            mobile : !!u.match(/Mobile/i) || !!u.match(/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/), 
+            //是否为移动终端                                  
+            ios : !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端                  
+            android : u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器                                  
+            iPhone : u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器                     
+            iPad: u.indexOf('iPad') > -1, //是否iPad        
+            webApp : u.indexOf('Safari') == -1,//是否web应该程序，没有头部与底部 
+            google:u.indexOf('Chrome')>-1 
+        }
+    }()
+}
+
+//根据是否登录进行不同处理
+jQuery.verifyLogin = function(succFun, errorFun){
+	$.getJSON("http://passport.jd.com/loginservice.aspx?method=Login&callback=?", function(b){
+		if (b != undefined && b.Identity != undefined && b.Identity.IsAuthenticated != undefined) {
+			if(b.Identity.IsAuthenticated && "function" == typeof succFun) {
+				succFun(b.Identity);
+			} else if ("function" == typeof errorFun) {
+				errorFun();
+			}
+		}
+	});
+};
+
+$(function(){
+	(function(){
+		//判断是否为移动端
+		if(!browser.versions.mobile || parseInt(window.screen.width) > 640){
+			$.verifyLogin(function(u){
+				// 已经登陆的
+				$("#userName").html(u.Unick);
+				$("#unLogin").hide();
+				$("#logined").show();
+			},function(){
+				// 未登录的
+				//console.log('未登录');
+				$("#logined").hide();
+				$("#unLogin").show();
+			});
+		}
+	})();
+});
+</script>
+
+</body>
+</html>

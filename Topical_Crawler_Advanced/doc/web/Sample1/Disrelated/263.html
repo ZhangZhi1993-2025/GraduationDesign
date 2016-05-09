@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="keywords" content="南方周末官方网站 电子报刊 记者博客 论坛 社区 读者评报 在线阅读 新闻线索 名牌杂志 南方人物周刊">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>新闻地图 - 南方周末</title>
+	<script src="http://ditu.google.cn/maps?file=api&amp;v=2&amp;key=ABQIAAAAJfHBACIJtxTEFm_nOl0qnhSdfEJ9AprUyArBsRlghnRcjWrCyxQ-hpTR_AlqZYeeQF-tkzLzj7XLXg" type="text/javascript" charset="utf-8"></script>
+	<script src='http://images.infzm.com/js/com/infzm/newsmap/assemble.js' type='text/javascript'></script>
+	<script src='http://images.infzm.com/js/com/infzm/newsmap/page/default.js' type='text/javascript' ></script>
+	<style>
+		* {margin:0;padding:0;}
+		body { height:100%;overflow:hidden; }
+		html { overflow:hidden; }
+		#map_head { position:absolute;z-index:3;height:20px;background:#ddd;filter:alpha(opacity=80);opacity:0.8;width:100%;padding:10px 0;border-bottom:3px solid red; }
+			#map_head img { vertical-align:middle;margin-left:10px;border:none; }
+			#map_head .title { display:inline-block; }
+			#map_head #navi { float:right;margin-right:10px;display:inline; }
+				#navi a { font:bold 10pt verdana;color:#000;padding:2px 3px;text-decoration:none;background:#EEE;border:1px solid #ccc; }
+		#map_container { position:absolute;width:100%;top:0;left:0;height:100%;overflow:auto; }
+		#news { position:absolute;z-index:2;height:100%;width:220px;top:43px;left:0px;border-right:5px solid #ddd;background:#EEE;filter:alpha(opacity=90);opacity:0.9;display:none; }
+			#news_list { font:normal 10pt verdana;margin-top:1em; }
+				#news_list li { margin-left:1.5em;line-height:2em;border-bottom:1px dashed #ddd; }
+					#news_list a { text-decoration:none;color:#222; }
+		#menu { position:absolute;z-index:2;bottom:0px;right:0px;width:600px;height:25px;background:#EEE;display:none;}
+	</style>
+</head>
+<body>
+<div id='map_head'>
+	<a href='http://www.infzm.com' target='_blank' style='display:inline-block;float:left;'><img src='http://images.infzm.com/images/2009/infzm_logo_s.png' /></a>
+	<span id='navi'>
+		<a href='http://www.infzm.com' target='_blank'>首页</a>
+		<a href='http://www.infzm.com/z.shtml' target='_blank'>专栏</a>
+		<a href='http://group.infzm.com' target='_blank'>大院</a>
+		<a href='http://www.infzm.com/vote.shtml' target='_blank'>民调</a>
+		<a href='http://cross.infzm.com' target='_blank'>填字</a>
+	</span>
+</div>
+<div id='map_container'></div>
+<div id='news'>
+	<ul id='news_list'></ul>
+</div>
+<div id='menu'>copyright</div>
+</body>
+</html>

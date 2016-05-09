@@ -1,0 +1,189 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><title>
+	创客总部—孵化服务
+</title><link href="Styles/index.css" rel="stylesheet" type="text/css" /><link href="Styles/css.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="Scripts/jquery.kinMaxShow-1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="Scripts/script.js"></script>
+</head>
+<body>
+    <form method="post" action="HatchInfo.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE0MjM2OTc4ODgPZBYCAgMPZBYEAgEPZBYGAgEPFgIeBXN0eWxlBQ5kaXNwbGF5OmJsb2NrO2QCAw8WAh8ABQ1kaXNwbGF5Om5vbmU7ZAILDxYCHgVjbGFzcwUHIG5hdmN1cmQCAw9kFgICAQ8WAh8BBQQgY3VyZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQUYc1RvcENvbnRyb2wkSW1hZ2VCdXR0b24x0o3ZKia7czkZgl9xl0JNP4BuwWPVgdDeoR7GA2oDDaA=" />
+</div>
+
+    <div class="all-bg">
+            
+<script type="text/javascript">
+
+    //设为首页 www.ecmoban.com
+
+    function SetHome(obj, url) {
+
+        try {
+
+            obj.style.behavior = 'url(#default#homepage)';
+
+            obj.setHomePage(url);
+
+        } catch (e) {
+
+            if (window.netscape) {
+
+                try {
+
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+
+                } catch (e) {
+
+                    alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+
+                }
+
+            } else {
+
+                alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
+
+            }
+
+        }
+
+    }
+
+
+
+    //收藏本站 bbs.ecmoban.com
+
+    function AddFavorite(title, url) {
+
+        try {
+
+            window.external.addFavorite(url, title);
+
+        }
+
+        catch (e) {
+
+            try {
+
+                window.sidebar.addPanel(title, url, "");
+
+            }
+
+            catch (e) {
+
+                alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
+
+            }
+
+        }
+
+    }
+
+</script>
+<div style="display: none">
+<script type="text/javascript"  style="display: none">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Faef6908e944e80dd1668871bbd5cba9b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+<div class="header">
+		<div class="fl"><a href="/"><img src="/img/01_r1_c2.jpg" width="320" height="104" /></a></div>
+   		<div class="fr top_right">
+    		<p><b class="micon sqare"></b><a href="/about.aspx">关于我们</a> - <a href="/JoinUs.aspx">加入我们</a> | <a href="javascript:AddFavorite('我的网站',location.href)" class="black">加入收藏</a> - <a href="javascript:SetHome(this,window.location)">设为首页</a></p>
+			
+            <p id="sTopControl_wLogin" style="display:block;"><b class="micon sqare"></b><a href="/Login.aspx">登录</a> | <a href="/Register.aspx">注册</a></p>
+             <p id="sTopControl_yLogin" style="display:none;"><b class="micon sqare"></b><a href="/user/Details.aspx"></a> | <input type="image" name="sTopControl$ImageButton1" id="sTopControl_ImageButton1" title="退出" src="/img/exit.png" /></p>
+		</div>
+    </div>
+  	<!--head -->
+    <div class="nav">
+		<div class="daohang main">
+			<ul id="menu">
+				<li><a href="/" id="sTopControl_index" class="white">首页</a></li>
+<li><a href="/mingxiao.aspx" id="sTopControl_a1" target="_blank" class="white">名校系创业营</a></li>
+<li><a href="/kunpeng.aspx" id="sTopControl_kunpeng" target="_blank" class="white">鲲鹏计划</a></li>
+<li><a href="/HatchInfo.aspx" id="sTopControl_HatchInfo" class=" navcur">孵化服务</a></li>
+<li><a href="/IncubatingInfo.aspx" id="sTopControl_IncubatingInfo" class="white">入孵流程</a></li>
+<li><a href="/News.aspx" id="sTopControl_News" class="white">新闻动态</a></li>
+
+<li><a href="/about.aspx" id="sTopControl_about" class="white">关于我们</a></li>
+<li><a href="/JoinUs.aspx" id="sTopControl_JoinUs" class="white">加入我们</a></li>
+			</ul>
+        </div>
+    </div>     
+	<!--daohang -->
+	<div class="login_content">
+    	<p class="top_title">您所在位置：首页 > 孵化服务</p>
+    	<div class="serve_nr">
+        	<div class="serve_l">
+            	
+<ul>
+    <li><a href="/HatchInfo.aspx" id="sListControl_HatchInfo" class=" cur">孵化服务</a></li>
+    <li><a href="/IncubatingInfo.aspx" id="sListControl_IncubatingInfo">入孵流程</a></li>
+    <li><a href="/News.aspx" id="sListControl_News">新闻动态</a></li>
+    <li><a href="/about.aspx" id="sListControl_about">关于我们</a></li>
+    <li><a href="/JoinUs.aspx" id="sListControl_JoinUs">加入我们</a></li>
+</ul>
+
+            </div>
+            <div class="serve_r">
+            	<h3>创客总部提供的孵化服务</h3>
+                <table cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="table_left">组合投资支持</td>
+						<td>为优秀创业公司提供种子基金、天使投资和VC等多层次的资金支持；</td>
+					</tr>
+                    <tr>
+						<td class="table_left">全程创业辅导</td>
+						<td>投资问道、创客私董会、创客沙龙、创客乐活、主题聚餐、老虎大讲堂、创业营、创业导师指导和支持；</td>
+					</tr>
+                    <tr>
+						<td class="table_left">关键合作对接</td>
+						<td>聚焦人才、市场、资本等要素，聚合上下游企业形成靠谱合作圈；</td>
+					</tr>
+                    <tr>
+						<td class="table_left">日常运营支持</td>
+						<td>工商注册、人力资源、财税法务、知识产权等各项代办；</td>
+					</tr>
+                    <tr>
+						<td class="table_left">多元办公空间</td>
+						<td>免费工位、开放式办公工位、私享小空间、独立办公区、公共服务区；</td>
+					</tr>
+                    <tr>
+						<td class="table_left">可选增值服务</td>
+						<td>定向融资孵化服务：双向选择确定创业导师，全程辅导；</td>
+					</tr>
+				</table>
+            </div>
+        </div>
+	</div>
+    <!--content -->
+	<!--hezuo -->
+   
+ <!--content -->
+    <div class="footer">
+    	<div class="footer_info"><a href="/IncubatingInfo.aspx">入孵申请</a> &nbsp; <a href="/about.aspx">关于我们</a> &nbsp; <a href="/about.aspx">联系我们</a> 
+        </br>公司名称：北京创客帮科技孵化器有限公司  &nbsp;  &nbsp;  京ICP备14018934号-1 
+    	</br>地址：北京海淀区中关村大街18号中关村互联网教育创新中心919室
+    	</br>免责声明：本网站内容的解释权归创客总部所有
+        </br>北京起明星辰科技有限公司版权所有</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?fe06617cfd5dbbd0591a3a90ab20f2e6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </div>
+
+</div>
+    </form>
+</body>
+</html>

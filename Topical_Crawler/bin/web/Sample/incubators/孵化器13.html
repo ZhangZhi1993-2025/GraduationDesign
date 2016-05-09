@@ -1,0 +1,387 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta charset="utf-8" /><meta name="keywords" content="创业谷" /><meta name="description" content="创业谷" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><title>
+	创业谷首页
+</title><link rel="stylesheet" type="text/css" href="styles/index/layout.css" /><link rel="stylesheet" type="text/css" href="styles/index/main.css" /><link rel="stylesheet" type="text/css" href="styles/index/index.css" />
+<script src="Scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+//焦点图
+$(function(){
+	var sw = 0;
+	$(".main_t_center .imgid span").mouseover(function(){
+		sw = $(".imgid span").index(this);
+		myShow(sw);
+	});
+	function myShow(i){
+		$(".imgid span").eq(i).addClass("cur").siblings("span").removeClass("cur");
+		$(".scrollimg a").eq(i).stop(true,true).fadeIn(600).siblings(".scrollimg a").fadeOut(600);
+	}
+	//滑入停止动画，滑出开始动画
+	$(".main_t_center").hover(function(){
+		if(myTime){
+		   clearInterval(myTime);
+		}
+	},function(){
+		myTime = setInterval(function(){
+		  myShow(sw)
+		  sw++;
+		  if(sw==$(".scrollimg a").length){sw=0;}
+		} , 3000);
+	});
+	//自动开始
+	var myTime = setInterval(function(){
+	   myShow(sw);
+	   sw++;
+	   if(sw==$(".scrollimg a").length){sw=0;}
+	} , 3000);
+})
+</script>
+</head>
+<body>
+<form method="post" action="" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWLgKMruamCALcupmkAwLFwcWWCwLHwcWWCwLHwcWWCwLEwcWWCwLGwcWWCwLRupmkAwLwmrDLAwLbuP+vCwLM9PumDwL39KnFAQLlurnvAQLfq/KnBgKGy4LJDALttt2IBgKys8sOAuL46/oNAsSF1I8KAqncl+wEAojr4sgPAu2WhZ0IApeN/Y0EAvf07fcLApvv3+8LAvL0mdANAoPA8FUC76WwxQ8CtoP/rw8Cndm8yAMC9IehzQwC2J2j3A4Cm4vwIAK7y/+UCgL39PGMAgKDwNytCALP8tKMCwKh3LXyDwL39LW9BAL1xpSyBwK53Mv4DwLttsHwAwLH+4zbBwLvlvCgBgKRtJfXDQK68qt5FtUUBItUWzXx6PDd6C6sDQeEhdAbAeFU6+3aoTyGkTI=" />
+  <div id="wrapper">
+    
+  <header>
+    <div id="header"> <a href="index.aspx"><span id="logo"></span></a>
+      <div class="btn_login"> <a id="register" href="register.aspx">注册</a><a id="login" href="login.aspx">登录</a>
+          
+      </div>
+      <div class="nav">
+        <ul>
+            <li><a class='active_link' href='index.aspx'>首页</a></li>
+          <li><a  href='activities.aspx'>沙龙活动</a></li>
+          <li><a  href='project.aspx'>入驻项目</a></li>
+          <li><a  href='organization.aspx'>服务机构</a></li>
+          <li><a  href='site_con.aspx?classname=关于我们'>关于我们</a></li>
+        </ul>
+      </div>
+      <div class="search">
+        <div class="search_control">
+    <select name="header1$DropDownList1" id="header1_DropDownList1">
+	<option selected="selected" value="请选择">请选择</option>
+	<option value="1">创业团队</option>
+	<option value="3">企业导师</option>
+	<option value="3">投资导师</option>
+	<option value="2">服务机构</option>
+	<option value="4">投资机构</option>
+
+</select>
+
+            <select name="header1$DropDownList2" id="header1_DropDownList2">
+	<option value="请选择">请选择</option>
+
+</select>
+          <div class="s_input">
+          <input name="header1$txtsearch" type="text" id="header1_txtsearch" />
+            <label>
+            <a id="header1_lbtnsearch" href="javascript:__doPostBack(&#39;header1$lbtnsearch&#39;,&#39;&#39;)">搜索</a>
+            </label>
+          </div>
+          <a id="enter" href="exchange.aspx"> 进入服务大厅</a> </div>
+      </div>
+      <div class="note"> <span style="color:red;">最新活动：<marquee class="note_message" onMouseOver="this.stop()" onMouseOut="this.start()" scrollamount="5" scrolldelay="100" direction="left" height='20'>
+      <a href='activities_con.aspx?id=223'>产品经理体系-北京产品分享会-创业谷20151219期......</a><a href='activities_con.aspx?id=222'>关于举办“创业企业管理商道术”课程培训的通知......</a></marquee></span> </div>
+    </div>
+  </header>
+    <article>
+      <div id="main">
+        <div class="main_top">
+          <div id="pop">
+            <div>
+              <p style="text-align: center">
+	<strong><span style="font-size: 16px">创业谷：创业零成本，孵化全链条</span></strong></p>
+<p style="text-align: center">
+	入驻流程：<span style="background-color: #f00"><span style="color: #ffff00">咨询</span></span>&rArr;<span style="background-color: #f00"><span style="color: #ffff00">注册用户</span></span>&rArr;<span style="background-color: #f00"><span style="color: #ffff00">面谈</span></span>&rArr;<span style="background-color: #f00"><font color="#ffff00">入驻开放区</font></span>&rArr;<span style="background-color: #f00"><font color="#ffff00">初审</font></span>&rArr;<span style="background-color: #f00"><font color="#ffff00">入驻评审</font></span>&rArr;<span style="background-color: #f00"><span style="color: rgb(255,255,0)">入驻集中办公区</span></span>&rArr;<span style="background-color: rgb(255,0,0)"><font color="#ffff00">入驻创业园</font></span></p>
+
+            </div>
+          </div>
+          <!--创业谷快讯-->
+          <div class="main_t_left">
+            <div class="main_header">
+              <h1>创业谷快讯</h1>
+              <a href="news.aspx">more..</a>
+              <div class="line"></div>
+            </div>
+            <div class="main_con">
+              <ul>
+                
+                <li><a href='news_con.aspx?id=219' title="年终成绩大盘点-打造四众一体的创业新生态!">年终成绩大盘点-打造四众一体的创业新生态!</a><span>2015-12-08</span></li>
+                
+                <li><a href='news_con.aspx?id=217' title="创业不是梦——金种子创业谷2015年考">创业不是梦——金种子创业谷2015年考</a><span>2015-12-08</span></li>
+                
+                <li><a href='news_con.aspx?id=216' title="金种子创业谷举办第7期创业拓展活动">金种子创业谷举办第7期创业拓展活动</a><span>2015-10-28</span></li>
+                
+                <li><a href='news_con.aspx?id=215' title="金种子创业谷举办第五期创业“大家”谈">金种子创业谷举办第五期创业“大家”谈</a><span>2015-10-21</span></li>
+                
+                <li><a href='news_con.aspx?id=214' title="华人华侨参观团参观中关村海淀侨创园">华人华侨参观团参观中关村海淀侨创园</a><span>2015-10-10</span></li>
+                
+                <li><a href='news_con.aspx?id=211' title="海淀创业园翠湖云中心分园揭牌仪式圆满落幕">海淀创业园翠湖云中心分园揭牌仪式圆满落幕</a><span>2015-09-28</span></li>
+                
+              </ul>
+              <div class="line"></div>
+            </div>
+          </div>
+          <div class="main_t_center"> 
+            <!--滚动图片-->
+            <div class="scrollimg"> <a href='activities_note.aspx?id=53'><img src='' alt='创业谷举办第3期创业者读书分享会' /></a><a href='activities_note.aspx?id=52'><img src='file/img/20154352247031.jpg' alt='创业谷举办智能硬件行业沙龙' /></a><a href='activities_note.aspx?id=51'><img src='file/img/201532317446100.jpg' alt='创业谷举办第2期精益创业主题分享会' /></a><div class='imgid'><span >1</span><span >2</span><span class='cur'>3</span></div> </div>
+          </div>
+          <div class="main_t_right"> 
+            <!--行业快讯-->
+            <div class="main_header">
+              <h1>行业快讯</h1>
+              <a href="hangyenews1.aspx">more..</a>
+              <div class="line"></div>
+            </div>
+            <div class="main_con">
+              <ul>
+                
+                <li><a href='hangyenews.aspx?id=197' title="关于申报2015年第二批北京市留学人员创办企业资助资金">关于申报2015年第二批北京市留学人员创办企业资助资金</a><span>2015-07-01</span></li>
+                
+                <li><a href='hangyenews.aspx?id=194' title="2015年度雏鹰人才创业支持资金申报工作的通知">2015年度雏鹰人才创业支持资金申报工作的通知</a><span>2015-06-10</span></li>
+                
+                <li><a href='hangyenews.aspx?id=187' title="第四届中国创新创业大赛方案">第四届中国创新创业大赛方案</a><span>2015-05-15</span></li>
+                
+                <li><a href='hangyenews.aspx?id=172' title="2015创新基金申报通知">2015创新基金申报通知</a><span>2015-04-22</span></li>
+                
+                <li><a href='hangyenews.aspx?id=159' title="关于发展众创空间推进大众创新创业的指导意见">关于发展众创空间推进大众创新创业的指导意见</a><span>2015-03-11</span></li>
+                
+                <li><a href='hangyenews.aspx?id=147' title="2015年实体企业应该关注的国家新政">2015年实体企业应该关注的国家新政</a><span>2015-01-30</span></li>
+                
+              </ul>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main_bottom"> 
+          <!--创业导师-->
+          <div class="main_b_left">
+            <div class="main_header">
+              <h1>创业导师</h1>
+              <div class="line"></div>
+            </div>
+            <div class="main_con">
+              <ul>
+                
+                <li><a href='mentor_con.aspx?id=31&type=0'><img src='file/cytdlogo/201492885345680.jpg' alt='江萍' />
+                  </a><p>投资导师：江萍</p>
+                  </a>
+                  <p>服务行业：生物医药</p>
+                </li>
+                
+                <li><a href='mentor_con.aspx?id=30&type=0'><img src='file/cytdlogo/201461986143026.jpg' alt='王世超' />
+                  </a><p>投资导师：王世超</p>
+                  </a>
+                  <p>服务行业：电子信息</p>
+                </li>
+                
+                <li><a href='mentor_con.aspx?id=29&type=0'><img src='file/cytdlogo/201451352710845.jpg' alt='黄玲' />
+                  </a><p>投资导师：黄玲</p>
+                  </a>
+                  <p>服务行业：电子信息</p>
+                </li>
+                
+                <li><a href='mentor_con.aspx?id=24&type=1'><img src='file/cytdlogo/201461685835432.jpg' alt='马洪生' />
+                  </a><p>企业导师：马洪生</p>
+                  </a>
+                  <p>服务行业：电子信息</p>
+                </li>
+                
+                <li><a href='mentor_con.aspx?id=23&type=0'><img src='file/cytdlogo/201422460234381.jpg' alt='步日欣' />
+                  </a><p>投资导师：步日欣</p>
+                  </a>
+                  <p>服务行业：电子信息</p>
+                </li>
+                
+                <li><a href='mentor_con.aspx?id=22&type=0'><img src='file/cytdlogo/201422485846555.jpg' alt='段冶' />
+                  </a><p>投资导师：段冶</p>
+                  </a>
+                  <p>服务行业：电子信息</p>
+                </li>
+                
+              </ul>
+              <div class="more"><a href="mentor.aspx">&gt;&gt;&nbsp;更多导师..</a></div>
+            </div>
+          </div>
+          <div class="main_b_center"> 
+            <!--入驻项目-->
+            <div class="main_header">
+              <h1>入驻项目</h1>
+              <div class="line"></div>
+            </div>
+            <div class="main_con">
+              <ul>
+                
+              <li><a href='project_con.aspx?id=562' title='电力大数据分析平台'><img src='file/cytdlogo/2015121775406111.jpg' alt='电力大数据分析平台' /><span>电力大数据分析平台</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              <li><a href='project_con.aspx?id=561' title='智慧能源服务云平台'><img src='file/cytdlogo/2015121658775483.gif' alt='智慧能源服务云平台' /><span>智慧能源服务云平台</span></a><br />
+                  <span>所属行业：节能环保</span> </li>
+                
+              <li><a href='project_con.aspx?id=560' title='数据整合'><img src='file/cytdlogo/2015121517115383.png' alt='数据整合' /><span>数据整合</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              <li><a href='project_con.aspx?id=559' title='健康医疗服务移动互联平台'><img src='file/cytdlogo/2015121513173021.png' alt='健康医疗服务移动互联平台' /><span>健康医疗服务移动互联平台</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              <li><a href='project_con.aspx?id=557' title='极客人人通'><img src='file/cytdlogo/2015121527436883.png' alt='极客人人通' /><span>极客人人通</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              <li><a href='project_con.aspx?id=556' title='APTOP设计事务所'><img src='file/cytdlogo/2015121586705648.jpg' alt='APTOP设计事务所' /><span>APTOP设计事务所</span></a><br />
+                  <span>所属行业：高技术服务</span> </li>
+                
+              <li><a href='project_con.aspx?id=555' title='阡陌旅行家'><img src='file/cytdlogo/2015121410641268.jpg' alt='阡陌旅行家' /><span>阡陌旅行家</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              <li><a href='project_con.aspx?id=554' title='素颜'><img src='file/cytdlogo/2015121260351788.jpg' alt='素颜' /><span>素颜</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+
+                <li style="border:0px"><a href='project_con.aspx?id=553' title='IFHUB'><img src='file/cytdlogo/2015121206221360.png' alt='IFHUB' /><span>IFHUB</span></a><br />
+                  <span>所属行业：电子信息</span> </li>
+                
+              </ul>
+              
+              <div class="more"><a href="project.aspx">&gt;&gt;&nbsp;更多项目..</a></div>
+            </div>
+          </div>
+          <div class="main_b_right"> 
+            <!--项目动态-->
+            <div class="main_br_top">
+              <div class="main_header">
+                <h1>项目动态</h1>
+                <a href="xiangmudongtailist.aspx">more..</a>
+                <div class="line"></div>
+              </div>
+              <div class="main_con">
+                <ul>
+                  
+                  <li class="odd"><span>2015-07-23</span> &nbsp;&nbsp;<a href='xiangmudongtaixianxi.aspx?id=63' title='停简单获IDG150万美元投资'>停简单获IDG150万美元投资</a></li>
+                  
+                  <li class="even"><span>2015-05-07</span> &nbsp;&nbsp;<a href='xiangmudongtaixianxi.aspx?id=62' title='沃华一星毕业离园'>沃华一星毕业离园</a></li>
+                  
+                  <li class="odd"><span>2015-05-04</span> &nbsp;&nbsp;<a href='xiangmudongtaixianxi.aspx?id=61' title='汇影医疗获500万天使投资入驻东升科技园'>汇影医疗获500万天使投资入驻东升科技园</a></li>
+                  
+                  <li class="even"><span>2015-05-04</span> &nbsp;&nbsp;<a href='xiangmudongtaixianxi.aspx?id=60' title='快红包获100万种子投资'>快红包获100万种子投资</a></li>
+                  
+                  <li class="odd"><span>2015-05-04</span> &nbsp;&nbsp;<a href='xiangmudongtaixianxi.aspx?id=59' title='Poy获100万种子投资'>Poy获100万种子投资</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+            <!--合作投资机构-->
+            <div class="main_br_bottom">
+              <div class="main_header">
+                <h1>合作投资机构</h1>
+                  <a id="LinkButton1" href="javascript:__doPostBack(&#39;LinkButton1&#39;,&#39;&#39;)">more..</a>
+                <div class="line"></div>
+              </div>
+              <div class="main_con">
+                <ul>
+                  
+                  <li><a href='https://www.baidu.com/baidu?tn=monline_6_dg&ie=utf' target="_blank"> <img src='file/cytdlogo/201582503454075.jpg' alt='欢乐汇'/></a></li>
+                  
+                  <li><a href='www.bmzcgl.com' target="_blank"> <img src='' alt='北马资管'/></a></li>
+                  
+                  <li><a href='http://www.gtsk.com.cn/home.html' target="_blank"> <img src='file/cytdlogo/201542866277005.jpeg' alt='北京国投尚科投资集团'/></a></li>
+                  
+                  <li><a href='www.dehongcapital.com' target="_blank"> <img src='file/cytdlogo/20154682842158.png' alt='德泓资本'/></a></li>
+                  
+                  <li><a href='www.zyic.net' target="_blank"> <img src='file/cytdlogo/201521125155047.jpg' alt='北京智银投资管理有限公司'/></a></li>
+                  
+                  <li><a href='#' target="_blank"> <img src='' alt='盛和资本'/></a></li>
+                  
+                  <li><a href='http://www.sbcvc.com/' target="_blank"> <img src='' alt='软银中国'/></a></li>
+                  
+                  <li><a href='landuncn.com' target="_blank"> <img src='' alt='蓝盾发展控股有限公司'/></a></li>
+                  
+                  <li><a href='http://www.taikang.com' target="_blank"> <img src='' alt='泰康资产管理有限公司'/></a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+<div class="links">
+      <div class="links_con">
+          <select name="links1$DropDownList1" id="links1_DropDownList1">
+	<option selected="selected" value="请选择">国家部委网站</option>
+	<option value="http://www.innofund.gov.cn/">科技型中小企业技术创新基金</option>
+	<option value="http://www.most.gov.cn/">中华人民共和国科学技术部</option>
+	<option value="http://www.ctp.gov.cn/">科学技术部火炬高技术产业开发中心</option>
+	<option value="http://www.cscse.edu.cn/">教育部留学人员服务中心</option>
+	<option value="http://www.ndrc.gov.cn/">中华人民共和国发展和改革委员会</option>
+	<option value="http://www.safea.gov.cn/">中华人民共和国国家外国专家局</option>
+	<option value="http://www.moe.edu.cn/">中华人民共和国教育部</option>
+	<option value="http://www.saic.gov.cn/">中华人民共和国国家工商行政管理总局</option>
+	<option value="http://www.chinatax.gov.cn/">中华人民共和国国家税务总局</option>
+	<option value="http://www.miit.gov.cn/n11293472/index.html">中华人民共和国工业和信息化部</option>
+	<option value="http://www.mohrss.gov.cn/">中华人民共和国人力资源和社会保障部</option>
+
+</select>
+          <select name="links1$DropDownList2" id="links1_DropDownList2">
+	<option selected="selected" value="请选择">北京市委办局</option>
+	<option value="http://www.8610hr.cn/">北京海外学人中心</option>
+	<option value="http://www.bjkw.gov.cn/n8785584/index.html">北京市科学技术委员会</option>
+	<option value="http://www.bjld.gov.cn/">北京市人力资源和社会保障局</option>
+	<option value="http://www.bjeit.gov.cn/">北京市经济和信息化委员会</option>
+	<option value="http://www.bjipo.gov.cn/">北京市知识产权局</option>
+	<option value="http://www.bjtsb.gov.cn/">北京市质量技术监督局</option>
+	<option value="http://www.bjsat.gov.cn/bjsat/">北京市国家税务局</option>
+	<option value="http://www.hd315.gov.cn/">北京市工商行政管理局</option>
+	<option value="http://www.tax861.gov.cn/">北京市地方税务局</option>
+	<option value="http://www.zgc.gov.cn/">中关村管委会</option>
+
+</select>
+          <select name="links1$DropDownList3" id="links1_DropDownList3">
+	<option selected="selected" value="请选择">海淀政府相关网站</option>
+	<option value="http://www.bjhd.gov.cn/">海淀区人民政府</option>
+	<option value="http://www.zhsp.gov.cn/">海淀区科委</option>
+	<option value="http://www.zhongguancun.com.cn/">海淀园管委会</option>
+
+</select>
+          <select name="links1$DropDownList4" id="links1_DropDownList4">
+	<option selected="selected" value="请选择">相关网站</option>
+	<option value="http://www.wrsa.net/">欧美同学会</option>
+	<option value="http://www.cei.gov.cn/">中国经济信息网</option>
+	<option value="http://www.cscse.edu.cn/">中国留学网</option>
+	<option value="http://www.bjlx.gov.cn/">北京留学网</option>
+	<option value="http://www.rcsp.com.cn/">中国留学生创业网</option>
+	<option value="http://www.ospp.com">海淀创业园</option>
+	<option value="http://www.bj12330.com/">中国（北京）保护知识产权网</option>
+
+</select>
+      </div>
+    </div>
+    </article>
+    
+<footer>
+    <div id="footer">
+      <div class="f_top">
+        <ul>
+          <li><a href="site_con.aspx?classname=关于我们">关于我们</a></li>
+          <li><a href="site_con.aspx?classname=客户服务">客户服务</a></li>
+          <li><a href="help_con.aspx">帮助中心</a></li>
+          <li><a href="suggest.aspx">意见反馈</a></li>
+          <li><a href="site_con.aspx?classname=联系我们">联系我们</a></li>
+          <li><a href="click/SanrenEDUSetup.exe">下载客户端</a></li>
+          <li style="border:0 none;"><a href="admin/adminlogin.aspx" target="_blank">网站管理</a></li>
+        </ul>
+      </div>
+      <div class="f_bottom"> 中国北京（海淀）留学人员创业园&nbsp;&bull;&nbsp;创业谷<br />
+地址：北京市海淀区上地信息路26号中关村创业大厦一层 邮编：100085<br />电话：010-82898001 传真：010-62984933 上地创业谷QQ群：304241504
+ 微信公众号：sdchuangyegu
+<br />
+ 京ICP备14014525号&nbsp;设计制作与技术支持：华文杏坛（北京）教育科技有限公司
+</div>
+    </div>
+  </footer>
+  </div>
+</form>
+</body>
+</html>

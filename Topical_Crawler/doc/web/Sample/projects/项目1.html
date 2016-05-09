@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+
+    <title>豆瓣东西</title>
+    
+
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#de533c">
+<meta property="qc:admins" content="242032726770164752166375">
+<meta property="wb:webmaster" content="c4ee43cd6a2dac75" />
+<meta name="baidu-site-verification" content="Rj23O8SEzb">
+<meta name="apple-itunes-app" content="app-id=717812208, app-argument=">
+<meta content="东西,豆瓣东西,商品,热门商品,男装,女装,数码,家居生活,美容护肤,户外运动,推荐,买东西,排行,购物,消费" name="keywords">
+<meta content="豆瓣东西通过用户分享的商品、评价、使用体验或知识经验，来帮助发现适合自己的好东西。你可以收藏、回应感兴趣的商品，也可以分享自己的消费生活，在消费方面找到与自己兴趣相投的好友。它是一个围绕兴趣的消费分享社区。" name="description">
+
+<script src="http://img3.douban.com/f/dongxi/80573d7dcee1aa0cb0ae0e83037741c4f666eac3/js/dongxi/libs/es5-shim.js"></script>
+<script>
+var _head_start=new Date;
+window.Douban=window.Douban||{};var Do=function(){Do.actions.push([].slice.call(arguments))};Do.ready=function(){Do.actions.push([].slice.call(arguments))};Do.add=Do.define=function(a,b){Do.mods[a]=b};Do.global=function(){Do.global.mods=Array.prototype.concat(Do.global.mods,[].slice.call(arguments))};Do.global.mods=[];Do.mods={};Do.actions=[];function set_cookie(g,f,d,e){var b=new Date(),a,c;b.setTime(b.getTime()+((f||30)*24*60*60*1000));a="; expires="+b.toGMTString();for(c in g){document.cookie=c+"="+g[c]+a+"; domain="+(d||"douban.com")+"; path="+(e||"/")}}function get_cookie(b){var e=b+"=",a=document.cookie.split(";"),d,f;for(d=0;d<a.length;d++){f=a[d];while(f.charAt(0)==" "){f=f.substring(1,f.length)}if(f.indexOf(e)===0){return f.substring(e.length,f.length).replace(/\"/g,"")}}return null}Douban.init_show_login=function(a){Do("dialog",function(){var b="/j/misc/login_form";dui.Dialog({title:"登录",url:b,width:/device-mobile/i.test(document.documentElement.className)?document.documentElement.offsetWidth*0.9:350,cache:true,callback:function(c,d){d.node.addClass("dialog-login");d.node.find("h2").css("display","none");d.node.find(".hd h3").replaceWith(d.node.find(".bd h3"));d.node.find("form").css({border:"none",width:"auto",padding:"0"});d.update()}}).open()})};Do(function(){(function(){if("localStorage" in window){return}window.localStorage=function(){var e=document;if(!e.documentElement.addBehavior){throw"don't support localstorage or userdata.";return}var c="_localstorage_ie";var d=e.createElement("input");d.type="hidden";var b=function(f){return function(){e.body.appendChild(d);d.addBehavior("#default#userData");var h=new Date();h.setDate(h.getDate()+365);d.expires=h.toUTCString();d.load(c);var g=f.apply(d,arguments);e.body.removeChild(d);return g}};return{getItem:b(function(f){return this.getAttribute(f)}),setItem:b(function(f,g){this.setAttribute(f,g);this.save(c)}),removeItem:b(function(f){this.removeAttribute(f);this.save(c)}),clear:b(function(){var g=this.XMLDocument.documentElement.attributes;for(var h=0,f;f=g[h];h++){this.removeAttribute(f.name)}this.save(c)})}}()})();$(window).one("load",function(){var b=localStorage.getItem("report");if(!b){return}b=b.split("_moreurl_separator_");var c=function(d){if(d==""){c(b.shift());return}$.get(typeof _MOREURL_REQ=="undefined"?"/stat.html?"+d:_MOREURL_REQ+"?"+d,function(){if(b.length){c(b.shift());localStorage.setItem("report",b.join("_moreurl_separator_"));return}localStorage.removeItem("report")})};c(b.shift())});function a(b,e){var d=["ref="+encodeURIComponent(location.pathname)];for(var c in e){if(e.hasOwnProperty(c)){d.push(c+"="+e[c])}}if(window._SPLITTEST){d.push("splittest="+window._SPLITTEST)}localStorage.setItem("report",(localStorage.getItem("report")||"")+"_moreurl_separator_"+d.join("&"))}window.moreurl=a;$(document).click(function(c){var d=c.target,b=$(d).data("moreurl-dict");if(b){a(d,b)}});$.ajax_withck=function(b){if(b.type=="POST"){b.data=$.extend(b.data||{},{ck:get_cookie("ck")})}return $.ajax(b)};$.postJSON_withck=function(b,c,d){return $.post_withck(b,c,d,"json")};$.post_withck=function(b,d,e,c){if($.isFunction(d)){c=e;e=d;d={}}return $.ajax({type:"POST",url:b,data:$.extend(d,{ck:get_cookie("ck")}),success:e,dataType:c||"text"})};$("html").click(function(d){var b=$(d.target),c=b.attr("class");if(!c){return}$(c.match(/a_(\w+)/gi)).each($.proxy(function(e,g){var f=Douban[g.replace(/^a_/,"init_")];if(typeof f==="function"){d.preventDefault();f.call(this,d)}},b[0]))})});
+(function(){
+var HTTPS_DB='https://www.douban.com';
+var isUserFromThirdparty=0;
+String.prototype.escapeHTMLEntities=function(){var a=this;if(!/[\&\<\>\"\' ]/.test(a)){return a}return a.replace(/\&/g,"&amp;").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;").replace(/\</script></g,"&lt;").replace(/\>/g,"&gt;").replace(/ /g,"&nbsp;")};String.prototype.format=function(d){var b,c,a=this;for(b in d){if(d.hasOwnProperty(b)){c=new RegExp("\\{"+b.toUpperCase()+"\\}","g");a=a.replace(c,d[b])}}return a};window.Dongxi=window.Dongxi||{};var Dongxi=window.Dongxi;Dongxi.ui={};Dongxi.utils={};Dongxi.data={};Dongxi.user={isFromThirdparty:isUserFromThirdparty===1};Dongxi.domain={doubanHttps:HTTPS_DB,};Dongxi.errors={ajax:"oops 出错鸟"};
+})();
+</script>
+
+<link rel="stylesheet" href="http://img3.douban.com/f/shire/236107407914a3578c4cfa36ceaf0681eb425c27/css/core/_init_.css">
+
+
+<link rel="stylesheet" href="http://img3.douban.com/f/dongxi/9d27c77a6223644f1d80689b19cdbfff502433e7/css/dongxi/common.css">
+<link rel="stylesheet" href="http://img3.douban.com/misc/mixed_static/5ead32801d46460.css">
+
+    <link rel="shortcut icon" href="http://img3.douban.com/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  
+<script>var _body_start=new Date</script>
+
+   
+
+
+
+
+
+
+
+<div id="db-global-nav" class="global-nav">
+  <div class="bd">
+    
+
+
+
+
+
+<div class="top-nav-info">
+      
+      <a href="http://www.douban.com/accounts/login?source=commodity&amp;redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="nav-login" rel="nofollow">登录</a>
+      <a href="http://www.douban.com/accounts/register?source=commodity&amp;redir=http%3A//dongxi.douban.com/%3Fchannel%3Dregister" class="nav-register" rel="nofollow">注册</a>
+</div>
+
+
+
+    <div class="top-nav-doubanapp">
+        
+        <a href="http://www.douban.com/doubanapp/app?channel=top-nav" class="lnk-doubanapp">下载豆瓣客户端</a>
+        <div id="top-nav-appintro" class="more-items">
+            <p class="appintro-title">豆瓣<span>3.0</span></p>
+            <p class="slogan">和有趣的人做有趣的事</p>
+            <p class="qrcode">
+                扫码直接下载
+            </p>
+            <div class="download">
+                <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=iOS">iPhone</a>
+                <span>·</span>
+                <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=Android" class="download-android">Android</a>
+            </div>
+        </div>
+        <div id="doubanapp-tip">
+            <a href="http://www.douban.com/doubanapp/app?channel=qipao" class="tip-link">豆瓣 3.0 全新发布</a>
+            <a href="javascript: void 0;" class="tip-close">×</a>
+        </div>
+    </div>
+
+    <div class="global-nav-items">
+      <ul>
+          
+            
+            <li class="on">
+            <a href="http://www.douban.com/" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-main&#34;,&#34;uid&#34;:&#34;0&#34;}">豆瓣</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://book.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-book&#34;,&#34;uid&#34;:&#34;0&#34;}">读书</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://movie.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-movie&#34;,&#34;uid&#34;:&#34;0&#34;}">电影</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://music.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-music&#34;,&#34;uid&#34;:&#34;0&#34;}">音乐</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://www.douban.com/location/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-location&#34;,&#34;uid&#34;:&#34;0&#34;}">同城</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://www.douban.com/group/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-group&#34;,&#34;uid&#34;:&#34;0&#34;}">小组</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://read.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-read&#34;,&#34;uid&#34;:&#34;0&#34;}">阅读</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://douban.fm/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-fm&#34;,&#34;uid&#34;:&#34;0&#34;}">FM</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://dongxi.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-commodity&#34;,&#34;uid&#34;:&#34;0&#34;}">东西</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://market.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-market&#34;,&#34;uid&#34;:&#34;0&#34;}">市集</a>
+            </li>
+          
+            <li>
+              <a href="#more" class="bn-more"><span>更多</span></a>
+              <div class="more-items">
+                <table cellpadding="0" cellspacing="0">
+                    
+                    <tr><td><a href="http://moment.douban.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-moment&#34;,&#34;uid&#34;:&#34;0&#34;}">一刻</a></td></tr>
+                    
+                    <tr><td><a href="http://ypy.douban.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-ypy&#34;,&#34;uid&#34;:&#34;0&#34;}">一拍一</a></td></tr>
+                </table>
+              </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+   
+
+
+
+
+
+
+
+<div id="db-nav-commodity" class="nav">
+    <div class="nav-wrap">
+        <div class="nav-primary">
+            <div class="nav-logo">
+                <a href="http://dongxi.douban.com" title="豆瓣东西">豆瓣东西</a>
+            </div>
+
+            <div class="nav-items">
+                <ul>
+                    
+
+                    <li class="nav-item nav-story-item current">
+                        <a class="nav-link" href="http://dongxi.douban.com/">
+                            首页
+                        </a>
+
+                    </li>
+                    
+
+                    <li class="nav-item nav-doulists-item">
+                        <a class="nav-link" href="http://dongxi.douban.com/doulists">
+                            豆列
+                        </a>
+
+                    </li>
+                    
+
+                    <li class="nav-item nav-haitao-item">
+                        <a class="nav-link" href="http://dongxi.douban.com/haitao/?icn=dongxi-nav">
+                            海淘
+                        </a>
+
+                    </li>
+                    
+
+                    <li class="nav-item nav-article-item">
+                        <a class="nav-link" href="http://dongxi.douban.com/articles">
+                            图文
+                        </a>
+
+                    </li>
+                    
+
+                    <li class="nav-item nav-app-item">
+                        <a class="nav-link" href="http://dongxi.douban.com/app/?icn=dongxi-nav&amp;referer=dongxi" target=&#34;_blank&#34;>
+                            App
+                                <span class="hot">
+                                    <img src="http://img3.douban.com/f/shire/0d120528a37de5b43aa89f2ecfcf97fcdfd95400/pics/hot_tip.gif" />
+                                </span>
+                        </a>
+
+                    </li>
+                    
+                    <li class="nav-item search-item">
+                        <form action="http://dongxi.douban.com/search" method="GET">
+                            <div class="search-wrap-commodity">
+                                <input id="search" class="search-input" type="text" name="q" placeholder="搜下有什么好东西" value="">
+                                <button type="submit" class="search-icon"></button>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-misc">
+                <ul class="nav-misc-list">
+                    <li class="nav-misc-item enterances last">
+                        <a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="more-enterances login-required J_LoginPopup">&#xe014;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dale_dongxi_top_banner" class="base-ad-slot"></div>
+
+<div id="wrapper">
+    
+
+    
+<div id="content">
+    
+    <div class="grid-16-8 clearfix">
+        
+        
+        <div class="article">
+               
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    <div class="home-recommend">
+        <div class="home-recommend-col1">
+            
+
+
+
+<div class="dx-nav">
+  <div class="bd">
+    <ul>
+      <li><a href="http://dongxi.douban.com/category/nvzhuang/">女装</a></li>
+      <li><a href="http://dongxi.douban.com/category/nvxie/">女鞋</a></li>
+      <li><a href="http://dongxi.douban.com/category/nanzhuang/">男装</a></li>
+      <li><a href="http://dongxi.douban.com/category/nanxie/">男鞋</a></li>
+      <li><a href="http://dongxi.douban.com/category/xiangbao/">箱包</a></li>
+      <li><a href="http://dongxi.douban.com/category/peishi/">配饰</a></li>
+      <li><a href="http://dongxi.douban.com/category/jiajuzhuangshi/">家居装饰</a></li>
+      <li><a href="http://dongxi.douban.com/category/meizhuang/">美妆</a></li>
+      <li><a href="http://dongxi.douban.com/category/meishi/">美食</a></li>
+      <li><a href="http://dongxi.douban.com/category/shuma/">数码</a></li>
+      <li><a href="http://dongxi.douban.com/category/huwai_yundong/">户外/运动</a></li>
+      <li><a href="http://dongxi.douban.com/category/liwu/">礼物</a></li>
+      <li><a href="http://dongxi.douban.com/category/riyongbaihuo/">日用百货</a></li>
+    </ul>
+  </div>
+</div>
+
+        </div>
+            
+
+
+
+
+
+
+
+
+<div class="main-promotion">
+    <div class="promotion-info">
+        <h1 class="promotion-banner-title">每周TOP排行榜</h1>
+        <div class="page-indicator">
+            <em class="current">1</em><i class="ilmenicon-slash"></i><span class="total">4</span>
+        </div>
+    </div>
+
+    <div id="J_PromotionSlider" class="promotion-items-box">
+        <div class="promotion-slider-box">
+            <ul class="promotion-items">
+                
+                <li>
+
+
+
+
+
+
+<div class="commodity-layout layout-0">
+    <ul class="commodity-items">
+            
+        <li class="layout-item-B commodity-item">
+            <a href="http://dongxi.douban.com/show/4273385/?r=8" target="_blank" title=" 原创设计 海军少女 学院海军领刺绣夹棉外套">
+                <img class="item-image" width="440" height="440" src="http://img4.douban.com/view/commodity_story_promotion/large/public/pc526262394cc418ea808d095f6b3be2a.jpg" alt=" 原创设计 海军少女 学院海军领刺绣夹棉外套的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/isabellahsia/?r=8">
+                    <img src="http://img3.douban.com/icon/u44451982-114.jpg" width="24" height="24" title="坏薄荷绿" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/isabellahsia/?r=8">
+                    坏薄荷绿
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4273385/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 8】原创设计 海军少...
+                        </span>
+                        <span class="story-item-price">￥268.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4276570/?r=8" target="_blank" title="韩国正品ardium超甜美小清新花卉2016日期型mini台历日程计划日历">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/pae3b6f33d4b04401a2650a8ccffdb6d0.jpg" alt="韩国正品ardium超甜美小清新花卉2016日期型mini台历日程计划日历的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/110970214/?r=8">
+                    <img src="http://img3.douban.com/icon/u110970214-2.jpg" width="24" height="24" title="bunny" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/110970214/?r=8">
+                    bunny
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4276570/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 3】ardium超甜美小...
+                        </span>
+                        <span class="story-item-price">￥37.24</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4269297/?r=8" target="_blank" title="鸟之赞歌陶瓷茶具3件套">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p4cd9e4043a4647728a1fb9f41a3e7e15.jpg" alt="鸟之赞歌陶瓷茶具3件套的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/106369457/?r=8">
+                    <img src="http://img3.douban.com/icon/u106369457-1.jpg" width="24" height="24" title="高仿Y" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/106369457/?r=8">
+                    高仿Y
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4269297/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 1】鸟之赞歌陶瓷茶...
+                        </span>
+                        <span class="story-item-price">￥64.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</li>
+                <li>
+
+
+
+
+
+
+<div class="commodity-layout layout-0">
+    <ul class="commodity-items">
+            
+        <li class="layout-item-B commodity-item">
+            <a href="http://dongxi.douban.com/show/4274948/?r=8" target="_blank" title="北欧设计感 英文帆布包 旅行收纳包 包中包化妆包">
+                <img class="item-image" width="440" height="440" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p4f029a4e8ba64b6f8e0175b1ff047d14.jpg" alt="北欧设计感 英文帆布包 旅行收纳包 包中包化妆包的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/52301195/?r=8">
+                    <img src="http://img3.douban.com/icon/u52301195-4.jpg" width="24" height="24" title="大脸妹吖?……" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/52301195/?r=8">
+                    大脸妹吖?……
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4274948/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 4】北欧设计感 英文...
+                        </span>
+                        <span class="story-item-price">￥12.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4271285/?r=8" target="_blank" title="非设计布生活  时尚领带 英伦范 新郎礼带正装休闲领带 思索">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p9994eefa2a2948df8502d3f2f3c7495f.jpg" alt="非设计布生活  时尚领带 英伦范 新郎礼带正装休闲领带 思索的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/airan/?r=8">
+                    <img src="http://img4.douban.com/icon/u1580974-36.jpg" width="24" height="24" title="镇宅御守" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/airan/?r=8">
+                    镇宅御守
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4271285/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 6】非设计布生活 时...
+                        </span>
+                        <span class="story-item-price">￥66.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4277656/?r=8" target="_blank" title="现货 韩国代购 爱茉莉双头气垫唇膏 咬唇必备 11色全">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/pddcce9a91cb146659857e53ee35dc492.jpg" alt="现货 韩国代购 爱茉莉双头气垫唇膏 咬唇必备 11色全的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/qiongjingw/?r=8">
+                    <img src="http://img4.douban.com/icon/u61247608-6.jpg" width="24" height="24" title="wqjojo-" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/qiongjingw/?r=8">
+                    wqjojo-
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4277656/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 2】爱茉莉双头气垫...
+                        </span>
+                        <span class="story-item-price">￥49.90</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</li>
+                <li>
+
+
+
+
+
+
+<div class="commodity-layout layout-0">
+    <ul class="commodity-items">
+            
+        <li class="layout-item-B commodity-item">
+            <a href="http://dongxi.douban.com/show/4276082/?r=8" target="_blank" title="Whosetrap15秋美式连帽拉链纯色防风防水防污多袋男夹克外套风衣">
+                <img class="item-image" width="440" height="440" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p73d1ddc3ec814e21a38a6d5d7c5d1a44.jpg" alt="Whosetrap15秋美式连帽拉链纯色防风防水防污多袋男夹克外套风衣的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/60458197/?r=8">
+                    <img src="http://img3.douban.com/icon/u60458197-22.jpg" width="24" height="24" title="再见道长" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/60458197/?r=8">
+                    再见道长
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4276082/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 12】Whosetrap15秋...
+                        </span>
+                        <span class="story-item-price">￥449.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4266368/?r=8" target="_blank" title="【丹麦】 AM MIST屏幕清洁剂套装">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p4ce144ebdeef41768924823214ee5cf2.jpg" alt="【丹麦】 AM MIST屏幕清洁剂套装的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/102303085/?r=8">
+                    <img src="http://img4.douban.com/icon/u102303085-7.jpg" width="24" height="24" title="Lorrie" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/102303085/?r=8">
+                    Lorrie
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4266368/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 7】【丹麦】 AM MIS...
+                        </span>
+                        <span class="story-item-price">￥59.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4273093/?r=8" target="_blank" title="台湾创意家居 软管挤压器 护手霜 牙膏 面膜挤压器 挤压工具">
+                <img class="item-image" width="346" height="220" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p1afceaf9c9fb470799fa619a067265a5.jpg" alt="台湾创意家居 软管挤压器 护手霜 牙膏 面膜挤压器 挤压工具的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/unicornax/?r=8">
+                    <img src="http://img4.douban.com/icon/u4169105-17.jpg" width="24" height="24" title="獣" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/unicornax/?r=8">
+                    獣
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4273093/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 5】台湾创意家居 软...
+                        </span>
+                        <span class="story-item-price">￥49.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</li>
+                <li>
+
+
+
+
+
+
+<div class="commodity-layout layout-0">
+    <ul class="commodity-items">
+            
+        <li class="layout-item-B commodity-item">
+            <a href="http://dongxi.douban.com/show/4270748/?r=8" target="_blank" title="电波无线蓝牙音箱 文艺复古简约迷你便携小低音炮音响 / 丝瓜集市">
+                <img class="item-image" width="440" height="440" src="http://img3.douban.com/view/commodity_story_promotion/large/public/p71b9cce89e074924a413fdff7f97ab31.jpg" alt="电波无线蓝牙音箱 文艺复古简约迷你便携小低音炮音响 / 丝瓜集市的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/K.thinking/?r=8">
+                    <img src="http://img3.douban.com/icon/u3183117-2.jpg" width="24" height="24" title="，" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/K.thinking/?r=8">
+                    ，
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4270748/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 10】电波无线蓝牙音...
+                        </span>
+                        <span class="story-item-price">￥167.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4273710/?r=8" target="_blank" title="mobonnie 15冬季6孔朋克系带马丁靴">
+                <img class="item-image" width="346" height="220" src="http://img4.douban.com/view/commodity_story_promotion/large/public/p03e19a4e491e4bfdbcc371548c9617e6.jpg" alt="mobonnie 15冬季6孔朋克系带马丁靴的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/115279107/?r=8">
+                    <img src="http://img3.douban.com/icon/u115279107-1.jpg" width="24" height="24" title="Puuub" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/115279107/?r=8">
+                    Puuub
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4273710/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 9】mobonnie 15冬季...
+                        </span>
+                        <span class="story-item-price">￥196.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+            
+        <li class="layout-item-A commodity-item">
+            <a href="http://dongxi.douban.com/show/4276696/?r=8" target="_blank" title="味蕾之诗全球零食大巡游 进口休闲零食礼包吃货礼盒礼物送女友">
+                <img class="item-image" width="346" height="220" src="http://img4.douban.com/view/commodity_story_promotion/large/public/p0869baface6b4462901fc85c5a33a20b.jpg" alt="味蕾之诗全球零食大巡游 进口休闲零食礼包吃货礼盒礼物送女友的图片">
+            </a>
+            <div class="author-box">
+                <a target="_blank" class="author-avatar" href="http://dongxi.douban.com/people/58208269/?r=8">
+                    <img src="http://img3.doubanio.com/icon/u58208269-9.jpg" width="24" height="24" title="小饼" />
+                </a>
+                <a class="author-name" target="_blank" href="http://dongxi.douban.com/people/58208269/?r=8">
+                    小饼
+                </a>
+                <span>推荐</span>
+            </div>
+            <div class="story-box">
+                <a href="http://dongxi.douban.com/show/4276696/?r=8" target="_blank">
+                    </a><div class="story-info">
+                        <span class="story-title">
+                                【TOP 11】味蕾之诗全球零...
+                        </span>
+                        <span class="story-item-price">￥99.00</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</li>
+            </ul>
+        </div>
+        <div class="promotion-items-nav prev">
+            <i class="icon"></i>
+        </div>
+        <div class="promotion-items-nav next">
+            <i class="icon"></i>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+
+<div class="page-cate-title cate-rec">
+    <span class="title-text">推荐</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="J_CardListBox" class="cardlist-wrap">
+    <ul class="cardlist largecard">
+            
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4149727/?r=H2" title="FURminator富美内特短毛猫专用祛毛梳">
+    <img class="story-image" width="300" height="300" src="http://img4.douban.com/view/commodity_story/imedium/public/p16857826.jpg" alt="FURminator富美内特短毛猫专用祛毛梳的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥199.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="FURminator富美内特短毛猫专用祛毛梳">
+    <a target="_blank" href="http://dongxi.douban.com/show/4149727/?r=H2">FURminator富美内特短毛猫专用祛毛梳</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/46707188/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u46707188-4.jpg" alt="璃缨" title="璃缨">
+    </a>
+    <a href="http://dongxi.douban.com/people/46707188/">璃缨</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4149727">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;3</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">3</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4151455/?r=H2" title="flowerlib植物图书馆花束全国杭州鲜花速递生日粉色康乃馨红豆">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16864675.jpg" alt="flowerlib植物图书馆花束全国杭州鲜花速递生日粉色康乃馨红豆的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥220.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="flowerlib植物图书馆花束全国杭州鲜花速递生日粉色康乃馨红豆">
+    <a target="_blank" href="http://dongxi.douban.com/show/4151455/?r=H2">flowerlib植物图书馆花束全国杭州鲜花速递生日粉色康乃馨红豆</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/55640290/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u55640290-11.jpg" alt="努力复习の阿该" title="努力复习の阿该">
+    </a>
+    <a href="http://dongxi.douban.com/people/55640290/">努力复习の阿该</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4151455">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4151527/?r=H2" title="乌鹤 男款刺绣贴布T恤（二色入）">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16864980.jpg" alt="乌鹤 男款刺绣贴布T恤（二色入）的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥175.12</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="乌鹤 男款刺绣贴布T恤（二色入）">
+    <a target="_blank" href="http://dongxi.douban.com/show/4151527/?r=H2">乌鹤 男款刺绣贴布T恤（二色入）</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/136698505/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u136698505-2.jpg" alt="乌鹤" title="乌鹤">
+    </a>
+    <a href="http://dongxi.douban.com/people/136698505/">乌鹤</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4151527">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+        <li class="like">喜欢&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count">1</em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150290/?r=H2" title="2015秋季韩版英伦针织打底衫男士新款提花圆领套头撞色毛衣">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16860074.jpg" alt="2015秋季韩版英伦针织打底衫男士新款提花圆领套头撞色毛衣的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥139.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="2015秋季韩版英伦针织打底衫男士新款提花圆领套头撞色毛衣">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150290/?r=H2">2015秋季韩版英伦针织打底衫男士新款提花圆领套头撞色毛衣</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/74631050/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/user_normal.jpg" alt="为了什么" title="为了什么">
+    </a>
+    <a href="http://dongxi.douban.com/people/74631050/">为了什么</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150290">
+    
+
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150193/?r=H2" title="戈黎斯 瓶子的故事 工笔花鸟 个性壁画 国风 国画 大型定制壁纸">
+    <img class="story-image" width="300" height="300" src="http://img4.douban.com/view/commodity_story/imedium/public/p16859687.jpg" alt="戈黎斯 瓶子的故事 工笔花鸟 个性壁画 国风 国画 大型定制壁纸的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥119.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="戈黎斯 瓶子的故事 工笔花鸟 个性壁画 国风 国画 大型定制壁纸">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150193/?r=H2">戈黎斯 瓶子的故事 工笔花鸟 个性壁画 国风 国画 大型定制壁纸</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/3756861/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u3756861-4.jpg" alt="2叁" title="2叁">
+    </a>
+    <a href="http://dongxi.douban.com/people/3756861/">2叁</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150193">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;3</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">3</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4151333/?r=H2" title="钥匙扣手机挂件  新品毛绒玩具公仔挂件海獭公仔 精选小礼品">
+    <img class="story-image" width="300" height="312" src="http://img4.douban.com/view/commodity_story/mlarge/public/p16864187.jpg" alt="钥匙扣手机挂件  新品毛绒玩具公仔挂件海獭公仔 精选小礼品的图片" style="margin-top:-26.0px;">
+</a>
+
+<span class="commodity-price">￥63.80</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="钥匙扣手机挂件  新品毛绒玩具公仔挂件海獭公仔 精选小礼品">
+    <a target="_blank" href="http://dongxi.douban.com/show/4151333/?r=H2">钥匙扣手机挂件  新品毛绒玩具公仔挂件海獭公仔 精选小礼品</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/m..-_-../">
+        <img width="24" height="24" src="http://img3.doubanio.com/icon/u40015800-229.jpg" alt="小艾姆逢考必过" title="小艾姆逢考必过">
+    </a>
+    <a href="http://dongxi.douban.com/people/m..-_-../">小艾姆逢考必过</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4151333">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4151225/?r=H2" title="日本石泽研究所尿素玻尿酸水嫩保濕眼霜 20g">
+    <img class="story-image" width="300" height="300" src="https://img3.doubanio.com/view/commodity_story/imedium/public/p16863820.jpg" alt="日本石泽研究所尿素玻尿酸水嫩保濕眼霜 20g的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥128.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="日本石泽研究所尿素玻尿酸水嫩保濕眼霜 20g">
+    <a target="_blank" href="http://dongxi.douban.com/show/4151225/?r=H2">日本石泽研究所尿素玻尿酸水嫩保濕眼霜 20g</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/angelic0930/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/u2848001-67.jpg" alt="Lim-ah" title="Lim-ah">
+    </a>
+    <a href="http://dongxi.douban.com/people/angelic0930/">Lim-ah</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4151225">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150432/?r=H2" title="【手作】和风绉布丝带铃铛发饰 和服浴衣cos汉服日常头饰配饰">
+    <img class="story-image" width="300" height="300" src="https://img1.doubanio.com/view/commodity_story/imedium/public/p16860677.jpg" alt="【手作】和风绉布丝带铃铛发饰 和服浴衣cos汉服日常头饰配饰的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥12.50</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="【手作】和风绉布丝带铃铛发饰 和服浴衣cos汉服日常头饰配饰">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150432/?r=H2">【手作】和风绉布丝带铃铛发饰 和服浴衣cos汉服日常头饰配饰</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/linmoer/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u40994433-81.jpg" alt="苏浅雪" title="苏浅雪">
+    </a>
+    <a href="http://dongxi.douban.com/people/linmoer/">苏浅雪</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150432">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;2</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">4</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4149220/?r=H2" title="比洛卡">
+    <img class="story-image" width="300" height="300" src="http://img3.doubanio.com/view/commodity_story/imedium/public/p16855799.jpg" alt="比洛卡的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥349.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="比洛卡">
+    <a target="_blank" href="http://dongxi.douban.com/show/4149220/?r=H2">比洛卡</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/bonacasino/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u129985483-11.jpg" alt="博纳娱乐" title="博纳娱乐">
+    </a>
+    <a href="http://dongxi.douban.com/people/bonacasino/">博纳娱乐</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="1189448">
+    
+
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150996/?r=H2" title="2015秋冬新款韩版风范时尚女士包潮流pu荔枝纹手提包单肩斜跨包">
+    <img class="story-image" width="300" height="300" src="http://img4.douban.com/view/commodity_story/imedium/public/p16862976.jpg" alt="2015秋冬新款韩版风范时尚女士包潮流pu荔枝纹手提包单肩斜跨包的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥88.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="2015秋冬新款韩版风范时尚女士包潮流pu荔枝纹手提包单肩斜跨包">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150996/?r=H2">2015秋冬新款韩版风范时尚女士包潮流pu荔枝纹手提包单肩斜跨包</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/40997700/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u40997700-15.jpg" alt="紫苏" title="紫苏">
+    </a>
+    <a href="http://dongxi.douban.com/people/40997700/">紫苏</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150996">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150828/?r=H2" title="韩国正品代购三星note4手机壳N9100糖果色防摔硅胶手机壳保护套">
+    <img class="story-image" width="300" height="273" src="http://img3.douban.com/view/commodity_story/imedium/public/p16862311.jpg" alt="韩国正品代购三星note4手机壳N9100糖果色防摔硅胶手机壳保护套的图片" style="margin-top:-6.5px;">
+</a>
+
+<span class="commodity-price">￥145.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="韩国正品代购三星note4手机壳N9100糖果色防摔硅胶手机壳保护套">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150828/?r=H2">韩国正品代购三星note4手机壳N9100糖果色防摔硅胶手机壳保护套</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/77310072/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u77310072-3.jpg" alt="姬无毛" title="姬无毛">
+    </a>
+    <a href="http://dongxi.douban.com/people/77310072/">姬无毛</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150828">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150323/?r=H2" title="飞利浦 SHM1000 电脑 麦克风">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16860182.jpg" alt="飞利浦 SHM1000 电脑 麦克风的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥102.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="飞利浦 SHM1000 电脑 麦克风">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150323/?r=H2">飞利浦 SHM1000 电脑 麦克风</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/64956400/">
+        <img width="24" height="24" src="http://img3.doubanio.com/icon/u64956400-19.jpg" alt="小王子" title="小王子">
+    </a>
+    <a href="http://dongxi.douban.com/people/64956400/">小王子</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150323">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150227/?r=H2" title="韩国秋冬新款 百搭米奇套头卫衣">
+    <img class="story-image" width="378" height="260" src="http://img4.douban.com/view/commodity_story/mlarge/public/p16859797.jpg" alt="韩国秋冬新款 百搭米奇套头卫衣的图片" style="margin-left:-39.0px;">
+</a>
+
+<span class="commodity-price">￥89.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="韩国秋冬新款 百搭米奇套头卫衣">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150227/?r=H2">韩国秋冬新款 百搭米奇套头卫衣</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/58065879/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/u58065879-16.jpg" alt="殿下" title="殿下">
+    </a>
+    <a href="http://dongxi.douban.com/people/58065879/">殿下</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150227">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150959/?r=H2" title="花の作 樱桃小浆果羊毛毡胸针/别针/胸章 百搭森女系">
+    <img class="story-image" width="347" height="260" src="http://img3.doubanio.com/view/commodity_story/mlarge/public/p16862839.jpg" alt="花の作 樱桃小浆果羊毛毡胸针/别针/胸章 百搭森女系的图片" style="margin-left:-23.5px;">
+</a>
+
+<span class="commodity-price">￥22.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="花の作 樱桃小浆果羊毛毡胸针/别针/胸章 百搭森女系">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150959/?r=H2">花の作 樱桃小浆果羊毛毡胸针/别针/胸章 百搭森女系</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/amyjuezhao/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/u2256895-158.jpg" alt="瑴" title="瑴">
+    </a>
+    <a href="http://dongxi.douban.com/people/amyjuezhao/">瑴</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150959">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;2</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">2</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4149601/?r=H2" title="DENON MUSIC MANIAC インナーイヤーヘッドホン リモコン?マイク搭載 シルバー AH-C50MASREM">
+    <img class="story-image" width="325" height="260" src="http://img3.douban.com/view/commodity_story/mlarge/public/p16857362.jpg" alt="DENON MUSIC MANIAC インナーイヤーヘッドホン リモコン?マイク搭載 シルバー AH-C50MASREM的图片" style="margin-left:-12.5px;">
+</a>
+
+<span class="commodity-price">JP? 3,200.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="DENON MUSIC MANIAC インナーイヤーヘッドホン リモコン?マイ...">
+    <a target="_blank" href="http://dongxi.douban.com/show/4149601/?r=H2">DENON MUSIC MANIAC インナーイヤーヘッドホン リモコン?マイ...</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/jinchang/">
+        <img width="24" height="24" src="http://img3.doubanio.com/icon/u3579755-59.jpg" alt="禁" title="禁">
+    </a>
+    <a href="http://dongxi.douban.com/people/jinchang/">禁</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4149601">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4149517/?r=H2" title="特色美式乡村陶瓷餐具 饺子盘点心盘西餐盘釉下彩装饰挂盘">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16856990.jpg" alt="特色美式乡村陶瓷餐具 饺子盘点心盘西餐盘釉下彩装饰挂盘的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥49.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="特色美式乡村陶瓷餐具 饺子盘点心盘西餐盘釉下彩装饰挂盘">
+    <a target="_blank" href="http://dongxi.douban.com/show/4149517/?r=H2">特色美式乡村陶瓷餐具 饺子盘点心盘西餐盘釉下彩装饰挂盘</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/YSY999/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/u51199101-16.jpg" alt="lucky金鱼" title="lucky金鱼">
+    </a>
+    <a href="http://dongxi.douban.com/people/YSY999/">lucky金鱼</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4149517">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;3</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">3</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4149073/?r=H2" title="手工发夹发饰蝴蝶结牛仔学院发箍头箍日韩版盘发发卡头饰品头花">
+    <img class="story-image" width="300" height="300" src="http://img3.douban.com/view/commodity_story/imedium/public/p16855253.jpg" alt="手工发夹发饰蝴蝶结牛仔学院发箍头箍日韩版盘发发卡头饰品头花的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥14.90</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="手工发夹发饰蝴蝶结牛仔学院发箍头箍日韩版盘发发卡头饰品头花">
+    <a target="_blank" href="http://dongxi.douban.com/show/4149073/?r=H2">手工发夹发饰蝴蝶结牛仔学院发箍头箍日韩版盘发发卡头饰品头花</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/mimole/">
+        <img width="24" height="24" src="http://img3.douban.com/icon/u37286628-44.jpg" alt="Lady Mimole" title="Lady Mimole">
+    </a>
+    <a href="http://dongxi.douban.com/people/mimole/">Lady Mimole</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4149073">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150081/?r=H2" title="日本代购 预订 axes femme 首饰盒 圣诞节系列">
+    <img class="story-image" width="300" height="426" src="http://img4.douban.com/view/commodity_story/mlarge/public/p16859277.jpg" alt="日本代购 预订 axes femme 首饰盒 圣诞节系列的图片" style="margin-top:-83.0px;">
+</a>
+
+<span class="commodity-price">￥275.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="日本代购 预订 axes femme 首饰盒 圣诞节系列">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150081/?r=H2">日本代购 预订 axes femme 首饰盒 圣诞节系列</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/52740839/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/u52740839-26.jpg" alt="菜菜子?" title="菜菜子?">
+    </a>
+    <a href="http://dongxi.douban.com/people/52740839/">菜菜子?</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150081">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150572/?r=H2" title="双11 实拍新款秋冬毛呢大衣外套 民族风绣花外套中长款">
+    <img class="story-image" width="300" height="300" src="https://img1.doubanio.com/view/commodity_story/imedium/public/p16861204.jpg" alt="双11 实拍新款秋冬毛呢大衣外套 民族风绣花外套中长款的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥215.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="双11 实拍新款秋冬毛呢大衣外套 民族风绣花外套中长款">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150572/?r=H2">双11 实拍新款秋冬毛呢大衣外套 民族风绣花外套中长款</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/136657999/">
+        <img width="24" height="24" src="http://img4.douban.com/icon/user_normal.jpg" alt="凉凉" title="凉凉">
+    </a>
+    <a href="http://dongxi.douban.com/people/136657999/">凉凉</a>&nbsp;评论
+</div>
+
+<div class="story-quote">
+    <q class="quote">美衣，推荐。</q>
+</div>
+
+<div class="story-info" data-eqid="4150572">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;1</li>
+        <li class="post">评论&nbsp;1</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">1</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+                    <li class="carditem card-story-large ">
+                        
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+    
+        
+<div class="card-main">
+    <div class="card-hd">
+
+
+<a target="_blank" href="http://dongxi.douban.com/show/4150440/?r=H2" title="尚合 304不锈钢压蒜器 手动捣蒜器挤蒜蓉蒜泥器搅蒜机剥蒜器">
+    <img class="story-image" width="300" height="300" src="https://img1.doubanio.com/view/commodity_story/imedium/public/p16860704.jpg" alt="尚合 304不锈钢压蒜器 手动捣蒜器挤蒜蓉蒜泥器搅蒜机剥蒜器的图片" style="margin-top:-20.0px;">
+</a>
+
+<span class="commodity-price">￥46.00</span>
+</div>
+    <div class="card-bd">
+
+
+<h2 class="story-title" title="尚合 304不锈钢压蒜器 手动捣蒜器挤蒜蓉蒜泥器搅蒜机剥蒜器">
+    <a target="_blank" href="http://dongxi.douban.com/show/4150440/?r=H2">尚合 304不锈钢压蒜器 手动捣蒜器挤蒜蓉蒜泥器搅蒜机剥蒜器</a>
+</h2>
+
+<div class="author-box">
+    <a class="author-avatar-link" href="http://dongxi.douban.com/people/64956400/">
+        <img width="24" height="24" src="http://img3.doubanio.com/icon/u64956400-19.jpg" alt="小王子" title="小王子">
+    </a>
+    <a href="http://dongxi.douban.com/people/64956400/">小王子</a>&nbsp;推荐
+</div>
+
+
+<div class="story-info" data-eqid="4150440">
+    
+
+    <ul class="stats-list">
+        <li class="doulist-count">加入豆列&nbsp;2</li>
+    </ul>
+</div>
+</div>
+</div>
+
+    
+
+<div class="card-extra">
+<div class="card-actions">
+    
+        
+
+<a href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin" class="btn-doulist J_LoginPopup">
+    加入豆列
+    <em class="count">2</em>
+</a>
+
+        
+
+
+<a class="btn-carditem-like J_LoginPopup" href="http://www.douban.com/accounts/login?redir=http%3A//dongxi.douban.com/%3Fchannel%3Dlogin">
+    <span class="main"></span>
+    <em class="count"></em>
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+                    </li>
+    </ul>
+</div>
+
+
+
+
+
+<a id="J_BtnBackToTop" class="btn-back-to-top" href="#top">回顶部</a>
+
+
+
+
+
+<script class="J_ExplorePaginatorData" type="text/data"
+    data-url="http://dongxi.douban.com/?until_id=5485358390&amp;subscribe_only=0" data-end-bid="5485358390">
+</script>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+Dongxi.data.doulistBtn = {
+    doulists: [],
+    selectedId: ''
+};
+</script>
+
+
+
+
+
+
+        </div>
+        <div class="aside">
+                
+        </div>
+        <div class="extra">
+            
+        </div>
+    </div>
+</div>
+
+    
+<div id="footer">
+    
+<span id="icp" class="fleft gray-link">
+    &copy; 2005－2015 douban.com, all rights reserved
+</span>
+
+<a href="http://www.douban.com/hnypt/variformcyst.py" style="display: none;"></a>
+
+<span class="fright">
+    <a href="http://www.douban.com/about">关于豆瓣</a>
+    · <a href="http://www.douban.com/jobs">在豆瓣工作</a>
+    · <a href="http://www.douban.com/about?topic=contactus">联系我们</a>
+    · <a href="http://www.douban.com/about?policy=disclaimer">免责声明</a>
+    
+    · <a href="http://help.douban.com/" target="_blank">帮助中心</a>
+    · <a href="http://www.douban.com/doubanapp/">移动应用</a>
+    · <a href="http://www.douban.com/partner/">豆瓣广告</a>
+</span>
+
+</div>
+
+</div>
+
+    
+
+
+
+
+
+<script src="http://img3.douban.com/f/shire/14a5bb57277dd7ea5f19b8617cf7dcd82dd70a16/js/core/do/_init_.js" data-cfg-corelib="http://img3.douban.com/f/dongxi/e9d9543ebc06f2964039a2e94898f84ce77fc070/js/dongxi/libs/jquery/jquery.js"></script>
+<script>
+Do.global('http://img3.douban.com/f/dongxi/88f79fa9f91776e023d018409d5c2f8d44770003/js/dongxi/common.js');
+Do.add('tagsug',{path:'http://img3.douban.com/f/shire/4605e734f440a79abdf4866eb4e6c785dfefbba1/js/lib/tagsug.js'});
+Do.add('dialog',{path:'http://img3.douban.com/f/shire/4b3bad5e25de78678d700dd5353570dce3e6bbcc/js/ui/dialog.js'});
+Do.add('swipe',{path:'http://img3.douban.com/f/dongxi/41ae3ce4fe5c3dbc97b0a9e84aa54a60c53e530b/js/dongxi/libs/swipe.js'});
+Do.add('taodianjin',{path:'http://img3.douban.com/f/dongxi/238e9968a3dbad21d2303f9547ae9dfd2118bb80/js/dongxi/mods/taodianjin.js'});
+Do.add('account-popup',{path:'http://img3.douban.com/f/dongxi/95e1be6eaf49cf644599c494c22b3dfcaf73e3ce/js/dongxi/account_popup.js'});
+Do.add('report-dialog-css',{path:'http://img3.douban.com/f/dongxi/d540914701bcd96e348ddce72b6bed454f57a972/css/dongxi/dialog_report.css'});
+Do.add('report-dialog',{path:'http://img3.douban.com/f/shire/17ffde78bc768c1de53c46d5b5f7fb7f5893c10e/js/report_dialog.js',requires:['report-dialog-css']});
+Do.add('image-gallery-css',{path:'http://img3.douban.com/f/dongxi/cad2b50221a3a6f7f1620abbe836036103264986/css/dongxi/image_gallery.css'});
+Do.add('image-gallery',{path:'http://img3.douban.com/f/dongxi/963b9accfbd54cc0bafdb9913bc5938b0a77bba9/js/dongxi/mods/image_gallery.js',requires:['image-gallery-css']});
+Do('account-popup',function(){});
+</script>
+<script type="text/javascript" src="http://img3.douban.com/misc/mixed_static/5fbc57a8a3db6224.js"></script>
+
+
+
+    
+
+<script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var p=(('https:' == document.location.protocol) ? 'https' : 'http'), u=p+'://fundin.douban.com/';
+  _paq.push(['setTrackerUrl', u+'piwik']);
+  _paq.push(['setSiteId', '100001']);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript';
+  g.defer=true;
+  g.async=true;
+  g.src=p+'://s.doubanio.com/dae/fundin/piwik.js';
+  s.parentNode.insertBefore(g,s);
+})();
+</script>
+
+<script>
+var _gaq = _gaq || [];
+(function() {
+
+var setMethodWithNs = function(namespace) {
+  var ns = namespace ? namespace + '.' : '',
+      fn = function(string) {
+        if(!ns) {return string}
+        return ns + string
+      }
+  return fn
+}
+
+var gaWithNamespace = function(fn, namespace) {
+  var method = setMethodWithNs(namespace)
+  fn.call(this, method)
+}
+
+var accounts = [{"namespace":"douban","id":"UA-7019765-1"},{"namespace":"","id":"UA-7019765-18"}],
+    gaInit = function(account) {
+      gaWithNamespace(function(method) {
+        gaInitFn.call(this, method, account)
+      }, account.namespace)
+    },
+    gaInitFn = function(method, account) {
+      _gaq.push([method('_setAccount'), account.id])
+      _gaq.push(['_setCampNameKey', 'dcn'])
+      _gaq.push(['_setCampSourceKey', 'dcs'])
+      _gaq.push(['_setCampMediumKey', 'dcm'])
+      _gaq.push(['_setCampTermKey', 'dct'])
+      _gaq.push(['_setCampContentKey', 'dcc'])
+      _gaq.push(['_addOrganic', 'google', 'q'])
+      _gaq.push(['_addOrganic', 'baidu', 'wd'])
+      _gaq.push(['_addOrganic', 'so.360.cn', 'q'])
+      _gaq.push(['_addOrganic', 'soso', 'w'])
+      _gaq.push(['_addOrganic', 'youdao', 'q'])
+      _gaq.push(['_addOrganic', 'sogou', 'query'])
+
+      
+  _gaq.push([method('_addOrganic'), 'google', 'q'])
+  _gaq.push([method('_addOrganic'), 'baidu', 'wd'])
+  _gaq.push([method('_addOrganic'), 'soso', 'w'])
+  _gaq.push([method('_addOrganic'), 'youdao', 'q'])
+  _gaq.push([method('_addOrganic'), 'so.360.cn', 'q'])
+  _gaq.push([method('_addOrganic'), 'sogou', 'query'])
+  if (account.namespace) {
+    _gaq.push([method('_addIgnoredOrganic'), '豆瓣'])
+    _gaq.push([method('_addIgnoredOrganic'), 'douban'])
+    _gaq.push([method('_addIgnoredOrganic'), '豆瓣网'])
+    _gaq.push([method('_addIgnoredOrganic'), 'www.douban.com'])
+  }
+
+      if (account.namespace === 'douban') {
+        _gaq.push([method('_setDomainName'), '.douban.com'])
+      }
+
+        _gaq.push([method('_setCustomVar'), 1, 'responsive_view_mode', 'desktop', 3])
+
+        _gaq.push([method('_setCustomVar'), 2, 'login_status', '0', 2]);
+
+      _gaq.push([method('_trackPageview')])
+    }
+
+
+for(var i = 0, l = accounts.length; i < l; i++) {
+  var account = accounts[i]
+  gaInit(account)
+}
+
+
+var ga = document.createElement('script');
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+ga.setAttribute('async', 'true');
+document.documentElement.firstChild.appendChild(ga);
+
+})();
+</script>
+
+
+
+
+
+
+<script>var _gaq=_gaq||[],ga=ga||{};(function(){var b=Array.prototype.slice,a=function(c){var d=false;return function(){if(!d){d=true;c()}}};ga.trackPageview=function(c){_gaq.push(["_trackPageview","/"+c])};ga.trackEvent=function(f,h){var d=b.call(arguments,2),e=["_trackEvent",f,h];if(d.length>0){var c=0,g=1;if(typeof d[c]==="number"){d[c]=d[c].toString()}if(typeof d[g]==="string"){d[g]=+d[g]}e=e.concat(d)}_gaq.push(e)};ga.trackEcommerce=function(c,d){_gaq.push(["_addTrans"].concat(c));_gaq.push(["_addItem"].concat(d));_gaq.push(["_trackTrans"])};ga.setCustomVar=function(d,c,f,e){_gaq.push(["_setCustomVar",d,c,f,e])};ga.delayRun=function(d){d=a(d);var c=function(){setTimeout(d,300)},e=function(){setTimeout(d,400)};_gaq.push(c);e()};ga.pushFunction=function(c){_gaq.push(c)}})();</script>
+
+
+
+
+
+
+
+    
+<script type="text/javascript">
+    (function (global) {
+        var newNode = global.document.createElement('script'),
+            existingNode = global.document.getElementsByTagName('script')[0],
+            adSource = '//erebor.douban.com/',
+            userId = '',
+            browserId = 'D3bur1U73HA',
+            criteria = '3:/?dcs=top-nav&amp;amp;dcm=douban',
+            preview = '',
+            debug = false,
+            adSlots = ['dale_dongxi_top_banner'];
+
+        global.DoubanAdRequest = {src: adSource, uid: userId, bid: browserId, crtr: criteria, prv: preview, debug: debug};
+        global.DoubanAdSlots = (global.DoubanAdSlots || []).concat(adSlots);
+
+        newNode.setAttribute('type', 'text/javascript');
+        newNode.setAttribute('src', 'http://img3.douban.com/f/shire/0a3e8bdd48446950d821b65613a24e86be2b067a/js/ad.js');
+        newNode.setAttribute('async', true);
+        existingNode.parentNode.insertBefore(newNode, existingNode);
+    })(this);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- hador7-docker-->
+
+  <script>_SPLITTEST=''</script>
+
+<script>var _check_hijack = function () {
+    var _sig = "D3bur1U7", _login = false, bid = get_cookie('bid');
+    if (location.protocol != "file:" && (
+            typeof(bid) != "string" && _login ||
+            typeof(bid) == "string" && bid.substring(0,8) != _sig)) {
+        location.href += (/\?/.test(location.href)?"&":"?") + (
+                "_r=" + Math.random().toString(16).substring(2));
+    }};
+if (typeof(Do) != 'undefined') Do(_check_hijack);
+else if (typeof(get_cookie) != 'undefined') _check_hijack();
+</script></body>
+
+</html>
+

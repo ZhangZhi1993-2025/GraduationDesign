@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta charset="utf-8" /><meta name="keywords" content="创业谷" /><meta name="description" content="创业谷" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><title>
+	创业谷-创业团队
+</title><link rel="stylesheet" type="text/css" href="styles/index/layout.css" /><link rel="stylesheet" type="text/css" href="styles/index/main.css" /><link rel="stylesheet" type="text/css" href="styles/index/project.css" />
+<script src="ckeditor/ckeditor.js"></script>
+<script src="Scripts/jquery-1.4.1.js"></script>
+<script src="Scripts/jquery-1.4.1.min.js"></script>
+<script src="Scripts/jquery-1.4.1-vsdoc.js"></script>
+<script>
+        $(function () {
+            $("#submint").click(function () {
+                var obj = document.getElementById("DropDownList1");
+                var title = $("#txttit").val();
+                var neirong = editor.document.getBody().getHtml();
+                var types = obj.options[obj.selectedIndex].text;
+                alert(types);
+                $.post("ashx/addzixun.ashx",
+                    { title: title, neirong: neirong, types: types },
+                    function (data, status) {
+                    alert(data);
+                    if (data == '提交成功！') {
+                        document.getElementById('light').style.display = 'none'; document.getElementById('fade').style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+<script src="ckfinder/ckfinder.js"></script>
+<script src="My97DatePicker/WdatePicker.js"></script>
+<style>
+.black_overlay { display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index: 1001; -moz-opacity: 0.8; opacity: .80; filter: alpha(opacity=88); }
+.white_content { display: none; position: absolute; top: 25%; left: 25%; width: 55%; height: 55%; padding: 20px; border: 10px solid orange; background-color: white; z-index: 1002; overflow: auto; }
+</style>
+</head>
+<body>
+<form method="post" action="project_con.aspx?id=543" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWNQKv8arjBgLKru/4BwLcupmkAwLFwcWWCwLHwcWWCwLHwcWWCwLEwcWWCwLGwcWWCwLRupmkAwLwmrDLAwLbuP+vCwLh4N+ZBQL39KnFAQLlurnvAQLfq/KnBgKGy4LJDALttt2IBgKys8sOAuL46/oNAsSF1I8KAqncl+wEAojr4sgPAu2WhZ0IApeN/Y0EAuHgm6sPAvf07fcLApvv3+8LAvL0mdANAoPA8FUC76WwxQ8CtoP/rw8Cndm8yAMC9IehzQwC2J2j3A4Cm4vwIAK7y/+UCgLh4IfQBgL39PGMAgKDwNytCALP8tKMCwKh3LXyDwLh4MNhAvf0tb0EAvXGlLIHArncy/gPAu22wfADAsf7jNsHAu+W8KAGApG0l9cNArryq3kC//qqywQC+ZC35wwC+ofs8Q2Hhn0wXNzjDR4GnySdSFF6Dq50uDnh87etBW/gx2TJsA==" />
+</div>
+  <div id="wrapper">
+    
+  <header>
+    <div id="header"> <a href="index.aspx"><span id="logo"></span></a>
+      <div class="btn_login"> <a id="register" href="register.aspx">注册</a><a id="login" href="login.aspx">登录</a>
+          
+      </div>
+      <div class="nav">
+        <ul>
+            <li><a  href='index.aspx'>首页</a></li>
+          <li><a  href='activities.aspx'>沙龙活动</a></li>
+          <li><a class='active_link' href='project.aspx'>入驻项目</a></li>
+          <li><a  href='organization.aspx'>服务机构</a></li>
+          <li><a  href='site_con.aspx?classname=关于我们'>关于我们</a></li>
+        </ul>
+      </div>
+      <div class="search">
+        <div class="search_control">
+    <select name="header1$DropDownList1" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;header1$DropDownList1\&#39;,\&#39;\&#39;)&#39;, 0)" id="header1_DropDownList1">
+	<option selected="selected" value="请选择">请选择</option>
+	<option value="1">创业团队</option>
+	<option value="3">企业导师</option>
+	<option value="3">投资导师</option>
+	<option value="2">服务机构</option>
+	<option value="4">投资机构</option>
+
+</select>
+
+            <select name="header1$DropDownList2" id="header1_DropDownList2">
+	<option value="请选择">请选择</option>
+
+</select>
+          <div class="s_input">
+          <input name="header1$txtsearch" type="text" id="header1_txtsearch" />
+            <label>
+            <a id="header1_lbtnsearch" href="javascript:__doPostBack(&#39;header1$lbtnsearch&#39;,&#39;&#39;)">搜索</a>
+            </label>
+          </div>
+          <a id="enter" href="exchange.aspx"> 进入服务大厅</a> </div>
+      </div>
+      <div class="note"> <span style="color:red;">最新活动：<marquee class="note_message" onMouseOver="this.stop()" onMouseOut="this.start()" scrollamount="5" scrolldelay="100" direction="left" height='20'>
+      <a href='activities_con.aspx?id=228'>关于开展“健康创业”瑜伽运动初级篇课程......</a></marquee></span> </div>
+    </div>
+  </header>
+    <article>
+      <p class="path"> <a href="index.aspx">首页</a>&nbsp;>&nbsp;<a href="project.aspx">入驻项目</a>&nbsp;>&nbsp;项目详情</p>
+      <div id="pro_con" class="mainLayout">
+        <div class="con_top">
+          <div class="con_t_left">
+            <div class="con_tl_top">
+              <div class="main_img"><img src="file/cytdlogo/2015112168231616.jpg" alt="太阳模拟器" /></div>
+              <div>
+                <h2>太阳模拟器
+                  
+                  <a style="float:right;padding:3px 12px;background:#669966;color:#fff;*margin-top:-25px;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">发布信息</a></h2>
+                <ul>
+                  <li>项目状态：已注册</li>
+                  <li>申请企业：太阳模拟器</li>
+                  
+                  <li>项目负责人：宋兆涛
+                    
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="ser_info">
+          <h2>项目介绍</h2>
+          <div class="daoshianli"> 太阳能模拟器将太阳光反射到固定方向，为空间光学系统杂光测试实验提供平行光</title> </div>
+        </div>
+        
+        <div class="ser_info">
+          <h2>注册概述</h2>
+          <div class="daoshianli">北京艾特斯太阳能科技有限公司是一家综合性高科技节能环保服务企业。公司以雄厚的技术力量为基础，集节能设计、咨询、节能工程承包、节能技术开发及节</title> </div>
+          
+        </div>
+        
+        <div class="ser_info">
+          <h2>团队介绍</h2>
+          <div class="daoshianli"> 作为一家专业的节能服务公司，我们以节能</title> </div>
+          
+        </div>
+      </div>
+      
+<div class="links">
+      <div class="links_con">
+          <select name="links1$DropDownList1" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;links1$DropDownList1\&#39;,\&#39;\&#39;)&#39;, 0)" id="links1_DropDownList1">
+	<option selected="selected" value="请选择">国家部委网站</option>
+	<option value="http://www.innofund.gov.cn/">科技型中小企业技术创新基金</option>
+	<option value="http://www.most.gov.cn/">中华人民共和国科学技术部</option>
+	<option value="http://www.ctp.gov.cn/">科学技术部火炬高技术产业开发中心</option>
+	<option value="http://www.cscse.edu.cn/">教育部留学人员服务中心</option>
+	<option value="http://www.ndrc.gov.cn/">中华人民共和国发展和改革委员会</option>
+	<option value="http://www.safea.gov.cn/">中华人民共和国国家外国专家局</option>
+	<option value="http://www.moe.edu.cn/">中华人民共和国教育部</option>
+	<option value="http://www.saic.gov.cn/">中华人民共和国国家工商行政管理总局</option>
+	<option value="http://www.chinatax.gov.cn/">中华人民共和国国家税务总局</option>
+	<option value="http://www.miit.gov.cn/n11293472/index.html">中华人民共和国工业和信息化部</option>
+	<option value="http://www.mohrss.gov.cn/">中华人民共和国人力资源和社会保障部</option>
+
+</select>
+          <select name="links1$DropDownList2" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;links1$DropDownList2\&#39;,\&#39;\&#39;)&#39;, 0)" id="links1_DropDownList2">
+	<option selected="selected" value="请选择">北京市委办局</option>
+	<option value="http://www.8610hr.cn/">北京海外学人中心</option>
+	<option value="http://www.bjkw.gov.cn/n8785584/index.html">北京市科学技术委员会</option>
+	<option value="http://www.bjld.gov.cn/">北京市人力资源和社会保障局</option>
+	<option value="http://www.bjeit.gov.cn/">北京市经济和信息化委员会</option>
+	<option value="http://www.bjipo.gov.cn/">北京市知识产权局</option>
+	<option value="http://www.bjtsb.gov.cn/">北京市质量技术监督局</option>
+	<option value="http://www.bjsat.gov.cn/bjsat/">北京市国家税务局</option>
+	<option value="http://www.hd315.gov.cn/">北京市工商行政管理局</option>
+	<option value="http://www.tax861.gov.cn/">北京市地方税务局</option>
+	<option value="http://www.zgc.gov.cn/">中关村管委会</option>
+
+</select>
+          <select name="links1$DropDownList3" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;links1$DropDownList3\&#39;,\&#39;\&#39;)&#39;, 0)" id="links1_DropDownList3">
+	<option selected="selected" value="请选择">海淀政府相关网站</option>
+	<option value="http://www.bjhd.gov.cn/">海淀区人民政府</option>
+	<option value="http://www.zhsp.gov.cn/">海淀区科委</option>
+	<option value="http://www.zhongguancun.com.cn/">海淀园管委会</option>
+
+</select>
+          <select name="links1$DropDownList4" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;links1$DropDownList4\&#39;,\&#39;\&#39;)&#39;, 0)" id="links1_DropDownList4">
+	<option selected="selected" value="请选择">相关网站</option>
+	<option value="http://www.wrsa.net/">欧美同学会</option>
+	<option value="http://www.cei.gov.cn/">中国经济信息网</option>
+	<option value="http://www.cscse.edu.cn/">中国留学网</option>
+	<option value="http://www.bjlx.gov.cn/">北京留学网</option>
+	<option value="http://www.rcsp.com.cn/">中国留学生创业网</option>
+	<option value="http://www.ospp.com">海淀创业园</option>
+	<option value="http://www.bj12330.com/">中国（北京）保护知识产权网</option>
+
+</select>
+      </div>
+    </div>
+    </article>
+    
+<footer>
+    <div id="footer">
+      <div class="f_top">
+        <ul>
+          <li><a href="site_con.aspx?classname=关于我们">关于我们</a></li>
+          <li><a href="site_con.aspx?classname=客户服务">客户服务</a></li>
+          <li><a href="help_con.aspx">帮助中心</a></li>
+          <li><a href="suggest.aspx">意见反馈</a></li>
+          <li><a href="site_con.aspx?classname=联系我们">联系我们</a></li>
+          <li><a href="click/SanrenEDUSetup.exe">下载客户端</a></li>
+          <li style="border:0 none;"><a href="admin/adminlogin.aspx" target="_blank">网站管理</a></li>
+        </ul>
+      </div>
+      <div class="f_bottom"> 中国北京（海淀）留学人员创业园&nbsp;&bull;&nbsp;创业谷<br />
+地址：北京市海淀区上地信息路26号中关村创业大厦一层 邮编：100085<br />电话：010-82898001 传真：010-62984933 上地创业谷QQ群：304241504
+ 微信公众号：sdchuangyegu
+<br />
+ 京ICP备14014525号&nbsp;设计制作与技术支持：华文杏坛（北京）教育科技有限公司
+</div>
+    </div>
+  </footer>
+  </div>
+  <div id="light" class="white_content">
+    <ul>
+      <li>
+        <p>标题&nbsp;
+          <input name="txttit" type="text" id="txttit" />
+        </p>
+      </li>
+      <li>
+        <p>类型
+          <select name="DropDownList1" id="DropDownList1">
+	<option value="创业谷快讯">创业谷快讯</option>
+	<option value="行业快讯">行业快讯</option>
+
+</select>
+        </p>
+      </li>
+      <li>
+        <p>内容
+          <textarea id="neirong"></textarea>
+        </p>
+        <script>
+                     var editor = CKEDITOR.replace('neirong');
+                     CKFinder.SetupCKEditor(editor, '/ckfinder/');
+        </script> 
+      </li>
+      <li style="text-align:center;">
+        <input type="button" value="提交" id ="submint" />
+        <input type="button" value="关闭" onclick="document.getElementById('light').style.display = 'none'; document.getElementById('fade').style.display = 'none'" id="close" />
+      </li>
+    </ul>
+  </div>
+  <div id="fade" class="black_overlay"></div>
+</form>
+</body>
+</html>

@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+
+    <title>
+            北京创客空间的日记
+</title>
+    
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Sun, 6 Mar 2005 01:00:00 GMT">
+    
+    <script >var _head_start = new Date();</script>
+    <script src="http://img3.douban.com/f/shire/72ced6df41d4d158420cebdd254f9562942464e3/js/jquery.min.js"></script>
+    <script src="http://img3.douban.com/f/shire/2bb3ef07133715de30da0e3bfcf048e8754e95ae/js/douban.new_rating.js"></script>
+    <link href="http://img3.douban.com/f/shire/85e48d36f1b46965b4fb9beaae6a601c6108203f/css/douban.new_rating.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    
+        
+    </style>
+    
+    <script type="text/javascript" src="http://img3.douban.com/f/shire/29449d396dacb28fd9949c709ccf02a46b910156/js/do.js" data-cfg-autoload="false"></script>
+
+    <link rel="stylesheet" href="http://img3.douban.com/misc/mixed_static/4dfebe39fcbe315a.css">
+    <script>
+    Douban.init_rss_edit = function(o){
+        $('#show_b').show();
+        $('#show_b').click(function(){
+            $('#form_rss').show();
+            $(this).hide();
+            return false;
+        });
+        $('#cancel_b').click(function(){
+            $('#form_rss').hide();
+            $('#show_b').show();
+            return false;
+        });
+        $('#form_rss').submit(function(){
+            var d = {
+                'uid':$('#uid').attr('value'),
+                'rss_type':$('input:checked').attr('value')
+                };
+            $.post_withck('/j/note/rss_edit', d, function(r){
+                var r = eval('('+r+')');
+                if (r.ok){
+                    $('#type_word').html(r.type);
+                }
+                $('#form_rss').hide();
+                $('#show_b').show();
+            });
+            return false;
+        });
+    }
+</script>
+
+    <link rel="shortcut icon" href="http://img3.douban.com/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  
+    <script type="text/javascript">var _body_start = new Date();</script>
+    
+   
+
+
+
+
+
+
+
+<div id="db-global-nav" class="global-nav">
+  <div class="bd">
+    
+
+
+
+
+
+<div class="top-nav-info">
+      
+      <a href="http://www.douban.com/accounts/login?source=main" class="nav-login" rel="nofollow">登录</a>
+      <a href="http://www.douban.com/accounts/register?source=main" class="nav-register" rel="nofollow">注册</a>
+</div>
+
+
+
+    <div class="top-nav-doubanapp">
+        
+        <a href="http://www.douban.com/doubanapp/app?channel=top-nav" class="lnk-doubanapp">下载豆瓣客户端</a>
+        <div id="top-nav-appintro" class="more-items">
+            <p class="appintro-title">豆瓣<span>3.0</span></p>
+            <p class="slogan">和有趣的人做有趣的事</p>
+            <p class="qrcode">
+                扫码直接下载
+            </p>
+            <div class="download">
+                <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=iOS">iPhone</a>
+                <span>·</span>
+                <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=Android" class="download-android">Android</a>
+            </div>
+        </div>
+        <div id="doubanapp-tip">
+            <a href="http://www.douban.com/doubanapp/app?channel=qipao" class="tip-link">豆瓣 3.0 全新发布</a>
+            <a href="javascript: void 0;" class="tip-close">×</a>
+        </div>
+    </div>
+
+    <div class="global-nav-items">
+      <ul>
+          
+            
+            <li class="on">
+            <a href="http://www.douban.com/" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-main&#34;,&#34;uid&#34;:&#34;0&#34;}">豆瓣</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://book.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-book&#34;,&#34;uid&#34;:&#34;0&#34;}">读书</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://movie.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-movie&#34;,&#34;uid&#34;:&#34;0&#34;}">电影</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://music.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-music&#34;,&#34;uid&#34;:&#34;0&#34;}">音乐</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://www.douban.com/location/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-location&#34;,&#34;uid&#34;:&#34;0&#34;}">同城</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://www.douban.com/group/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-group&#34;,&#34;uid&#34;:&#34;0&#34;}">小组</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://read.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-read&#34;,&#34;uid&#34;:&#34;0&#34;}">阅读</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://douban.fm/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-fm&#34;,&#34;uid&#34;:&#34;0&#34;}">FM</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://dongxi.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-commodity&#34;,&#34;uid&#34;:&#34;0&#34;}">东西</a>
+            </li>
+          
+            
+            <li class="">
+            <a href="http://market.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-market&#34;,&#34;uid&#34;:&#34;0&#34;}">市集</a>
+            </li>
+          
+            <li>
+              <a href="#more" class="bn-more"><span>更多</span></a>
+              <div class="more-items">
+                <table cellpadding="0" cellspacing="0">
+                    
+                    <tr><td><a href="http://moment.douban.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-moment&#34;,&#34;uid&#34;:&#34;0&#34;}">一刻</a></td></tr>
+                    
+                    <tr><td><a href="http://ypy.douban.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-ypy&#34;,&#34;uid&#34;:&#34;0&#34;}">一拍一</a></td></tr>
+                </table>
+              </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+   
+    
+
+
+
+
+
+
+
+<div id="db-nav-sns" class="nav">
+  <div class="nav-wrap">
+    <div class="nav-primary">
+      <div class="nav-search">
+        <form action="http://www.douban.com/search" method="get">
+          <fieldset>
+            <legend>搜索：</legend>
+            <label for="inp-query">搜索你感兴趣的内容和人...</label>
+            <div class="inp">
+              <input type="hidden" name="source" value="suggest">
+              <input id="inp-query" name="q" size="22" title="搜索搜索你感兴趣的内容和人..." maxlength="60" autocomplete="off"  value="">
+            </div>
+            <div class="inp-btn"><input type="submit" value="搜索"></div>
+          </fieldset>
+        </form>
+      </div>
+  
+      <div class="nav-logo">
+        <a href="http://www.douban.com">豆瓣社区</a>
+      </div>
+  
+      <div class="nav-items">
+        <ul>
+          <li><a href="http://www.douban.com/">首页</a></li>
+          <li><a href="http://www.douban.com/explore/">浏览发现</a></li>
+          <li>
+              <a href="http://www.douban.com/app/">移动应用</a>
+              <img src="http://img3.douban.com/f/shire/e49eca1517424a941871a2667a8957fd6c72d632/pics/new_menu.gif" alt="new" />
+              
+          </li>
+          <li>
+            <a href="http://www.douban.com/game/explore?dcs=sns-nav&amp;dcm=douban">游戏</a>
+          </li>
+          <li><a href="http://www.douban.com/online/">线上活动</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <div id="wrapper">
+        
+
+        
+<div id="content">
+    
+
+    <div class="grid-16-8 clearfix">
+        
+        
+        <div class="article">
+               
+        
+
+
+<div id="db-usr-profile">
+<div class="pic">
+    <a href="http://www.douban.com/people/bjmakerspace/">
+        <img width="48" height="48" src="http://img3.douban.com/icon/u53639228-4.jpg" alt="北京创客空间">
+    </a>
+</div>
+<div class="info">
+        <h1>北京创客空间的日记</h1>
+        
+    <ul>
+          <li><a href="http://www.douban.com/people/bjmakerspace/">北京创客空间的主页</a></li>
+          <li><a href="http://www.douban.com/people/bjmakerspace/statuses">广播</a></li>
+          <li><a href="http://www.douban.com/people/bjmakerspace/photos">相册</a></li>
+          <li><a href="http://www.douban.com/people/bjmakerspace/notes">日记</a></li>
+          <li><a href="http://www.douban.com/people/bjmakerspace/likes/">喜欢</a></li>
+          <li><a href="http://www.douban.com/people/bjmakerspace/doulists">豆列</a></li>
+    </ul>
+
+</div>
+</div>
+    <div class="clear"></div>
+
+
+
+    <ul class="note-tab">
+            <li class="on"><a href="?type=note">日记</a></li>
+            <li class=""><a href="?type=answer">问答</a></li>
+    </ul>
+
+        
+        
+    
+    <div id="note-429228124">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-429228124" class="rr"><a id="naf-429228124" href="http://www.douban.com/note/429228124/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-429228124" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014全球创客嘉年华—北京站志愿者招募" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F429228124%2F&amp;type=note&amp;pos=title">2014全球创客嘉年华—北京站志愿者招募</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-26 21:34:03</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_429228124_short" ><div class="ll"><a href="http://www.douban.com/note/429228124/"><img src="http://img3.doubanio.com/view/note/small/public/p19545969.jpg" alt=""/></a></div> 创客嘉年华是一个由那些充满创意又赋予行动的创客们所完成的各种新奇有趣的项目所构建起来的游乐场，是一个适合家庭和个人一起前来游玩并体会动手制作乐趣的主题游乐园。 2012中国首届创客嘉年华登陆北京，来自中国和世界其他国家和地区的创客们及特邀嘉宾齐聚北京世纪坛数字艺术馆。各种新奇的创客作品在此做特别展示。 2......</div><div id="note_429228124_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_429228124_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="429228124" data-mode="plain" data-name="2014全球创客嘉年华—北京站志愿者招募" data-type="com.douban.people" data-desc="创客嘉年华是一个由那些充满创意又赋予行动的创客们所完成的各种新奇有趣的项目所构建起来的游乐场，是一个适合家庭和个人一起前来游玩并体会动手制作乐趣的主题游乐园。 2012中国首届创客嘉..." data-href="http://www.douban.com/note/429228124/" data-image="http://img3.doubanio.com/view/note/small/public/p19545969.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="429228124" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/429228124\/&#34;,&#34;note_title&#34;:&#34;2014全球创客嘉年华—北京站志愿者招募&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_c4b31" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="429228124" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-428196832">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-428196832" class="rr"><a id="naf-428196832" href="http://www.douban.com/note/428196832/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-428196832" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="设计师招聘" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F428196832%2F&amp;type=note&amp;pos=title">设计师招聘</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-24 15:06:57</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_428196832_short" >设计师招聘 要求：熟练掌握INDESIGN等平面设计软件. 工作内容：帮助设计师来进行资料整理和校对，宣传手册的制作及海报的制作。 待遇：200至300元一天 工作时间：9月24日起10点至18点 工作地点：北京创客空间 中关村梦想实验室4层 联系方式：请直接来空间就好了，急需设计师的帮助！ 具体事宜可到空间来详谈。</div><div id="note_428196832_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_428196832_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="428196832" data-mode="plain" data-name="设计师招聘" data-type="com.douban.people" data-desc="设计师招聘 要求：熟练掌握INDESIGN等平面设计软件. 工作内容：帮助设计师来进行资料整理和校对，宣传手册的制作及海报的制作。 待遇：200至300元一天 工作时间：9月24日起10点至18点 工作地..." data-href="http://www.douban.com/note/428196832/" data-image="" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="428196832" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/428196832\/&#34;,&#34;note_title&#34;:&#34;设计师招聘&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_246c9" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="428196832" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-427368522">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-427368522" class="rr"><a id="naf-427368522" href="http://www.douban.com/note/427368522/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-427368522" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014全球创客嘉年华-北京站倒计时第9天" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F427368522%2F&amp;type=note&amp;pos=title">2014全球创客嘉年华-北京站倒计时第9天</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-22 17:25:49</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_427368522_short" ><div class="ll"><a href="http://www.douban.com/note/427368522/"><img src="http://img3.douban.com/view/note/small/public/p19350911.jpg" alt=""/></a></div> 2014全球创客嘉年华-北京站倒计时第9天  创客嘉年华｜Maker Carnival 是GEEK创客们为大众打造的科技乐园。希望大众可以通过亲身体验参与、动手制作、体会“想法当实现”的生活方式，激发大家的创新潜能和源动力！与国内外的创客们来一次近距离接触、了解真正创客文化。         下面为大家介绍玩具与机器人活动内容：     ......</div><div id="note_427368522_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_427368522_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+              <div class="footer-tags">
+                  <i>标签：</i>
+                    <a href="http://www.douban.com/tag/2014/?focus=article">2014</a>
+                    <a href="http://www.douban.com/tag/创客/?focus=article">创客</a>
+                    <a href="http://www.douban.com/tag/时尚/?focus=article">时尚</a>
+                    <a href="http://www.douban.com/tag/艺术/?focus=article">艺术</a>
+              </div>
+              
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="427368522" data-mode="plain" data-name="2014全球创客嘉年华-北京站倒计时第9天" data-type="com.douban.people" data-desc="2014全球创客嘉年华-北京站倒计时第9天 创客嘉年华｜Maker Carnival 是GEEK创客们为大众打造的科技乐园。希望大众可以通过亲身体验参与、动手制作、体会“想法当实现”的生活方式，激发大家..." data-href="http://www.douban.com/note/427368522/" data-image="http://img3.douban.com/view/note/small/public/p19350911.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="427368522" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/427368522\/&#34;,&#34;note_title&#34;:&#34;2014全球创客嘉年华-北京站倒计时第9天&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_6163d" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="427368522" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-426134119">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-426134119" class="rr"><a id="naf-426134119" href="http://www.douban.com/note/426134119/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-426134119" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="富驿酒店——2014全球创客嘉年华-北京站唯一指定官方酒店" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F426134119%2F&amp;type=note&amp;pos=title">富驿酒店——2014全球创客嘉年华-北京站唯一指定官方酒店</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-19 21:26:10</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_426134119_short" ><div class="ll"><a href="http://www.douban.com/note/426134119/"><img src="http://img3.douban.com/view/note/small/public/p19269544.jpg" alt=""/></a></div>  富驿酒店集团是中外商旅宾客住宿首选的酒店集团，目前已在台湾上市，旗下四大连锁品牌“雅逸渡假酒店”、 “泊逸精品酒店”、“富驿时尚酒店”、“富驿商旅酒店”深受广大商旅人士的拥趸和喜爱，另外“富驿酒店”品牌亦在筹备中。截至2013年8月，集团在中国各大主要城市拥有已开业酒店和待开业酒店共83家，其中北京、上海......</div><div id="note_426134119_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_426134119_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="426134119" data-mode="plain" data-name="富驿酒店——2014全球创客嘉年华-北京站..." data-type="com.douban.people" data-desc="富驿酒店集团是中外商旅宾客住宿首选的酒店集团，目前已在台湾上市，旗下四大连锁品牌“雅逸渡假酒店”、 “泊逸精品酒店”、“富驿时尚酒店”、“富驿商旅酒店”深受广大商旅人士的拥趸和喜..." data-href="http://www.douban.com/note/426134119/" data-image="http://img3.douban.com/view/note/small/public/p19269542.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="426134119" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/426134119\/&#34;,&#34;note_title&#34;:&#34;富驿酒店——2014全球创客嘉年华-北京站...&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_9f7a8" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="426134119" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-422990570">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-422990570" class="rr"><a id="naf-422990570" href="http://www.douban.com/note/422990570/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-422990570" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014年全球创客嘉年华Creatica专区" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F422990570%2F&amp;type=note&amp;pos=title">2014年全球创客嘉年华Creatica专区</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-15 20:15:24</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_422990570_short" ><div class="ll"><a href="http://www.douban.com/note/422990570/"><img src="http://img3.douban.com/view/note/small/public/p18912823.jpg" alt=""/></a></div>   [2014年全球创客嘉年华Creatica专区]  神笔马良的鸦鸦3D打印笔＋手绘热速片装＋3D打印机组装＋   RoboTerra机器人  神笔马良的鸦鸦3D打印笔 10月2日：上午10：00——12：00 神笔马良是如何把一个东西画出来，并让他飞出墙面的呢？动画片《鱼盆》里真的能出来一条鱼么？画龙点睛中的画龙者如何能让龙飞出墙面？从西游记里......</div><div id="note_422990570_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_422990570_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="422990570" data-mode="plain" data-name="2014年全球创客嘉年华Creatica专区" data-type="com.douban.people" data-desc="[2014年全球创客嘉年华Creatica专区] 神笔马良的鸦鸦3D打印笔＋手绘热速片装＋3D打印机组装＋   RoboTerra机器人 神笔马良的鸦鸦3D打印笔 10月2日：上午10：00——12：00 神笔马良是如何把一..." data-href="http://www.douban.com/note/422990570/" data-image="http://img3.douban.com/view/note/small/public/p18912823.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="422990570" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/422990570\/&#34;,&#34;note_title&#34;:&#34;2014年全球创客嘉年华Creatica专区&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_2b695" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="422990570" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-422652704">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-422652704" class="rr"><a id="naf-422652704" href="http://www.douban.com/note/422652704/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-422652704" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="创客嘉年华 Makerpapa系列工作坊｜10月03日 工作坊场地A" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F422652704%2F&amp;type=note&amp;pos=title">创客嘉年华 Makerpapa系列工作坊｜10月03日 工作坊场地A</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-15 14:54:04</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_422652704_short" ><div class="ll"><a href="http://www.douban.com/note/422652704/"><img src="http://img3.douban.com/view/note/small/public/p18867782.jpg" alt=""/></a></div> 创客嘉年华｜Maker Carnival 是GEEK创客们为大众打造的科技乐园。希望大众可以通过亲身体验参与、动手制作、体会“想法当实现”的生活方式，激发大家的创新潜能和源动力！与国内外的创客们来一次近距离接触、了解真正创客文化。  工作坊｜Workshop 是由国内外创客带领，自己动手，亲自加入到作品制作中，在创作的过程中体......</div><div id="note_422652704_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_422652704_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="422652704" data-mode="plain" data-name="创客嘉年华 Makerpapa系列工作坊｜10月0..." data-type="com.douban.people" data-desc="创客嘉年华｜Maker Carnival 是GEEK创客们为大众打造的科技乐园。希望大众可以通过亲身体验参与、动手制作、体会“想法当实现”的生活方式，激发大家的创新潜能和源动力！与国内外的创客们来..." data-href="http://www.douban.com/note/422652704/" data-image="http://img4.douban.com/view/note/small/public/p18867778.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="422652704" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/422652704\/&#34;,&#34;note_title&#34;:&#34;创客嘉年华 Makerpapa系列工作坊｜10月0...&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_f090a" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="422652704" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-422596061">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-422596061" class="rr"><a id="naf-422596061" href="http://www.douban.com/note/422596061/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-422596061" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014全球创客嘉年华——北京站宣传片" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F422596061%2F&amp;type=note&amp;pos=title">2014全球创客嘉年华——北京站宣传片</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-15 14:07:25</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_422596061_short" >2014全球创客嘉年华——北京站宣传片 2014全球创客嘉年华——北京站将于10月2日至3日在北京798创意广场举办，本次活动由北京创客空间、798艺术区管委会和三匚创意产业集团联合主办。 今年的创客嘉年华吸引了近两百个来自全球各地的艺术科技互动体验项目，包括：临其境玩游戏的蚁视科技 ANTVR虚拟现实游戏套件、可以躺着办公......</div><div id="note_422596061_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_422596061_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="422596061" data-mode="plain" data-name="2014全球创客嘉年华——北京站宣传片" data-type="com.douban.people" data-desc="2014全球创客嘉年华——北京站宣传片 2014全球创客嘉年华——北京站将于10月2日至3日在北京798创意广场举办，本次活动由北京创客空间、798艺术区管委会和三匚创意产业集团联合主办。 今年的..." data-href="http://www.douban.com/note/422596061/" data-image="" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="422596061" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/422596061\/&#34;,&#34;note_title&#34;:&#34;2014全球创客嘉年华——北京站宣传片&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_b793b" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="422596061" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-420640613">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-420640613" class="rr"><a id="naf-420640613" href="http://www.douban.com/note/420640613/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-420640613" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014全球创客嘉年华项目预告（六）" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F420640613%2F&amp;type=note&amp;pos=title">2014全球创客嘉年华项目预告（六）</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-13 14:06:58</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_420640613_short" ><div class="ll"><a href="http://www.douban.com/note/420640613/"><img src="http://img3.douban.com/view/note/small/public/p18631641.jpg" alt=""/></a></div>  DFRobot  DFRobot，是中国领先的从事研发、生产和销售开源硬件、机器人产品和3D打印机的高科技企业。通过数年不懈努力，DFRobot已发展成为国际领先、亚洲第二大的开源硬件企业，目前公司拥有600多种机器人和开源硬件产品，以及多项实用新型专利。DFRobot自主研发的Dream Maker桌面级3D打印机质量可靠，技术先进、用途广泛......</div><div id="note_420640613_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_420640613_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="420640613" data-mode="plain" data-name="2014全球创客嘉年华项目预告（六）" data-type="com.douban.people" data-desc="DFRobot DFRobot，是中国领先的从事研发、生产和销售开源硬件、机器人产品和3D打印机的高科技企业。通过数年不懈努力，DFRobot已发展成为国际领先、亚洲第二大的开源硬件企业，目前公司拥有6..." data-href="http://www.douban.com/note/420640613/" data-image="http://img4.douban.com/view/note/small/public/p18631636.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="420640613" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/420640613\/&#34;,&#34;note_title&#34;:&#34;2014全球创客嘉年华项目预告（六）&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_f7110" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="420640613" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-420614066">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-420614066" class="rr"><a id="naf-420614066" href="http://www.douban.com/note/420614066/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-420614066" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="近期活动播报" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F420614066%2F&amp;type=note&amp;pos=title">近期活动播报</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-13 13:40:15</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_420614066_short" ><div class="ll"><a href="http://www.douban.com/note/420614066/"><img src="http://img4.douban.com/view/note/small/public/p18629976.jpg" alt=""/></a></div> 2014全球创客嘉年华——北京站宣传片 2014全球创客嘉年华——北京站将于10月2日至3日在北京798创意广场举办，本次活动由北京创客空间、798艺术区管委会和三匚创意产业集团联合主办。 今年的创客嘉年华吸引了近两百个来自全球各地的艺术科技互动体验项目，包括：临其境玩游戏的蚁视科技 ANTVR虚拟现实游戏套件、可以躺着办......</div><div id="note_420614066_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_420614066_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="420614066" data-mode="plain" data-name="近期活动播报" data-type="com.douban.people" data-desc="2014全球创客嘉年华——北京站宣传片 2014全球创客嘉年华——北京站将于10月2日至3日在北京798创意广场举办，本次活动由北京创客空间、798艺术区管委会和三匚创意产业集团联合主办。 今年的..." data-href="http://www.douban.com/note/420614066/" data-image="http://img4.douban.com/view/note/small/public/p18629976.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="420614066" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/420614066\/&#34;,&#34;note_title&#34;:&#34;近期活动播报&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_49505" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="420614066" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+        
+    
+    <div id="note-418625809">
+
+    
+    
+    
+        <div class="note-header-container">
+        <h3>
+            
+                
+    <div id="tb-418625809" class="rr"><a id="naf-418625809" href="http://www.douban.com/note/418625809/" class="j a_unfolder_n" style="background:none;">
+            <img src="http://img3.douban.com/pics/arrow1_2.png" alt="&gt;" title="展开全文"/></a>
+        <a id="nau-418625809" href="javascript:void(0);" class="j a_folder_n" style="background:none;display:none">
+            <img src="http://img3.douban.com/pics/arrow1_3.png" alt="&lt;" title="缩进全文"/>
+        </a>
+    </div>
+
+            <a title="2014全球创客嘉年华项目预告（五）" href="http://www.douban.com/link2/?url=http%3A%2F%2Fwww.douban.com%2Fnote%2F418625809%2F&amp;type=note&amp;pos=title">2014全球创客嘉年华项目预告（五）</a>
+        </h3>
+
+    
+    <div>
+        <span class="pl">2014-09-11 15:40:31</span>
+    </div>
+    </div>
+        <div class="clear"></div>
+
+
+    <div class="note" id="note_418625809_short" ><div class="ll"><a href="http://www.douban.com/note/418625809/"><img src="http://img3.douban.com/view/note/small/public/p18396462.jpg" alt=""/></a></div> Latin  Latin智能秤，它是一款智能健康设备，能够测量我们的脂肪、肌肉等身体成分，并将数据通过蓝牙传送至手机，然后在手机上查看结果、分析建议。该健康秤的设计简约比较简约，但不乏时尚风格，和传统电子秤不同的是它并没有传统秤摇摆的指针盘，也没有电子秤的显示屏，信息只会展示在手机的屏幕上。官方表示竖直、不低......</div><div id="note_418625809_full" style="display:none;"></div>
+
+    <br>
+
+            
+    
+
+    <div id="sep"></div>
+    <div id="note_418625809_footer" class="note-ft" style="display:none;">
+        <div class="note_upper_footer">
+            <div class="footer-sharing">
+              
+        
+
+        <div class="sharing">
+            <span class="sharing-button">分享到微信</span>
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+            </div>
+            
+
+          
+
+
+
+
+
+
+
+
+
+          <span class="gtleft">
+              &nbsp;&nbsp;
+          </span>
+
+        </div>
+
+
+        
+        <div class="sns-bar">
+
+            
+
+
+
+            <div class="sns-bar-rec">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="418625809" data-mode="plain" data-name="2014全球创客嘉年华项目预告（五）" data-type="com.douban.people" data-desc="Latin Latin智能秤，它是一款智能健康设备，能够测量我们的脂肪、肌肉等身体成分，并将数据通过蓝牙传送至手机，然后在手机上查看结果、分析建议。该健康秤的设计简约比较简约，但不乏时尚风..." data-href="http://www.douban.com/note/418625809/" data-image="http://img4.douban.com/view/note/small/public/p18396456.jpg" data-properties="{&#34;href&#34;:&#34;http:\/\/www.douban.com\/people\/bjmakerspace\/&#34;,&#34;name&#34;:&#34;北京创客空间&#34;,&#34;uid&#34;:&#34;53639228&#34;}" data-redir="http://www.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="418625809" data-target_type="rec" data-target_action="0" data-action_props="{&#34;note_url&#34;:&#34;http:\/\/www.douban.com\/note\/418625809\/&#34;,&#34;note_title&#34;:&#34;2014全球创客嘉年华项目预告（五）&#34;,&#34;author_name&#34;:&#34;北京创客空间&#34;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_b7e2d" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+</div>
+
+            </div>
+
+            <div class="sns-bar-fav ">
+                
+
+
+
+
+
+
+
+    <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="418625809" data-tkind="1015">喜欢</a>
+
+
+
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <div class="clear" ></div>
+
+
+    <div class="">
+    </div>
+
+
+
+    <div class="clear"></div>
+
+        
+    
+    
+
+    
+        <div class="paginator">
+        <span class="prev">
+            &lt;前页
+        </span>
+        
+        
+
+                <span class="thispage" data-total-page="3">1</span>
+                
+            <a href="http://www.douban.com/people/bjmakerspace/notes?start=10&amp;type=note" >2</a>
+        
+                
+            <a href="http://www.douban.com/people/bjmakerspace/notes?start=20&amp;type=note" >3</a>
+        
+        <span class="next">
+            <link rel="next" href="http://www.douban.com/people/bjmakerspace/notes?start=10&amp;type=note"/>
+            <a href="http://www.douban.com/people/bjmakerspace/notes?start=10&amp;type=note" >后页&gt;</a>
+        </span>
+
+        </div>
+
+
+
+        </div>
+        <div class="aside">
+                
+    
+
+    
+    
+    <script>
+        $(document).ready(function(){
+            var tag_box = $('.author-tags'),
+                a_more_tag = tag_box.parent().find('h2 .pl'),
+                show_more_tags = $('<a class="more-tags" href="javascript: void 0;">...</script></a>')
+                people_tags = $('.people_tags'),
+                last_shown_tag = $(),
+                people_tags_more = $('.people_tags_more')
+
+            function showTags() {
+                people_tags_more.show();
+                a_more_tag.hide();
+                show_more_tags.hide();
+            };
+
+            a_more_tag.hide();
+
+            $('span', '.people_tags_more').each(function(i, tag) {
+                tag = $(tag)
+                tag.appendTo(people_tags)
+                if (people_tags.height() > 68) {
+                    people_tags_more.prepend(tag)
+                    people_tags_more.prepend(last_shown_tag)
+                    show_more_tags.appendTo(people_tags)
+                    a_more_tag.show()
+                    return false
+                }
+                last_shown_tag = tag
+            })
+            tag_box.addClass('visible')
+            a_more_tag.click(function() {
+                showTags();
+                return false;
+            });
+            show_more_tags.click(function() {
+                showTags();
+                return false;
+            });
+            $('#note_tooltip').tooltip();
+        })
+    </script>
+
+    
+
+    <div class="mod">
+        
+    <h2>
+        北京创客空间的日记标签
+            &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+            <span class="pl">&nbsp;(
+                
+                    <a href="#" target="_self">全部</a>
+                ) </span>
+    </h2>
+
+        <div class="author-tags">
+            <div class="people_tags">
+            </div>
+            <div class="people_tags_more">
+                    <span><a href="http://www.douban.com/note/tags/2014?people=bjmakerspace">2014 3</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E5%88%9B%E5%AE%A2?people=bjmakerspace">创客 3</a></span>
+                    <span><a href="http://www.douban.com/note/tags/C2D2?people=bjmakerspace">C2D2 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E9%AD%94%E6%9C%AF?people=bjmakerspace">魔术 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E5%B7%A5%E4%BD%9C%E5%9D%8A?people=bjmakerspace">工作坊 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E5%98%89%E5%B9%B4%E5%8D%8E?people=bjmakerspace">嘉年华 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E5%88%9B%E5%AE%A2%E5%98%89%E5%B9%B4%E5%8D%8E?people=bjmakerspace">创客嘉年华 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E6%97%B6%E5%B0%9A?people=bjmakerspace">时尚 1</a></span>
+                    <span><a href="http://www.douban.com/note/tags/%E8%89%BA%E6%9C%AF?people=bjmakerspace">艺术 1</a></span>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        
+        <div class="recent-replied-mod mod">
+            
+    <h2>
+        最近回应过的日记
+            &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+    </h2>
+
+            
+    
+    <ul class="comment-list">
+        
+            <li>
+                <a href="http://site.douban.com/149480/" class="avatar">
+                    <img src="http://img4.douban.com/view/site/small/public/ba878f4cc087086.jpg" width="36" height="36" alt="创客嘉年华"/>
+                </a>
+                <a href="http://site.douban.com/149480/" class="lnk-people">创客嘉年华</a>
+                <span class="pl">的日记：</span>
+                <p><a href="http://www.douban.com/link2/?url=http%3A%2F%2Fsite.douban.com%2F149480%2Fwidget%2Fnotes%2F7726160%2Fnote%2F209951187%2F&amp;type=note&amp;pos=sidebar_commented_notes" onclick="moreurl(this, {from:'note_commented_notes'})">创客嘉年华工作坊火热来袭！</a></p>
+            </li>
+            
+    </ul>
+
+        </div>
+
+    
+    
+
+    <div class="mod feed-mod">
+        
+        <div class="feed j a_rss_edit">
+            <a href="/feed/people/bjmakerspace/notes"> feed: rss 2.0</a>
+            <span id="type_word" class="pl"> 输出摘要</span>
+
+        </div>
+    </div>
+
+
+
+        </div>
+        <div class="extra">
+            
+    <link type="text/css" href="http://img3.douban.com/f/shire/d1faa0a30ffb71000e12b67d560940566eb51bac/css/lib/jquery.ui.tooltip.css" rel="stylesheet"/>
+    <link type="text/css" href="http://img3.douban.com/f/sns/d217844be1a2a6be9163d677deafa991e5ea8d17/css/sns/tag.css" rel="stylesheet"/>
+    <style type="text/css">
+      .ui-tooltip { width: 270px; }
+      .mod .people-tags { padding-bottom: 0; }
+      .note-tab li { display: inline-block; *display: inline; *zoom: 1; font-size: 14px; margin-right: 10px; }
+      .note-tab li.on a { background-color: #69C96E; padding: 2px 5px; color: #FFF; border-radius: 5px; }
+    </style>
+    <script type="text/javascript" src="http://img3.douban.com/f/shire/e254005edae24d9a1808ede9c3d7fcc5b6d94e1b/js/lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="http://img3.douban.com/f/shire/b25c20b18198fe069cd80d64f4ca614e20b419cb/js/lib/jquery.ui.tooltip.js"></script>
+    <link rel="alternate" href="http://www.douban.com/feed/people/bjmakerspace/notes" type="application/rss+xml" title="RSS">
+
+        </div>
+    </div>
+</div>
+
+        
+<div id="footer">
+    
+<span id="icp" class="fleft gray-link">
+    &copy; 2005－2015 douban.com, all rights reserved
+</span>
+
+<a href="http://www.douban.com/hnypt/variformcyst.py" style="display: none;"></a>
+
+<span class="fright">
+    <a href="http://www.douban.com/about">关于豆瓣</a>
+    · <a href="http://www.douban.com/jobs">在豆瓣工作</a>
+    · <a href="http://www.douban.com/about?topic=contactus">联系我们</a>
+    · <a href="http://www.douban.com/about?policy=disclaimer">免责声明</a>
+    
+    · <a href="http://help.douban.com/?app=main" target="_blank">帮助中心</a>
+    · <a href="http://www.douban.com/doubanapp/">移动应用</a>
+    · <a href="http://www.douban.com/partner/">豆瓣广告</a>
+</span>
+
+</div>
+
+    </div>
+    <script type="text/javascript" src="http://img3.douban.com/misc/mixed_static/6e147b309b660f5e.js"></script>
+    
+    
+    
+
+
+
+
+    
+<script type="text/javascript">
+    (function (global) {
+        var newNode = global.document.createElement('script'),
+            existingNode = global.document.getElementsByTagName('script')[0],
+            adSource = '//erebor.douban.com/',
+            userId = '',
+            browserId = 'Lpi6/hg78pU',
+            criteria = '3:/people/bjmakerspace/notes',
+            preview = '',
+            debug = false,
+            adSlots = ['dale_personal_note_middle_right'];
+
+        global.DoubanAdRequest = {src: adSource, uid: userId, bid: browserId, crtr: criteria, prv: preview, debug: debug};
+        global.DoubanAdSlots = (global.DoubanAdSlots || []).concat(adSlots);
+
+        newNode.setAttribute('type', 'text/javascript');
+        newNode.setAttribute('src', 'http://img3.douban.com/f/shire/0a3e8bdd48446950d821b65613a24e86be2b067a/js/ad.js');
+        newNode.setAttribute('async', true);
+        existingNode.parentNode.insertBefore(newNode, existingNode);
+    })(this);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+    var p=(('https:' == document.location.protocol) ? 'https' : 'http'), u=p+'://fundin.douban.com/';
+    _paq.push(['setTrackerUrl', u+'piwik']);
+    _paq.push(['setSiteId', '100001']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript';
+    g.defer=true;
+    g.async=true;
+    g.src=p+'://img3.doubanio.com/dae/fundin/piwik.js';
+    s.parentNode.insertBefore(g,s);
+})();
+</script>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7019765-1']);
+_gaq.push(['_setCampNameKey', 'dcn']);
+_gaq.push(['_setCampSourceKey', 'dcs']);
+_gaq.push(['_setCampMediumKey', 'dcm']);
+_gaq.push(['_setCampTermKey', 'dct']);
+_gaq.push(['_setCampContentKey', 'dcc']);
+_gaq.push(['_addOrganic', 'baidu', 'word']);
+_gaq.push(['_addOrganic', 'soso', 'w']);
+_gaq.push(['_addOrganic', '3721', 'name']);
+_gaq.push(['_addOrganic', 'youdao', 'q']);
+_gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+_gaq.push(['_addOrganic', 'vnet', 'kw']);
+_gaq.push(['_addOrganic', 'sogou', 'query']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣']);
+_gaq.push(['_addIgnoredOrganic', 'douban']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣网']);
+_gaq.push(['_addIgnoredOrganic', 'www.douban.com']);
+_gaq.push(['_setDomainName', '.douban.com']);
+
+
+    _gaq.push(['_setCustomVar', 1, 'responsive_view_mode', 'desktop', 3]);
+
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+
+window._ga_init = function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+};
+if (window.addEventListener) {
+    window.addEventListener('load', _ga_init, false);
+} else {
+    window.attachEvent('onload', _ga_init);
+}
+</script>
+
+
+
+
+
+    <!-- sindar13c-docker-->
+
+  <script>_SPLITTEST=''</script>
+
+<script>var _check_hijack = function () {
+    var _sig = "Lpi6/hg7", _login = false, bid = get_cookie('bid');
+    if (location.protocol != "file:" && (
+            typeof(bid) != "string" && _login ||
+            typeof(bid) == "string" && bid.substring(0,8) != _sig)) {
+        location.href += (/\?/.test(location.href)?"&":"?") + (
+                "_r=" + Math.random().toString(16).substring(2));
+    }};
+if (typeof(Do) != 'undefined') Do(_check_hijack);
+else if (typeof(get_cookie) != 'undefined') _check_hijack();
+</script></body>
+
+</html>
+

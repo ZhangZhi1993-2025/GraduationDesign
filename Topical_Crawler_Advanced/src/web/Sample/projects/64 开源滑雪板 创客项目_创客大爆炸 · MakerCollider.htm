@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Cloud adaptation Begin-->
+<script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/23e9843d16dfe2133aa5e350ef57bf83/allmobilize.min.js"></script>
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="alternate" media="handheld" href="#" />
+<!-- Cloud adaptation End-->
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>开源滑雪板 创客项目_创客大爆炸 · MakerCollider</title>
+	<meta name="keywords" content="创客,创客大爆炸,MakerCollider,硬创,上海硬创投资管理有限公司" />
+	<meta name="description" content="MakerCollider 新硬件时代的创客是一群用开源硬件打造各式新奇物体的人，而“创客大爆炸”就致力于引爆创客宇宙，搭建一个“人人创客，万众创新”的开放创新产业链，通过将创客运动和互联网结合，让开源硬件和工具成为这里丰饶的土壤，让设计和人文成为这里的阳光，让更多有创新力的人群加入创客，让你的创新之作也融入奇妙的物联网。"  />
+    <!-- assets-->
+	    <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/statics/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/statics/css/components.css" />
+    <script type="text/javascript" src="/statics/js/lib/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/statics/js/lib/template.js"></script>
+	<script type="text/javascript" src="/statics/js/lib/jquery.effectSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="/statics/js/lib/utils.js"></script>
+	<script type="text/javascript" src="/statics/js/src/main.js"></script>
+
+	    <link rel="stylesheet" type="text/css" href="/statics/js/lib/pagination.css" />
+    <script type="text/javascript" src="/statics/js/lib/jquery.pagination.js"></script>	<!-- 
+    <script type="text/javascript" charset="utf-8" src="/statics/js/lib/ueditor1_4_3-utf8/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/statics/js/lib/ueditor1_4_3-utf8/ueditor.all.js"> </script>
+-->   
+    <script type="text/javascript" charset="utf-8" src="/statics/plugin/ckeditor4.4.7/ckeditor.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/statics/plugin/ckfinder/ckfinder.js"></script>
+	<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/statics/plugin/jQuery-File-Upload/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/statics/plugin/jQuery-File-Upload/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/statics/plugin/jQuery-File-Upload/js/jquery.fileupload.js"></script>
+    <link rel="stylesheet" type="text/css" href="/statics/css/project.css" />
+    <script type="text/javascript" src="/statics/js/lib/cytoscape.min.js"></script>
+    <script type="text/javascript" src="/statics/js/src/redactor.js"></script>
+    <script type="text/javascript" src="/statics/js/src/project_detail.js"></script>
+    
+	<!-- end assets -->
+</head>
+<body>
+<!-- header -->
+<header class="pr header">
+    <div class="pr clearfix">
+        <a class="header-logo fl" href="/" title="创客大爆炸-首页">
+            <span class="header-logo-container" href="/">
+                <i class="trangle01"></i>
+                <i class="trangle02"></i>
+                <i class="trangle03"></i>
+                <i class="trangle04"></i>
+                <i class="trangle05"></i>
+            </span>
+        </a>
+
+        <div class="header-signbar fr fs14">
+                    <div class="header-sign-before">
+                <span href="" class="header-logInBtn">登陆</span>
+                <span href="" class="header-registerBtn">注册</span>
+            </div>
+                </div>
+
+        <nav class="header-nav fr">
+            <div class="item">
+                <a href="/mcspace"  target="_blank">众创空间</a>
+            </div>
+            <div class="item hasSubNav">
+                <a href="/activity" title="创客活动">创客活动</a>
+                <ul class="header-subnav">
+                    <li class="subitem"><a href="/activity" title="创客活动">活动</a></li>
+                    <li class="subitem"><a href="/project" title="创客项目">项目</a></li>
+                    <li class="subitem"><a href="/viewpoint" title="创客观点">观点</a></li>
+
+                    <li class="triangle"></li>
+                </ul>
+            </div>
+            <div class="item hasSubNav">
+                <a href="/kit" title="创客工具">创客工具</a>
+                <ul class="header-subnav">
+                    <li class="subitem"><a href="/kit" title="开发套件">开发套件</a></li>
+                    <li class="subitem"><a  href="/kit/detail?id=32" title="Smart-node">Smartnode</a></li>
+                    <li class="subitem"><a href="/course" title="公开课">公开课</a></li>
+
+                    <li class="triangle"></li>
+                </ul>
+            </div>
+            <div class="item">
+                <a href="http://bbs.makercollider.com/member.php?mod=sychregister&action=login" target="_blank" title="创客论坛">众创论坛</a>
+            </div>
+        </nav>
+        <div class="header-float">
+            <a class="item item01" href="http://weibo.com/u/5574054964" target="_blank" title="创客大爆炸官方微博"></a>
+            <i class="item item02" title="搜索"></i>
+            <i class="item item03" title="创客大爆炸微信公众号"></i>
+            <a class="item item04" href="/index/feedback?t=sugg" title="意见反馈"  target="_blank"></a>
+        </div>
+    </div>
+</header>
+
+<div class="header-tips hide">
+    <!-- wechat -->
+    <div class="item header-wechat hide">
+        <h3>坚守创新，持续实践，乐于分享追求美好生活创意</h3>
+        <div class="qrcode text-center">
+            <img src="/statics/images/footer-qrcode.jpg" alt="创客大爆炸" width="103" height="103"/>
+            <p>扫描二维码分享给好友</p>
+        </div>
+    </div>
+    <!-- end wechat -->
+    <!-- search -->
+    <div class="item header-search hide">
+        <form action="">
+            <div class="header-search-body">
+                <input type="text" id="search_keyword" class="header-search-text fl"/>
+                <input type="button" id="btn_search" class="header-search-btn fl" value="search"/>
+            </div>
+        </form>
+    </div>
+    <!-- end search -->
+</div>
+<!-- end header -->
+<!-- content -->
+<!-- page: project -->
+<div class="project">
+    <!-- project summary -->
+    <div class="project-summary layout">
+        <!-- summary -->
+        <input type="hidden" id="hid_projectid" name="hid_projectid" value="58" />
+        <section class="summary">
+            <div class="section-inner clearfix">
+                                <div class="main fl">
+                    <strong class="project-status doing">
+                        <span>进行中</span>
+                                            </strong>
+                    <h1>开源滑雪板</h1>
+                    <p class="desc">酷炫又智能的滑雪板。转载自“界面”。</p>
+                    <!--  <p class="tags">类型:&nbsp;<a href="">Edison</a><a href="">Edison积木</a></p>-->
+                </div>
+                <div class="summary-picture fr">
+                    <div class="summary-picture-bd">
+                        <img src="/statics/upload/project/files/detail/201509232342268094.jpg" alt="" width="450" height="270"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end  summary -->
+    </div>
+    <!-- end project summary -->
+
+    <!-- logic -->
+    <section class="logic layout">
+        <div class="logic-hd">
+            <ul class="clearfix">
+                <li class="active"><span>项目逻辑</span></li>
+                <!-- <li><span>项目仿真</span></li>-->
+            </ul>
+        </div>
+        <div class="logic-bd">
+            <!-- tab body -->
+            <div class="item logic-item-logic">
+                 <div class="operateWrap">
+                                    </div>
+                <!-- component: m-logic-editor -->
+                <div class="logic-editor">
+                    <div class="logic-editor-bd">
+                        <!-- cytoscape show -->
+                        <div id="cytoscape-wrap"></div>
+                        <!-- end cytoscape show -->
+                    </div>
+                    <div class="logic-editor-ft">
+                        <div class="text-center">
+                            <ul class="type-intro">
+                                <li class="type-item item01">动作</li>
+                                <li class="type-item item02">应用</li>
+                                <li class="type-item item03">服务&云</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- node editor -->
+                        <div id="cytoscape-editor">
+                            <div class="operator-btn">
+                                <button class="cytoscape-btn" id="modifyNode">修改节点的文本</button>
+                                <button class="cytoscape-btn" id="removeNode">移除选中节点</button>
+                                <div class="operator-wrap">
+                                    <h5>创建节点</h5>
+                                    <label for="">节点类型:</label>
+                                    <select id="add_type">
+                                        <option value="no">请选择节点类型</option>
+                                        <option value="app" selected>app</option>
+                                        <option value="action">action</option>
+                                        <option value="service">service</option>
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <label for="">节点的描述文本:</label>
+                                    &nbsp;
+                                    <input type="text" placeholder="请填写描述文本.." id="add_description"/>
+                                    <p>
+                                        <button class="btn btn-primary" id="add_btn">添加节点</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end node editor -->
+                    </div>
+                </div>
+            </div>
+            <div class="item logic-item-unit">
+                <!-- list -->
+                <div class="project-unit-list">
+                    <div class="listWrap">
+                    </div>
+                </div>
+                <!-- end list -->
+            </div>
+            <!-- end tab body -->
+        </div>
+    </section>
+    <!-- end logic -->
+
+    <!-- project introduce-member -->
+    <div class="project-introduceMember layout">
+        <a name="editer"></a>
+        <div class="project-introduceMember-bd clearfix">
+            <main class="main">
+                <!-- component: comment -->
+                                <!-- end comment -->
+
+                <div class="mt40">
+                    <a name="log"></a>
+                    <!-- component: newly-update -->
+                    <div class="m-newly-update m-project-newly">
+                        <div class="hd">最新更新</div>
+                        <div id="loglist" class="bd">
+                        </div>
+                        <div class="ft">
+		                    <!-- component: pagination -->
+				            <div class="pagination_container">
+							     <div id="Pagination" class='pagination'></div><br style="clear:both;" />
+						    </div>
+						    <!-- end  pagination -->
+                        </div>
+                    </div>
+                    <!-- end newly-update -->
+                </div>
+            </main>
+            <aside class="side">
+                <!-- component: team-member -->
+                <div class="m-team-member">
+                    <div class="m-sidebar-hd m-team-member-hd">
+                        <img src="/statics/images/people-icon.png" class="icon">
+                        <h4>团队成员</h4>
+                    </div>
+                    <div class="m-team-member-bd">
+                        <div class="listWrap">
+                            <ul class="list clearfix">
+                                <!-- item -->
+                                                                <li class="item">
+                                    <a class="thumb" href="javascript:void(0);"><img src="/statics/upload/user/files/thumbnail/201503281654099657.png" alt="" width="68" height="68"></a>
+                                    <p class="thumb-name">John_Guan</p>
+                                    <div class="info" style="display: none;">
+                                        <div class="info-bd">
+                                            <div class="clearfix">
+                                                <a class="avatar fl" href="javascript:void(0);"><img src="/statics/upload/user/files/thumbnail/201503281654099657.png" alt="" width="68" height="68"></a>
+                                                <dl class="fl">
+                                                    <dt><a href="javascript:void(0);">John_Guan</a></dt>
+                                                    <dd>项目发起人</dd>
+                                                </dl>
+                                            </div>
+                                            <p class="desc"></p>
+                                        </div>
+                                        
+                                        <i class="arrow"></i>
+                                        <i class="close"></i>
+                                    </div>
+                                </li>
+                                                                <!-- end item -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end team member -->
+                
+                <!-- component: invite -->
+                                <!-- end invite -->
+
+                <!-- component: entry -->
+                <div class="m-entry mt10">
+                    <div class="m-entry-bd">
+                        <a class="show" href="https://www.worktile.com" target="_blank"><img src="/statics/images/worktile.jpg" alt=""/></a>
+                    </div>
+                </div>
+                <!-- end entry -->
+                
+                <!-- component: article -->
+                <div class="m-article mt10">
+                    <div class="m-article-hd">
+                        <img src="/statics/images/calendar-icon.png" class="icon">
+                        <h4>参与活动</h4>
+                    </div>
+                    <ul class="m-article-bd">
+                                            </ul>
+                </div>
+                <!-- end article -->
+            </aside>
+        </div>
+
+    </div>
+    <!-- end project introduce-member -->
+</div>
+<!-- end project -->
+<!-- kit template -->
+<script id="kitlist_template" type="text/html">
+{{if kits}}
+ <ul class="list clearfix">
+{{each kits as value i}}                     
+      <li class="item fl {{if value.checked == 1}}selected{{/if}}">
+          <div class="thumb fl" data-id="{{value.id}}">
+               <img src="{{value.thumbnail_image}}" alt="" width="173" height="148"/>
+               <div class="selectedMask"></div>
+          </div>
+          <div class="info fl">
+               <dl>
+                   <dt><a href="/kit/detail?id={{value.id}}"  target="_blank">{{value.name}}</a></dt>
+                   <dd>{{value.introduce}}</dd>
+                   <p class="type">{{value.category_name}}</p>
+               </dl>
+          </div>
+      </li>
+{{/each}}
+ </ul>
+{{/if}}
+</script>
+<!-- end kit template -->
+<!-- end content -->
+
+<!-- footer -->
+<footer class="footer">
+    <div class="clearfix">
+        <div class="footer-logo fl">
+            <a class="footer-logo-container" href="/" title="创客大爆炸">
+                <i class="trangle01"></i>
+                <i class="trangle02"></i>
+                <i class="trangle03"></i>
+                <i class="trangle04"></i>
+                <i class="trangle05"></i>
+            </a>
+        </div>
+        <div class="footer-intel text-center fl">
+            <a href="">
+                <img src="/statics/images/logo-intel.png" alt="intel" title="intel" width="77" height="88"/>
+            </a>
+        </div>
+        <div class="footer-qrcode fr">
+            <img src="/statics/images/footer-qrcode.jpg" alt="创客大爆炸" title="创客大爆炸" width="103" height="103"/>
+        </div>
+        <nav class="footer-nav fr clearfix">
+            <ul class="footer-nav-item fl">
+                <li><a href="/about" target="_blank" title="关于我们">关于我们</a></li>
+                <!--<li><a href="">加入我们</a></li> -->
+                <!--<li><a href="">联系我们</a></li> -->
+            </ul>
+            <ul class="footer-nav-item fl">
+                <li><a href="http://bbs.makercollider.com"  target="_blank" title="创客社区">创客社区</a></li>
+            </ul>
+            <ul class="footer-nav-item fl">
+                <li><a href="http://weibo.com/u/5574054964"  target="_blank" title="创客大爆炸官方微博">官方微博</a></li>
+                <!-- <li><a href="">官方微信</a></li>-->
+            </ul>
+        </nav>
+
+    </div>
+    <div class="footer-layer f12 c_heavy">Copyright © 2015 Maker collider  All Rights Reserved.</div>
+</footer>
+<!-- end footer -->
+
+<!-- component: m-floatpanel -->
+<!-- logInPanel -->
+<div class="m-floatpanel logInPanel noLabel hide">
+    <div class="m-floatpanel-bd">
+        <div class="m-floatpanel-title clearfix">
+            <i class="m-floatpanel-close"></i>
+            <h2 class="fl">登陆</h2>
+        </div>
+
+        <!-- form -->
+        <div class="m-form">
+            <form action="">
+                <div id="div_loginName" class="form-group clearfix">
+                    <div class="main">
+                        <input class="form-control" type="text" id="loginName" placeholder="输入用户名/邮箱" maxlength="32" tabindex="6"/>
+                        <div class="form-validation" id="err_loginName">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_loginPwd" class="form-group clearfix">
+                    <div class="main">
+                        <input class="form-control" type="password"  id="loginPwd" placeholder="输入密码" maxlength="16" tabindex="6"/>
+                        <div class="form-validation" id="err_loginPwd">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_loginCode" class="form-group code clearfix">
+                    <div class="main">
+                        <input class="form-control" type="text" style="width: 188px;"  id="verifyCode" maxlength="4" placeholder="输入图片验证码" tabindex="6"/>
+                        <a class="form-validationImgCode" href="javascript:void(0);">
+                            <img src="/statics/js/lib/verifycode/code_gg.php" id="imgCode" title="看不清，点击换一张" width="126" height="48"/>
+                        </a>
+                        <div class="form-validation" id="err_loginCode">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-msg" id="loading_msg"></div>
+                <div class="form-group clearfix pt10">
+                    <div class="main">
+                        <input class="form-btn-submit enableSelect" type="button" id="loginBtn" value="登录" tabindex="6"/>
+                        <p class="c_black fs14 lh25 mt10 c_light text-right" style="width: 320px;">
+	                        <span id="wechat_login" class="c_blue mr10 form-state-link">微信登录</span>
+	                        <span class="toRegistration c_blue mr10 form-state-link">注册新用户</span>
+	                        <span class="toForgotPassword form-state-link c_normal">忘记密码</span>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end form -->
+    </div>
+    <div class="m-floatpanel-mask"></div>
+</div>
+<!-- end logInPanel -->
+
+<!-- registrationPanel -->
+<div class="m-floatpanel registrationPanel hide">
+    <div class="m-floatpanel-bd">
+        <div class="m-floatpanel-title clearfix">
+            <i class="m-floatpanel-close"></i>
+            <h2 class="fl">注册新用户</h2>
+        </div>
+
+        <!-- form -->
+        <div class="m-form">
+            <form action="">
+                <div id="div_regName" class="form-group clearfix">
+                    <div class="label">
+                        <label for="">登录名：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="text" id="regName" placeholder="6-18位由字母、数字、下划线组成" maxlength="18" tabindex="6"/>
+                        <div class="form-validation" id="err_regName">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_regEmail" class="form-group clearfix">
+                    <div class="label">
+                        <label for="">邮箱：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="text" id="regEmail" placeholder="输入你的常用邮箱，32个字符以内" maxlength="32" tabindex="6"/>
+                        <div class="form-validation" id="err_regEmail">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="form-group code clearfix">
+                    <div class="label">
+                        <label for="">验证码：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="text" style="width: 188px;" name="" id="" placeholder="输入验证码" tabindex="6"/>
+                        <span class="form-code getValidationCode enableSelect">获取验证码</span>
+                    </div>
+                </div>
+                  -->
+                <div id="div_regPwd" class="form-group clearfix">
+                    <div class="label">
+                        <label for="">密码：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="password" id="regPwd" placeholder="6-16位大小写英文字母、符号或数字" maxlength="16" tabindex="6"/>
+                        <div class="form-validation" id="err_regPwd">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_regRepwd" class="form-group clearfix">
+                    <div class="label">
+                        <label for="">确认密码：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="password" id="regRepwd" placeholder="请再次输入密码" maxlength="16" tabindex="6"/>
+                        <div class="form-validation" id="err_regRepwd">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_regCode" class="form-group code clearfix">
+                    <div class="label">
+                        <label for="">验证码：</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-control" type="text" style="width: 188px;"  id="regVerifyCode" maxlength="4" placeholder="输入图片验证码" tabindex="6"/>
+                        <a class="form-validationImgCode" href="javascript:void(0);">
+                            <img src="/statics/js/lib/verifycode/code_gg.php" id="regImgCode" title="看不清，点击换一张" width="126" height="48"/>
+                        </a>
+                        <div class="form-validation" id="err_regCode">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix pt10">
+                    <div class="label">
+                        <label for="">&nbsp;</label>
+                    </div>
+                    <div class="main">
+                        <input class="form-btn-submit enableSelect" type="button" id="regBtn" value="立即注册" tabindex="6"/>
+                        <p class="c_black fs14 lh25 mt10 c_light text-right" style="width: 320px;"><span class="toRegistration mr10">我已经有账户</span><span class="toLogin c_blue form-state-link c_normal">马上登录</span></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end form -->
+
+        <!-- success panel -->
+        <div class="m-floatpanel-success text-center hide">
+            <i class="icon-floatpanel-success"></i>
+            <p class="text">注册成功</p>
+            <p><span class="btn toLogIn">登陆</span></p>
+        </div>
+    </div>
+    <div class="m-floatpanel-mask"></div>
+</div>
+<!-- end registrationPanel -->
+
+<!-- resetPasswordPanel -->
+<div class="m-floatpanel resetPasswordPanel noLabel hide">
+    <div class="m-floatpanel-bd">
+        <div class="m-floatpanel-title clearfix">
+            <i class="m-floatpanel-close"></i>
+            <h2 class="fl">重置密码</h2>
+        </div>
+
+        <!-- form -->
+        <div class="m-form">
+            <form action="">
+                <div id="div_email" class="form-group clearfix">
+                    <div class="main">
+                        <input class="form-control" type="text" id="u_email" placeholder="输入注册的邮箱" maxlength="32" tabindex="6"/>
+                        <div class="form-validation" id="err_email">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_verifycode" class="form-group code clearfix">
+                    <div class="main">
+                        <input class="form-control" type="text" style="width: 188px;" id="u_vcode" maxlength="6" placeholder="输入验证码" tabindex="6"/>
+                        <span class="form-code getValidationCode enableSelect">获取验证码</span>
+                        <div class="form-validation" id="err_verifycode">
+                            <i class="icon"></i><span></span>
+                        </div>
+                        <!-- tips如果需要隐藏, 请给下面的.form-tips挂class:hide -->
+                        <p class="form-tips">
+                            <span id="code_msg" class="c_normal fs12"></span>
+                        </p>
+                    </div>
+                </div>
+                <div id="div_pwd" class="form-group clearfix">
+                    <div class="main">
+                        <input class="form-control" type="password" id="u_pwd" placeholder="输入新密码" maxlength="16" tabindex="6"/>
+                        <div class="form-validation" id="err_pwd">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_repwd" class="form-group clearfix">
+                    <div class="main">
+                        <input class="form-control" type="password" id="u_repwd" placeholder="确认新密码" maxlength="16" tabindex="6"/>
+                        <div class="form-validation" id="err_repwd">
+                            <i class="icon"></i><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix pt10">
+                    <div class="main">
+                        <input class="form-btn-submit enableSelect resetPasswordNextStep" type="button" id="btn_resetpwd" value="下一步" tabindex="6"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end form -->
+
+        <!-- success panel -->
+        <div class="m-floatpanel-success text-center hide">
+            <i class="icon-floatpanel-success"></i>
+            <p class="text">重置密码成功</p>
+            <p><span class="btn toLogIn">登陆</span></p>
+        </div>
+    </div>
+    <div class="m-floatpanel-mask"></div>
+</div>
+<!-- end resetPasswordPanel -->
+<!-- end float panel -->
+</body>
+</html>

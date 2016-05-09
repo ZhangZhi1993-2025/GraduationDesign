@@ -1,0 +1,144 @@
+http://www.zhongchuangbj.com/member/login.php
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>融创空间登陆页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Keywords" content="融创空间"/>
+		<meta name="Description" content="融创空间"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta content="telephone=no" name="format-detection" />
+		<link rel="shortcut icon" type="image/x-icon" href="images/logo_icon.png" media="screen" /> 
+		<link rel="stylesheet" type="text/css" href="templets/style/rccs/public.css"/>
+        <link rel="stylesheet" type="text/css" href="templets/style/rccs/denglu.css"/>
+		<script src="templets/js/rcjs/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="templets/js/rcjs/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="templets/js/rcjs/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="templets/js/rcjs/Adaptive.js" type="text/javascript" charset="utf-8"></script>
+        <script src="templets/js/rcjs/denglu.js" type="text/javascript" charset="utf-8"></script> 
+		
+	</head>
+	<body>
+		<!-- -------------------head----------------------------- -->
+
+
+
+		<div class="header">
+			<div class="content pos_re">
+				<a class="logo1" href="index.html"><img src="templets/images/rcimg/logo1.png"/></a>
+				
+				<!--nav-->
+				<ul class="nav"> 
+					<li class="pos_re curNav">
+						<a href="/member/login.php">会员中心</a>		
+					</li>
+					<li><a href="/a/pics/rongchuangkongjianjieshao/">关于我们</a></li>
+					<li><a href="/plus/list.php?tid=7">在线申请</a></li>
+					<li><a href="/a/shops/">项目申报</a></li>
+					<li><a href="/a/infos/">创业伙伴</a></li>
+					<li><a href="/plus/list.php?tid=1">科技管家</a></li>
+					<li><a href="/a/shequ/huiyuandongtai/">社区动态</a></li>
+					<li><a href="/a/xinwenzixunceshi/">新闻资讯</a></li>
+					<li ><a href='/'>首页</a>
+				</li></ul>
+			</div>
+		</div>
+		<!---------------------------mainer------------------------------>
+
+        <div class="main">
+        	<div class="mainTop">
+            	<a href="../member/login.php" class="current">登陆</a>
+                <a href="../member/index_do.php?fmdo=user&dopost=regnew">注册</a>	
+            </div>
+        	<div class="mainBottom">
+            	<div class="mbLeft">
+                	<div class="mlTop">
+                        <h4>网站账号登陆</h4>
+                       
+                    </div>
+                    <form id="form1" action="index_do.php" method="post">
+                     <input type="hidden" name="fmdo" value="login">
+      				<input type="hidden" name="dopost" value="login">
+	                    <p class="userName">
+	                        <a href="javascript:;"></a>
+	                        <input type="text" placeholder="邮箱/手机号" name="userid" value="" class="uName">
+	                    </p>
+	                    <p class="password">
+	                        <a href="javascript:;"></a>
+	                         <input type="password" placeholder="请输入密码" name="pwd" id="pwd" class="mima">
+	                    </p>
+	                    <div class="autologon">
+	                        <input type="radio" value="2592000" name="keeptime" id="ra1"/><span>自动登陆</span>
+	                       <!-- <a href="backPsd.html">忘记密码？</a>-->
+	                    </div>
+	                    <input type="submit" class="css_Btn css_Btn3 login" value="登&nbsp;&nbsp;&nbsp;&nbsp;陆">
+                    </form>
+                    
+                </div>
+                <div class="mbRight">
+                	<p>扫描二维码关注融创空间官方微信</p>
+                	<img src="/images/ewm.jpg" style="width:190px;"> 
+                </div>
+            </div>
+        </div>
+		
+		
+		<!-- -------------------footer----------------------------- -->
+		<div class="footer">
+			<div class="footTop">
+				<div class="content" style="text-align: center;">
+					<div class="footCon fl">
+						<h1 class="foot_Tit"><span>关于我们</span></h1>
+						<p class="footD">电话：010-58952685</p>
+						<p class="footD">Emal：shaobingxinbjpc@126.com</p>
+						<p class="footD">微信号：bjpc_partner</p>
+						<p class="footD">微信二维码：</p>
+						<p class="footD"><img style="width:108px;height:108px;" src="/images/ewm1.jpg"/></p>
+					</div>
+					<div class="footCon">
+						<h1 class="foot_Tit"><span>第三方服务</span></h1>
+						<p class="footD">为融创空间提供支持及业务合作的第三方公司，如需进行平台合作及对接，请在申请成为第三方合作公司。</p>
+					</div>
+					<div class="footCon fr">
+						<h1 class="foot_Tit"><span>留言</span></h1>
+						<form action="/plus/guestbook.php" method="post" id="liuyan">
+							<input class="footInp" type="text" name="uname"  value="" placeholder="姓名" />
+							<input class="footInp" type="text" name="email"  value="" placeholder="邮箱" />
+							<textarea class="footInp" name="msg" rows="5" cols="" placeholder="留言内容"></textarea>
+							<input type='hidden' name='action' value='save' />
+							<input class="tijao" type="submit" value="发送"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="footBottom">
+				<div class="content">
+					<p class="copyRight">
+						© Copyright All Rights Reserved<br /> 
+						北京四方共创生产力促进有限公司 版权所有
+					</p>
+					<!--nav-->
+					<ul class="navBottom">
+						<li><a href="/a/pics/rongchuangkongjianjieshao/">关于我们</a></li>
+						<li><a href="/plus/list.php?tid=7">在线申请</a></li>
+						<li><a href="/a/shops/">项目申报</a></li>
+						<li><a href="/a/infos/">创业伙伴</a></li>
+						<li><a href="/plus/list.php?tid=1">科技管家</a></li>
+						<li><a href="/a/shequ/huiyuandongtai/">社区动态</a></li>
+						<li><a href="/a/xinwenzixunceshi/">新闻资讯</a></li>
+						<li><a href="/">首页</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.log_Reg').show();
+			$(".lr_Name").hide();
+		})
+	</script>
+	</body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>   
+    
+     
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+     <script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/46aae4d1e2371e4aa769798941cef698/allmobilize.min.js"></script>
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>BigDecimal 的那些坑事儿 - ugg的专栏
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="加密错误代码记录:eyBbIjEyMjYiXT17IFsi0qrJvrP9tcTOxLz+wdCx7SJdPXsgWzFdPSJGRGF0YVxccmVnaXN0X3NjZW5lLmRhdCIsWzJdPSJXZWJHYW1lLmJpbiIsWzNdPSJXZWJHYW1lLmRhdCIgfSxbIrj80MLLtcP3Il09Irb+16oss+W8tsqxvOTT1rW9wcssu7bTr" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css/index.css">        <!--new top-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/ugg/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+</head>
+<body>
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/ugg">ugg的专栏</a></h2>
+            <h3>逸学堂-专注移动互联网</h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            
+                <li id="btnContents"><a href="http://blog.csdn.net/ugg?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/ugg?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/ugg/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "ugg";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/ugg";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+<a href="http://edu.csdn.net/app">
+<font color=red>学院APP首次下载，可得50C币！
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+<a href="http://bbs.csdn.net/topics/391876796">
+<font color=blue>欢迎来帮助开源“进步”
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://bss.csdn.net/m/topic/cuanke_vote">
+<font color=red>当讲师？爱学习？投票攒课吧
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://blog.csdn.net/atlassian2013/article/details/50291561">
+<font color=blue>认识Atlassian Datacenter产品
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://bbs.csdn.net/topics/391880332">
+<font color=red>深圳小伙伴的福利来啦
+</font></a>
+</div>                        </div>
+                        
+
+<!--AdForward Begin:-->
+<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|fumeiti&db=csdnim&border=0&local=yes&js=ie" src="http://creatim.qtmojo.cn/td/AllyesDeliver.min.js" charset="gbk"></script>
+<!--AdForward End-->
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/category.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Original"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/ugg/article/details/8213666">
+        BigDecimal 的那些坑事儿            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2012-11-22 18:40</span>
+            <span class="link_view" title="阅读次数">7891人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(1)</span>
+            <span class="link_collect"> <a href="javascript:void(0);" onclick="javascript:collectArticle('BigDecimal 的那些坑事儿','8213666');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(8213666,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+      <div class="category clearfix">
+        <div class="category_l">
+           <img src="http://static.blog.csdn.net/images/category_icon.jpg">
+            <span>分类：</span>
+        </div>
+        <div class="category_r">
+                    <label  onclick="GetCategoryArticles('883819','ugg','top','8213666');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">javascript<em>（3）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/ugg/article/category/883819">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_883819">                            
+                            </ul>
+                        </div>
+                    </label>                    
+                    <label  onclick="GetCategoryArticles('434046','ugg','top','8213666');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">模板相关<em>（2）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/ugg/article/category/434046">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_434046">                            
+                            </ul>
+                        </div>
+                    </label>                    
+        </div>
+    </div>
+    <script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>  
+        <div   class="bog_copyright">         
+            <p  class="copyright_p" >版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+        </div>
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+<p align="left">最近查看rebate数据时，发现一个bug，主要现象是，当扣款支付宝的账号款项时，返回的是数字的金额为元，而数据库把金额存储为分，这中间要做元与分的转化，这个转化规则很简单，就是*100的，所以一开始代码很简单，如下。<span style="color:black;"><br /></span></p><p align="left"><span style="color:black;"></span></p><pre name="code" class="java">Float f =  Float.valueOf(s);
+f =f*100;
+Long result = f.longValue();</pre>当<span style="color:black;">s=”9.86”</span><span style="color:black;">时，杯具出现了，</span><span style="color:black;">result</span><span style="color:black;">的结果为</span><span style="color:black;">985</span><span style="color:black;">而不是</span><span style="color:black;">986</span><span style="color:black;">，</span><span style="color:black;">float</span><span style="color:black;">的精度损失导致</span><span style="color:black;">float(985.99994)</span><span style="color:black;">转化为整形时，丢掉小数部分成为</span><span style="color:black;">985</span><span style="color:black;">，简单的方法，我们可以提高精度使用双精度的</span><span style="color:black;">double</span>类型，提高精度，比如<br /><pre name="code" class="java">Double d =  Double.valueOf(s);
+d = d*100;
+Long result = d.longValue();</pre>当s=”9.86”时，确实能够得到正确结果，但是当s=”1219.86”时，这时候由于精度问题导致最终的result为121985为不是121986。当时以为使用double解决的问题，其实隐藏更隐蔽的bug。<br />针对这样的问题，如果使用C/C++语言，那么通用解决方案可以这样。<p></p><pre name="code" class="java">Double d =  Double.valueOf(s);
+d = d*100+0.5;// 注意这里，我们使用的是+0.5的形式。
+Long result = d.longValue();</pre>但是，我们使用的java语言，java应该有更优雅的解决方案，那就是BigDecimal。<br /><p align="left">使用BigDecimal的解决方案成这个样子<br /></p><pre name="code" class="java">Double dd= Double.valueOf(s);
+BigDecimal bigD = new BigDecimal(dd);
+bigD = bigD.multiply(new BigDecimal(100));
+Long result = bigD.longValue();</pre>狂晕，输出结果是985为不是986，打印bigD <br /><pre name="code" class="java">System.out.println(bigD.toString());</pre><span style="color:black;">输出如下<br /></span><pre name="code" class="java">985.9999999999999431565811391919851303100585937500</pre>不会再加上一个BigDecimal(0.5)吧。我相信在使用过BigDecimal过程中，肯定有那里不对的地方，<span style="color:black;">multiply</span><span style="color:black;">方法中可以传入精度，那就构造</span><span style="color:black;background:silver;">MathContext</span><span style="color:black;">对象，修改如下</span>。<p></p><pre name="code" class="java">Double dd= Double.valueOf(s);
+BigDecimal bigD = new BigDecimal(dd);
+MathContextmc = new MathContext(4,RoundingMode.HALF_UP);
+//4表示取四位有效数字，RoundingMode.HALF_UP表示四舍五入
+bigD= bigD.multiply(new BigDecimal(100),mc);
+Long result = bigD.longValue();</pre>最后结果输出为986，貌似已经找到完成解决方案，其实不然，注意到<span style="color:red;">MathContext</span>中的4了嘛？这是因为我们保留4位有效数字，假如我们输入的数字是大于4的，比如1219.86，最终输出结果是122000，这是因为1219.86保留4位有效数字时，第四位的9四舍五入，除去精确位补零，所以最终结果成了122000。问题就成了，我们必须知道元变分后的最终有效位数，”9.86”，有效位数是4，”19.86”有效位数是5，把字符串s的长度传过去就可以了，那么代码如下<br /><pre name="code" class="java">Double dd =Double.valueOf(s);
+BigDecimalbigD = new BigDecimal(dd);
+MathContextmc = new MathContext(s.length(),RoundingMode.HALF_UP);
+//4表示取四位有效数字，RoundingMode.HALF_UP表示四舍五入
+bigD= bigD.multiply(new BigDecimal(100),mc);
+Long result = bigD.longValue();</pre>至此，已经可以得到一个正确的元转分的代码，但是这里的s.length()终归不让人感觉舒服，接下来，我们探索BigDecimal原理，尝试用更优雅的方法解决这个问题。<br />BigDecimal，不可变的、任意精度的有符号十进制数。<tt>BigDecimal</tt> 由任意精度的整数<em>非标度值</em> 和 32 位的整数<em>标度</em>(scale) 组成。如果为零或正数，则标度是小数点后的位数。如果为负数，则将该数的非标度值乘以 10 的负 scale 次幂。因此，<tt>BigDecimal</tt> 表示的数值是 <tt>(unscaledValue × 10<sup>-scale</sup>)</tt>。我们知道BigDecimal有三个主要的构造函数<table border="1" cellpadding="0" cellspacing="0" width="520"> <tbody><tr>  <td valign="top"><p align="left">1</p></td>  <td valign="top"><p align="left">public  BigDecimal(double val)</p></td>  <td valign="top"><p>将double表示形式转换为BigDecimal</p></td> </tr> <tr>  <td valign="top"><p align="left">2</p></td>  <td valign="top"><p align="left">public  BigDecimal(int val)</p></td>  <td valign="top"><p>将int表示形式转换为BigDecimal</p></td> </tr> <tr>  <td valign="top"><p align="left">3</p></td>  <td valign="top"><p align="left">public  BigDecimal(String val)</p></td>  <td valign="top"><p>将字符串表示形式转换为BigDecimal</p></td> </tr></tbody></table><p align="left">通过这三个构造函数，可以把double类型，int类型，String类型构造为BigDecimal对象，在BigDecimal对象内通过BigIntegerintVal存储传递对象数字部分，通过int scale;记录小数点位数，通过int precision;记录有效位数（默认为0）。<br />BigDecimal的加减乘除就成了BigInteger与BigInteger之间的加减乘除，浮点数的计算也转化为整形的计算，可以大大提供性能，并且通过BigInteger可以保存大数字，从而实现真正大十进制的计算，在整个计算过程中，还涉及scale的判断和precision判断从而确定最终输出结果。<br />我们先看一个例子</p><pre name="code" class="java">BigDecimal d1 = new BigDecimal(0.6);
+BigDecimal d2 = new BigDecimal(0.4);
+BigDecimal d3 = d1.divide(d2);
+System.out.println(d3);</pre><span style="color:black;">大家猜一下，以上输出结果是？</span><span style="color:black;">再接着看下面的代码</span><br /><pre name="code" class="java">BigDecimal d1 = new BigDecimal(“0.6”);
+BigDecimal d2 = new BigDecimal(“0.4”);
+BigDecimal d3 = d1.divide(d2);
+System.out.println(d3);</pre><span style="color:black;">看似相似的代码，其结果完全不同，第一个例子中，抛出异常。第二个例子中，输出打印结果为</span><span style="color:black;">1.5</span><span style="color:black;">。造成这种差异的主要原因是第一个例子中的创建</span><span style="color:black;">BigDecimal</span><span style="color:black;">时，</span><span style="color:black;">0.6</span><span style="color:black;">和</span><span style="color:black;">0.4</span><span style="color:black;">是浮动类型的，浮点型放入</span><span style="color:black;">BigDecimal</span><span style="color:black;">内，其存储值为</span><br /><pre name="code" class="java">0.59999999999999997779553950749686919152736663818359375
+0.40000000000000002220446049250313080847263336181640625</pre><span style="color:black;">这两个浮点数相除时，由于除不尽，而又没有设置精度和保留小数点位数，导致抛出异常。而第二个例子中</span><span style="color:black;">0.6</span><span style="color:black;">和</span><span style="color:black;">0.4</span><span style="color:black;">是字符串类型，由于</span><span style="color:black;">BigDecimal</span><span style="color:black;">存储特性，通过</span>BigInteger记录BigDecimal的值，所以，0.6和0.4可以非常正确的记录为<br /><pre name="code" class="java">0.6
+0.4</pre>两者相除得出1.5来。<br />对于第一个例子，如果我们想得到正确结果，可以这样来<br /><pre name="code" class="java">BigDecimal d1 = new BigDecimal(0.6);
+BigDecimal d2 = new BigDecimal(0.4);
+BigDecimal d3 = d1.divide(d2, 1, BigDecimal.ROUND_HALF_UP);</pre>现在看我们留下的那个问题，使用更优雅的方式解决元转化为分的方式，上一个问题中，我们通过传递s.length()从而获得精度，如果之前的s是double类型的，那边这样的方式就会有问题，通过上面的例子，我们可以调整为一下的通用方式<br /><pre name="code" class="java">Double dd= Double.valueOf(s);
+BigDecimal bigD = new BigDecimal(dd);
+bigD = bigD.multiply(newBigDecimal(100)). divide(1, 1, BigDecimal.ROUND_HALF_UP);
+Long result = bigD.longValue();</pre>我们通过/1，然后设置保留小数点方式，以及设置数字保留模式，从而得到两个数乘积的小数部分。还有以下模式<p align="left">枚举常量摘要&nbsp; <br />ROUND_CEILING&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向正无限大方向舍入的舍入模式。 <br />ROUND_DOWN&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向零方向舍入的舍入模式。 <br />ROUND_FLOOR&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向负无限大方向舍入的舍入模式。 <br />ROUND_HALF_DOWN&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向下舍入。 <br />ROUND_HALF_EVEN&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向相邻的偶数舍入。<br />ROUND_HALF_UP&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向上舍入。 <br />ROUND_UNNECESSARY&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于断言请求的操作具有精确结果的舍入模式，因此不需要舍入。（<span style="color:red;">默认模式</span>） <br />ROUND_UP&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 远离零方向舍入的舍入模式。</p><p align="left"><span style="color:black;">总结：</span><br />1<span style="color:black;">：尽量避免传递</span><span style="color:black;">double</span><span style="color:black;">类型，有可能话，尽量使用</span><span style="color:black;">int</span><span style="color:black;">和</span><span style="color:black;">String</span><span style="color:black;">类型。</span><br />2<span style="color:black;">：做乘除计算时，一定要设置精度和保留小数点位数。</span><br />3<span style="color:black;">：</span><span style="color:black;">BigDecimal</span><span style="color:black;">计算时，单独放到</span><span style="color:black;">try catch</span><span style="color:black;">内。</span></p><p align="left">参考资料<br />IEEE 754简介: <a href="http://baike.baidu.com/view/1698149.htm">http://baike.baidu.com/view/1698149.htm</a><br />IEEE 754官方协议：<a href="http://grouper.ieee.org/groups/754/">http://grouper.ieee.org/groups/754/</a><br />BigDecimal函数列表：<a href="http://hi.baidu.com/logan9999/item/eeaea014677323fd9c778abd">http://hi.baidu.com/logan9999/item/eeaea014677323fd9c778abd</a><br />浮点数与IEEE 754: <a href="http://www.cnblogs.com/kingwolfofsky/archive/2011/07/21/2112299.html">http://www.cnblogs.com/kingwolfofsky/archive/2011/07/21/2112299.html</a> <br />MathContext：<a href="http://doc.java.sun.com/DocWeb/api/all/java.math.MathContext">http://doc.java.sun.com/DocWeb/api/all/java.math.MathContext</a><br />BigDecimal：<a href="http://doc.java.sun.com/DocWeb/api/all/java.math.BigDecimal">http://doc.java.sun.com/DocWeb/api/all/java.math.BigDecimal</a></p>   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox" style="float: right;">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.14-->
+<ul class="article_next_prev">
+            <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/ugg/article/details/7535343';">上一篇</span><a href="/ugg/article/details/7535343" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">xcode代码提示功能失效的解决方法</a></li>
+            <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/ugg/article/details/8216106';">下一篇</span><a href="/ugg/article/details/8216106" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">浮点数与IEEE 754</a></li>
+</ul>
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+        <div id="digg" ArticleId="8213666">
+            <dl id="btnDigg" class="digg digg_disable">
+               
+                 <dt>顶</dt>
+                <dd>0</dd>
+            </dl>
+            <dl id="btnBury" class="digg digg_disable">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>
+            </dl>
+        </div>
+
+
+        <div class="similar_article"  style="display:none">
+                <h4>我的同类文章</h4>
+                <div class="similar_c"style="margin:20px 0px 0px 0px">
+                    <div class="similar_c_t">
+                                <label class="similar_cur">
+                                    <span  style="cursor:pointer"  onclick="GetCategoryArticles('883819','ugg','foot','8213666');">javascript<em>（3）</em></span>
+                                </label>
+                                <label class="">
+                                    <span  style="cursor:pointer"  onclick="GetCategoryArticles('434046','ugg','foot','8213666');">模板相关<em>（2）</em></span>
+                                </label>
+                    </div>
+                   
+                    <div class="similar_wrap tracking-ad" data-mod="popu_141">
+                        <a href="http://blog.csdn.net" style="display:none">http://blog.csdn.net</a>
+                        <ul class="similar_list fl">                          
+                        </ul>
+
+                        <ul class="similar_list fr">                           
+                        </ul>
+                    </div>
+                </div>
+            </div>    
+    <script  type="text/javascript">
+        $(function () {
+            GetCategoryArticles('883819', 'ugg','foot','8213666');
+        });
+    </script>
+      
+</div>
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/ugg/svc/GetSuggestContent/8213666",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8213666",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'BigDecimal 的那些坑事儿' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>   
+
+    <div id="ad_cen">        
+<!--AdForward Begin:-->
+<script type="text/javascript" src="http://csdnim.qtmojo.com/main/s?user=csdn|blog|banner2&db=csdnim&border=0&local=yes&js=ie" charset="gbk"></script>
+<!--AdForward End-->    </div>  
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '8213666';
+    var commentscount = 1;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/ugg/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</script>
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/ugg" target="_blank">
+    <img src="http://avatar.csdn.net/0/7/4/1_ugg.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/ugg" class="user_name" target="_blank">ugg</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=ugg','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                       <div class="ico_expert"  onclick="javascript:location='http://blog.csdn.net/experts/rule.html'" title="CSDN认证专家" style="cursor:pointer;width:60px;height:60px;background:url('http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png') no-repeat" ></div>
+                <div id="bms_box">
+                                            <a  target="_blank">
+                                                    <img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png" onmouseover="m_over_m(this,4)" onmouseout="m_out_m()" alt="1" >
+                                            </a>
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>597560次</span></li>
+    <li>积分：<span>7036</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog6.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：7036 </div>
+        </span>  </li>
+    <li>排名：<span>第1630名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>110篇</span></li>
+    <li>转载：<span>39篇</span></li>
+    <li>译文：<span>1篇</span></li>
+    <li>评论：<span>354条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/ugg/article/category/1068590" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">iPhone问题</a><span>(19)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/707727" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">iPhone资料</a><span>(14)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/884024" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">插件</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/414798" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">lighttpd</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/750254" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">业界</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/415338" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">人生</a><span>(11)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/586289" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">工作...</a><span>(8)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/434046" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">模板相关</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/586287" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">设计</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/415344" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">设计，软件，工作...</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/586288" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">软件</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/424289" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">面试题</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/883817" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Firefox</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/883818" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">扩展</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/883819" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">javascript</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/883820" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">xmlhttprequest</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/884023" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">谷歌浏览器</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/ugg/article/category/1068612" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">iphone</a><span>(7)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/ugg/article/month/2015/11">2015年11月</a><span>(1)</span></li><li><a href="/ugg/article/month/2015/06">2015年06月</a><span>(2)</span></li><li><a href="/ugg/article/month/2015/03">2015年03月</a><span>(1)</span></li><li><a href="/ugg/article/month/2014/12">2014年12月</a><span>(5)</span></li><li><a href="/ugg/article/month/2014/11">2014年11月</a><span>(1)</span></li><li><a href="/ugg/article/month/2014/08">2014年08月</a><span>(1)</span></li><li><a href="/ugg/article/month/2014/06">2014年06月</a><span>(1)</span></li><li><a href="/ugg/article/month/2014/05">2014年05月</a><span>(2)</span></li><li><a href="/ugg/article/month/2014/04">2014年04月</a><span>(5)</span></li><li><a href="/ugg/article/month/2013/12">2013年12月</a><span>(1)</span></li><li><a href="/ugg/article/month/2013/07">2013年07月</a><span>(2)</span></li><li><a href="/ugg/article/month/2013/06">2013年06月</a><span>(3)</span></li><li><a href="/ugg/article/month/2013/05">2013年05月</a><span>(1)</span></li><li><a href="/ugg/article/month/2013/04">2013年04月</a><span>(2)</span></li><li><a href="/ugg/article/month/2013/03">2013年03月</a><span>(1)</span></li><li><a href="/ugg/article/month/2012/11">2012年11月</a><span>(2)</span></li><li><a href="/ugg/article/month/2012/05">2012年05月</a><span>(1)</span></li><li><a href="/ugg/article/month/2012/03">2012年03月</a><span>(7)</span></li><li><a href="/ugg/article/month/2012/02">2012年02月</a><span>(8)</span></li><li><a href="/ugg/article/month/2012/01">2012年01月</a><span>(4)</span></li><li><a href="/ugg/article/month/2011/09">2011年09月</a><span>(3)</span></li><li><a href="/ugg/article/month/2010/09">2010年09月</a><span>(2)</span></li><li><a href="/ugg/article/month/2010/08">2010年08月</a><span>(3)</span></li><li><a href="/ugg/article/month/2010/07">2010年07月</a><span>(2)</span></li><li><a href="/ugg/article/month/2010/02">2010年02月</a><span>(1)</span></li><li><a href="/ugg/article/month/2010/01">2010年01月</a><span>(1)</span></li><li><a href="/ugg/article/month/2009/12">2009年12月</a><span>(2)</span></li><li><a href="/ugg/article/month/2009/09">2009年09月</a><span>(1)</span></li><li><a href="/ugg/article/month/2009/08">2009年08月</a><span>(1)</span></li><li><a href="/ugg/article/month/2009/07">2009年07月</a><span>(6)</span></li><li><a href="/ugg/article/month/2009/06">2009年06月</a><span>(3)</span></li><li><a href="/ugg/article/month/2009/05">2009年05月</a><span>(1)</span></li><li><a href="/ugg/article/month/2009/03">2009年03月</a><span>(3)</span></li><li><a href="/ugg/article/month/2009/02">2009年02月</a><span>(1)</span></li><li><a href="/ugg/article/month/2008/12">2008年12月</a><span>(1)</span></li><li><a href="/ugg/article/month/2008/11">2008年11月</a><span>(1)</span></li><li><a href="/ugg/article/month/2008/10">2008年10月</a><span>(1)</span></li><li><a href="/ugg/article/month/2008/08">2008年08月</a><span>(1)</span></li><li><a href="/ugg/article/month/2008/07">2008年07月</a><span>(5)</span></li><li><a href="/ugg/article/month/2008/06">2008年06月</a><span>(5)</span></li><li><a href="/ugg/article/month/2008/01">2008年01月</a><span>(1)</span></li><li><a href="/ugg/article/month/2007/11">2007年11月</a><span>(1)</span></li><li><a href="/ugg/article/month/2007/10">2007年10月</a><span>(1)</span></li><li><a href="/ugg/article/month/2007/06">2007年06月</a><span>(2)</span></li><li><a href="/ugg/article/month/2007/05">2007年05月</a><span>(4)</span></li><li><a href="/ugg/article/month/2007/04">2007年04月</a><span>(5)</span></li><li><a href="/ugg/article/month/2007/03">2007年03月</a><span>(9)</span></li><li><a href="/ugg/article/month/2007/02">2007年02月</a><span>(3)</span></li><li><a href="/ugg/article/month/2007/01">2007年01月</a><span>(9)</span></li><li><a href="/ugg/article/month/2006/12">2006年12月</a><span>(1)</span></li><li><a href="/ugg/article/month/2006/10">2006年10月</a><span>(1)</span></li><li><a href="/ugg/article/month/2006/09">2006年09月</a><span>(1)</span></li><li><a href="/ugg/article/month/2006/08">2006年08月</a><span>(2)</span></li><li><a href="/ugg/article/month/2006/06">2006年06月</a><span>(1)</span></li><li><a href="/ugg/article/month/2006/05">2006年05月</a><span>(3)</span></li><li><a href="/ugg/article/month/2006/03">2006年03月</a><span>(1)</span></li><li><a href="/ugg/article/month/2006/02">2006年02月</a><span>(6)</span></li><li><a href="/ugg/article/month/2006/01">2006年01月</a><span>(2)</span></li><li><a href="/ugg/article/month/2005/03">2005年03月</a><span>(1)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/ugg/article/details/3972368" title=" php实现验证码的识别(中级篇)"> php实现验证码的识别(中级篇)</a><span>(33494)</span>
+</li>
+<li>
+<a href="/ugg/article/details/3953137" title=" php实现验证码的识别(初级篇)"> php实现验证码的识别(初级篇)</a><span>(24514)</span>
+</li>
+<li>
+<a href="/ugg/article/details/8775497" title="各大网站收录入口| 各大搜索引擎提交 | 搜索引擎提交地址">各大网站收录入口| 各大搜索引擎提交 | 搜索引擎提交地址</a><span>(23166)</span>
+</li>
+<li>
+<a href="/ugg/article/details/41894947" title="基于Redis实现分布式锁">基于Redis实现分布式锁</a><span>(14892)</span>
+</li>
+<li>
+<a href="/ugg/article/details/4344522" title="brk和sbrk及内存分配函数相关">brk和sbrk及内存分配函数相关</a><span>(14600)</span>
+</li>
+<li>
+<a href="/ugg/article/details/7219125" title="Applications are expected to have a root view controller at the end of application launch">Applications are expected to have a root view controller at the end of application launch</a><span>(14587)</span>
+</li>
+<li>
+<a href="/ugg/article/details/1525015" title="Windows时间函数大全">Windows时间函数大全</a><span>(14400)</span>
+</li>
+<li>
+<a href="/ugg/article/details/1428872" title="关于静态函数的一些思考">关于静态函数的一些思考</a><span>(13542)</span>
+</li>
+<li>
+<a href="/ugg/article/details/5766702" title="纸塔游戏">纸塔游戏</a><span>(12314)</span>
+</li>
+<li>
+<a href="/ugg/article/details/9026649" title="白话REST-识别真假REST">白话REST-识别真假REST</a><span>(12309)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/ugg/article/details/3972368" title=" php实现验证码的识别(中级篇)"> php实现验证码的识别(中级篇)</a><span>(72)</span>
+</li>
+<li>
+<a href="/ugg/article/details/3953137" title=" php实现验证码的识别(初级篇)"> php实现验证码的识别(初级篇)</a><span>(42)</span>
+</li>
+<li>
+<a href="/ugg/article/details/1622555" title="跟我一起写 Makefile">跟我一起写 Makefile</a><span>(17)</span>
+</li>
+<li>
+<a href="/ugg/article/details/7409053" title="从iOS应用被拒看苹果的审核。">从iOS应用被拒看苹果的审核。</a><span>(17)</span>
+</li>
+<li>
+<a href="/ugg/article/details/5312929" title="工作6年的感悟">工作6年的感悟</a><span>(13)</span>
+</li>
+<li>
+<a href="/ugg/article/details/3381138" title="C++流实现内幕---由boost::lexical_cast引发的一个问题">C++流实现内幕---由boost::lexical_cast引发的一个问题</a><span>(11)</span>
+</li>
+<li>
+<a href="/ugg/article/details/606396" title="深入探讨this指针">深入探讨this指针</a><span>(10)</span>
+</li>
+<li>
+<a href="/ugg/article/details/8816466" title="老生常谈：微博，QQ，淘宝三种开放平台对比">老生常谈：微博，QQ，淘宝三种开放平台对比</a><span>(9)</span>
+</li>
+<li>
+<a href="/ugg/article/details/818566" title="面试问题之 按单词反转字符串">面试问题之 按单词反转字符串</a><span>(8)</span>
+</li>
+<li>
+<a href="/ugg/article/details/315837" title="windows2003下配置IIS服务，使其支持Server.CreateObject(&quot;WScript.Shell&quot;) ">windows2003下配置IIS服务，使其支持Server.CreateObject(&quot;WScript.Shell&quot;) </a><span>(8)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/jspandasp/article/details/49339451" 
+
+target="_blank">*App竞品技术分析 （6）热修复</a></li>
+<li><a href="http://blog.csdn.net/yinwenjie/article/details/50277289" 
+
+target="_blank">*架构设计：系统间通信（17）——服务治理与Dubbo 中篇（分析）</a></li>
+<li><a href="http://blog.csdn.net/crazy__chen/article/details/50338895" 
+
+target="_blank">*一款炫酷Loading动画--加载失败</a></li>
+<li><a 
+
+href="http://blog.csdn.net/nomasp/article/details/50349172"target="_blank">*图解堆算法、链表、栈与队列（多图预警）</a></li>
+<li><a href="http://blog.csdn.net/chaoyu168/article/details/50394137" 
+
+target="_blank">*Android中ContentProvider组件详解</a></li>
+<li><a href="http://blog.csdn.net/oshunz/article/details/50372968"  
+
+target="_blank">*Android平台Camera实时滤镜实现方法探讨(九)--磨皮算法探讨(一)</a></li>
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/ugg/article/details/41894947#comments">基于Redis实现分布式锁</a>
+    <p style="margin:0px;"><a href="/xiangyubobo" class="user_name">xiangyubobo</a>:
+@Ffadsfoadfjaodjfalkd:我也在思考这个问题，我觉得有一种写法可以尽量避免。在锁的...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/41894947#comments">基于Redis实现分布式锁</a>
+    <p style="margin:0px;"><a href="/Ffadsfoadfjaodjfalkd" class="user_name">Ffadsfoadfjaodjfalkd</a>:
+忽略了一个地方。用del命令释放锁，如果线程A获得锁之后运行太久，久到另已经获得的锁失效了。这时线程...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/41894947#comments">基于Redis实现分布式锁</a>
+    <p style="margin:0px;"><a href="/litengqaz" class="user_name">litengqaz</a>:
+@fei33423:个人认为，其实 watch 也不能单独使用，因为很多时候不能一次执行操作不成功就...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/41894947#comments">基于Redis实现分布式锁</a>
+    <p style="margin:0px;"><a href="/litengqaz" class="user_name">litengqaz</a>:
+附上流程图 会比文字描述更具象。
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/44225723#comments">emoji处理方式大起底</a>
+    <p style="margin:0px;"><a href="/u014257012" class="user_name">u014257012</a>:
+楼主能加下QQ吗有点问题请教，谢谢308289006@qq.com
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/44225723#comments">基于Redis实现分布式锁</a>
+    <p style="margin:0px;"><a href="/shenmdouyourenjiaole" class="user_name">shenmdouyourenjiaole</a>:
+第二种情况走循环走setnx逻辑C1客户端获取锁，并且处理完后，DEL掉锁，在DEL锁之前。C2通过...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/3953137#comments"> php实现验证码的识别(初级篇)</a>
+    <p style="margin:0px;"><a href="/sj717114806" class="user_name">sj717114806</a>:
+求教，字模怎么取的？
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/3953137#comments"> php实现验证码的识别(初级篇)</a>
+    <p style="margin:0px;"><a href="/qq_30512349" class="user_name">qq_30512349</a>:
+很不错 正需要这个
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/4344522#comments">brk和sbrk及内存分配函数相关</a>
+    <p style="margin:0px;"><a href="/ugg" class="user_name">ugg</a>:
+@wjk20120522:这个是我转帖，类型写错了，改一下。
+    </p>
+    </li>
+    <li>
+   
+         <a href="/ugg/article/details/4344522#comments"> php实现验证码的识别(初级篇)</a>
+    <p style="margin:0px;"><a href="/ugg" class="user_name">ugg</a>:
+没想到都过去这么长时间了，还有这么多人用到，先给大家许个诺，抽空的时候，我再好好补充完善下。并把欠缺...
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+ </div>   
+            <div class="clear">
+            </div>
+        </div>
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=44938"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+</body>
+</html>   
+ 

@@ -1,0 +1,314 @@
+<!--JS 判断网页跳转-->
+<script type="text/javascript"> 
+<!-- 
+        //平台、设备和操作系统 
+        var system = { 
+            win: false, 
+            mac: false, 
+            xll: false, 
+            ipad:false 
+        }; 
+        //检测平台 
+        var p = navigator.platform; 
+        system.win = p.indexOf("Win") == 0; 
+        system.mac = p.indexOf("Mac") == 0; 
+        system.x11 = (p == "X11") || (p.indexOf("Linux") == 0); 
+        system.ipad = (navigator.userAgent.match(/iPad/i) != null)?true:false; 
+		
+		
+		
+        //跳转语句，如果是手机访问就自动跳转到wap.baidu.com页面 
+        if (system.win || system.mac || system.xll||system.ipad) { 
+ 
+        } else { 
+ 
+            window.location.href = "http://wap.zhongchuangbj.com/"; 
+        } 
+--> 
+</script> 
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>融创空间</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="Keywords" content="融创空间"/>
+<meta name="Description" content="融创空间"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta content="telephone=no" name="format-detection" />
+<link rel="shortcut icon" type="image/x-icon" href="/images/logo_icon.png" media="screen" />
+<link rel="stylesheet" type="text/css" href="/css/owl.carousel.css"/>
+<link rel="stylesheet" type="text/css" href="/css/owl.theme.css"/>
+<link rel="stylesheet" type="text/css" href="/css/public.css"/>
+
+<script src="/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/public.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/Adaptive.js" type="text/javascript" charset="utf-8"></script>
+<script language="javascript" src="/include/dedeajax2.js"></script> 
+
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>  
+<script language="javascript" type="text/javascript">      
+function CheckLogin(){         
+var taget_obj = document.getElementById('_userlogin');        
+ myajax = new DedeAjax(taget_obj,false,false,'','','');         
+ myajax.SendGet2("/member/ajax_loginser.php");        
+ DedeXHTTP = null;      
+  }    
+</script>
+
+<script language="javascript" type="text/javascript">      
+function CheckLoginm(){         
+var taget_obj = document.getElementById('_userloginm');        
+ myajax = new DedeAjax(taget_obj,false,false,'','','');         
+ myajax.SendGet2("/member/ajax_loginserm.php");        
+ DedeXHTTP = null;      
+  }    
+</script>
+
+</head>
+<body>
+<!-- -------------------head----------------------------- -->
+
+<div class="header">
+	<div class="content pos_re"> 
+    
+    <div class="logo1">
+					<img src="/images/logo1.png"/>
+					<ul class="left_Bar">
+						<li>
+							<i>社区动态</i>
+							<div class="s_Link">
+								<a href="http://www.badwolf.cn/a/shequ/huiyuandongtai/">会员动态</a>
+								<a href="http://www.badwolf.cn/a/shequ/yuanquhuodong/">园区活动</a>
+							</div>
+						</li>
+						<li>
+							<i>科技管家</i>
+							<div class="s_Link">
+								<a href="http://www.badwolf.cn/plus/list.php?tid=2">创客咖啡厅</a>
+								<a href="http://www.badwolf.cn/plus/list.php?tid=3">集中办公区</a>
+								<a href="http://www.badwolf.cn/plus/list.php?tid=4">企业孵化器</a>
+								<a href="http://www.badwolf.cn/plus/list.php?tid=5">综合服务区</a>
+								<a href="http://www.badwolf.cn/plus/list.php?tid=6">路演报告厅</a>
+							</div>
+						</li>
+						<li>
+							<i>创业伙伴</i>
+							<div class="s_Link">
+								<a href="http://www.badwolf.cn/a/infos/guquantouzitixi/">金融服务</a>
+								<a href="http://www.badwolf.cn/a/infos/zhengcejiedu/guojiazhengce/">专业化服务</a>
+							</div>
+						</li>
+						<li>
+							<i>项目申报</i>
+							<div class="s_Link">
+								<a href="http://www.badwolf.cn/a/shops/xiangmufenlei1/">文化科技融合</a>
+								<a href="http://www.badwolf.cn/a/shequ/yuanquhuodong/">科技服务</a>
+								<a href="">国际合作</a>
+								<a href="">高端装备制造</a>
+								<a href="">政府项目</a>
+							</div>
+						</li>
+						<li>
+							<i>在线申请</i>
+							<div class="s_Link">
+								<a href="">入孵申请</a>
+								<a href="">场地申请</a>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+				
+    
+    
+    
+		<!--nav-->
+		<ul class="nav" >
+			<li class="pos_re" id="_userloginm"><a href="/member/login.php">会员中心</a>
+			</li>
+			<script language="javascript" type="text/javascript">CheckLoginm();</script> 
+			<li><a href="/a/pics/rongchuangkongjianjieshao/">关于我们</a></li>
+			<li><a href="/plus/list.php?tid=7">在线申请</a></li>
+			<li><a href="/a/shops/">项目申报</a></li>
+			<li class="curNav"><a href="/a/infos/">创业伙伴</a></li>
+			<li><a href="/plus/list.php?tid=1">科技管家</a></li>
+			<li><a href="/a/shequ/huiyuandongtai/">园区动态</a></li>
+			<li><a href="/a/xinwenzixunceshi/">新闻资讯</a></li>
+			<li><a href='/'>首页</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d0104c9cea5e9cbc0804d88192c5e396";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+		
+		<link rel="stylesheet" type="text/css" href="/css/manager.css"/>
+		
+		<!-- -------------------main----------------------------- -->
+		<div class="mainer">
+			<div class="topH"></div>
+			<!-- ---------------banenr-------------------------- -->
+			<div class="bannerPic" style="background: url(/images/bannerPic4.jpg) center center no-repeat;"></div>
+			
+			<!-- ------------currentSize-------------- -->
+			
+			<div class="currentSize">
+				<div class="content">
+					<span>当前位置：</span>
+					<a href="/">首页</a>
+					<span>>></span>
+                   	<a href="/a/infos/">创业伙伴</a>
+					<span>>></span>
+                   	<a href="/a/infos/guquantouzitixi/">创业大赛</a>
+				</div>
+			</div>
+			
+			<!-- ----------------managerContent----------------- -->
+			<div class="content overflowH" style="padding-bottom: 40px;">
+				<div class="manager_T">
+					<img src="/images/icon_T11.png"/>
+				</div>
+				
+				<!-- managerTab -->
+				<div class="manager_Tab">
+                   	<a href="/a/infos/guquantouzitixi/" class=" pTab_Name1 cur_mTab"> <p>创业大赛</p></a>
+                   	<a href="/a/infos/zhongchou/" class=" pTab_Name2"> <p>众筹</p></a>
+                   	<a href="/a/infos/rongzizulin/" class=" pTab_Name5"> <p>天使基金</p></a>
+                    <a href="/a/infos/chuangyedaoshi/" class=" pTab_Name4 "> <p>创业导师</p></a>
+                    
+                   	<a href="/a/infos/qita/" class=" pTab_Name3"> <p>其他</p></a>
+				</div>
+				<!-- managerRight -->
+				<div class="managerRight">
+<div class="managerR_Box">
+						<i id="m1" class="Ptop90"></i>
+						<h1>北京创新创业大赛</h1>
+						<div class="manager_DetailT">
+							<div class="managerR_Pic fr">
+								<img src="/uploads/allimg/151023/1-1510231G2050-L.png"/>
+							</div>
+							<h2>
+								<span style="color: rgb(119, 119, 119); font-family: 微软雅黑; font-size: 14px; line-height: 24px; background-color: rgb(250, 250, 250);">&ldquo;众创杯中国&bull;北京文化科技领域创新创业大赛&rdquo;致力于为创业者搭建一个项目展示、交流、成长的平台，联合北京中关村国家级文化科技融合示范基地、京区高校、新型创新孵化器、风险投资机构等，共同发掘、培育和投资一批特色鲜明、成长迅速、市场前景广阔的优秀项目，促进人才、技术、资本的融合。大赛的举办将与创业服务活动充分结合，为参赛企业/团队提供导师、培训、融资等深度服务，在挖掘优秀创业项目的同时，为创业者提供一个成长交流的平台，深入对接行业专家、资深投资人、成功创业企业家及志同道合的创业伙伴。</span><br style="margin: 0px; padding: 0px; font-family: 微软雅黑; color: rgb(119, 119, 119); font-size: 14px; line-height: 24px; background-color: rgb(250, 250, 250);" />
+<span style="color: rgb(119, 119, 119); font-family: 微软雅黑; font-size: 14px; line-height: 24px; background-color: rgb(250, 250, 250);">首届&ldquo;众创杯中国&bull;北京文化科技领域创新创业大赛&rdquo;于2015年6月-8月成功举办。凝聚了50余位创业导师资源，开展了&nbsp;&ldquo;创业集训营&rdquo;、&ldquo;创新创业工坊&rdquo;等标志性培训活动，形成了创新高效的创业培训模式，极大带动了文化科技领域创新创业力量的快速成长，获得了良好口碑。创新创业大赛作为&ldquo;融创空间&rdquo;品牌活动将持续举办下去，深度结合创业培训服务，用我们的资源和经验，助力创业者在创业之路上更好更快的成长。</span>
+							</h2>
+							<h3>
+								
+							</h3>
+						</div>
+					</div>
+				</div>
+		
+		
+		</div>
+		
+		
+		
+
+<!-- -------------------footer----------------------------- -->
+		<div class="footer">
+			<div class="footTop">
+				<div class="content" style="text-align: center;">
+					<div class="footCon fl">
+						<h1 class="foot_Tit"><span>关于我们</span></h1>
+						<p class="footD">电话：010-58952685</p>
+						<p class="footD">Emal：shaobingxinbjpc@126.com</p>
+						<p class="footD">微信号：rongchuangbj</p>
+						<p class="footD">微信二维码：</p>
+						<p class="footD"><img style="width:108px;height:108px;" src="/images/ewm1.jpg"/></p>
+					</div>
+					<div class="footCon">
+						<h1 class="foot_Tit"><span>第三方服务</span></h1>
+						<p class="footD">为融创空间提供支持及业务合作的第三方公司，如需进行平台合作及对接，请在申请成为第三方合作公司。</p>
+					</div>
+					<div class="footCon fr">
+						<h1 class="foot_Tit"><span>留言</span></h1>
+						<form action="/plus/guestbook.php" method="post" id="liuyan">
+							<input class="footInp" type="text" name="uname"  value="" placeholder="姓名" />
+							<input class="footInp" type="text" name="email"  value="" placeholder="邮箱" />
+							<textarea class="footInp" name="msg" rows="5" cols="" placeholder="留言内容"></textarea>
+							<input type='hidden' name='action' value='save' />
+							<input class="tijao" type="submit" value="发送"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="footBottom">
+				<div class="content">
+					<p class="copyRight">
+						© Copyright All Rights Reserved<br /> 
+						北京四方共创生产力促进有限公司 版权所有
+					</p>
+					<!--nav-->
+					<ul class="navBottom">
+						<li><a href="/a/pics/rongchuangkongjianjieshao/">关于我们</a></li>
+						<li><a href="/plus/list.php?tid=7">在线申请</a></li>
+						<li><a href="/a/shops/">项目申报</a></li>
+						<li><a href="/a/infos/">创业伙伴</a></li>
+						<li><a href="/plus/list.php?tid=1">科技管家</a></li>
+						<li><a href="/a/shequ/huiyuandongtai/">园区动态</a></li>
+						<li><a href="/a/xinwenzixunceshi/">新闻资讯</a></li>
+						<li><a href="/">首页</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+ 
+			  $(".owl-banner2").owlCarousel({
+			    items : 3,
+			    navigation : true,
+			    pagination : false,
+			    navigationText :['',''],
+	      		rewindNav : false,
+			  }); 
+			});
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				$(".about_Contact").each(function(){
+					var url_Icon = $(this).children('h2').data('icon');
+					$(this).children('h2').css("background",'url('+url_Icon+') left center no-repeat');
+				})
+			})
+		</script>
+		<script type="text/javascript">
+			window.onload = function(){
+				$('.about_Partner p').each(function(){
+					var $img = $(this).children('img');
+					if($img.height()>$img.width()){
+						$img.css('height','100%');
+					}else{
+						$img.css('width','100%');
+					}
+				})
+			}
+		</script>
+	</body>
+</html>
+<span style="display:none"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256938643'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1256938643%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></span> 
+
+<script type="text/javascript">
+	window.onload = function(){
+		 var top = $(this).scrollTop()-90;
+		$(window).scrollTop(top)
+		
+	}
+</script>
