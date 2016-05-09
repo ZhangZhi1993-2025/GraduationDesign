@@ -18,19 +18,20 @@
 
     <properties>
 
-        <org.springframework.version>3.1.4.RELEASE</org.springframework.version>
+        <springframework.version>3.1.4.RELEASE</springframework.version>
 
         <guava.version>19</guava.version>
         <jsoup.version>1.8.3</jsoup.version>
         <tomcat.version>7.0.30</tomcat.version>
         <dbcp.version>1.4</dbcp.version>
         <junit.version>4.10</junit.version>
+        <jackson.version>2.3.0</jackson.version>
 
-        <org.slf4j.version>1.7.5</org.slf4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
         <logback.version>1.0.13</logback.version>
 
-        <org.mybatis.mybatis.version>3.2.3</org.mybatis.mybatis.version>
-        <org.mybatis.spring.version>1.2.1</org.mybatis.spring.version>
+        <mybatis.mybatis.version>3.2.3</mybatis.mybatis.version>
+        <mybatis.spring.version>1.2.1</mybatis.spring.version>
 
     </properties>
 
@@ -42,28 +43,28 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${org.slf4j.version}</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <!--Java Commons Logging redirect to slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
-                <version>${org.slf4j.version}</version>
+                <version>${slf4j.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <!--Apache log4j redirect to slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>log4j-over-slf4j</artifactId>
-                <version>${org.slf4j.version}</version>
+                <version>${slf4j.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <!--Java Util Logging redirect to slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
-                <version>${org.slf4j.version}</version>
+                <version>${slf4j.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <!--将所有日志归一成 logback -->
@@ -81,36 +82,36 @@
                 <scope>runtime</scope>
             </dependency>
 
-            <!-- spring -->
+            <!-- spring configuration -->
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>commons-logging</artifactId>
@@ -122,7 +123,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${springframework.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -144,13 +145,13 @@
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
-                <version>${org.mybatis.mybatis.version}</version>
+                <version>${mybatis.mybatis.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis-spring</artifactId>
-                <version>${org.mybatis.spring.version}</version>
+                <version>${mybatis.spring.version}</version>
             </dependency>
 
             <!-- web -->
@@ -176,6 +177,17 @@
                 <version>${jsoup.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
             <!-- test -->
 
@@ -188,6 +200,59 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- spring configuration -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+        <!-- test -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit-dep</artifactId>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
