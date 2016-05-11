@@ -11,8 +11,9 @@ public interface TidyPage {
     /**
      * 清洗页面并返回DOM树
      *
+     * @param html 待清洗的html页面流
      * @return 清洗过后的DOM树
      */
-    Element tidyPage();
+    Element tidyPage(String html);
 
 }

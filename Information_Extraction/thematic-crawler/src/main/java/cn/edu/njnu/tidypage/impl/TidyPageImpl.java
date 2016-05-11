@@ -17,9 +17,6 @@ import java.util.Stack;
 @Component
 public class TidyPageImpl implements TidyPage {
 
-    //页面流对应的DOM树的树根
-    private Element root;
-
     //对于信息抽取无效的标签集
     private static Set<String> unnecessaryTags;
 
@@ -37,16 +34,6 @@ public class TidyPageImpl implements TidyPage {
         html = html.replaceAll("<form[^<]*>", "");
         html = html.replaceAll("</form>", "");
         return html;
-    }
-
-    /**
-     * 得到页面流构建DOM树,调用该方法表示模块不需要搜索目标div
-     *
-     * @param html 输入的页面流
-     */
-    public TidyPageImpl(String html) {
-        html = trimBasedOnString(html);
-        root = Jsoup.parse(html).select("html").first();
     }
 
     /**
@@ -139,7 +126,7 @@ public class TidyPageImpl implements TidyPage {
     /**
      * 将页面中无信息标签滤去(非递归后序遍历)
      */
-    protected void dropUnnecessaryTags() {
+    protected void dropUnnecessaryTags(Element root) {
         Set<String> set = new HashSet<>();
         set.add("script");
         set.add("style");
@@ -153,57 +140,51 @@ public class TidyPageImpl implements TidyPage {
 
         //初始化
         Stack<InnerStruct> stk = new Stack<>();
-        InnerStruct isnode;
+        InnerStruct isNode;
         for (Element e : root.children()) {
-            isnode = new InnerStruct(e);
-            stk.push(isnode);
+            isNode = new InnerStruct(e);
+            stk.push(isNode);
         }
 
         while (!stk.isEmpty()) {
-            isnode = stk.peek();
-            if (!isnode.hasVisited) {
-                isnode.hasVisited = true;
-                Elements children = isnode.node.children();
+            isNode = stk.peek();
+            if (!isNode.hasVisited) {
+                isNode.hasVisited = true;
+                Elements children = isNode.node.children();
                 for (Element e : children) {
                     InnerStruct is = new InnerStruct(e);
                     stk.push(is);
                 }
             } else {
                 stk.pop();
-                if (set.contains(isnode.node.tagName()) ||
-                        judgeClass(set, isnode.node.className()) ||
-                        set.contains(isnode.node.id()) ||
-                        isnode.node.attr("style").equals("display:none") ||
-                        couldBeIrrelevantTag(isnode.node.text().trim())) {
-                    isnode.node.remove();
+                if (set.contains(isNode.node.tagName()) ||
+                        judgeClass(set, isNode.node.className()) ||
+                        set.contains(isNode.node.id()) ||
+                        isNode.node.attr("style").equals("display:none") ||
+                        couldBeIrrelevantTag(isNode.node.text().trim())) {
+                    isNode.node.remove();
                     continue;
                 }
-                isnode.node.removeAttr("class");
-                isnode.node.removeAttr("style");
-                if (isnode.node.children().size() == 0) {
-                    if (isnode.node.text().trim().equals(""))
-                        isnode.node.remove();
+                isNode.node.removeAttr("class");
+                isNode.node.removeAttr("style");
+                if (isNode.node.children().size() == 0) {
+                    if (isNode.node.text().trim().equals(""))
+                        isNode.node.remove();
                     continue;
                 }
-                if (isnode.node.children().size() == 1
-                        && isnode.node.ownText().trim().equals(""))
-                    isnode.node.replaceWith(isnode.node.child(0));
+                if (isNode.node.children().size() == 1
+                        && isNode.node.ownText().trim().equals(""))
+                    isNode.node.replaceWith(isNode.node.child(0));
             }
         }
     }
 
     @Override
-    public Element tidyPage() {
-        dropUnnecessaryTags();
+    public Element tidyPage(String html) {
+        html = trimBasedOnString(html);
+        Element root = Jsoup.parse(html).select("html").first();
+        dropUnnecessaryTags(root);
         return root;
-    }
-
-    /**
-     * 清洗页面并返回html页面流
-     */
-    public String tidyPageStr() {
-        dropUnnecessaryTags();
-        return root.toString();
     }
 
 }
