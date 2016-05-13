@@ -16,7 +16,7 @@ import java.util.Stack;
  * 页面清洗规范化实现类
  */
 @Component
-public class TidyPageImpl implements TidyPage {
+public class DefaultTidyPageImpl implements TidyPage {
 
     //对于信息抽取无效的html标签集
     @Resource
