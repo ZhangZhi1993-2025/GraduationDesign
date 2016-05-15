@@ -6,6 +6,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -17,11 +18,16 @@ import java.util.Stack;
 @Component
 public class TidyPageImpl implements TidyPage {
 
-    //对于信息抽取无效的标签集
+    //对于信息抽取无效的html标签集
+    @Resource
     private static Set<String> unnecessaryTags;
 
+    //对于信息抽取无效的字面值文本集
+    @Resource
+    private static Set<String> unnecessaryTexts;
+
     /**
-     * 基于页面流作去除空格以及蛋疼的<form></form>标签
+     * 基于页面流去除无效字面值文本
      *
      * @param html 输入的页面流
      * @return 处理过的页面流
@@ -31,8 +37,6 @@ public class TidyPageImpl implements TidyPage {
         html = html.replaceAll("&ensp;", "");
         html = html.replaceAll("&nbsp;", "");
         html = html.replaceAll("&emsp;", "");
-        html = html.replaceAll("<form[^<]*>", "");
-        html = html.replaceAll("</form>", "");
         return html;
     }
 
@@ -137,6 +141,7 @@ public class TidyPageImpl implements TidyPage {
         set.add("select");
         set.add("ul");
         set.add("footer");
+        set.add("form");
 
         //初始化
         Stack<InnerStruct> stk = new Stack<>();
