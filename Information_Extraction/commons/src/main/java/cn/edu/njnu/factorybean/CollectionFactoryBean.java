@@ -2,6 +2,7 @@ package cn.edu.njnu.factorybean;
 
 import org.springframework.beans.factory.FactoryBean;
 
+import javax.annotation.PostConstruct;
 import java.util.Collection;
 
 /**
@@ -12,9 +13,14 @@ public abstract class CollectionFactoryBean<T extends Collection> implements Fac
 
     private T result;
 
+    @PostConstruct
+    public void loadResourceFiles() {
+
+    }
+
     @Override
     public T getObject() throws Exception {
-        return null;
+        return result;
     }
 
     @Override

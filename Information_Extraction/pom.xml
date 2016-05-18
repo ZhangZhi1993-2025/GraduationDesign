@@ -22,7 +22,7 @@
 
         <springframework.version>3.1.4.RELEASE</springframework.version>
 
-        <guava.version>19</guava.version>
+        <guava.version>19.0</guava.version>
         <jsoup.version>1.8.3</jsoup.version>
         <tomcat.version>7.0.30</tomcat.version>
         <servlet.version>2.5</servlet.version>
