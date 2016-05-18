@@ -10,6 +10,8 @@ import java.util.Collection;
  */
 public abstract class CollectionFactoryBean<T extends Collection> implements FactoryBean<T> {
 
+    private T result;
+
     @Override
     public T getObject() throws Exception {
         return null;
