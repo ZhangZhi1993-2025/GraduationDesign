@@ -1,6 +1,6 @@
-package cn.edu.njnu.factorybean.ext;
+package cn.edu.njnu.factorybean.collection.ext;
 
-import cn.edu.njnu.factorybean.CollectionFactoryBean;
+import cn.edu.njnu.factorybean.collection.CollectionFactoryBean;
 
 import java.util.HashSet;
 

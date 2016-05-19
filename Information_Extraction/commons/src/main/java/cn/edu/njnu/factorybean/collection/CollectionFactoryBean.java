@@ -1,4 +1,4 @@
-package cn.edu.njnu.factorybean;
+package cn.edu.njnu.factorybean.collection;
 
 import cn.edu.njnu.files.LoadFileHelper;
 import com.google.common.base.Charsets;
@@ -18,7 +18,8 @@ import java.util.Collection;
  * Created by zhangzhi on 16-3-7.
  * 面向spring的线性集合资源文件(相对于键值对的properties文件)注入的抽象集合工厂Bean
  */
-public abstract class CollectionFactoryBean<T extends Collection> implements FactoryBean<T> {
+public abstract class CollectionFactoryBean<E, T extends Collection<E>>
+        implements FactoryBean<T> {
 
     private T result;
 
