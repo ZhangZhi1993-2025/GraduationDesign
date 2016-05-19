@@ -25,24 +25,16 @@ public abstract class CollectionFactoryBean<T extends Collection> implements Fac
     @Resource
     private String filePath;
 
+    @Resource
+    private LineProcessor<T> lineProcessor;
+
     private static final Logger logger = LoggerFactory.getLogger(CollectionFactoryBean.class);
 
     @PostConstruct
-    public void loadResourceFiles() {
-        //获得真正的文件路径
+    public void readResourceFiles() {
         try {
             File resource = new File(LoadFileHelper.getFilePath(filePath));
-            result = Files.readLines(resource, Charsets.UTF_8, new LineProcessor<T>() {
-                @Override
-                public boolean processLine(String s) throws IOException {
-                    return false;
-                }
-
-                @Override
-                public T getResult() {
-                    return null;
-                }
-            });
+            result = Files.readLines(resource, Charsets.UTF_8, lineProcessor);
         } catch (IOException e) {
             logger.error("读取文件失败", e);
         }
