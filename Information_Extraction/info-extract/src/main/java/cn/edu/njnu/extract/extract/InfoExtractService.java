@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface InfoExtractService {
 
+    boolean capableOf();
+
     /**
      * 从给定的网页结构中抽取出结构化的信息
      *
