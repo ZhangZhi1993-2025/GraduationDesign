@@ -12,7 +12,7 @@
             <fileNamePattern>${CATALINA_BASE}/logs/cms.log.%d{yyyy-MM-dd}
             </fileNamePattern>
             <append>true</append>
-            <maxHistory>15</maxHistory>
+            <maxHistory>100</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss}][%p][%C:%L][%t] %m%n</pattern>
@@ -25,7 +25,7 @@
             <fileNamePattern>${CATALINA_BASE}/logs/cms.warn.log.%d{yyyy-MM-dd}
             </fileNamePattern>
             <append>true</append>
-            <maxHistory>15</maxHistory>
+            <maxHistory>100</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>WARN</level>
@@ -41,7 +41,7 @@
             <fileNamePattern>${CATALINA_BASE}/logs/cms.error.log.%d{yyyy-MM-dd}
             </fileNamePattern>
             <append>true</append>
-            <maxHistory>15</maxHistory>
+            <maxHistory>100</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
